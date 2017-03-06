@@ -1,0 +1,32 @@
+# Site Settings
+title:               Yakim shu
+tagline:            Hi, 這是我擴充腦內海馬體的地方。
+description:
+baseurl:            "/blog"
+img_url:            "../images/"
+url:                #"https://lenpaul.github.io"
+github:
+  # url:               "https://lenpaul.github.io/blog"
+author:
+  name:              "Paul Le"
+  email:             "l.nguyen.paul@gmail.com"
+  twitter:           "paululele"
+  instagram:         "paululele"
+  github:            "lenpaul"
+  facebook:          "Le.Paul.94"
+  linkedin:          "lenpaul"
+paginate:            5
+
+
+# Build settings
+markdown:            kramdown
+highlighter:         rouge
+permalink:           none
+gems:                [jekyll-paginate]
+
+
+# Serving
+detach:  false
+port:    4000
+host:    127.0.0.1
+show_dir_listing: false

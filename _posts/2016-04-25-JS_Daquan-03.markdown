@@ -1,0 +1,59 @@
+---
+layout: post
+title: "【筆記】Javascript大全 - 03 術句"
+description: "這篇會提到列舉物件特性的for in，測試程式的try catch區塊，以及下中斷點(debugger)"
+category: JavaScript
+tags: [javascript,daquan]
+---
+
+這篇會提到列舉物件特性的for in，測試程式的try catch區塊，以及下中斷點(debugger)。
+
+--------------
+
+### for in  
+
+列出所有「可列舉」的**物件特性**
+
+```javascript
+var o = {a:1, b:2, c:3};
+for(prop in o) {
+  console.log(o[prop]); // 0,1,2
+}
+```
+
+---
+
+### try/catch/finally
+
+try/catch/finally是javascript的例外處理機制
+
+- try：測試碼區塊，發生問題會往外拋
+- catch(e)：在try發生問題時才會執行，數據可以用變數 e 來參考(refer to)
+- finally：不管try有沒有發生問題都會執行
+
+```javascript
+try{
+    // 這裡要放測試的碼
+}
+catch(e){
+    // 當try區塊發生問題才執行，數據可以用變數 e 來參考(refer to)
+}
+finally{
+    // 不管有沒有問題都執行
+}
+```
+
+---
+
+### debugger 
+
+除錯用，要開啟console，像是下中斷點
+
+```javascript
+if( /*發生此情況要中斷*/ ) debugger;
+```
+
+
+
+資料來源：  
+[JavaScript大全(第六版)](http://www.books.com.tw/products/0010542183){:target="_blank"}  

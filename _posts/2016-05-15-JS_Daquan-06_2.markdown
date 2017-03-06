@@ -1,0 +1,331 @@
+---
+layout: post
+title: "【筆記】Javascript大全 - 06 函式(二) 參數、引數、閉包"
+description: "這章一開始就卡在閉包(Closures)上，有很多問題也是要反覆google才漸漸了解，正式推開了Javascript的神秘大門。"
+category: JavaScript
+tags: [javascript,daquan]
+---
+
+函式(``function``)是Javascript程式碼區塊，僅定義一次就可以被多次執行或調用。
+
+```javascript
+function getName(name) { // name → 參數
+    return name; // name → 回傳值
+}
+getName("yakim"); // "yakim" → 引數
+```
+
+---
+
+### 調用函式
+
+函式執行是在被調用時才開始，非函式定義時，Javascript有四種調用方式
+
+- 做為函式 (function)
+- 做為方法 (methods)
+- 做為建構式 (constructors)
+- 透過 ``call()`` 與 ``apply()`` 方法間接調用
+
+方法調用與函式調用有一個重要差異：**調用情境**，即函式主體的
+``this``會視呼叫他的物件而定：
+
+- 當方法：其調用物件
+- 當函式
+    + strict模式：全域物件
+    + 非strict模式：``undefined``
+
+---
+
+### return
+
+函式中的return 述句會使函式停止執行，並將其運算後的值回傳(如果有的話)，
+如果``return``後面沒有東西，就回傳``undefined``。
+
+但並非所有函式都有``return``，像以下範例，
+
+就只是印出物件的特性名稱與值，不需回傳值，該函式的調用值永遠是``undefined``。
+
+```javascript
+ var o ={1:"a", 2:"b", 3:"c"};
+
+function print(o) {
+  for(var prop in o) {
+    console.log("key:"+prop+", name:"+o[prop]);
+  }
+}
+
+print(o);
+// "key:1, name:a"
+// "key:2, name:b"
+// "key:3, name:c"
+```
+
+---
+
+### 選擇性參數
+
+函式調用的**引數比參數少**時，額外參數會被設為``undefined``，我們可以為**可能不存在的參數**設定**預設值**，使函式更有彈性。  
+
+> 設計具有選擇性引數的函式時，非必須的引數要放在引數列的最後，這樣他們才能被忽略，簡單來說，注意**引數順序**
+
+```javascript
+var obj1 = {a:"1", b:"2", c:"3"};
+var obj2 = {d:"1", e:"2", f:"3"};
+
+function getPropertyNames(o,a) { // o → 必須 ; a → 可以忽略
+  a = a || []; // 如果a不存在就建一個新陣列
+  for(var property in o) a.push(property); // 把o的特性值丟進a陣列
+  return a;
+
+}
+
+var newObj = getPropertyNames(obj1); // 把obj1特性丟進新建的newObj
+getPropertyNames(obj2, newObj); // 把obj2特性也丟進newObj
+
+console.log(newObj); // ["a", "b", "c", "d", "e", "f"]
+```
+
+---
+
+### Arguments 物件
+
+看完引數比參數少的情況，那倒過來看，換成參數比比引數少的時候呢，``arguments``就上場了  
+``arguments``物件是種「類陣列物件」，有**``length``屬性**，指的就是引數的數量
+
+- ```arguments[0]``` → 第一個引數
+- ```arguments[1]``` → 第二個引數
+
+```javascript
+// 抓出最大值
+Max(1,5,100,20); // 100
+
+function Max() {
+  var max = 0;
+  var num = arguments; // 把引數陣列丟進num
+  // num.length → 4
+  // num[0] → 1 ; num[1] → 5; num[2] → 100...
+
+  for (var i=0; i<num.length; i++) {
+    if (max < num[i]) max = num[i]; // 當前元素大於max時，max更新
+  }
+  return max;
+}
+```
+
+---
+
+### 使用物件特性做為引數
+
+當一個函式有超過三個以上的參數，要調用時會不好記順序，這時可以把單一物件當成引數傳入，使用「名稱/值」的方式對照，無須理會正確順序。
+
+```javascript
+var a = [1,2,3,4], b = [];
+copy({from:a, to:b, length:4});
+
+function copy(obj) {
+    // obj.from → [1, 2, 3, 4]
+    // obj.form_start || 30 → 30
+    // obj.to → []
+    // obj.to_start: obj.to_start || 20 → 20
+    // obj.length → 4
+}
+```
+
+---
+
+### 函式做為值
+
+函式也可以當做「值」，這代表他們可以被指定給變數、物件特性或陣列元素中，或是**傳給函式當作引數**用。
+
+```javascript
+// 計算式
+function add(x,y) { return x+y; }
+function subtract(x,y) {return x-y; }
+
+// 調用上面運算式做為第一個引數
+function operate(method, num1, num2) {
+  return method(num1, num2);
+}
+
+// a = 5+10
+var a = operate(add, 5, 10);
+
+// c = (10-5) + (2-1)
+var c = operate(add, 
+                operate(subtract, 10, 5), 
+                operate(subtract, 2, 1));
+```
+
+---
+
+### 定義函式特性
+
+函式是一種物件，代表也有特性可以存取，假設你要寫一個每次調用都回傳不同值的函式，且都要記錄上次存取的值，我們可以把資訊直接存在**函式特性**上
+
+```javascript
+addCount.count = 0;
+function addCount() {
+  return addCount.count++;
+}
+
+addCount();
+addCount();
+addCount();
+
+console.log( addCount.count ); // 3
+```
+
+---
+
+### call & apply方法
+
+``.call()`` 與 ``.apply()`` 可以用來傳遞參數用，但更重要的功能是用來**間接調用某函式**，當作是某物件的方法，**第一個引數**是指出要
+**在哪個物件上調用**，在函式內容中成為``this``
+
+- ``call``：任何多個引數 `` f.call(object, num1, num2) ``
+- ``apply``：一組**陣列**當引數 `` f.call(object, [num1, num2]) ``
+
+#### 傳遞參數
+
+```javascript
+//傳遞參數用--------------
+function sum(x,y) {
+  return x+y;
+}
+
+// call 
+function callTest(num1, num2) {
+  return sum.call(this, num1, num2);
+}
+// apply 
+function applyTest(num1, num2) {
+  return sum.apply(this, [num1, num2]);
+}
+/* apply 也可以改寫用 arguments
+function applyTest() {
+  return sum.apply(this, arguments);
+}
+*/
+
+callTest(10,20);  //30
+applyTest(10,50); //60
+```
+
+#### 間接調用函式
+
+```javascript
+//間接調用函式，當做是物件的方法--------------
+function sum(x,y) {
+  return x+y;
+}
+
+function Obj(x,y) {
+  this.x = x;
+  this.y = y;
+}
+
+var o = new Obj();
+
+//方法.apply(作用域, [參數陣列])
+sum.apply(o, [10,100]); // 110
+```
+
+
+---
+
+### Closures 閉包
+
+閉包這邊卡了很久，網路上的教學大多看不太懂QAQ  
+我的理解是閉包主要用於兩部分：
+
+- **一個函式，可以訪問另一函式作用域的值**
+
+以下例子是輸出``global``而不是``local``，為什麼呢?  
+
+```javascript
+var name = "global";
+var obj = {
+  name: "local",
+  getName: function() {
+    return function() {
+      return this.name;
+    };
+  }
+};
+
+var a = obj.getName();
+console.log(a()); // global
+```
+
+先來看一下``a``是什麼?
+
+
+``obj.getName()``的函式回傳值，也是一個函式
+
+```javascript
+// a 就是一個函式
+// 在此範例中， this 就等於 window
+function() {
+  return this.name;
+};
+```
+
+重點就在這個``this``，*JavaScript中的``this``會隨**調用者**而變*  
+剛剛``obj.getName() `` 函式已經執行完畢了，其作用域返回到最頂層的 ``window``  
+
+
+所以此例的``this``是指向誰呢？！其實就是``window``  
+所以``winow.name`` → ``global``，那我們要如何輸出``local``呢?  
+
+
+可以先設一個變數，將預期的物件作用域存下來，
+之後要調用就不會受到``this``的特性影響
+
+```javascript
+var name = "global";
+var obj = {
+  name: "local",
+  getName: function() {
+    // 把對象存成變數 self (此時this指向obj)
+    var self = this;
+    return function() {
+      // 返回 obj.name
+      return self.name;
+    };
+  }
+};
+
+var a = obj.getName();
+console.log(a()); // local
+```
+
+ - **共享私有變數的存取權**
+
+```javascript
+function counter(x) {
+  var total = x;
+  return function(x) {
+    total += x;
+    return total; // 第二次調用後 total 會被存起來，直到不再調用
+  };
+}
+
+var a = counter(20);
+a(30);
+console.log(a(40)); // 20+30+40 → 90
+```
+
+
+
+
+
+
+
+
+------------------------------
+
+
+資料來源：  
+[JavaScript大全(第六版)](http://www.books.com.tw/products/0010542183){:target="_blank"}  
+[【Youtube】尚学堂科技 javascript视频教程 白贺翔 函数【八】闭包](https://www.youtube.com/watch?v=dRBKuwwvR8k&list=PLTstZD3AK3S-8HPR_c1MxxZZ57l9NPxmv&index=17){:target="_blank"} 
+

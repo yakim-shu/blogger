@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>
+    
+      【學習】LocalStorage 本地端備忘錄 | Yakim shu
+    
+  </title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="/blog/css/main.css">
+  <link rel="stylesheet" href="/blog/css/syntax.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-80213386-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+
+
+<body>
+
+  <div class="container">
+    <header class="masthead">
+  <h3 class="masthead-title">
+    <a href="/blog/">Yakim shu</a>
+    <small class="masthead-subtitle">Hi, 這是我擴充腦內海馬體的地方。</small>
+    <div class="menu">
+  <div class="menu-content">
+    <a href="/blog/about.html">About</a>
+    <a href="/blog/writing.html">Writing</a>
+    <a href="/blog/contacts.html">Contact</a>
+  </div>
+  <div class="social-icons">
+    <a href="https://twitter.com/paululele"><i class="fa fa-twitter" aria-hidden="true" target="_blank"></i></a>
+    <a href="https://www.facebook.com/Le.Paul.94"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
+    <a href="https://instagram.com/paululele"><i class="fa fa-instagram" aria-hidden="true" target="_blank"></i></a>
+    <a href="https://linkedin.com/in/lenpaul"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
+    <a href="mailto:l.nguyen.paul@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
+  </div>
+</div>
+
+  </h3>
+</header>
+
+
+    <div class="post-container story">
+      <h1>
+  【學習】LocalStorage 本地端備忘錄
+</h1>
+
+
+  <img src="../images/todolist.jpg">
+
+
+<p>最近在練習 Localstorage，寫了一個類似 keep ( 陽春非常多 ) 的本地端 Todolist</p>
+
+<p>功能就只有：</p>
+
+<ul>
+  <li>輸入 &amp; 移除訊息</li>
+  <li>加入 &amp; 移除便條</li>
+  <li>設置便條顏色</li>
+</ul>
+
+<p>可以試著輸入幾個訊息再重新整理，會發現訊息還在  ，資料是記在瀏覽器上，不同瀏覽器不能共享喔！</p>
+
+<p>因為localstorage <strong>沒有過期時間</strong> ( 不像cookie )，我也沒有特別再寫<br />
+所以沒有手動清除的話，資料就會一直存在唷～</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">// 設置localsotrage ，命名為 listStorage</span>
+<span class="nx">localStorage</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="s2">"listStorage"</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">arrStorage</span><span class="p">));</span>
+<span class="c1">// 存取 listStorage</span>
+<span class="kd">var</span> <span class="nx">oList</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="s1">'listStorage'</span><span class="p">));</span>
+</code></pre>
+</div>
+
+<p>但其實本範例其實應用到的只有 getItem &amp; setItem 而已阿阿阿，大部分的時間都花在一些無關緊要的事上。</p>
+
+<p>假學習、真自high</p>
+
+<p>→ <a href="http://output.jsbin.com/fofidep/1" target="_blank">Todolist 範例網址</a></p>
+
+
+<span class="post-date">
+  Written on
+  
+  November
+  8th,
+  2016
+  by Paul Le
+</span>
+<div class="post-date">Feel free to share!</div>
+  <div class="sharing-icons">
+    <a href="https://twitter.com/intent/tweet?text=【學習】LocalStorage 本地端備忘錄&amp;url=/html5/learnJs_localstorage.html&amp;via=paululele" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=/html5/learnJs_localstorage.html&amp;title=【學習】LocalStorage 本地端備忘錄" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    <a href="https://plus.google.com/share?url=/html5/learnJs_localstorage.html" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+<div class="related">
+  <h1 >You may also enjoy:</h1>
+  
+  <ul class="related-posts">
+    
+  </ul>
+</div>
+
+
+    </div>
+
+    <footer class="footer">
+  <a href="https://twitter.com/paululele"><i class="fa fa-twitter" aria-hidden="true" target="_blank"></i></a>
+  <a href="https://www.facebook.com/Le.Paul.94"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
+  <a href="https://instagram.com/paululele"><i class="fa fa-instagram" aria-hidden="true" target="_blank"></i></a>
+  <a href="https://linkedin.com/in/lenpaul"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
+  <a href="mailto:l.nguyen.paul@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
+  <div class="post-date"><a href="/about.html">Yakim shu | Hi, 這是我擴充腦內海馬體的地方。 by Paul Le</a></div>
+</footer>
+
+
+  </div>
+
+</body>
+</html>

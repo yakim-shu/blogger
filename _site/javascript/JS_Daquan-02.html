@@ -1,0 +1,476 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>
+    
+      【筆記】Javascript大全 - 02 運算式與運算子  | Yakim shu
+    
+  </title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="/blog/css/main.css">
+  <link rel="stylesheet" href="/blog/css/syntax.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-80213386-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+
+
+<body>
+
+  <div class="container">
+    <header class="masthead">
+  <h3 class="masthead-title">
+    <a href="/blog/">Yakim shu</a>
+    <small class="masthead-subtitle">Hi, 這是我擴充腦內海馬體的地方。</small>
+    <div class="menu">
+  <div class="menu-content">
+    <a href="/blog/about.html">About</a>
+    <a href="/blog/writing.html">Writing</a>
+    <a href="/blog/contacts.html">Contact</a>
+  </div>
+  <div class="social-icons">
+    <a href="https://twitter.com/paululele"><i class="fa fa-twitter" aria-hidden="true" target="_blank"></i></a>
+    <a href="https://www.facebook.com/Le.Paul.94"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
+    <a href="https://instagram.com/paululele"><i class="fa fa-instagram" aria-hidden="true" target="_blank"></i></a>
+    <a href="https://linkedin.com/in/lenpaul"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
+    <a href="mailto:l.nguyen.paul@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
+  </div>
+</div>
+
+  </h3>
+</header>
+
+
+    <div class="post-container story">
+      <h1>
+  【筆記】Javascript大全 - 02 運算式與運算子 
+</h1>
+
+
+
+<p>這章開始就發現許多以前不懂的概念與原理，像是運算過程會進行的類型轉換，以及邏輯運算子的優先順序是如此重要，都是真的要翻書才知道的阿!!</p>
+
+<hr />
+
+<h3 id="section">運算子優先序</h3>
+
+<p>考慮下面這個運算式</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">w</span> <span class="o">=</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span> <span class="o">*</span> <span class="nx">z</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>乘法 * 的優先序比加法 + 還高，指定運算子 = 最低，所以 = 會在右邊運算都完成才執行</p>
+
+<hr />
+
+<h3 id="section-1">+ 算數運算子</h3>
+
+<p>二元 + 運算子會將數值相加，但加法只有在兩者皆不像字串時才會進行<br />
+只要有任一運算元是字串，或是可以轉換成字串的物件，另一運算元就會被轉為字串進行串接</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span>         <span class="c1">// 3 : 加法</span>
+<span class="s2">"1"</span> <span class="o">+</span> <span class="s2">"2"</span>     <span class="c1">// "12" : 串接</span>
+<span class="s2">"1"</span> <span class="o">+</span> <span class="mi">2</span>       <span class="c1">// "12" : 轉換後串接 (numner &gt; string)</span>
+<span class="kc">true</span> <span class="o">+</span> <span class="kc">true</span>   <span class="c1">// 2 : 轉換後串接 (boolean &gt; number)</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h3 id="section-2">= &amp; == &amp; === 相等性運算子</h3>
+
+<p>= ：<strong>「得到或指定至」</strong>，把右邊運算結果傳至左邊<br />
+==：<strong>「等於」</strong>，進行類型轉換，較寬鬆<br />
+=== ：<strong>「嚴格等於」</strong>，不進行類型轉換，較嚴格</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cm">/* == &amp; === 比較結果2者相同----------*/</span>
+<span class="kc">NaN</span> <span class="o">===</span> <span class="kc">NaN</span><span class="p">;</span>  <span class="c1">// false</span>
+<span class="kc">null</span> <span class="o">===</span> <span class="kc">null</span> <span class="c1">// true</span>
+<span class="kc">undefined</span> <span class="o">===</span> <span class="kc">undefined</span> <span class="c1">// true</span>
+
+
+<span class="cm">/* == &amp; === 比較結果2者不同----------*/</span>
+<span class="c1">//nul &amp; undefined 比較</span>
+<span class="kc">null</span> <span class="o">==</span> <span class="kc">undefined</span><span class="p">;</span>  <span class="c1">// true</span>
+<span class="kc">null</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">;</span> <span class="c1">// false</span>
+
+<span class="cm">/* == 會進行類型轉換----------*/</span>
+<span class="mi">1</span> <span class="o">==</span> <span class="s2">"1"</span><span class="p">;</span>  <span class="c1">// true (string &gt; number)</span>
+<span class="mi">1</span> <span class="o">===</span> <span class="s2">"1"</span><span class="p">;</span> <span class="c1">// false</span>
+<span class="mi">1</span> <span class="o">==</span> <span class="kc">true</span><span class="p">;</span> <span class="c1">// true </span>
+<span class="c1">// true:boolean &gt; number</span>
+<span class="c1">// "1":string &gt; number</span>
+<span class="mi">1</span> <span class="o">===</span> <span class="kc">true</span><span class="p">;</span><span class="c1">// false</span>
+</code></pre>
+</div>
+
+<p>注意：javascript的物件比較是用<strong>參考</strong>(by reference)，非比較值<br />
+兩個物件就算有相同名稱與值，兩者還是不相等。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="p">{</span><span class="na">a</span><span class="p">:</span><span class="mi">1</span><span class="p">};</span>
+<span class="kd">var</span> <span class="nx">y</span> <span class="o">=</span> <span class="p">{</span><span class="na">a</span><span class="p">:</span><span class="mi">1</span><span class="p">};</span>
+<span class="nx">x</span> <span class="o">==</span> <span class="nx">y</span> <span class="c1">// false</span>
+</code></pre>
+</div>
+
+<p>承上，如果兩個值都<strong>參考</strong>至同一物件，則視為相等</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">A</span> <span class="o">=</span> <span class="nx">x</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">B</span> <span class="o">=</span> <span class="nx">x</span><span class="p">;</span>
+<span class="nx">A</span> <span class="o">==</span> <span class="nx">B</span><span class="p">;</span> <span class="c1">// true</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h3 id="section-3">&gt;、&lt;、&gt;=、&lt;= 比較運算子</h3>
+
+<p>可以是任何型別，但會轉換成數值或字串再做比對</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">//兩個運算元都是字串，將比較「字母順序」</span>
+<span class="s2">"Apple"</span> <span class="o">&lt;</span> <span class="s2">"Banana"</span> <span class="c1">// true</span>
+
+<span class="c1">// 任一值為NaN，必為false</span>
+<span class="s2">"one"</span> <span class="o">&lt;</span> <span class="mi">3</span> <span class="c1">// false ("one" 被轉為NaN)</span>
+</code></pre>
+</div>
+
+<p>加法與比較運算子都會進行類型轉換，且各有偏好</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">// 加法運算子 : 偏好字串</span>
+<span class="s2">"1"</span> <span class="o">+</span> <span class="mi">2</span> <span class="c1">// "12"</span>
+
+<span class="c1">// 比較運算子 : 偏好數值</span>
+<span class="s2">"1"</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="c1">// false</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h3 id="and-">&amp;&amp; AND 邏輯運算子</h3>
+
+<p>當A == <code class="highlighter-rouge">false</code>，會直接回傳A而<strong>忽略B</strong>，只有當A是<code class="highlighter-rouge">true</code>時，才會去運算B</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">A</span> <span class="o">&amp;&amp;</span> <span class="nx">B</span>
+</code></pre>
+</div>
+
+<p>知道&amp;&amp;不一定會估算右邊的值很重要，看以下例子</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">A</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<span class="nx">A</span> <span class="o">&amp;&amp;</span> <span class="nx">A</span><span class="p">.</span><span class="nx">a</span> <span class="c1">// null: null屬於false，所以回傳A，忽略A.a</span>
+<span class="nx">A</span><span class="p">.</span><span class="nx">a</span> <span class="o">&amp;&amp;</span> <span class="nx">A</span> <span class="c1">// TypeError: 沒有A.a</span>
+</code></pre>
+</div>
+
+<p>&amp;&amp; 這個行為稱為「短路」，有時會利用讓<strong>「只有在滿足特定條件下才執行」</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">// 當A == B，才調用stop()</span>
+<span class="c1">// 以下兩式相等</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">A</span> <span class="o">==</span> <span class="nx">B</span><span class="p">)</span> <span class="nx">stop</span><span class="p">();</span>
+<span class="o">&gt;&gt;</span> <span class="p">(</span><span class="nx">A</span> <span class="o">==</span> <span class="nx">B</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">stop</span><span class="p">();</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h3 id="or-">|| OR 邏輯運算子</h3>
+
+<p>跟 &amp;&amp; 類似，當A == <code class="highlighter-rouge">true</code>，會直接回傳A而<strong>忽略B</strong>，只有當A是<code class="highlighter-rouge">false</code>，才會去運算B</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">A</span> <span class="o">||</span> <span class="nx">B</span>
+</code></pre>
+</div>
+
+<p>以下範例利用此行為，來尋找可用的值</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">// 當A有定義 &gt; A</span>
+<span class="c1">// 找不到A時 &gt; B</span>
+<span class="c1">// 找不到B時 &gt; C</span>
+<span class="kd">var</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">A</span> <span class="o">||</span> <span class="nx">B</span> <span class="o">||</span> <span class="nx">C</span><span class="p">;</span>
+
+<span class="c1">// 常用方法 - 如果沒有物件P，就傳入一個新物件</span>
+<span class="nx">p</span> <span class="o">=</span> <span class="nx">p</span> <span class="o">||</span> <span class="p">{};</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h3 id="not-">! NOT 邏輯運算子</h3>
+
+<p>! 是個一元運算子，會先將運算元轉成boolean，再將其倒轉</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">//可以利用!!來將任何值轉成boolean</span>
+<span class="kd">var</span> <span class="nx">A</span> <span class="o">=</span> <span class="mi">123</span><span class="p">;</span> 
+<span class="c1">// !!A &gt; true</span>
+<span class="kd">var</span> <span class="nx">B</span> <span class="o">=</span> <span class="s2">"Hey"</span> 
+<span class="c1">// !!B &gt; ture</span>
+<span class="kd">var</span> <span class="nx">C</span><span class="p">;</span> 
+<span class="c1">// !!C &gt; false (undefined屬於false)</span>
+
+<span class="c1">// Boolean代數定理</span>
+<span class="o">!</span><span class="p">(</span><span class="nx">p</span> <span class="o">&amp;&amp;</span> <span class="nx">q</span><span class="p">)</span> <span class="o">===</span> <span class="o">!</span><span class="nx">p</span> <span class="o">||</span> <span class="o">!</span><span class="nx">q</span><span class="p">;</span>
+<span class="o">!</span><span class="p">(</span><span class="nx">p</span> <span class="o">||</span> <span class="nx">q</span><span class="p">)</span> <span class="o">===</span> <span class="o">!</span><span class="nx">p</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">q</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h3 id="in-">in 運算子</h3>
+
+<p>預期是一個字串，等於右邊物件的<strong>特性名稱</strong>，回傳<code class="highlighter-rouge">true</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">A</span> <span class="o">=</span> <span class="p">{</span> <span class="na">x</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="na">y</span><span class="p">:</span><span class="mi">2</span> <span class="p">};</span>
+<span class="kd">var</span> <span class="nx">B</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="p">,</span><span class="mi">3</span> <span class="p">];</span>
+
+<span class="s2">"x"</span> <span class="k">in</span> <span class="nx">A</span> <span class="c1">// true：物件中有名為"x"的特性</span>
+<span class="s2">"0"</span> <span class="k">in</span> <span class="nx">B</span> <span class="c1">//true：陣列中有元素0 (即1)</span>
+<span class="mi">3</span> <span class="k">in</span> <span class="nx">B</span> <span class="c1">// false：沒有元素3</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h3 id="delete-">delete 運算子</h3>
+
+<p>delete 是個一元運算子，會刪除物件特性或陣列元素<br />
+陣列元素被刪除後，會留下一個「洞」，陣列長度不變，變成一個「稀疏陣列」</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">];</span>
+<span class="nx">A</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span> <span class="c1">// 6</span>
+<span class="k">delete</span> <span class="nx">A</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+
+<span class="mi">2</span> <span class="k">in</span> <span class="nx">A</span><span class="p">;</span> <span class="c1">// false：陣列元素2已不存在</span>
+<span class="nx">A</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span> <span class="c1">// undefined</span>
+<span class="nx">A</span><span class="p">.</span><span class="nx">length</span> <span class="c1">// 3：陣列長度並未改變!</span>
+
+<span class="k">delete</span> <span class="nx">A</span><span class="p">;</span> <span class="c1">// false：var宣告的變數不能刪</span>
+</code></pre>
+</div>
+
+<p>delete有些對象是不能刪的，以下皆無法刪除</p>
+
+<ul>
+  <li>var 宣告的變數</li>
+  <li>某些內建的核心與客戶端特性</li>
+  <li>function 函式，以及宣告的函式參數</li>
+</ul>
+
+<hr />
+
+<p>資料來源：<br />
+<a href="http://www.books.com.tw/products/0010542183" target="_blank">JavaScript大全(第六版)</a></p>
+
+
+<span class="post-date">
+  Written on
+  
+  April
+  25th,
+  2016
+  by Paul Le
+</span>
+<div class="post-date">Feel free to share!</div>
+  <div class="sharing-icons">
+    <a href="https://twitter.com/intent/tweet?text=【筆記】Javascript大全 - 02 運算式與運算子 &amp;url=/javascript/JS_Daquan-02.html&amp;via=paululele" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=/javascript/JS_Daquan-02.html&amp;title=【筆記】Javascript大全 - 02 運算式與運算子 " target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    <a href="https://plus.google.com/share?url=/javascript/JS_Daquan-02.html" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+<div class="related">
+  <h1 >You may also enjoy:</h1>
+  
+  <ul class="related-posts">
+    
+      
+        
+          <li>
+            <h3>
+              <a href="/blog/javascript/JS_Daquan-06_2.html">
+                【筆記】Javascript大全 - 06 函式(二) 參數、引數、閉包
+                <!--<img src="/blog/images/">-->
+                <!--<small>May 15, 2016</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/blog/javascript/JS_Daquan-06_1.html">
+                【筆記】Javascript大全 - 06 函式(一) 函式的定義方法
+                <!--<img src="/blog/images/">-->
+                <!--<small>May 15, 2016</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/blog/javascript/JS_Daquan-05_2.html">
+                【筆記】Javascript大全 - 05(二) EMCAScript 5 陣列方法
+                <!--<img src="/blog/images/">-->
+                <!--<small>May 5, 2016</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/blog/javascript/JS_Daquan-05.html">
+                【筆記】Javascript大全 - 05(一) 陣列
+                <!--<img src="/blog/images/">-->
+                <!--<small>May 2, 2016</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/blog/javascript/JS_Daquan-04.html">
+                【筆記】Javascript大全 - 04 物件
+                <!--<img src="/blog/images/">-->
+                <!--<small>April 25, 2016</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/blog/javascript/JS_Daquan-03.html">
+                【筆記】Javascript大全 - 03 術句
+                <!--<img src="/blog/images/">-->
+                <!--<small>April 25, 2016</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/blog/javascript/JS_Daquan-01.html">
+                【筆記】Javascript大全 - 01 型別、值與變數
+                <!--<img src="/blog/images/">-->
+                <!--<small>April 25, 2016</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/blog/javascript/OOJS03.html">
+                【練習】Object Oriented JavaScript - 03 繼承 
+                <!--<img src="/blog/images/">-->
+                <!--<small>April 18, 2016</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/blog/javascript/OOJS02.html">
+                【練習】Object Oriented JavaScript - 02 prototype 
+                <!--<img src="/blog/images/">-->
+                <!--<small>April 12, 2016</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+    
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+    
+  </ul>
+</div>
+
+
+    </div>
+
+    <footer class="footer">
+  <a href="https://twitter.com/paululele"><i class="fa fa-twitter" aria-hidden="true" target="_blank"></i></a>
+  <a href="https://www.facebook.com/Le.Paul.94"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
+  <a href="https://instagram.com/paululele"><i class="fa fa-instagram" aria-hidden="true" target="_blank"></i></a>
+  <a href="https://linkedin.com/in/lenpaul"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
+  <a href="mailto:l.nguyen.paul@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
+  <div class="post-date"><a href="/about.html">Yakim shu | Hi, 這是我擴充腦內海馬體的地方。 by Paul Le</a></div>
+</footer>
+
+
+  </div>
+
+</body>
+</html>

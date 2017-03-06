@@ -1,0 +1,325 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>
+    
+      【練習】Object Oriented JavaScript - 01 封裝  | Yakim shu
+    
+  </title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="/blog/css/main.css">
+  <link rel="stylesheet" href="/blog/css/syntax.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-80213386-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+
+
+<body>
+
+  <div class="container">
+    <header class="masthead">
+  <h3 class="masthead-title">
+    <a href="/blog/">Yakim shu</a>
+    <small class="masthead-subtitle">Hi, 這是我擴充腦內海馬體的地方。</small>
+    <div class="menu">
+  <div class="menu-content">
+    <a href="/blog/about.html">About</a>
+    <a href="/blog/writing.html">Writing</a>
+    <a href="/blog/contacts.html">Contact</a>
+  </div>
+  <div class="social-icons">
+    <a href="https://twitter.com/paululele"><i class="fa fa-twitter" aria-hidden="true" target="_blank"></i></a>
+    <a href="https://www.facebook.com/Le.Paul.94"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
+    <a href="https://instagram.com/paululele"><i class="fa fa-instagram" aria-hidden="true" target="_blank"></i></a>
+    <a href="https://linkedin.com/in/lenpaul"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
+    <a href="mailto:l.nguyen.paul@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
+  </div>
+</div>
+
+  </h3>
+</header>
+
+
+    <div class="post-container story">
+      <h1>
+  【練習】Object Oriented JavaScript - 01 封裝 
+</h1>
+
+
+
+<p>物件導向基本觀念 01 封裝</p>
+
+<hr />
+
+<h2 id="section">封裝</h2>
+<p>1.首先建立一個<code class="highlighter-rouge">Person</code>物件</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cm">/*物件 Person*/</span>
+<span class="kd">function</span> <span class="nx">Person</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">sex</span><span class="p">){</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">sex</span> <span class="o">=</span> <span class="nx">sex</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">print</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span><span class="s2">" sex is "</span><span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">sex</span><span class="o">+</span><span class="s2">"&lt;br/&gt;"</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<hr />
+
+<p>2.基於<code class="highlighter-rouge">Person</code>新增兩個人物，確認人物是由<code class="highlighter-rouge">Person</code>出來</p>
+
+<ul>
+  <li>方法一：<code class="highlighter-rouge">instanceof</code></li>
+  <li>方法二：<code class="highlighter-rouge">constrcotor</code></li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">person1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="s2">"yakim"</span><span class="p">,</span> <span class="s2">"female"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">person2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="s2">"Jimmy"</span><span class="p">,</span> <span class="s2">"male"</span><span class="p">)</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">person1</span><span class="p">.</span><span class="nx">print</span><span class="p">());</span> <span class="c1">// "yakim sex is female"</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">person2</span><span class="p">.</span><span class="nx">print</span><span class="p">());</span> <span class="c1">// "Jimmy sex is male"</span>
+  
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"person1 is a Person : "</span><span class="o">+</span> <span class="p">(</span><span class="nx">person1</span> <span class="k">instanceof</span> <span class="nx">Person</span><span class="p">));</span>
+<span class="c1">// "person1 is a Person : true"</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"person2 is a Person : "</span><span class="o">+</span> <span class="p">(</span><span class="nx">person2</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">==</span> <span class="nx">Person</span><span class="p">));</span>
+<span class="c1">// "person2 is a Person : true"</span>
+</code></pre>
+</div>
+
+<hr />
+
+<p>3.改變<code class="highlighter-rouge">Person</code>內容</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cm">/*函式 changeName*/</span>
+<span class="kd">function</span> <span class="nx">changeName</span> <span class="p">(</span><span class="nx">person3</span><span class="p">){</span>
+    <span class="nx">person3</span><span class="p">.</span><span class="nx">sex</span> <span class="o">=</span> <span class="s2">"male"</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">changeName</span><span class="p">(</span><span class="nx">person1</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">person1</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span><span class="s2">" sex become "</span><span class="o">+</span> <span class="nx">person1</span><span class="p">.</span><span class="nx">sex</span><span class="p">);</span>
+<span class="c1">// "yakim sex become male"</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h3 id="section-1">實例</h3>
+
+<p><a class="jsbin-embed" href="http://jsbin.com/zezalumega/embed?html,console">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?3.35.12"></script></p>
+
+<hr />
+<p>資料來源：<br />
+<a href="https://www.youtube.com/watch?v=O8wwnhdkPE4" target="_blank">Youtube - Object Oriented JavaScript</a><br />
+<a href="https://www.youtube.com/playlist?list=PLhW1K7xGelxd7gro3UFRFomoUD1WxHe7C" target="_blank">Youtube - JavaScript 物件導向程式設計與遊戲實作</a><br />
+<a href="http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_encapsulation.html" target="_blank">阮一峰的网络日志</a></p>
+
+
+<span class="post-date">
+  Written on
+  
+  April
+  12th,
+  2016
+  by Paul Le
+</span>
+<div class="post-date">Feel free to share!</div>
+  <div class="sharing-icons">
+    <a href="https://twitter.com/intent/tweet?text=【練習】Object Oriented JavaScript - 01 封裝 &amp;url=/javascript/OOJS01.html&amp;via=paululele" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=/javascript/OOJS01.html&amp;title=【練習】Object Oriented JavaScript - 01 封裝 " target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    <a href="https://plus.google.com/share?url=/javascript/OOJS01.html" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+<div class="related">
+  <h1 >You may also enjoy:</h1>
+  
+  <ul class="related-posts">
+    
+      
+        
+          <li>
+            <h3>
+              <a href="/blog/javascript/JS_Daquan-06_2.html">
+                【筆記】Javascript大全 - 06 函式(二) 參數、引數、閉包
+                <!--<img src="/blog/images/">-->
+                <!--<small>May 15, 2016</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/blog/javascript/JS_Daquan-06_1.html">
+                【筆記】Javascript大全 - 06 函式(一) 函式的定義方法
+                <!--<img src="/blog/images/">-->
+                <!--<small>May 15, 2016</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/blog/javascript/JS_Daquan-05_2.html">
+                【筆記】Javascript大全 - 05(二) EMCAScript 5 陣列方法
+                <!--<img src="/blog/images/">-->
+                <!--<small>May 5, 2016</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/blog/javascript/JS_Daquan-05.html">
+                【筆記】Javascript大全 - 05(一) 陣列
+                <!--<img src="/blog/images/">-->
+                <!--<small>May 2, 2016</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/blog/javascript/JS_Daquan-04.html">
+                【筆記】Javascript大全 - 04 物件
+                <!--<img src="/blog/images/">-->
+                <!--<small>April 25, 2016</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/blog/javascript/JS_Daquan-03.html">
+                【筆記】Javascript大全 - 03 術句
+                <!--<img src="/blog/images/">-->
+                <!--<small>April 25, 2016</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/blog/javascript/JS_Daquan-02.html">
+                【筆記】Javascript大全 - 02 運算式與運算子 
+                <!--<img src="/blog/images/">-->
+                <!--<small>April 25, 2016</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/blog/javascript/JS_Daquan-01.html">
+                【筆記】Javascript大全 - 01 型別、值與變數
+                <!--<img src="/blog/images/">-->
+                <!--<small>April 25, 2016</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/blog/javascript/OOJS03.html">
+                【練習】Object Oriented JavaScript - 03 繼承 
+                <!--<img src="/blog/images/">-->
+                <!--<small>April 18, 2016</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/blog/javascript/OOJS02.html">
+                【練習】Object Oriented JavaScript - 02 prototype 
+                <!--<img src="/blog/images/">-->
+                <!--<small>April 12, 2016</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+    
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+    
+  </ul>
+</div>
+
+
+    </div>
+
+    <footer class="footer">
+  <a href="https://twitter.com/paululele"><i class="fa fa-twitter" aria-hidden="true" target="_blank"></i></a>
+  <a href="https://www.facebook.com/Le.Paul.94"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
+  <a href="https://instagram.com/paululele"><i class="fa fa-instagram" aria-hidden="true" target="_blank"></i></a>
+  <a href="https://linkedin.com/in/lenpaul"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
+  <a href="mailto:l.nguyen.paul@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
+  <div class="post-date"><a href="/about.html">Yakim shu | Hi, 這是我擴充腦內海馬體的地方。 by Paul Le</a></div>
+</footer>
+
+
+  </div>
+
+</body>
+</html>

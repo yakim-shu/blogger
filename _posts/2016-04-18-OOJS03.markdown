@@ -1,0 +1,124 @@
+---
+layout: post
+title: "【練習】Object Oriented JavaScript - 03 繼承 "
+category: JavaScript
+tags: [javascript, OOJS]
+---
+
+## 建立一類別及物件
+
+照著上篇所學到的，先建立一類別(class)及物件(Object)
+
+首先是最上層的類別 **``Mammal``**，並定義**屬性** ``name`` & **方法** ``hello``
+
+```javascript
+function Mammal(name){
+    this.name = name;
+}
+Mammal.prototype.hello = function(){
+    console.log("Mammal.hello:"+this.name+ "say Hello!");
+}
+```
+
+*******
+
+基於``Mammal``，新增一個名為 "M" 的  ``m`` 對象，調用``hello``方法
+
+```javascript
+var m = new Mammal("M");
+m.hello();
+// Mammal.hello: M say Hello!
+```
+
+
+*******
+
+現在要開始創建可以繼承的對象，實踐一個繼承鏈(Mammal, Parent, Child)  
+| -- Mammal  
+| ------ Parent  
+| --------- Child  
+
+---
+
+## 繼承鏈
+
+建立中層的類別 **``Parent``**，並繼承``Mammal``的``protoype``
+
+```javascript
+function Parent (name){
+    Mammal.call(this, name); //[注1]
+}
+Parent.prototype = Object.create(Mammal.prototype);//[注2]
+Parent.prototype.constructor = Parent;
+```
+
+
+> [註1]  
+[call](http://www.w3schools.com/js/js_function_invocation.asp) 方法是用來代替另一個物件呼叫方法。此方法可讓您將函式的 this 物件從原始內容變成由 thisObj 所指定的新物件。
+
+>[註2]  
+"**A** 繼承於 **B**" 的標準寫法，然後再把 **A** 的結構改回來  
+
+```
+A.prototype = Object.create(B.prototype);
+A.prototype.constructor = A;
+```
+
+---
+
+在``Parent.prototype``新增一個方法 ()
+
+```javascript
+Parent.prototype.say = function(){
+    console.log("Parent.say: My name is "+ this.name +", I'm a mother");
+}
+```
+
+基於``Parent``，新增一個名為 "Yakim" 的 ``p`` 對象，調用方法(``hello``, ``say``)
+
+```javascript
+var p = new Parent("Yakim");
+p.hello(); //Mammal.hello: Yakim say Hello!
+p.say(); //Parent.say: My name is Yakim I'm a mother
+```
+
+---
+
+重複上面3步驟，在最下層新增一個``Child``類別及物件 ``c``
+
+```javascript
+//類別 Child ----------------------
+function Child (name){
+  Mammal.call(this, name);
+}
+//繼承在Parent底下
+Child.prototype = Object.create(Parent.prototype);
+Child.prototype.constructor = Child;
+//Child自己的方法
+Child.prototype.cry = function(){
+  console.log("Child.cry: I'm hungry!!!!!!!!");
+};
+
+// c ---- Child的對象
+var c = new Child("BabyYakim");
+c.hello();
+c.say();
+c.cry();
+```
+
+--------------
+
+
+## 實例
+
+<a class="jsbin-embed" href="http://jsbin.com/tuyoxutike/embed?js,console">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?3.35.12"></script>
+
+------------------------------
+
+
+
+
+資料來源：  
+[Youtube - Object Oriented JavaScript](https://www.youtube.com/watch?v=O8wwnhdkPE4){:target="_blank"}  
+[Youtube - JavaScript 物件導向程式設計與遊戲實作](https://www.youtube.com/playlist?list=PLhW1K7xGelxd7gro3UFRFomoUD1WxHe7C){:target="_blank"}  
+[阮一峰的网络日志](http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_encapsulation.html){:target="_blank"}

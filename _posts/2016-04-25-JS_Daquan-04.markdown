@@ -1,0 +1,211 @@
+---
+layout: post
+title: "【筆記】Javascript大全 - 04 物件"
+description: "Javascript中，任何不是字串、數字、true、false、null或undefined的值都是物件。
+物件是可變的，而且是通過參考(by reference)來操作，並非值(by value)。
+雖然基本型別(字串、數字、布林)並非物件，但他們的行為表現就像是不可變物件。"
+category: JavaScript
+tags: [javascript,daquan]
+---
+
+Javascript中，任何不是字串、數字、true、false、null或undefined的值都是物件。
+
+物件是可變的，而且是通過參考(by reference)來操作，並非值(by value)。  
+雖然基本型別(字串、數字、布林)並非物件，但他們的行為表現就像是不可變物件。
+
+---
+
+### 物件種類
+
+Javascript物件種類可以廣泛分為三部分(Native, Host, 自訂義)，以及兩種特性類型(Own, inherited)
+
+- 物件種類
+
+  - Native(原生)：由ECMAScript規格所定義的物件或類別。例如陣列、函式、日期與正規運算
+  - Host(宿主)：由環境所定義的物件(例如web瀏覽器)。由client端用來表示網頁結構的HTMLElement物件就是一種host物件。
+host物件也可以是Native物件，例如當host環境定意的方法只是普通的Javascript Function物件之時。
+  - 自定義：使用者自行定義。
+
+- 特性類型
+
+  - Own(自有)：直接在物件上定義的特性。
+  - Inherited(繼承)：繼承於原型物件上定義的特性。
+
+### 使用 new 創建物件
+
+用 new 運算子創造新物件的函式稱為**建構式**
+
+---
+
+### 物件屬性
+
+每個物件都有關聯的protoype(原型)、class(類別)、extensible(可擴充)屬性。
+
+- prototype：是個參考，他指涉至另一個物件，有些特性是從該物件繼承而來
+- class：是個字串，用來區分該物件的種類
+- extensible：可擴充性，標明是否可在該物件家入新特性。
+
+#### prototype 原型
+
+所有用物件字面詞創建的物件都有同一個原型物件，``Object.prototype``  
+用``new Object()``創建的物件繼承自``Object.prototype``  
+同樣的，使用``new Array()``創建的物件繼承自``Array.prototype``
+
+#### 原型鏈
+
+使用``new Date()``創建的Date物件，同時繼承了``Date.prototype``與``Object.prototype``兩種特性，此一系列的原型物件就稱為原型鏈。
+
+```javascript
+A = new Date(); // A同時繼承 Date.prototype 跟 Object.prototype兩者的特性
+```
+
+> Object.prototype是少數沒有原型的物件。
+
+#### extensible 可擴充性
+
+- 所有內建或自定義的物件預設都是可擴充的，要讓物件變成不可擴充，將它傳給``Object.prevetExtensions()``。
+- 特別注意，一但將物件設為不可擴充，就沒辦法將它設回。
+- 要查詢物件是否可擴充，將它傳給 ``Object.isExtensible()``。
+
+---
+
+### 查用及設定特性
+
+- ``object.property``：使用**.識別字**，識別字是靜態的，必須寫死
+- ``object["property"]``：使用**[字串]**，字串值是動態的，在執行其間可以改變，稱為關聯式陣列
+
+```javascript
+var A = { a:123 };
+A.a === A["a"] // true 兩種方法是完全一樣的
+```
+
+
+### delete 刪除特性
+
+``delete``運算子從物件中刪除特性，``delete``是作用在特性本身，非值之上
+
+```javascript
+var o = {};
+var a = { x:10 };
+o.a = a;
+delete o.a;
+o.a // undefined
+a.x // 10 → a沒有被刪除
+```
+
+
+### in 查找特性
+
+```javascript
+var o = {x:1};
+"x" in o; //true
+```
+
+也可以用是否為``undefined``代替
+
+```javascript
+var o = {x:1};
+o.x !== undefined; //true
+//不過如果是 o = {x:undefined} , 就要用in了
+```
+
+---
+
+### 列舉特性
+
+以下定義了幾個工具函式，使用for/in迴圈操作物件特性，  
+由其是``extend()``函式，常會在Javascript工具程式庫中看到。
+
+```javascript
+var A = {a:1, b:2, c:3};
+var B = {a:123};
+
+// extend(B, A);
+// 把 A 特性複製到 B，共同的特性名稱會被蓋掉
+function extend(o, p) {
+  for(var prop in p) {
+    o[prop] = p[prop];
+  }
+  return o;
+}
+
+// merge(B, A);
+// 把 A 特性複製到 B，共同特性名稱維持不變
+function merge(o, p) {
+  for(var prop in p) {
+    if (o.hasOwnProperty(prop)) continue;
+    o[prop] = p[prop];
+  }
+  return o;
+}
+
+// restrict(A, B);
+// 刪除 A 的特性，除了 AB 共同特性
+function restrict(o, p) {
+  for(var prop in o) {
+    if ( !(prop in p) ) delete o[prop];
+  }
+  return o;
+}
+
+// substract(A, B);
+// 刪除 A 和 B 共同的特性
+function substract(o, p) {
+  for(var prop in p) {
+    delete o[prop];
+  }
+  return o;
+}
+
+// union(A, B)
+// 回傳一個新物件，他擁有 AB 兩者的特性
+// 如果 AB 有共同特性，就用 B 的特性值
+function union(o, p) {
+  return extend( extend({}, o), p );
+}
+
+// instersection(A, B)
+// 回傳一個新物件，他擁有 AB 共同特性
+// 但 B 特性值會被丟棄
+function instersection(o, p) {
+  return restrict( extend({}, o), p );
+}
+
+// keys(A)
+// 回傳一個陣列，内有 o 所有的可列舉的自有特性名稱
+function keys(o) {
+  if (typeof o !== "object") throw TypeError();
+  var result = [];
+  for(var prop in o) {
+    if (o.hasOwnProperty(prop))
+      result.push(prop);
+  }
+  return result;
+}
+```
+
+---
+
+### 特性屬性
+
+一個物件的特性是由一個名稱、一個值，以及一組屬性所構成。
+在ES5之後，每個特性都有4個屬性
+
+- value：特性值 (Get)
+- writable：是否可以更改特性值 (Set)
+- enumerable：可列舉 ( 用for(var prop in obj) )取代
+- configurable：是否可刪除或修改以上3個屬性
+
+---
+
+### toString() 方法
+
+把物件轉為字串。  
+``toString()``方法不取引數，它在物件上調用，回傳表示該物件值的字串。  
+每當Javascript需要把某物件轉為字串時，它就會在那個物件上調用這方法，例如使用+運算子來串接字串與物件時。
+
+
+------------------------------
+
+資料來源：  
+[JavaScript大全(第六版)](http://www.books.com.tw/products/0010542183){:target="_blank"}  
