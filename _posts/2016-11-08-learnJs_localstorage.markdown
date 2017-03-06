@@ -29,7 +29,7 @@ localStorage.setItem("listStorage", JSON.stringify(arrStorage));
 var oList = JSON.parse(localStorage.getItem('listStorage'));
 ```
 
-但其實本範例其實應用到的只有 getItem & setItem 而已阿阿阿，大部分的時間都花在一些無關緊要的事上。
+但其實本範例其實應用到的只有 ``getItem`` & ``setItem`` 而已阿阿阿，大部分的時間都花在一些無關緊要的事上。
 
 假學習、真自high
 

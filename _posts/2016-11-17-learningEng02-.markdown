@@ -6,6 +6,7 @@ description: "計劃！計劃！計劃！
 而是拿來檢視自己能耐的底線、何時會偷懶、通常會遇到的困境是什麼...，這些都是在執行之前無法預料到的。  "
 category: English
 image: learnEng_1.png
+tags: [English]
 ---
 
 計劃！計劃！計劃！  

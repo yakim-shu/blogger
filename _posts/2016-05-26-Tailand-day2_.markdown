@@ -4,6 +4,7 @@ title: "【出走】泰國-day2 招批耶河、大皇宮、Loy Nava 柚木船"
 description: "由於昨晚從redsky回來已經蠻晚，第二天也就睡晚一點再出門!!先搭BTS到Saphan Taksin站，從2號出口下來就可以看到搭船處，單程15塊。"
 category: Travel
 image: tai_day2.jpg
+tags: [Travel, Tailand]
 ---
 
 由於昨晚從redsky回來已經蠻晚，第二天也就睡晚一點再出門!!
