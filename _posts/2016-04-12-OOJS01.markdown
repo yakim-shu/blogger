@@ -1,0 +1,75 @@
+---
+layout: post
+title: "【練習】Object Oriented JavaScript - 01 封裝 "
+category: JavaScript
+tags: [javascript, OOJS]
+---
+
+物件導向基本觀念 01 封裝
+
+
+*******
+
+## 封裝
+1.首先建立一個``Person``物件
+
+```javascript
+/*物件 Person*/
+function Person(name, sex){
+    this.name = name;
+    this.sex = sex;
+    this.print = function(){
+        return this.name +" sex is "+ this.sex+"<br/>";
+    }
+}
+```
+
+*******
+
+2.基於``Person``新增兩個人物，確認人物是由``Person``出來
+
+* 方法一：``instanceof``  
+* 方法二：``constrcotor``
+
+```javascript
+var person1 = new Person("yakim", "female");
+var person2 = new Person("Jimmy", "male")
+
+console.log(person1.print()); // "yakim sex is female"
+console.log(person2.print()); // "Jimmy sex is male"
+  
+
+console.log("person1 is a Person : "+ (person1 instanceof Person));
+// "person1 is a Person : true"
+console.log("person2 is a Person : "+ (person2.constructor == Person));
+// "person2 is a Person : true"
+```
+
+
+*******
+
+3.改變``Person``內容
+
+```javascript
+/*函式 changeName*/
+function changeName (person3){
+    person3.sex = "male";
+}
+
+changeName(person1);
+console.log(person1.name +" sex become "+ person1.sex);
+// "yakim sex become male"
+```
+
+
+*******
+
+### 實例
+
+<a class="jsbin-embed" href="http://jsbin.com/zezalumega/embed?html,console">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?3.35.12"></script>
+
+------------------------------
+資料來源：  
+[Youtube - Object Oriented JavaScript](https://www.youtube.com/watch?v=O8wwnhdkPE4){:target="_blank"}  
+[Youtube - JavaScript 物件導向程式設計與遊戲實作](https://www.youtube.com/playlist?list=PLhW1K7xGelxd7gro3UFRFomoUD1WxHe7C){:target="_blank"}  
+[阮一峰的网络日志](http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_encapsulation.html){:target="_blank"}

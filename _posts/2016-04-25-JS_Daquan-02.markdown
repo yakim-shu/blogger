@@ -1,0 +1,224 @@
+---
+layout: post
+title: "【筆記】Javascript大全 - 02 運算式與運算子 "
+description: "讀了javascript大全到這章，發現許多以前不懂的概念與原理，像是運算過程會進行的類型轉換，以及邏輯運算子的優先順序是如此重要，都是真的要翻書才知道的阿!!"
+category: JavaScript
+tags: [javascript,daquan]
+---
+
+這章開始就發現許多以前不懂的概念與原理，像是運算過程會進行的類型轉換，以及邏輯運算子的優先順序是如此重要，都是真的要翻書才知道的阿!!
+
+--------------
+
+### 運算子優先序
+
+考慮下面這個運算式
+
+```javascript
+w = x + y * z;
+```
+
+乘法 * 的優先序比加法 + 還高，指定運算子 = 最低，所以 = 會在右邊運算都完成才執行
+
+---
+
+### + 算數運算子
+
+二元 + 運算子會將數值相加，但加法只有在兩者皆不像字串時才會進行  
+只要有任一運算元是字串，或是可以轉換成字串的物件，另一運算元就會被轉為字串進行串接
+
+```javascript
+1 + 2         // 3 : 加法
+"1" + "2"     // "12" : 串接
+"1" + 2       // "12" : 轉換後串接 (numner > string)
+true + true   // 2 : 轉換後串接 (boolean > number)
+```
+
+---
+
+### = & == & === 相等性運算子
+
+= ：**「得到或指定至」**，把右邊運算結果傳至左邊  
+==：**「等於」**，進行類型轉換，較寬鬆  
+=== ：**「嚴格等於」**，不進行類型轉換，較嚴格  
+
+```javascript
+/* == & === 比較結果2者相同----------*/
+NaN === NaN;  // false
+null === null // true
+undefined === undefined // true
+
+
+/* == & === 比較結果2者不同----------*/
+//nul & undefined 比較
+null == undefined;  // true
+null === undefined; // false
+
+/* == 會進行類型轉換----------*/
+1 == "1";  // true (string > number)
+1 === "1"; // false
+1 == true; // true 
+// true:boolean > number
+// "1":string > number
+1 === true;// false
+```
+
+注意：javascript的物件比較是用**參考**(by reference)，非比較值  
+兩個物件就算有相同名稱與值，兩者還是不相等。
+
+```javascript
+var x = {a:1};
+var y = {a:1};
+x == y // false
+```
+
+承上，如果兩個值都**參考**至同一物件，則視為相等
+
+```javascript
+var A = x;
+var B = x;
+A == B; // true
+```
+
+---
+
+### >、<、>=、<= 比較運算子
+
+可以是任何型別，但會轉換成數值或字串再做比對  
+
+```javascript
+//兩個運算元都是字串，將比較「字母順序」
+"Apple" < "Banana" // true
+
+// 任一值為NaN，必為false
+"one" < 3 // false ("one" 被轉為NaN)
+```
+
+加法與比較運算子都會進行類型轉換，且各有偏好
+
+```javascript
+// 加法運算子 : 偏好字串
+"1" + 2 // "12"
+
+// 比較運算子 : 偏好數值
+"1" > 2 // false
+```
+
+
+---
+
+
+### && AND 邏輯運算子
+
+當A == ``false``，會直接回傳A而**忽略B**，只有當A是``true``時，才會去運算B
+
+```javascript
+A && B
+```
+
+知道&&不一定會估算右邊的值很重要，看以下例子
+
+```javascript
+var A = null;
+A && A.a // null: null屬於false，所以回傳A，忽略A.a
+A.a && A // TypeError: 沒有A.a
+```
+
+&& 這個行為稱為「短路」，有時會利用讓**「只有在滿足特定條件下才執行」**
+
+```javascript
+// 當A == B，才調用stop()
+// 以下兩式相等
+if (A == B) stop();
+>> (A == B) && stop();
+```
+
+---
+
+### || OR 邏輯運算子
+
+跟 && 類似，當A == ``true``，會直接回傳A而**忽略B**，只有當A是``false``，才會去運算B
+
+```javascript
+A || B
+```
+
+以下範例利用此行為，來尋找可用的值
+
+```javascript
+// 當A有定義 > A
+// 找不到A時 > B
+// 找不到B時 > C
+var value = A || B || C;
+
+// 常用方法 - 如果沒有物件P，就傳入一個新物件
+p = p || {};
+```
+
+---
+
+### ! NOT 邏輯運算子
+
+! 是個一元運算子，會先將運算元轉成boolean，再將其倒轉  
+
+```javascript
+//可以利用!!來將任何值轉成boolean
+var A = 123; 
+// !!A > true
+var B = "Hey" 
+// !!B > ture
+var C; 
+// !!C > false (undefined屬於false)
+
+// Boolean代數定理
+!(p && q) === !p || !q;
+!(p || q) === !p && !q;
+```
+
+
+---
+
+### in 運算子
+
+預期是一個字串，等於右邊物件的**特性名稱**，回傳``true``
+
+```javascript
+var A = { x:1, y:2 };
+var B = [ 1, 2 ,3 ];
+
+"x" in A // true：物件中有名為"x"的特性
+"0" in B //true：陣列中有元素0 (即1)
+3 in B // false：沒有元素3
+```
+
+---
+
+### delete 運算子
+
+delete 是個一元運算子，會刪除物件特性或陣列元素  
+陣列元素被刪除後，會留下一個「洞」，陣列長度不變，變成一個「稀疏陣列」
+
+```javascript
+var A = [4,5,6];
+A[2]; // 6
+delete A[2];
+
+2 in A; // false：陣列元素2已不存在
+A[2]; // undefined
+A.length // 3：陣列長度並未改變!
+
+delete A; // false：var宣告的變數不能刪
+```
+
+delete有些對象是不能刪的，以下皆無法刪除
+
+- var 宣告的變數
+- 某些內建的核心與客戶端特性
+- function 函式，以及宣告的函式參數
+
+
+
+------------------------------
+
+資料來源：  
+[JavaScript大全(第六版)](http://www.books.com.tw/products/0010542183){:target="_blank"}  

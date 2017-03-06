@@ -1,0 +1,122 @@
+---
+layout: post
+title: "【練習】Object Oriented JavaScript - 02 prototype "
+category: JavaScript
+tags: [javascript, OOJS]
+---
+
+1.承上篇，我們要為``Person``物件添加一個共用方法 ``say``，會寫成以下
+
+```javascript
+/*物件 Person*/
+function Person(){
+  this.say = function(){ alert("嘿!") }
+}
+```
+
+*******
+
+2.基於``Person``，新增兩個人物，印出內存位置及內容比對
+
+```javascript
+var person1 = new Person();
+var person2 = new Person();
+
+//印出--------
+//內存位置不同
+person1.say == person2.say; // false
+//輸出內容相同
+person1.say() == person2.say(); // true
+```
+
+可以發現``person1``、``person2``雖然都是繼承於``Person``物件  
+輸出內容一樣，但內存位置卻不同  
+也就是說每生成一個實例，都必須多佔用內存去放這些重複性資料  
+所以這時候就要用**``prototype``**來解決
+
+*******
+
+## Prototype模式
+
+
+我們可以把不變的屬性和方法，直接定義在``prototype``對象上。
+
+```javascript
+/*物件 Person*/
+function Person(){}
+Person.prototype.say = function(){ alert("嘿!") };
+```
+
+這樣一來，不同對象的屬性跟方法就會指向同一內存地址，提高了運行效率!!
+
+```javascript
+//印出--------
+//內存位置相同
+person1.say == person2.say; // true
+//輸出內容相同
+person1.say() == person2.say(); // true
+```
+
+--------------
+
+還有一些輔助方法來確認``prototype``跟對象間的關係  
+
+### isPrototypeOf( )
+判斷``prototype``與對象間的關係
+
+```javascript
+Person.prototype.isPrototypeOf(person1); // true
+```
+
+--------------
+
+### hasOwnProperty( )
+判斷某一屬性，是本地或繼承自``prototype``
+
+```javascript
+/*物件 Person*/
+function Person(name){
+  this.name = name;
+}
+Person.prototype.say = function(){ alert("嘿!") };
+
+var person1 = new Person("yakim");
+
+//印出--------
+person1.hasOwnProperty("name"); // true
+person1.hasOwnProperty("say"); // false
+```
+
+-------------
+
+### in 運算符( )
+判斷對象是否含有某個屬性，不管是本地或來自``prototype``
+
+```javascript
+"name" in person1; // true
+"say" in person1; // true
+```
+
+也可以遍歷所有的屬性
+
+```javascript
+for(var prop in person1){
+  prop +"="+person1[prop];
+}
+
+// 輸出
+// "name=yakim"
+// "say=function (){ alert(\"嘿!\") }"
+```
+
+--------------
+
+### 實例
+
+<a class="jsbin-embed" href="http://jsbin.com/muwucu/embed?js,console">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?3.35.12"></script>
+
+------------------------------
+資料來源：  
+[Youtube - Object Oriented JavaScript](https://www.youtube.com/watch?v=O8wwnhdkPE4){:target="_blank"}  
+[Youtube - JavaScript 物件導向程式設計與遊戲實作](https://www.youtube.com/playlist?list=PLhW1K7xGelxd7gro3UFRFomoUD1WxHe7C){:target="_blank"}  
+[阮一峰的网络日志](http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_encapsulation.html){:target="_blank"}

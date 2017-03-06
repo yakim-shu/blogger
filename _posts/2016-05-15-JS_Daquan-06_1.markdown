@@ -1,0 +1,153 @@
+---
+layout: post
+title: "【筆記】Javascript大全 - 06 函式(一) 函式的定義方法"
+description: "JavaScript函式有三種定義方法，分別在效率、解析順序、作用域上都有不同的特性，要掌握好他們之間的區別。"
+category: JavaScript
+tags: [javascript,daquan]
+
+---
+
+
+JavaScript函式有三種定義方法，一般來說前兩種比較常用，分別在效率、解析順序、作用域上都有不同的特性，接下來會解釋他們之間的區別。
+
+
+```javascript
+// 1. function語句函式
+function test1(){ };
+
+// 2. 函式直接賦值變數
+var test2 = function() { };
+
+// 3. function建構式函式
+var test3 = new Function();
+```
+
+----------
+
+### 編譯順序比較
+
+對於**function語句式**的函數，**JavaScript解析器會優先的解釋**，其後才是一行一行照順序解析  
+
+- 第一種宣告方式(``test1()``)，因為再調用之前**已經被解析過了並儲存在內存中**，所以可以被成功調用。
+- 第二種宣告方式(``test2()``)，只有**先宣告變數**(``var test2;``)，並沒有把函數值賦上去，查看會發現 ``test2=undefined ``，函數值等到執行到該行時，才會賦值到變數，所以不能在宣告之前調用。
+
+```javascript
+test1();
+// "第一種宣告方式：可以先調用再宣告!"
+function test1() {
+  console.log("第一種宣告方式：可以先調用再宣告!");
+}
+
+
+alert( test2() );
+// "TypeError: test2 is not a function"
+var test2 = function(){
+  console.log("第二種宣告方式：不可以先調用再宣告!");
+}
+```
+
+看看以下經典範例來說明解析步驟：
+
+1. JavaScript解析器，會首先找到第一個``test1( )`` → 1
+2. 接下來找到**第四個``test1( )``**，並**蓋掉第一個``test1( )``** → 4
+3. 再後來沒有``function``開頭語句了，所以才從頭一行一行執行並回傳
+4. 最後依序回傳 4, 2, 3, 3, 5, 6
+
+```javascript
+function test1() { return 1; }
+alert(test1());  // 4 → 被第四個 test1() 蓋掉
+
+var test1 = function() { return 2; };
+alert(test1());  // 2 
+
+var test1 = new Function("return 3");
+alert(test1()); // 3
+
+function test1() { return 4; }
+alert(test1()); // 3 → 第四個已經被解析過了所以跳過
+
+var test1 = function() { return 5; };
+alert(test1()); // 5
+
+var test1 = new Function("return 6");
+alert(test1()); // 6
+```
+
+
+### 效率比較
+
+做一個執行100000次的迴圈，分別測試三種函式的作用時間 ( 可以把個別的註釋拿掉做測試 )  
+會發現總花費時間： 1 = 2 < 3
+
+- 第一、二種方法``function``語句，效率較佳，那是因為他只會被編譯一次後放在內存中，使用時再調用，適合需要調用多次的情況。
+- 第三種方法建構式則是使用後就會被釋放掉，不占用內存，但每次調用都要再重新``new``一次，適合只需要調用一次的情況。
+
+```javascript
+var day1 = new Date();
+var time1 = day1.getTime();
+
+for(var i=0; i<100000; i++){
+  //1.
+  //function test1(){}
+  
+  //2.
+  //var test2 = function() {};
+  
+  //3.
+  //var test3 = new Function();
+}
+
+var day2 = new Date();
+var time2 = day2.getTime();
+
+console.log(time2-time1);
+```
+
+---
+
+### 作用域比較
+
+此範例定義3種同名函式，可以把個別註釋拿掉看比較結果。
+
+- 第一、二種方法具有函式作用域，會拿到區域變數 2
+- 第三種方法建構式則是頂級作用域，等於在外部宣告一個全域變數，所以會回傳 1
+
+```javascript
+var k = 1; //全域變數
+
+function fn(){
+  var k = 2; //區域變數
+  
+  // 函式作用域 (回傳 2)-----
+  //function test(){ return k; }
+  //var test = function() { return k; };
+  
+  // 頂級作用域 (回傳 1)-----
+  //var test = new Function("return k;");
+  
+  alert(test());
+}
+
+fn();
+```
+
+---
+
+## 結論
+
+綜合以上比較結果，可以得出3種定義函式的不同
+
+| 類型 | 1. function語句 | 2. 函式直接賦值變數 | 3. function建構式 |
+|------|------|------|--------|
+| 名稱 | 有名 | 匿名 | 匿名 |
+| 性質 | 靜態 | 靜態 | 動態 |
+| 解析時機 | 優先 | 順序解析 | 順序解析 |
+| 多次調用效率 | 佳 | 佳 | 差 |
+| 作用域 | 函式作用域 | 函式作用域 | 頂級作用域 |
+
+
+------------------------------
+
+資料來源：  
+[JavaScript大全(第六版)](http://www.books.com.tw/products/0010542183){:target="_blank"}  
+[【Youtube】尚学堂科技 javascript视频教程 白贺翔 函数【二】三种定义方式](https://www.youtube.com/watch?v=8d07w2tLY00&index=11&list=PLTstZD3AK3S-8HPR_c1MxxZZ57l9NPxmv){:target="_blank"} 

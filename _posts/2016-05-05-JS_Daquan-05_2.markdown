@@ -1,0 +1,140 @@
+---
+layout: post
+title: "【筆記】Javascript大全 - 05(二) EMCAScript 5 陣列方法"
+description: "ECMAScript5 定義了幾個新的陣列方法來迭代(interating)、對映(mapping)、過濾(filtering)、測試、約簡(reducing)，以及搜尋陣列。"
+category: JavaScript
+tags: [javascript,daquan]
+
+---
+
+ECMAScript5 定義了幾個新的陣列方法來迭代(interating)、對映(mapping)、過濾(filtering)、測試、約簡(reducing)，以及搜尋陣列。
+
+這些方法的第一個引數大多是個函式，他們會對陣列中的每個元素都調用一次此函式，函式會用三個引數來調用：**陣列元素值**、**該元素的索引**、**陣列本身**，通常你只需要這些第一個引數，可以忽略第二或第三引數。
+
+> 所有的EMCAScript5的陣列方法都不會修改調用他們的陣列
+
+---
+
+### .forEach( )
+
+``Array.forEach( )``會逐一查用陣列元素，並對每個元素調用指定的函式
+
+```javascript
+var data = [1,2,3,4,5];
+var sum = 0;
+
+// 計算陣列元素的總合---------
+//                    元素值
+data.forEach(function(value) {
+  sum += value;
+});
+sum // 15
+
+// 遞增每個元素---------------
+//                   元素值, 索引, 陣列本身
+data.forEach(function(value, num, arr) {
+  arr[num] = value + 1;
+})
+data // [2, 3, 4, 5, 6]
+```
+
+> 注意``forEach()``並沒有提供普通for迴圈的``break``來提前結束。
+
+---
+
+### .map( )
+
+``Array.map( )``會逐一查用陣列元素，並對每個元素調用指定的函式，回傳**結果**成一個**新陣列**
+
+※ 如果陣列是稀疏的，回傳的結果陣列也會同樣稀疏
+
+```javascript
+var a = [1,2,3, ,];
+var b = a.map(function(x) {
+  return x * x;
+})
+b // [1, 4, 9, undefined]
+```
+
+---
+
+### .filter( )
+
+``Array.filter( )`` 函式結果為``true``，篩選後的元素則被取出，組成一個新陣列回傳
+
+※ ``filter( )`` 會跳過稀疏陣列的缺口，回傳值永遠都會是密集的
+
+```javascript
+var a = [1,2,3,4,5];
+var b = a.filter(function(x) {
+  return x > 2;
+});
+b // [3, 4, 5]
+```
+
+---
+
+### .every( ) & .some( )
+
+有點像邏輯運算的 ``&&`` 與 ``||``，
+將指定的函式套用在陣列元素上，回傳``true``或``false``
+
+- ``every( )``：對所有陣列元素都是``true``，才回傳``true`` (一找到false就停止)
+- ``some( )``：只要有一元素是``true``，就回傳``true`` (一找到true就結束)
+
+```javascript
+var a = [1,2,3,4,5];
+var b = a.every(function(x) {return x>3}); // false
+var c = a.some(function(x) {return x>3}); // true
+```
+
+---
+
+### .reduce( )
+
+我們很常遇到要求各數值總和的情況，這時候除了用``for``或``while``循環，ES5還提供一個更好用且效能更佳的函式  
+``Array.reduce( )`` 會接收一個函式做累加，**由左至右**遍歷陣列元素，最後回傳一個結果值  
+取兩個引數，一是動作**函式**，一是**初始值**(非必須)
+
+```javascript
+var a = [1,2,3,4,5];
+
+//.reduce(function(回傳值,元素值) {}, 初始值);
+a.reduce(function(x,y) { return x + y }, 10); // 25
+```
+
+
+| 次數 | x 值 | y 值 | 回傳值 |
+|------|------|------|--------|
+| 第一次執行 | 初始值(10) | 1 | 11 |
+| 第二次執行 | 11 | 2 | 13 |
+| 第三次執行 | 13 | 3 | 16 |
+| 第四次執行 | 16 | 4 | 20 |
+| 第五次執行 | 20 | 5 | 25 |
+
+**第一次執行時**，x 會隨著有無初始值而不同：
+
+- 有初始值(如上例) →`` x：初始值``、``y：Array[0]``  
+- 沒有初始值 → ``x：Array[0]``、``y：Array[1]``
+
+---
+
+### .indexOf( ) & lastIndexOf( )
+
+``Array.indexOf( )`` 會根據指定的值在陣列中搜尋元素  
+如果有找到，就返回**第一個找到的索引值**，沒有找到就回傳``-1``
+
+- ``Array.indexOf( )`` 從陣列開頭開始找
+- ``Array.lastIndexOf( )`` 從陣列尾端開始找
+
+```javascript
+var a = [1,2,3,2,5];
+a.indexOf(2);     // 1
+a.indexOf(10);    // -1
+a.lastIndexOf(2); // 3
+```
+
+------------------------------
+
+資料來源：  
+[JavaScript大全(第六版)](http://www.books.com.tw/products/0010542183){:target="_blank"}  
