@@ -3,8 +3,13 @@ layout: post
 title: "【心得】CS50 - week 0"
 description: ""
 category: CS50
-<!-- image: CS50_0.jpg -->
 tags: [CS50]
+---
+
+week 0 : [課程文檔](http://docs.cs50.net/2016/fall/notes/0/week0.html){:target="_blank"}
+
+week 0 算是暖身，大概講一下基本觀念跟之後會常聽到的名詞解釋，以及在動手寫程式之前，可以先玩 [scratch](https://scratch.mit.edu/projects/editor/?tip_bar=home){:target="_blank"}，了解寫程式會運用到的邏輯，對新手來說，簡單又不會被語法給卡住。
+
 ---
 
 ## Algorithms - 演算法
@@ -33,7 +38,7 @@ tags: [CS50]
 
 5： ``4 * 1 + 2 * 0 + 1 * 1``
 
-一開始會覺得神奇、違反直覺，多練習幾次就會了~
+課程是用燈泡代表 1, 2, 4, 8, 16, 32, 64，更加視覺化也好玩
 
 #### 練習
 
@@ -46,6 +51,17 @@ tags: [CS50]
 ---
 
 ## ASCII
+
+
+ASCII 是一種國際標準的通用碼，根據[維基百科](https://zh.wikipedia.org/wiki/ASCII)的解釋
+
+> 基於拉丁字母的一套電腦編碼系統。它主要用於顯示現代英語
+
+![ASCII]({{ site.img_url }}cs50_0_4.gif)
+
+也就是說當我對電腦輸入了 `HI!`，**電腦接收到的其實是 ``72 73 33``**，cool ~~~
+
+![ASCII]({{ site.img_url }}cs50_0_5.png)
 
 ---
 
