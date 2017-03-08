@@ -3,6 +3,7 @@ layout: post
 title: "【心得】CS50 - week 0"
 description: ""
 category: CS50
+image: cs50_0_1.png
 tags: [CS50]
 ---
 
