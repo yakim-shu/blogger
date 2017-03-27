@@ -25,12 +25,6 @@ week 0 算是暖身，大概講一下基本觀念跟之後會常聽到的名詞�
 
 ---
 
-### 電話簿找人
-
-假設一種情境，
-
----
-
 ## binary - 2 進位
 
 生活中習慣的數字幾乎都是10進位 (decimal)，如果把 123 拆解開來會變成
@@ -75,6 +69,24 @@ ASCII 是一種國際標準的通用碼，根據[維基百科](https://zh.wikipe
 也就是說當我對電腦輸入了 `HI!`，**電腦接收到的其實是 ``72 73 33``**，cool ~~~
 
 ![ASCII]({{ site.img_url }}cs50_0_5.png)
+
+
+### 延伸學習：  
+
+ASCII只有在純英文(無重音符號)的時候才堪用，如果要加上其他語言就得用不同的編碼方式，像是網頁head裡常見的
+
+```
+<meta charset="utf-8">
+```
+
+其實到這邊我已經卡了老半天，想要弄懂字符編碼是怎麼一回事，發現沒那麼簡單，越查資料越搞不懂，像是從口袋拿出的耳機線一樣混亂，有興趣再延伸學習的可以參考：
+
+(先深吸一口氣)
+
+- 想了解編碼到底在編什麼碼：[演算法筆記 - Code](http://www.csie.ntnu.edu.tw/~u91029/Code.html)
+- 約耳趣談 - 看不懂內容至少看得懂笑話：[每個軟體開發者都絕對一定要會的Unicode及字元集必備知識(沒有藉口！)](http://local.joelonsoftware.com/wiki/The_Joel_on_Software_Translation_Project:%E8%90%AC%E5%9C%8B%E7%A2%BC)
+- 不有趣但詳盡的說明：[字符编码笔记：ASCII，Unicode和UTF-8](http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html)
+
 
 ---
 

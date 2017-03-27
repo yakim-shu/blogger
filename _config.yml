@@ -8,13 +8,13 @@ url:                "http://yakim-shu.github.io/blogger"
 github:
   # url:               "https://lenpaul.github.io/blog"
 author:
-  name:              "Paul Le"
-  email:             "l.nguyen.paul@gmail.com"
-  twitter:           "paululele"
-  instagram:         "paululele"
-  github:            "lenpaul"
-  facebook:          "Le.Paul.94"
-  linkedin:          "lenpaul"
+  name:              "Yakim shu"
+  email:             "toromilk80129@gmail.com"
+  # twitter:           "paululele"
+  # instagram:         "paululele"
+  github:            "yakim-shu"
+  facebook:          "yakimshu"
+  linkedin:          "yakimshu"
 paginate:            5
 
 
