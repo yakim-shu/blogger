@@ -1,0 +1,25 @@
+---
+layout: post
+title: "【心得】CS50 - week 1"
+description: ""
+category: CS50
+image: cs50_1_1.png
+tags: [CS50]
+---
+
+week 1 : [課程文檔](http://docs.cs50.net/2016/fall/notes/1/week1.html){:target="_blank"}
+
+
+---
+
+## Scratch vs. C
+
+這節開始比較 week 0 所使用的圖像化 [scratch](https://zh.wikipedia.org/wiki/Scratch) 轉換成傳統的[程式語言 C](https://zh.wikipedia.org/wiki/C%E8%AF%AD%E8%A8%80)。
+
+什麼？你說上節分明就沒有介紹到 scratch ，對我懶但你不能跟著懶，請自己點進去[開始一個專案](https://scratch.mit.edu/projects/editor/?tip_bar=getStarted)玩玩~
+
+話說最近在練習 Canvas，引入 CreateJs 實作[電流急急棒](http://output.jsbin.com/dapakeheqo){:target="_blank"}，看似很簡單，但還是碰了不少壁，但如果只是想練習寫個小程式，真得有必要熟讀操作文件去實現那些簡單的邏輯嗎？
+
+但再看看網路上找到的[學校老師做的 scratch 實作電流急急棒](http://blog.ilc.edu.tw/blog/blog/1279/post/83251/590388)，用圖像化把語言模塊相接在一起，比我那一大篇js碼還要親民多了吧，而且最終成果也比我屌很多哈哈哈哈(我太弱還做不出障礙物)
+
+
