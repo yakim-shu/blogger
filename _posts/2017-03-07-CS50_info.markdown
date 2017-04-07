@@ -3,7 +3,7 @@ layout: post
 title: "【心得】CS50 - 課程介紹"
 description: "開始上這堂課的契機是，我對於一些很基礎的電腦常識、計算機概論幾乎一無所知，雖然平常工作是寫前端網頁，說真的也碰不太到底層的東西，但因為這樣常要深入學習時一直碰壁，深覺這樣實在不太行，所以從現在開始惡補需要得應該還不晚吧?!"
 category: CS50
-image: cs50_0.jpg
+image: http://i.imgur.com/IxiLrEd.jpg
 tags: [CS50]
 ---
 

@@ -3,7 +3,7 @@ layout: post
 title: "【心得】CS50 - week 0"
 description: ""
 category: CS50
-image: cs50_0_1.png
+image: http://i.imgur.com/pG4iBq4.png
 tags: [CS50]
 ---
 
@@ -17,7 +17,7 @@ week 0 算是暖身，大概講一下基本觀念跟之後會常聽到的名詞�
 
 什麼是演算法，寫程式一定會常聽到這個詞，看看以下這張圖：
 
-![演算法]({{ site.img_url }}cs50_0_1.png)
+![演算法](http://i.imgur.com/pG4iBq4.png)
 
 演算法就是在 **input & output 中間的黑盒子**，進行了丟入問題以及回傳答案的過程。
 
@@ -29,13 +29,13 @@ week 0 算是暖身，大概講一下基本觀念跟之後會常聽到的名詞�
 
 生活中習慣的數字幾乎都是10進位 (decimal)，如果把 123 拆解開來會變成
 
-![10進位]({{ site.img_url }}cs50_0_2.png)
+![10進位](http://i.imgur.com/pPMP8Y0.png)
 
 123： `` 100 * 1 + 10 * 2 + 1 * 3``
 
 但是**電腦只看得懂 0 & 1**，所以都要轉成 2 進位 (binary)，以下是 5 的 2 進位表示法
 
-![2進位]({{ site.img_url }}cs50_0_3.png)
+![2進位](http://i.imgur.com/C4YhYlJ.png)
 
 5： ``4 * 1 + 2 * 0 + 1 * 1``
 
@@ -45,7 +45,7 @@ week 0 算是暖身，大概講一下基本觀念跟之後會常聽到的名詞�
 
 要表示``42`` 的 2 進位，``32, 8, 2`` 亮燈燈愣燈!!
 
-![2進位]({{ site.img_url }}cs50_0_6.png)
+![2進位](http://i.imgur.com/U2I5gfE.png)
 
 #### 練習
 
@@ -64,11 +64,11 @@ ASCII 是一種國際標準的通用碼，根據[維基百科](https://zh.wikipe
 
 > 基於拉丁字母的一套電腦編碼系統。它主要用於顯示現代英語
 
-![ASCII]({{ site.img_url }}cs50_0_4.gif)
+![ASCII](http://i.imgur.com/n0dbPUN.gif)
 
 也就是說當我對電腦輸入了 `HI!`，**電腦接收到的其實是 ``72 73 33``**，cool ~~~
 
-![ASCII]({{ site.img_url }}cs50_0_5.png)
+![ASCII](http://i.imgur.com/yUM1FdS.png)
 
 
 ### 延伸學習：  

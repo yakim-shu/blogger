@@ -3,7 +3,7 @@ layout: post
 title: "【心得】CS50 - week 1"
 description: ""
 category: CS50
-image: cs50_1_1.png
+image: http://i.imgur.com/2e9zmb2.png
 tags: [CS50]
 ---
 

@@ -4,7 +4,7 @@ title: "【學習】LocalStorage 本地端備忘錄"
 description: "最近在練習 Localstorage，寫了一個類似 keep ( 陽春非常多 ) 的本地端 Todolist
 可以輸入幾個訊息再重新整里，會發現訊息還在，資料是記在瀏覽器上，不同瀏覽器沒有共享喔！"
 category: Html5
-image: todolist.jpg
+image: http://i.imgur.com/jvrbSPq.jpg
 ---
 
 最近在練習 Localstorage，寫了一個類似 keep ( 陽春非常多 ) 的本地端 Todolist  

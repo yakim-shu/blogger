@@ -3,7 +3,7 @@ layout: post
 title: "【出走】泰國行前策畫心得"
 description: "終於即將展開策畫已久的泰國行。因為是第一次自助出國，光蒐集整理資料就耗掉非常多時間心力，來分享一下行前規劃的心得，網路上實在太多泰國自助懶人包可以參考，我僅供這次出遊的主觀經驗作分享。"
 category: Travel
-image: Tailand-impression.jpg
+image: http://i.imgur.com/Tnhzhf3.jpg
 tags: [Travel, Tailand]
 ---
 
