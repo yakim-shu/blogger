@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "【看馬男學英文】S103 - Princkly-Muffin"
+title: "【看馬男學英文】BoJack Horseman S103 - Princkly-Muffin"
 description: ""
 category: CS50
 image: http://i.imgur.com/iLdCUR3.png
@@ -18,12 +18,11 @@ tags: [Bojack]
 > 最重要的是，妳得滿足大家的需求，就算這讓妳想死，就算妳被搞得心力交瘁、無法負荷，無論如何、無論多痛苦，妳都不能停止舞動和微笑，妳得任其宰割、予取予求。
 
 
-
-Bojack 在 Lynn 還在童星時期就對他出了這一連串警告，Lynn 的人生也像受了詛咒般的照著恐嚇的話上演，看著壞掉的她，感到愧疚的 Bojack 似乎想為她做些什麼來彌補。
-
 ---
 
 ### 大綱
+
+Bojack 在 Lynn 還在童星時期就對他出了這一連串警告，Lynn 的人生也像受了詛咒般的照著恐嚇的話上演，看著壞掉的她，感到愧疚的 Bojack 似乎想為她做些什麼來彌補。
 
 
 ---
@@ -36,7 +35,7 @@ recall (n) (v) 收回、回憶
 
 trail (n) 拖車、預告片
 
-sophisticated (a) 老練的、高雅的
+sophisticated (a) 複雜的、老練的、高雅的
 
 raise (v) 舉起、提高、提出 
 
@@ -91,6 +90,104 @@ folk (n) 人們、親屬
 burden (n) 重擔
 
 basket case (n) 神經病
+
+satirize (v) 諷刺
+
+obsession (v) 著迷
+
+cater (v) 提供飲食、滿足、迎合
+
+gaze (v)(n) 凝視、凝望
+
+dismiss (v) 不考慮、清除
+
+incapable (a) 無能為力的
+
+engage (v) 參加、雇用、從事
+
+sleazy (a) 不正經的
+
+amusement (n) 歡樂、消遣
+
+tub (n) 盆、盒、浴缸
+
+compensate (v) 賠償、補償
+
+fantasy (n) 幻想、夢想
+
+resolve (v) 決定、解決
+
+guilt (n) 過錯、內疚
+
+neglect (v) 忽視
+
+tear (v) 撕破、 撕裂
+
+catchphrase (n) 流行語
+
+deny (n) 否認、拒絕
+
+needle (n) 針 （v）惹怒
+
+addict (n) 上癮的人
+
+favor (v) 贊同、偏袒、好處
+
+boundary (n) 邊界、界線
+
+endorse (v) 支持、宣傳
+
+prestigious (a) 有聲望的
+
+get rid of 擺脫
+
+pawnshop (n) 當鋪
+
+dumb (a) 愚蠢的、啞口無言的
+
+stadium (n) 體育場
+
+impractical (a) 不現實的
+
+regain (v) 恢復、返回
+
+standpoint (n) 立場
+
+flay (v) 嚴厲批評
+
+exhaust (v) 精疲力盡、耗盡
+
+nap (n) 小睡、打盹
+
+substance (n) 東西、藥物
+
+abuse (v) 虐待、濫用
+
+wipe (v) 擦
+
+defeat (v) 失敗、否認
+
+occasion (n) 某次、時機、理由
+
+dummy (n) 笨蛋 (a) 假的
+
+bait (n) 誘餌
+
+cruel (a) 殘忍的、殘酷的
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

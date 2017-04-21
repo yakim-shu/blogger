@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "【看馬男學英文】S102 - BoJack Hates the Troops"
+title: "【看馬男學英文】BoJack Horseman S102 - BoJack Hates the Troops"
 description: ""
 category: CS50
 image: http://i.imgur.com/fZ4OAdo.jpg

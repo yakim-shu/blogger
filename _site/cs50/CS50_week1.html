@@ -95,6 +95,81 @@
 
 <p>但再看看網路上找到的<a href="http://blog.ilc.edu.tw/blog/blog/1279/post/83251/590388">學校老師做的 scratch 實作電流急急棒</a>，用圖像化把語言模塊相接在一起，比我那一大篇js碼還要親民多了吧，而且最終成果也比我屌很多哈哈哈哈(我太弱還做不出障礙物)</p>
 
+<hr />
+
+<h2 id="helloc">Hello.c</h2>
+
+<p>所有程式教學第一步都要對世界打個招呼！</p>
+
+<p>這是一個最簡單的程式，功能只有：<strong>印出一行 “ hello, world “</strong></p>
+
+<p>在 scratch 裡可以這麼做，很清楚一看就懂</p>
+
+<p><img src="http://i.imgur.com/rOTc2nZ.png" alt="scratch - hello" /></p>
+
+<p>那用C語言寫的話，會是以下這段</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="c1">// → (黃色塊)小綠旗
+</span><span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"hello, world</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span> <span class="c1">// → (紫色塊)say
+</span><span class="p">}</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="loops">loops</h2>
+
+<p>剛剛是<strong>說一次</strong> “hello, world”，現在來試試<strong>不斷地說</strong> “hello, world”</p>
+
+<p>實現循環在程式語言中叫做 <strong>loops</strong></p>
+
+<p><img src="http://i.imgur.com/RYiOz7n.png" alt="while" /></p>
+
+<p>上圖右邊的程式碼就是說，當 <code class="highlighter-rouge">while</code> 後括號內容為真，就會不斷執行大括號 <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="p">}</span></code> 裡的內容</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="c1">// → 括號內容為 true
+</span><span class="p">{</span>
+    <span class="c1">// 不斷地運作這裡的程式碼
+</span><span class="p">}</span>
+</code></pre>
+</div>
+
+<hr />
+
+<p>剛剛是<strong>不斷地</strong>說 “hello, world”，那要是想要做<strong>有限次數</strong>的循環呢?</p>
+
+<p>說100次、50次、2次 “hello, world”，這時候就可以用 for loops</p>
+
+<p><img src="http://i.imgur.com/9KzDQGN.png" alt="for loop" /></p>
+
+<p><code class="highlighter-rouge">for</code> 後括號內<code class="highlighter-rouge">(起始值; 條件式; 更新值)</code></p>
+
+<ol>
+  <li>設定變數 i 為 0 <strong>(起始值)</strong></li>
+  <li>檢查 i 是否在 50 以內 <strong>(條件式)</strong>，要是不成立就跳出迴圈<strong>(步驟6.)</strong></li>
+  <li>說一次 hello, world <strong>(執行 <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="p">}</span></code> 內容)</strong></li>
+  <li>i + 1 <strong>(更新值)</strong></li>
+  <li>回到<strong>(步驟 2.)</strong></li>
+  <li>結束迴圈</li>
+</ol>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="n">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="c1">// 當i小於50，就繼續執行
+</span><span class="p">{</span>
+    <span class="c1">// 執行50次這裡的程式碼
+</span>    <span class="n">printf</span><span class="p">(</span><span class="s">"hello, world</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="if-else">if else</h2>
+
+<p>if else 也是程式語言中共通的判斷式</p>
+
+<p><img src="http://i.imgur.com/bhs9Q11.png" alt="ifelse" /></p>
 
 
 <span class="post-date">

@@ -22,4 +22,81 @@ week 1 : [課程文檔](http://docs.cs50.net/2016/fall/notes/1/week1.html){:targ
 
 但再看看網路上找到的[學校老師做的 scratch 實作電流急急棒](http://blog.ilc.edu.tw/blog/blog/1279/post/83251/590388)，用圖像化把語言模塊相接在一起，比我那一大篇js碼還要親民多了吧，而且最終成果也比我屌很多哈哈哈哈(我太弱還做不出障礙物)
 
+---
 
+## Hello.c
+
+所有程式教學第一步都要對世界打個招呼！
+
+這是一個最簡單的程式，功能只有：**印出一行 " hello, world "**
+
+在 scratch 裡可以這麼做，很清楚一看就懂
+
+![scratch - hello](http://i.imgur.com/rOTc2nZ.png)
+
+那用C語言寫的話，會是以下這段
+
+```c
+#include <stdio.h>
+int main(void) // → (黃色塊)小綠旗
+{
+    printf("hello, world\n"); // → (紫色塊)say
+}
+```
+
+
+---
+
+## loops
+
+剛剛是**說一次** "hello, world"，現在來試試**不斷地說** "hello, world"
+
+
+實現循環在程式語言中叫做 **loops**
+
+![while](http://i.imgur.com/RYiOz7n.png)
+
+上圖右邊的程式碼就是說，當 ``while`` 後括號內容為真，就會不斷執行大括號 ``{ }`` 裡的內容
+
+```c
+while (true) // → 括號內容為 true
+{
+    // 不斷地運作這裡的程式碼
+}
+```
+
+
+---
+
+剛剛是**不斷地**說 "hello, world"，那要是想要做**有限次數**的循環呢?
+
+說100次、50次、2次 "hello, world"，這時候就可以用 for loops
+
+![for loop](http://i.imgur.com/9KzDQGN.png)
+
+``for`` 後括號內``(起始值; 條件式; 更新值)``
+
+1. 設定變數 i 為 0 **(起始值)**
+2. 檢查 i 是否在 50 以內 **(條件式)**，要是不成立就跳出迴圈**(步驟6.)**
+3. 說一次 hello, world **(執行 ``{ }`` 內容)**
+4. i + 1 **(更新值)**
+5. 回到**(步驟 2.)**
+6. 結束迴圈
+
+
+
+```c
+for (var i = 0; i < 50; i++) // 當i小於50，就繼續執行
+{
+    // 執行50次這裡的程式碼
+    printf("hello, world\n");
+}
+```
+
+---
+
+## if else
+
+if else 也是程式語言中共通的判斷式
+
+![ifelse](http://i.imgur.com/bhs9Q11.png)
