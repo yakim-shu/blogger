@@ -18,7 +18,7 @@
   <!--og-->
   <meta property="og:title" content="【筆記】Javascript大全 - 05(二) EMCAScript 5 陣列方法">
   <meta name="og:description" content="ECMAScript5 定義了幾個新的陣列方法來迭代(interating)、對映(mapping)、過濾(filtering)、測試、約簡(reducing)，以及搜尋陣列。">
-  <meta property="og:url" content="http://yakim-shu.github.io/blogger/blogger/javascript/JS_Daquan-05_2.html">
+  <meta property="og:url" content="http://localhost:4000/blogger/javascript/JS_Daquan-05_2.html">
 
     
   <link rel="shortcut icon" href="/blogger/favicon.ico">
@@ -93,7 +93,7 @@
 
 <p><code class="highlighter-rouge">Array.forEach( )</code>會逐一查用陣列元素，並對每個元素調用指定的函式</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">];</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">];</span>
 <span class="kd">var</span> <span class="nx">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 
 <span class="c1">// 計算陣列元素的總合---------</span>
@@ -124,7 +124,7 @@
 
 <p>※ 如果陣列是稀疏的，回傳的結果陣列也會同樣稀疏</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="p">,];</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="p">,];</span>
 <span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">a</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">return</span> <span class="nx">x</span> <span class="o">*</span> <span class="nx">x</span><span class="p">;</span>
 <span class="p">})</span>
@@ -140,7 +140,7 @@
 
 <p>※ <code class="highlighter-rouge">filter( )</code> 會跳過稀疏陣列的缺口，回傳值永遠都會是密集的</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">];</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">];</span>
 <span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">a</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">return</span> <span class="nx">x</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">;</span>
 <span class="p">});</span>
@@ -160,7 +160,7 @@
   <li><code class="highlighter-rouge">some( )</code>：只要有一元素是<code class="highlighter-rouge">true</code>，就回傳<code class="highlighter-rouge">true</code> (一找到true就結束)</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">];</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">];</span>
 <span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">a</span><span class="p">.</span><span class="nx">every</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span><span class="k">return</span> <span class="nx">x</span><span class="o">&gt;</span><span class="mi">3</span><span class="p">});</span> <span class="c1">// false</span>
 <span class="kd">var</span> <span class="nx">c</span> <span class="o">=</span> <span class="nx">a</span><span class="p">.</span><span class="nx">some</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span><span class="k">return</span> <span class="nx">x</span><span class="o">&gt;</span><span class="mi">3</span><span class="p">});</span> <span class="c1">// true</span>
 </code></pre>
@@ -174,7 +174,7 @@
 <code class="highlighter-rouge">Array.reduce( )</code> 會接收一個函式做累加，<strong>由左至右</strong>遍歷陣列元素，最後回傳一個結果值<br />
 取兩個引數，一是動作<strong>函式</strong>，一是<strong>初始值</strong>(非必須)</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">];</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">];</span>
 
 <span class="c1">//.reduce(function(回傳值,元素值) {}, 初始值);</span>
 <span class="nx">a</span><span class="p">.</span><span class="nx">reduce</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="nx">y</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span> <span class="p">},</span> <span class="mi">10</span><span class="p">);</span> <span class="c1">// 25</span>
@@ -243,7 +243,7 @@
   <li><code class="highlighter-rouge">Array.lastIndexOf( )</code> 從陣列尾端開始找</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">];</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">];</span>
 <span class="nx">a</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>     <span class="c1">// 1</span>
 <span class="nx">a</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>    <span class="c1">// -1</span>
 <span class="nx">a</span><span class="p">.</span><span class="nx">lastIndexOf</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> <span class="c1">// 3</span>
@@ -284,7 +284,7 @@
             <h3>
               <a href="/blogger/javascript/JS_Daquan-06_2.html">
                 【筆記】Javascript大全 - 06 函式(二) 參數、引數、閉包
-                <!--<img src="http://yakim-shu.github.io/blogger/blogger/images/">-->
+                <!--<img src="http://localhost:4000/blogger/images/">-->
                 <!--<small>May 15, 2016</small>-->
               </a>
             </h3>
@@ -297,7 +297,7 @@
             <h3>
               <a href="/blogger/javascript/JS_Daquan-06_1.html">
                 【筆記】Javascript大全 - 06 函式(一) 函式的定義方法
-                <!--<img src="http://yakim-shu.github.io/blogger/blogger/images/">-->
+                <!--<img src="http://localhost:4000/blogger/images/">-->
                 <!--<small>May 15, 2016</small>-->
               </a>
             </h3>
@@ -313,7 +313,7 @@
             <h3>
               <a href="/blogger/javascript/JS_Daquan-05.html">
                 【筆記】Javascript大全 - 05(一) 陣列
-                <!--<img src="http://yakim-shu.github.io/blogger/blogger/images/">-->
+                <!--<img src="http://localhost:4000/blogger/images/">-->
                 <!--<small>May 2, 2016</small>-->
               </a>
             </h3>
@@ -326,7 +326,7 @@
             <h3>
               <a href="/blogger/javascript/JS_Daquan-04.html">
                 【筆記】Javascript大全 - 04 物件
-                <!--<img src="http://yakim-shu.github.io/blogger/blogger/images/">-->
+                <!--<img src="http://localhost:4000/blogger/images/">-->
                 <!--<small>April 25, 2016</small>-->
               </a>
             </h3>
@@ -339,7 +339,7 @@
             <h3>
               <a href="/blogger/javascript/JS_Daquan-03.html">
                 【筆記】Javascript大全 - 03 術句
-                <!--<img src="http://yakim-shu.github.io/blogger/blogger/images/">-->
+                <!--<img src="http://localhost:4000/blogger/images/">-->
                 <!--<small>April 25, 2016</small>-->
               </a>
             </h3>
@@ -352,7 +352,7 @@
             <h3>
               <a href="/blogger/javascript/JS_Daquan-02.html">
                 【筆記】Javascript大全 - 02 運算式與運算子 
-                <!--<img src="http://yakim-shu.github.io/blogger/blogger/images/">-->
+                <!--<img src="http://localhost:4000/blogger/images/">-->
                 <!--<small>April 25, 2016</small>-->
               </a>
             </h3>
@@ -365,7 +365,7 @@
             <h3>
               <a href="/blogger/javascript/JS_Daquan-01.html">
                 【筆記】Javascript大全 - 01 型別、值與變數
-                <!--<img src="http://yakim-shu.github.io/blogger/blogger/images/">-->
+                <!--<img src="http://localhost:4000/blogger/images/">-->
                 <!--<small>April 25, 2016</small>-->
               </a>
             </h3>
@@ -378,7 +378,7 @@
             <h3>
               <a href="/blogger/javascript/OOJS03.html">
                 【練習】Object Oriented JavaScript - 03 繼承 
-                <!--<img src="http://yakim-shu.github.io/blogger/blogger/images/">-->
+                <!--<img src="http://localhost:4000/blogger/images/">-->
                 <!--<small>April 18, 2016</small>-->
               </a>
             </h3>
@@ -391,7 +391,7 @@
             <h3>
               <a href="/blogger/javascript/OOJS02.html">
                 【練習】Object Oriented JavaScript - 02 prototype 
-                <!--<img src="http://yakim-shu.github.io/blogger/blogger/images/">-->
+                <!--<img src="http://localhost:4000/blogger/images/">-->
                 <!--<small>April 12, 2016</small>-->
               </a>
             </h3>

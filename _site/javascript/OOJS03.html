@@ -18,7 +18,7 @@
   <!--og-->
   <meta property="og:title" content="【練習】Object Oriented JavaScript - 03 繼承 ">
   <meta name="og:description" content="">
-  <meta property="og:url" content="http://yakim-shu.github.io/blogger/blogger/javascript/OOJS03.html">
+  <meta property="og:url" content="http://localhost:4000/blogger/javascript/OOJS03.html">
 
     
   <link rel="shortcut icon" href="/blogger/favicon.ico">
@@ -79,13 +79,13 @@
 
 
 
-<h2 id="section">建立一類別及物件</h2>
+<h2 id="建立一類別及物件">建立一類別及物件</h2>
 
 <p>照著上篇所學到的，先建立一類別(class)及物件(Object)</p>
 
 <p>首先是最上層的類別 <strong><code class="highlighter-rouge">Mammal</code></strong>，並定義<strong>屬性</strong> <code class="highlighter-rouge">name</code> &amp; <strong>方法</strong> <code class="highlighter-rouge">hello</code></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">Mammal</span><span class="p">(</span><span class="nx">name</span><span class="p">){</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">Mammal</span><span class="p">(</span><span class="nx">name</span><span class="p">){</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="nx">Mammal</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">hello</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
@@ -98,7 +98,7 @@
 
 <p>基於<code class="highlighter-rouge">Mammal</code>，新增一個名為 “M” 的  <code class="highlighter-rouge">m</code> 對象，調用<code class="highlighter-rouge">hello</code>方法</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">m</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Mammal</span><span class="p">(</span><span class="s2">"M"</span><span class="p">);</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">m</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Mammal</span><span class="p">(</span><span class="s2">"M"</span><span class="p">);</span>
 <span class="nx">m</span><span class="p">.</span><span class="nx">hello</span><span class="p">();</span>
 <span class="c1">// Mammal.hello: M say Hello!</span>
 </code></pre>
@@ -113,11 +113,11 @@
 
 <hr />
 
-<h2 id="section-1">繼承鏈</h2>
+<h2 id="繼承鏈">繼承鏈</h2>
 
 <p>建立中層的類別 <strong><code class="highlighter-rouge">Parent</code></strong>，並繼承<code class="highlighter-rouge">Mammal</code>的<code class="highlighter-rouge">protoype</code></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">Parent</span> <span class="p">(</span><span class="nx">name</span><span class="p">){</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">Parent</span> <span class="p">(</span><span class="nx">name</span><span class="p">){</span>
     <span class="nx">Mammal</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">name</span><span class="p">);</span> <span class="c1">//[注1]</span>
 <span class="p">}</span>
 <span class="nx">Parent</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">Mammal</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span><span class="c1">//[注2]</span>
@@ -144,7 +144,7 @@ A.prototype.constructor = A;
 
 <p>在<code class="highlighter-rouge">Parent.prototype</code>新增一個方法 ()</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">Parent</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">say</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">Parent</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">say</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Parent.say: My name is "</span><span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span><span class="s2">", I'm a mother"</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre>
@@ -152,7 +152,7 @@ A.prototype.constructor = A;
 
 <p>基於<code class="highlighter-rouge">Parent</code>，新增一個名為 “Yakim” 的 <code class="highlighter-rouge">p</code> 對象，調用方法(<code class="highlighter-rouge">hello</code>, <code class="highlighter-rouge">say</code>)</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">p</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Parent</span><span class="p">(</span><span class="s2">"Yakim"</span><span class="p">);</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">p</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Parent</span><span class="p">(</span><span class="s2">"Yakim"</span><span class="p">);</span>
 <span class="nx">p</span><span class="p">.</span><span class="nx">hello</span><span class="p">();</span> <span class="c1">//Mammal.hello: Yakim say Hello!</span>
 <span class="nx">p</span><span class="p">.</span><span class="nx">say</span><span class="p">();</span> <span class="c1">//Parent.say: My name is Yakim I'm a mother</span>
 </code></pre>
@@ -162,7 +162,7 @@ A.prototype.constructor = A;
 
 <p>重複上面3步驟，在最下層新增一個<code class="highlighter-rouge">Child</code>類別及物件 <code class="highlighter-rouge">c</code></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">//類別 Child ----------------------</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">//類別 Child ----------------------</span>
 <span class="kd">function</span> <span class="nx">Child</span> <span class="p">(</span><span class="nx">name</span><span class="p">){</span>
   <span class="nx">Mammal</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">name</span><span class="p">);</span>
 <span class="p">}</span>
@@ -184,7 +184,7 @@ A.prototype.constructor = A;
 
 <hr />
 
-<h2 id="section-2">實例</h2>
+<h2 id="實例">實例</h2>
 
 <p><a class="jsbin-embed" href="http://jsbin.com/tuyoxutike/embed?js,console">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?3.35.12"></script></p>
 
@@ -224,7 +224,7 @@ A.prototype.constructor = A;
             <h3>
               <a href="/blogger/javascript/JS_Daquan-06_2.html">
                 【筆記】Javascript大全 - 06 函式(二) 參數、引數、閉包
-                <!--<img src="http://yakim-shu.github.io/blogger/blogger/images/">-->
+                <!--<img src="http://localhost:4000/blogger/images/">-->
                 <!--<small>May 15, 2016</small>-->
               </a>
             </h3>
@@ -237,7 +237,7 @@ A.prototype.constructor = A;
             <h3>
               <a href="/blogger/javascript/JS_Daquan-06_1.html">
                 【筆記】Javascript大全 - 06 函式(一) 函式的定義方法
-                <!--<img src="http://yakim-shu.github.io/blogger/blogger/images/">-->
+                <!--<img src="http://localhost:4000/blogger/images/">-->
                 <!--<small>May 15, 2016</small>-->
               </a>
             </h3>
@@ -250,7 +250,7 @@ A.prototype.constructor = A;
             <h3>
               <a href="/blogger/javascript/JS_Daquan-05_2.html">
                 【筆記】Javascript大全 - 05(二) EMCAScript 5 陣列方法
-                <!--<img src="http://yakim-shu.github.io/blogger/blogger/images/">-->
+                <!--<img src="http://localhost:4000/blogger/images/">-->
                 <!--<small>May 5, 2016</small>-->
               </a>
             </h3>
@@ -263,7 +263,7 @@ A.prototype.constructor = A;
             <h3>
               <a href="/blogger/javascript/JS_Daquan-05.html">
                 【筆記】Javascript大全 - 05(一) 陣列
-                <!--<img src="http://yakim-shu.github.io/blogger/blogger/images/">-->
+                <!--<img src="http://localhost:4000/blogger/images/">-->
                 <!--<small>May 2, 2016</small>-->
               </a>
             </h3>
@@ -276,7 +276,7 @@ A.prototype.constructor = A;
             <h3>
               <a href="/blogger/javascript/JS_Daquan-04.html">
                 【筆記】Javascript大全 - 04 物件
-                <!--<img src="http://yakim-shu.github.io/blogger/blogger/images/">-->
+                <!--<img src="http://localhost:4000/blogger/images/">-->
                 <!--<small>April 25, 2016</small>-->
               </a>
             </h3>
@@ -289,7 +289,7 @@ A.prototype.constructor = A;
             <h3>
               <a href="/blogger/javascript/JS_Daquan-03.html">
                 【筆記】Javascript大全 - 03 術句
-                <!--<img src="http://yakim-shu.github.io/blogger/blogger/images/">-->
+                <!--<img src="http://localhost:4000/blogger/images/">-->
                 <!--<small>April 25, 2016</small>-->
               </a>
             </h3>
@@ -302,7 +302,7 @@ A.prototype.constructor = A;
             <h3>
               <a href="/blogger/javascript/JS_Daquan-02.html">
                 【筆記】Javascript大全 - 02 運算式與運算子 
-                <!--<img src="http://yakim-shu.github.io/blogger/blogger/images/">-->
+                <!--<img src="http://localhost:4000/blogger/images/">-->
                 <!--<small>April 25, 2016</small>-->
               </a>
             </h3>
@@ -315,7 +315,7 @@ A.prototype.constructor = A;
             <h3>
               <a href="/blogger/javascript/JS_Daquan-01.html">
                 【筆記】Javascript大全 - 01 型別、值與變數
-                <!--<img src="http://yakim-shu.github.io/blogger/blogger/images/">-->
+                <!--<img src="http://localhost:4000/blogger/images/">-->
                 <!--<small>April 25, 2016</small>-->
               </a>
             </h3>
@@ -331,7 +331,7 @@ A.prototype.constructor = A;
             <h3>
               <a href="/blogger/javascript/OOJS02.html">
                 【練習】Object Oriented JavaScript - 02 prototype 
-                <!--<img src="http://yakim-shu.github.io/blogger/blogger/images/">-->
+                <!--<img src="http://localhost:4000/blogger/images/">-->
                 <!--<small>April 12, 2016</small>-->
               </a>
             </h3>
@@ -352,7 +352,7 @@ A.prototype.constructor = A;
             <h3>
               <a href="/blogger/javascript/OOJS01.html">
                 【練習】Object Oriented JavaScript - 01 封裝 
-                <!--<img src="http://yakim-shu.github.io/blogger/blogger/images/">-->
+                <!--<img src="http://localhost:4000/blogger/images/">-->
                 <!--<small>April 12, 2016</small>-->
               </a>
             </h3>

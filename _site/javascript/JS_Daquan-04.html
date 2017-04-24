@@ -18,7 +18,7 @@
   <!--og-->
   <meta property="og:title" content="【筆記】Javascript大全 - 04 物件">
   <meta name="og:description" content="Javascript中，任何不是字串、數字、true、false、null或undefined的值都是物件。 物件是可變的，而且是通過參考(by reference)來操作，並非值(by value)。 雖然基本型別(字串、數字、布林)並非物件，但他們的行為表現就像是不可變物件。">
-  <meta property="og:url" content="http://yakim-shu.github.io/blogger/blogger/javascript/JS_Daquan-04.html">
+  <meta property="og:url" content="http://localhost:4000/blogger/javascript/JS_Daquan-04.html">
 
     
   <link rel="shortcut icon" href="/blogger/favicon.ico">
@@ -86,7 +86,7 @@
 
 <hr />
 
-<h3 id="section">物件種類</h3>
+<h3 id="物件種類">物件種類</h3>
 
 <p>Javascript物件種類可以廣泛分為三部分(Native, Host, 自訂義)，以及兩種特性類型(Own, inherited)</p>
 
@@ -111,13 +111,13 @@ host物件也可以是Native物件，例如當host環境定意的方法只是普
   </li>
 </ul>
 
-<h3 id="new-">使用 new 創建物件</h3>
+<h3 id="使用-new-創建物件">使用 new 創建物件</h3>
 
 <p>用 new 運算子創造新物件的函式稱為<strong>建構式</strong></p>
 
 <hr />
 
-<h3 id="section-1">物件屬性</h3>
+<h3 id="物件屬性">物件屬性</h3>
 
 <p>每個物件都有關聯的protoype(原型)、class(類別)、extensible(可擴充)屬性。</p>
 
@@ -127,17 +127,17 @@ host物件也可以是Native物件，例如當host環境定意的方法只是普
   <li>extensible：可擴充性，標明是否可在該物件家入新特性。</li>
 </ul>
 
-<h4 id="prototype-">prototype 原型</h4>
+<h4 id="prototype-原型">prototype 原型</h4>
 
 <p>所有用物件字面詞創建的物件都有同一個原型物件，<code class="highlighter-rouge">Object.prototype</code><br />
 用<code class="highlighter-rouge">new Object()</code>創建的物件繼承自<code class="highlighter-rouge">Object.prototype</code><br />
 同樣的，使用<code class="highlighter-rouge">new Array()</code>創建的物件繼承自<code class="highlighter-rouge">Array.prototype</code></p>
 
-<h4 id="section-2">原型鏈</h4>
+<h4 id="原型鏈">原型鏈</h4>
 
 <p>使用<code class="highlighter-rouge">new Date()</code>創建的Date物件，同時繼承了<code class="highlighter-rouge">Date.prototype</code>與<code class="highlighter-rouge">Object.prototype</code>兩種特性，此一系列的原型物件就稱為原型鏈。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">A</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span> <span class="c1">// A同時繼承 Date.prototype 跟 Object.prototype兩者的特性</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">A</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span> <span class="c1">// A同時繼承 Date.prototype 跟 Object.prototype兩者的特性</span>
 </code></pre>
 </div>
 
@@ -145,7 +145,7 @@ host物件也可以是Native物件，例如當host環境定意的方法只是普
   <p>Object.prototype是少數沒有原型的物件。</p>
 </blockquote>
 
-<h4 id="extensible-">extensible 可擴充性</h4>
+<h4 id="extensible-可擴充性">extensible 可擴充性</h4>
 
 <ul>
   <li>所有內建或自定義的物件預設都是可擴充的，要讓物件變成不可擴充，將它傳給<code class="highlighter-rouge">Object.prevetExtensions()</code>。</li>
@@ -155,23 +155,23 @@ host物件也可以是Native物件，例如當host環境定意的方法只是普
 
 <hr />
 
-<h3 id="section-3">查用及設定特性</h3>
+<h3 id="查用及設定特性">查用及設定特性</h3>
 
 <ul>
   <li><code class="highlighter-rouge">object.property</code>：使用<strong>.識別字</strong>，識別字是靜態的，必須寫死</li>
   <li><code class="highlighter-rouge">object["property"]</code>：使用<strong>[字串]</strong>，字串值是動態的，在執行其間可以改變，稱為關聯式陣列</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">A</span> <span class="o">=</span> <span class="p">{</span> <span class="na">a</span><span class="p">:</span><span class="mi">123</span> <span class="p">};</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">A</span> <span class="o">=</span> <span class="p">{</span> <span class="na">a</span><span class="p">:</span><span class="mi">123</span> <span class="p">};</span>
 <span class="nx">A</span><span class="p">.</span><span class="nx">a</span> <span class="o">===</span> <span class="nx">A</span><span class="p">[</span><span class="s2">"a"</span><span class="p">]</span> <span class="c1">// true 兩種方法是完全一樣的</span>
 </code></pre>
 </div>
 
-<h3 id="delete-">delete 刪除特性</h3>
+<h3 id="delete-刪除特性">delete 刪除特性</h3>
 
 <p><code class="highlighter-rouge">delete</code>運算子從物件中刪除特性，<code class="highlighter-rouge">delete</code>是作用在特性本身，非值之上</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">o</span> <span class="o">=</span> <span class="p">{};</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">o</span> <span class="o">=</span> <span class="p">{};</span>
 <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">{</span> <span class="na">x</span><span class="p">:</span><span class="mi">10</span> <span class="p">};</span>
 <span class="nx">o</span><span class="p">.</span><span class="nx">a</span> <span class="o">=</span> <span class="nx">a</span><span class="p">;</span>
 <span class="k">delete</span> <span class="nx">o</span><span class="p">.</span><span class="nx">a</span><span class="p">;</span>
@@ -180,16 +180,16 @@ host物件也可以是Native物件，例如當host環境定意的方法只是普
 </code></pre>
 </div>
 
-<h3 id="in-">in 查找特性</h3>
+<h3 id="in-查找特性">in 查找特性</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">o</span> <span class="o">=</span> <span class="p">{</span><span class="na">x</span><span class="p">:</span><span class="mi">1</span><span class="p">};</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">o</span> <span class="o">=</span> <span class="p">{</span><span class="na">x</span><span class="p">:</span><span class="mi">1</span><span class="p">};</span>
 <span class="s2">"x"</span> <span class="k">in</span> <span class="nx">o</span><span class="p">;</span> <span class="c1">//true</span>
 </code></pre>
 </div>
 
 <p>也可以用是否為<code class="highlighter-rouge">undefined</code>代替</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">o</span> <span class="o">=</span> <span class="p">{</span><span class="na">x</span><span class="p">:</span><span class="mi">1</span><span class="p">};</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">o</span> <span class="o">=</span> <span class="p">{</span><span class="na">x</span><span class="p">:</span><span class="mi">1</span><span class="p">};</span>
 <span class="nx">o</span><span class="p">.</span><span class="nx">x</span> <span class="o">!==</span> <span class="kc">undefined</span><span class="p">;</span> <span class="c1">//true</span>
 <span class="c1">//不過如果是 o = {x:undefined} , 就要用in了</span>
 </code></pre>
@@ -197,12 +197,12 @@ host物件也可以是Native物件，例如當host環境定意的方法只是普
 
 <hr />
 
-<h3 id="section-4">列舉特性</h3>
+<h3 id="列舉特性">列舉特性</h3>
 
 <p>以下定義了幾個工具函式，使用for/in迴圈操作物件特性，<br />
 由其是<code class="highlighter-rouge">extend()</code>函式，常會在Javascript工具程式庫中看到。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">A</span> <span class="o">=</span> <span class="p">{</span><span class="na">a</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="na">b</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="na">c</span><span class="p">:</span><span class="mi">3</span><span class="p">};</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">A</span> <span class="o">=</span> <span class="p">{</span><span class="na">a</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="na">b</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="na">c</span><span class="p">:</span><span class="mi">3</span><span class="p">};</span>
 <span class="kd">var</span> <span class="nx">B</span> <span class="o">=</span> <span class="p">{</span><span class="na">a</span><span class="p">:</span><span class="mi">123</span><span class="p">};</span>
 
 <span class="c1">// extend(B, A);</span>
@@ -272,7 +272,7 @@ host物件也可以是Native物件，例如當host環境定意的方法只是普
 
 <hr />
 
-<h3 id="section-5">特性屬性</h3>
+<h3 id="特性屬性">特性屬性</h3>
 
 <p>一個物件的特性是由一個名稱、一個值，以及一組屬性所構成。
 在ES5之後，每個特性都有4個屬性</p>
@@ -286,7 +286,7 @@ host物件也可以是Native物件，例如當host環境定意的方法只是普
 
 <hr />
 
-<h3 id="tostring-">toString() 方法</h3>
+<h3 id="tostring-方法">toString() 方法</h3>
 
 <p>把物件轉為字串。<br />
 <code class="highlighter-rouge">toString()</code>方法不取引數，它在物件上調用，回傳表示該物件值的字串。<br />
@@ -326,7 +326,7 @@ host物件也可以是Native物件，例如當host環境定意的方法只是普
             <h3>
               <a href="/blogger/javascript/JS_Daquan-06_2.html">
                 【筆記】Javascript大全 - 06 函式(二) 參數、引數、閉包
-                <!--<img src="http://yakim-shu.github.io/blogger/blogger/images/">-->
+                <!--<img src="http://localhost:4000/blogger/images/">-->
                 <!--<small>May 15, 2016</small>-->
               </a>
             </h3>
@@ -339,7 +339,7 @@ host物件也可以是Native物件，例如當host環境定意的方法只是普
             <h3>
               <a href="/blogger/javascript/JS_Daquan-06_1.html">
                 【筆記】Javascript大全 - 06 函式(一) 函式的定義方法
-                <!--<img src="http://yakim-shu.github.io/blogger/blogger/images/">-->
+                <!--<img src="http://localhost:4000/blogger/images/">-->
                 <!--<small>May 15, 2016</small>-->
               </a>
             </h3>
@@ -352,7 +352,7 @@ host物件也可以是Native物件，例如當host環境定意的方法只是普
             <h3>
               <a href="/blogger/javascript/JS_Daquan-05_2.html">
                 【筆記】Javascript大全 - 05(二) EMCAScript 5 陣列方法
-                <!--<img src="http://yakim-shu.github.io/blogger/blogger/images/">-->
+                <!--<img src="http://localhost:4000/blogger/images/">-->
                 <!--<small>May 5, 2016</small>-->
               </a>
             </h3>
@@ -365,7 +365,7 @@ host物件也可以是Native物件，例如當host環境定意的方法只是普
             <h3>
               <a href="/blogger/javascript/JS_Daquan-05.html">
                 【筆記】Javascript大全 - 05(一) 陣列
-                <!--<img src="http://yakim-shu.github.io/blogger/blogger/images/">-->
+                <!--<img src="http://localhost:4000/blogger/images/">-->
                 <!--<small>May 2, 2016</small>-->
               </a>
             </h3>
@@ -381,7 +381,7 @@ host物件也可以是Native物件，例如當host環境定意的方法只是普
             <h3>
               <a href="/blogger/javascript/JS_Daquan-03.html">
                 【筆記】Javascript大全 - 03 術句
-                <!--<img src="http://yakim-shu.github.io/blogger/blogger/images/">-->
+                <!--<img src="http://localhost:4000/blogger/images/">-->
                 <!--<small>April 25, 2016</small>-->
               </a>
             </h3>
@@ -394,7 +394,7 @@ host物件也可以是Native物件，例如當host環境定意的方法只是普
             <h3>
               <a href="/blogger/javascript/JS_Daquan-02.html">
                 【筆記】Javascript大全 - 02 運算式與運算子 
-                <!--<img src="http://yakim-shu.github.io/blogger/blogger/images/">-->
+                <!--<img src="http://localhost:4000/blogger/images/">-->
                 <!--<small>April 25, 2016</small>-->
               </a>
             </h3>
@@ -407,7 +407,7 @@ host物件也可以是Native物件，例如當host環境定意的方法只是普
             <h3>
               <a href="/blogger/javascript/JS_Daquan-01.html">
                 【筆記】Javascript大全 - 01 型別、值與變數
-                <!--<img src="http://yakim-shu.github.io/blogger/blogger/images/">-->
+                <!--<img src="http://localhost:4000/blogger/images/">-->
                 <!--<small>April 25, 2016</small>-->
               </a>
             </h3>
@@ -420,7 +420,7 @@ host物件也可以是Native物件，例如當host環境定意的方法只是普
             <h3>
               <a href="/blogger/javascript/OOJS03.html">
                 【練習】Object Oriented JavaScript - 03 繼承 
-                <!--<img src="http://yakim-shu.github.io/blogger/blogger/images/">-->
+                <!--<img src="http://localhost:4000/blogger/images/">-->
                 <!--<small>April 18, 2016</small>-->
               </a>
             </h3>
@@ -433,7 +433,7 @@ host物件也可以是Native物件，例如當host環境定意的方法只是普
             <h3>
               <a href="/blogger/javascript/OOJS02.html">
                 【練習】Object Oriented JavaScript - 02 prototype 
-                <!--<img src="http://yakim-shu.github.io/blogger/blogger/images/">-->
+                <!--<img src="http://localhost:4000/blogger/images/">-->
                 <!--<small>April 12, 2016</small>-->
               </a>
             </h3>
