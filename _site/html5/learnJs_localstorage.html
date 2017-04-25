@@ -18,7 +18,7 @@
   <!--og-->
   <meta property="og:title" content="【學習】LocalStorage 本地端備忘錄">
   <meta name="og:description" content="最近在練習 Localstorage，寫了一個類似 keep ( 陽春非常多 ) 的本地端 Todolist 可以輸入幾個訊息再重新整里，會發現訊息還在，資料是記在瀏覽器上，不同瀏覽器沒有共享喔！">
-  <meta property="og:url" content="http://localhost:4000/blogger/html5/learnJs_localstorage.html">
+  <meta property="og:url" content="http://yakim-shu.github.io/blogger/blogger/html5/learnJs_localstorage.html">
 
     
   <link rel="shortcut icon" href="/blogger/favicon.ico">
@@ -96,7 +96,7 @@
 <p>因為localstorage <strong>沒有過期時間</strong> ( 不像cookie )，我也沒有特別再寫<br />
 所以沒有手動清除的話，資料就會一直存在唷～</p>
 
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">// 設置localsotrage ，命名為 listStorage</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">// 設置localsotrage ，命名為 listStorage</span>
 <span class="nx">localStorage</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="s2">"listStorage"</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">arrStorage</span><span class="p">));</span>
 <span class="c1">// 存取 listStorage</span>
 <span class="kd">var</span> <span class="nx">oList</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="s1">'listStorage'</span><span class="p">));</span>

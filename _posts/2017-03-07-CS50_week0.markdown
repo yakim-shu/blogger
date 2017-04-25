@@ -7,7 +7,15 @@ image: http://i.imgur.com/pG4iBq4.png
 tags: [CS50]
 ---
 
-week 0 : [課程文檔](http://docs.cs50.net/2016/fall/notes/0/week0.html){:target="_blank"}
+Week 0 主要課程素材 : 
+
+- [課程視頻](https://video.cs50.net/2016/fall/lectures/0){:target="_blank"}
+- [課程文檔](http://docs.cs50.net/2016/fall/notes/0/week0.html){:target="_blank"}
+- [作業](http://docs.cs50.net/2017/x/psets/0/pset0.html){:target="_blank"}
+
+助教課程：
+
+- [線上圖形化程式程式設計 - Scratch](https://www.youtube.com/embed/poT5Yd0Ag8I?autoplay=1&rel=0)
 
 week 0 算是暖身，大概講一下基本觀念跟之後會常聽到的名詞解釋，以及在動手寫程式之前，可以先玩 [scratch](https://scratch.mit.edu/projects/editor/?tip_bar=home){:target="_blank"}，了解寫程式會運用到的邏輯，對新手來說，簡單又不會被語法給卡住。
 

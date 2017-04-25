@@ -18,7 +18,7 @@
   <!--og-->
   <meta property="og:title" content="【心得】CS50 - week 1">
   <meta name="og:description" content="">
-  <meta property="og:url" content="http://localhost:4000/blogger/cs50/CS50_week1.html">
+  <meta property="og:url" content="http://yakim-shu.github.io/blogger/blogger/cs50/CS50_week1.html">
 
     
   <link rel="shortcut icon" href="/blogger/favicon.ico">
@@ -81,7 +81,23 @@
   <img src="http://i.imgur.com/2e9zmb2.png">
 
 
-<p>week 1 : <a href="http://docs.cs50.net/2016/fall/notes/1/week1.html" target="_blank">課程文檔</a></p>
+<p>Week 1 主要課程素材 :</p>
+
+<ul>
+  <li><a href="https://video.cs50.net/2016/fall/lectures/1" target="_blank">課程視頻</a></li>
+  <li><a href="http://docs.cs50.net/2016/fall/notes/1/week1.html" target="_blank">課程文檔</a></li>
+  <li><a href="http://docs.cs50.net/2017/x/psets/1/pset1.html" target="_blank">作業</a></li>
+</ul>
+
+<p>助教課程：</p>
+
+<ul>
+  <li><a href="https://www.youtube.com/embed/poT5Yd0Ag8I?autoplay=1&amp;rel=0">指令碼 - Command Line</a></li>
+  <li><a href="https://www.youtube.com/embed/JFieJW_kZq4?autoplay=1&amp;rel=0">資料類型 - Data Types</a></li>
+  <li><a href="https://www.youtube.com/embed/_FC-8QaaYgs?autoplay=1&amp;rel=0">運算邏輯 - Operators</a></li>
+  <li><a href="https://www.youtube.com/embed/kTnp_-nyocs?autoplay=1&amp;rel=0">運算條件式 - Conditional Statements</a></li>
+  <li><a href="https://www.youtube.com/embed/kTnp_-nyocs?autoplay=1&amp;rel=0">迴圈 - Loops</a></li>
+</ul>
 
 <hr />
 
@@ -109,7 +125,7 @@
 
 <p>那用C語言寫的話，會是以下這段</p>
 
-<div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
 </span><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="c1">// → (黃色塊)小綠旗
 </span><span class="p">{</span>
     <span class="n">printf</span><span class="p">(</span><span class="s">"hello, world</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span> <span class="c1">// → (紫色塊)say
@@ -129,7 +145,7 @@
 
 <p>上圖右邊的程式碼就是說，當 <code class="highlighter-rouge">while</code> 後括號內容為真，就會不斷執行大括號 <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="p">}</span></code> 裡的內容</p>
 
-<div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="c1">// → 括號內容為 true
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="c1">// → 括號內容為 true
 </span><span class="p">{</span>
     <span class="c1">// 不斷地運作這裡的程式碼
 </span><span class="p">}</span>
@@ -142,9 +158,11 @@
 
 <p>說100次、50次、2次 “hello, world”，這時候就可以用 for loops</p>
 
+<p><code class="highlighter-rouge">for</code> 後括號內容為：<code class="highlighter-rouge">(起始值; 條件式; 更新值)</code></p>
+
 <p><img src="http://i.imgur.com/9KzDQGN.png" alt="for loop" /></p>
 
-<p><code class="highlighter-rouge">for</code> 後括號內<code class="highlighter-rouge">(起始值; 條件式; 更新值)</code></p>
+<p>迴圈順序如下：</p>
 
 <ol>
   <li>設定變數 i 為 0 <strong>(起始值)</strong></li>
@@ -155,7 +173,7 @@
   <li>結束迴圈</li>
 </ol>
 
-<div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="n">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="c1">// 當i小於50，就繼續執行
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="n">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="c1">// 當i小於50，就繼續執行
 </span><span class="p">{</span>
     <span class="c1">// 執行50次這裡的程式碼
 </span>    <span class="n">printf</span><span class="p">(</span><span class="s">"hello, world</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
@@ -167,9 +185,56 @@
 
 <h2 id="if-else">if else</h2>
 
-<p>if else 也是程式語言中共通的判斷式</p>
+<p><code class="highlighter-rouge">if else</code> 也是程式語言中共通的判斷式，以下圖為例：</p>
 
-<p><img src="http://i.imgur.com/bhs9Q11.png" alt="ifelse" /></p>
+<ol>
+  <li><code class="highlighter-rouge">if</code> 括號內的內容如果正確，就執行對應 <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="p">}</span></code> 裡的內容，</li>
+  <li>反之，如果錯誤了，會尋找 <code class="highlighter-rouge">else if</code> 括號內容，正確就執行對應 <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="p">}</span></code> 內容，</li>
+  <li>如果都沒找到，執行 <code class="highlighter-rouge">else</code> 對應的 <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="p">}</span></code> 內容。</li>
+</ol>
+
+<p><img src="http://i.imgur.com/Q0Js45s.png" alt="ifelse" /></p>
+
+<blockquote>
+  <p>設 x → 1, y → 2，會輸出 “x is less than y”</p>
+</blockquote>
+
+<blockquote>
+  <p>設 x → 2, y → 1，會輸出 “x is greater than y”</p>
+</blockquote>
+
+<blockquote>
+  <p>設 x → 1, y → 1，會輸出 “x is equal to y”</p>
+</blockquote>
+
+<hr />
+
+<h2 id="section">終端機</h2>
+
+<p>終端機是啥，簡單來說就是對電腦下指令，不用滑鼠就可以對電腦進行操作。</p>
+
+<blockquote>
+  <p>就是你會看到MIS走到你的電腦旁，打開一個黑色視窗然後用鍵盤咻咻咻，會瞬間覺得這人很潮(宅)，搭配說了一堆你聽不懂的話，但你腦袋自動放空只希望他把你電腦修好，不要講一些聽不懂的話。</p>
+</blockquote>
+
+<blockquote>
+  <p>要是你公司沒有MIS，那就回想所有電影演到駭客那段，桌上一定會有超多螢幕的視窗畫面就是了。</p>
+</blockquote>
+
+<p><img src="https://camo.githubusercontent.com/43fdb0a62acd9c7abb578d108e6a4913473c82c4/68747470733a2f2f6d656469612e67697068792e636f6d2f6d656469612f4e41355337463264696b4144752f67697068792e676966" alt="terminal" /></p>
+
+<p>↑ 駭客任務裡的代碼雨，只是單純覺得帥。搜尋 “Matrix rain” 可以看到很多教學哈哈哈哈莫名其妙，意外看到一個 <a href="http://thecodeplayer.com/walkthrough/matrix-rain-animation-html5-canvas-javascript" target="_blank">canvas做的好帥阿阿阿阿</a> 不得不分享~</p>
+
+<p>那終端機能辦到什麼，像是資料夾、檔案管理(新建、刪除、移動、重新命名、列表)、批次處理…</p>
+
+<p>應該還有非常多，但我只有學最基本會用到的，其他的等到需要再學吧!!</p>
+
+<p>以下是我看到不錯的教學：</p>
+
+<ul>
+  <li><a href="https://carolhsu.gitbooks.io/django-girls-tutorial-traditional-chiness/content/intro_to_command_line/README.html" target="_blank">介紹命令行(command-line)介面 - for: Mac, Windows</a></li>
+  <li><a href="http://lnpcd.blogspot.tw/2012/09/00.html" target="_blank">初學者之卷：命令提示字元 - for: Windows</a></li>
+</ul>
 
 
 <span class="post-date">
@@ -203,7 +268,7 @@
             <h3>
               <a href="/blogger/cs50/CS50_week0.html">
                 【心得】CS50 - week 0
-                <!--<img src="http://localhost:4000/blogger/images/">-->
+                <!--<img src="http://yakim-shu.github.io/blogger/blogger/images/">-->
                 <!--<small>March 7, 2017</small>-->
               </a>
             </h3>
@@ -216,7 +281,7 @@
             <h3>
               <a href="/blogger/cs50/CS50_info.html">
                 【心得】CS50 - 課程介紹
-                <!--<img src="http://localhost:4000/blogger/images/">-->
+                <!--<img src="http://yakim-shu.github.io/blogger/blogger/images/">-->
                 <!--<small>March 7, 2017</small>-->
               </a>
             </h3>
