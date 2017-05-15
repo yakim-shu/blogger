@@ -10,8 +10,6 @@ github:
 author:
   name:              "Yakim shu"
   email:             "toromilk80129@gmail.com"
-  # twitter:           "paululele"
-  # instagram:         "paululele"
   github:            "yakim-shu"
   facebook:          "yakimshu"
   linkedin:          "yakimshu"
@@ -21,9 +19,19 @@ paginate:            5
 # Build settings
 markdown:            kramdown
 highlighter:         rouge
+linenos:             true
 permalink:           none
 gems:                [jekyll-paginate]
 
+comments :
+  provider : disqus
+  disqus :
+    short_name : yakim-shu    # 將內容替換成剛剛在disqus上申請的site name
+  facebook :
+    appid : 123
+    num_posts: 5
+    width: 580
+    colorscheme: light
 
 # Serving
 detach:  false

@@ -1,0 +1,557 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>
+    
+      【心得】CS50 - week 2 | Yakim shu
+    
+  </title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Yakim, toromilk80129@gmail.com">
+  <meta name="robots" content="INDEX,FOLLOW">
+  <!--og-->
+  <meta property="og:title" content="【心得】CS50 - week 2">
+  <meta name="og:description" content="">
+  <meta property="og:url" content="http://yakim-shu.github.io/blogger/blogger/cs50/CS50_week2.html">
+
+    
+  <link rel="shortcut icon" href="/blogger/favicon.ico">
+  <link rel="stylesheet" href="/blogger/css/main.css">
+  <link rel="stylesheet" href="/blogger/css/syntax.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-77560722-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+
+
+<body>
+
+  <div class="container">
+    <header class="masthead">
+  <h3 class="masthead-title">
+    <a href="/blogger/">Yakim shu</a>
+    <small class="masthead-subtitle">Hi, 這是我擴充腦內海馬體的地方。</small>
+    <div class="menu">
+  <div class="menu-content">
+    <a href="/blogger/about.html">About</a>
+    <a href="/blogger/writing.html">Writing</a>
+    <a href="/blogger/contacts.html">Contact</a>
+  </div>
+  <div class="social-icons">
+    <a href="https://www.facebook.com/yakimshu"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
+    <a href="https://linkedin.com/in/yakimshu"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
+    <a href="mailto:toromilk80129@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
+  </div>
+</div>
+
+  </h3>
+</header>
+
+
+    <div class="post-container story">
+      <h1>
+  【心得】CS50 - week 2
+</h1>
+
+
+  <img src="http://i.imgur.com/ag930Yh.png">
+
+
+<p>Week 2 主要課程素材 :</p>
+
+<ul>
+  <li><a href="https://video.cs50.net/2016/fall/lectures/2" target="_blank">課程視頻</a></li>
+  <li><a href="http://docs.cs50.net/2016/fall/notes/2/week2.html" target="_blank">課程文檔</a></li>
+  <li><a href="http://docs.cs50.net/2017/x/psets/2/pset2.html" target="_blank">作業</a></li>
+</ul>
+
+<p>助教課程：</p>
+
+<ul>
+  <li><a href="https://www.youtube.com/embed/jtuMIHebSu8?autoplay=1&amp;rel=0">陳述式 - functions</a></li>
+  <li><a href="https://www.youtube.com/embed/pBqyy8NwzqY?autoplay=1&amp;rel=0">變數及作用範圍 - Variables and Scope</a></li>
+  <li><a href="https://www.youtube.com/embed/7EdaoE46BTI?autoplay=1&amp;rel=0">陣列 - Arrays</a></li>
+  <li><a href="https://www.youtube.com/embed/eDI5Wqjq2a0?autoplay=1&amp;rel=0">命令列引數 - Command Line Arguments</a></li>
+  <li><a href="https://www.youtube.com/embed/z_Nh9yt4d_s?autoplay=1&amp;rel=0">神奇的數字 - Magic Numbers</a></li>
+</ul>
+
+<hr />
+
+<h2 id="section">加密</h2>
+
+<p>這節開始談到如何加密一段文字。</p>
+
+<p>最簡單的加密方法就是給一段<strong>原始資料</strong>，透過神秘的<strong>key(金鑰)</strong>，組成一段難以閱讀的<strong>新資料</strong>。</p>
+
+<p><img src="http://i.imgur.com/KLyoxPR.png" alt="加密" /></p>
+
+<p>反過來說，你拿到一段加密後的資料，只要有正確的金鑰，就可以還原成原始資料。</p>
+
+<p>在做簡單加密之前，我們先完成一系列小任務：</p>
+
+<ul>
+  <li>印出一個字串</li>
+  <li>印出此字串裡的每個字母</li>
+  <li>把每個字母轉換成 ascii 碼</li>
+  <li>對 ascii 碼做某種運算</li>
+  <li>把 ascii 碼轉換回字母</li>
+</ul>
+
+<hr />
+
+<h3 id="section-1">印出字串</h3>
+
+<p>現在來試著加密一個單詞，首先印出原始字串。</p>
+
+<p>寫一段簡單的程式，讓使用者輸入一個詞，並印出來。</p>
+
+<p>假如我輸入 <code class="highlighter-rouge">yakim</code>，印出 <code class="highlighter-rouge">hello, yakim</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
+#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">string</span> <span class="n">s</span> <span class="o">=</span> <span class="n">get_string</span><span class="p">();</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"hello, %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">s</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h3 id="section-2">印出此字串裡的每個字母</h3>
+
+<p>接著我們把字串拆開來看，分成一個一個字符：<code class="highlighter-rouge">y</code>、<code class="highlighter-rouge">a</code>、<code class="highlighter-rouge">k</code>、<code class="highlighter-rouge">i</code>、<code class="highlighter-rouge">m</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
+#include &lt;string.h&gt;
+#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">string</span> <span class="n">s</span> <span class="o">=</span> <span class="n">get_string</span><span class="p">();</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">strlen</span><span class="p">(</span><span class="n">s</span><span class="p">);</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="c1">// 註(1)
+</span>    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"%c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span> <span class="c1">// 註(2)
+</span>    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<blockquote>
+  <p>(1)： strlen → string.h 的函數，會回傳字串的長度。<br />
+(2)： s[i] → 把字串當成一個陣列，列出第 i 個字符。</p>
+</blockquote>
+
+<hr />
+
+<h3 id="ascii">轉換 ASCII</h3>
+
+<p>好玩的部分來了，還記的 <a href="CS50_week0.html">week 0 提到的 ASCII</a> 嗎?</p>
+
+<p>現在把字母轉成 ASCII ，再進行某種算式，接著再轉換回字母。</p>
+
+<p>登愣!!!簡單加密就完成了~~</p>
+
+<p><img src="http://i.imgur.com/d7sie6T.png" alt="ASCII" /></p>
+
+<p>參照上圖，可以看到<br />
+<strong>065 - 090 → 是大寫的 A ~ Z</strong><br />
+<strong>097 - 122 → 是小寫的 a ~ z</strong></p>
+
+<hr />
+
+<p>來印出 大寫 A ~ Z 的數字對照表</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">65</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span> <span class="mi">65</span> <span class="o">+</span> <span class="mi">26</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"%c is %i</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// 結果：
+// A is 65
+// B is 66
+// C is 67
+// ....
+</span>
+</code></pre>
+</div>
+
+<p>還可以更神奇的用字元來做 for loop，兩邊結果是一樣的。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="sc">'A'</span><span class="p">;</span> <span class="n">c</span> <span class="o">&lt;=</span> <span class="sc">'Z'</span><span class="p">;</span> <span class="n">c</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"%c is %i</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// 結果：
+// A is 65
+// B is 66
+// C is 67
+// ....
+</span></code></pre>
+</div>
+
+<hr />
+
+<h3 id="section-3">小練習：小寫轉大寫</h3>
+
+<p>寫一個小程式，讓使用者輸入的單字轉為大寫</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
+#include &lt;ctype.h&gt;
+#include &lt;string.h&gt;
+#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">string</span> <span class="n">s</span> <span class="o">=</span> <span class="n">get_string</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">s</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">s</span><span class="p">);</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="sc">'a'</span> <span class="o">||</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="sc">'z'</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="c1">// 3種寫法都一樣
+</span>                <span class="c1">// 1. printf("%c", s[i] - 32);
+</span>                <span class="c1">// 2. printf("%c", s[i] - ('a' - 'A'));
+</span>                <span class="c1">// 3.
+</span>                <span class="n">printf</span><span class="p">(</span><span class="s">"%c"</span><span class="p">,</span> <span class="n">toupper</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]));</span>
+            <span class="p">}</span>
+            <span class="k">else</span>
+            <span class="p">{</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">"%c"</span><span class="p">,</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>或者，不需要用if else判斷，直接全部轉大寫即可</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
+#include &lt;ctype.h&gt;
+#include &lt;string.h&gt;
+#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">string</span> <span class="n">s</span> <span class="o">=</span> <span class="n">get_string</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">s</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">s</span><span class="p">);</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"%c"</span><span class="p">,</span> <span class="n">toupper</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]));</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h3 id="section-4">了解字串</h3>
+
+<p>字串的本質是由<strong>字元</strong>所組成的<strong>陣列</strong>。</p>
+
+<p>假設有一個 32 byte 的記憶體位置，放入一個 <code class="highlighter-rouge">Zamyla</code> 的字串。</p>
+
+<p><img src="http://i.imgur.com/oNmzdt8.png" alt="Zamyla" /></p>
+
+<p>假如再加入另一個的字串 <code class="highlighter-rouge">Andi</code>，那電腦要如何得知這它們之間的斷點呢?</p>
+
+<p>所以在結束一個字串後，會自動加上 <strong><code class="highlighter-rouge">\0</code></strong> 的字元，當做此字串的結束。</p>
+
+<p><img src="http://i.imgur.com/ag930Yh.png" alt="Zamyla&amp;Andi" /></p>
+
+<p>那知道了字串後面都會帶有 <code class="highlighter-rouge">\0</code> 能做到什麼勒~</p>
+
+<p>還記得剛剛計算字串長度的 <code class="highlighter-rouge">strlen</code> 函式嗎?</p>
+
+<p>我們可以把剛剛的練習改寫得更簡單!!</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
+#include &lt;ctype.h&gt;
+#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">string</span> <span class="n">s</span> <span class="o">=</span> <span class="n">get_string</span><span class="p">();</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">!=</span> <span class="sc">'\0'</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"%c"</span><span class="p">,</span> <span class="n">toupper</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">n</span><span class="p">]));</span>
+        <span class="n">n</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>看以上程式，我甚至不用調用 <code class="highlighter-rouge">strlen</code> 來取出字串長度，只要判斷它還沒讀到 <strong><code class="highlighter-rouge">\0</code></strong>就持續印出。</p>
+
+<hr />
+
+<h2 id="section-5">作業</h2>
+
+<h3 id="initialsc">initials.c</h3>
+
+<h4 id="section-6">說明</h4>
+<ul>
+  <li>使用者隨意輸入一英文名字</li>
+  <li>輸出首字大寫</li>
+</ul>
+
+<h4 id="section-7">範例</h4>
+
+<p><img src="http://i.imgur.com/1idCiDE.png" alt="initials.c" /></p>
+
+<h4 id="section-8">解題</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;ctype.h&gt;
+#include &lt;cs50.h&gt;
+#include &lt;string.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">string</span> <span class="n">name</span> <span class="o">=</span> <span class="n">GetString</span><span class="p">();</span>
+    <span class="kt">int</span> <span class="n">counter</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">nUpper</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="n">c</span><span class="p">;</span>
+    <span class="c1">// 遍歷所有字元
+</span>    <span class="k">while</span><span class="p">(</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="n">counter</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span> <span class="n">n</span> <span class="o">==</span> <span class="n">nUpper</span> <span class="p">){</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="n">toupper</span><span class="p">(</span><span class="n">name</span><span class="p">[</span><span class="n">n</span><span class="p">]);</span> <span class="c1">// 轉大寫
+</span>            <span class="n">printf</span><span class="p">(</span><span class="s">"%c"</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span> <span class="n">name</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">==</span> <span class="sc">' '</span> <span class="p">)</span> <span class="c1">// 當遇到空白鍵，向後算一位
+</span>        <span class="p">{</span>
+            <span class="n">nUpper</span> <span class="o">=</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">n</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h3 id="caesarc">caesar.c</h3>
+
+<h4 id="section-9">說明</h4>
+
+<p>加密文字</p>
+
+<h4 id="section-10">步驟</h4>
+
+<ul>
+  <li>輸入一字串及一數字</li>
+  <li>換成ascii碼，再加上剛輸入的數字</li>
+  <li>輸出成加密文字</li>
+</ul>
+
+<h4 id="section-11">解題</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;ctype.h&gt;
+#include &lt;cs50.h&gt;
+#include &lt;string.h&gt;
+</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">string</span> <span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+
+    
+    <span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="p">(</span><span class="n">argc</span><span class="o">==</span><span class="mi">2</span><span class="p">)</span> <span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"We require an integer as encryption key.</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="c1">// 把第2個參數字串轉成數字
+</span>        <span class="kt">int</span> <span class="n">iNum</span> <span class="o">=</span> <span class="n">atoi</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+        
+        <span class="n">printf</span><span class="p">(</span><span class="s">"plaintext: "</span><span class="p">);</span>
+        <span class="n">string</span> <span class="n">name</span> <span class="o">=</span> <span class="n">GetString</span><span class="p">();</span>
+        
+        <span class="kt">int</span> <span class="n">sLen</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
+        <span class="kt">char</span> <span class="n">sChar</span><span class="p">[</span><span class="n">sLen</span><span class="p">];</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"ciphertext: "</span><span class="p">);</span>
+        
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">sLen</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">sChar</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span><span class="p">[</span><span class="n">i</span><span class="p">];</span> 
+            <span class="k">if</span> <span class="p">(</span><span class="n">iNum</span> <span class="o">&gt;</span> <span class="mi">26</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">iNum</span> <span class="o">=</span> <span class="n">iNum</span> <span class="o">%</span> <span class="mi">26</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="p">(</span> <span class="n">isupper</span><span class="p">(</span><span class="n">sChar</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">sChar</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">iNum</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">90</span><span class="p">)</span> <span class="c1">// 大寫超過
+</span>            <span class="p">{</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">"%c"</span><span class="p">,</span> <span class="n">sChar</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">iNum</span><span class="o">-</span><span class="mi">26</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="k">else</span> <span class="k">if</span> <span class="p">(</span> <span class="n">islower</span><span class="p">(</span><span class="n">sChar</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">sChar</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">iNum</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">122</span><span class="p">)</span> <span class="c1">// 小寫超過
+</span>            <span class="p">{</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">"%c"</span><span class="p">,</span> <span class="n">sChar</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">iNum</span><span class="o">-</span><span class="mi">26</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="k">else</span> <span class="k">if</span> <span class="p">(</span> <span class="n">sChar</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">iNum</span> <span class="o">&lt;</span> <span class="mi">65</span> <span class="o">||</span> <span class="n">sChar</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">iNum</span> <span class="o">&gt;</span> <span class="mi">122</span> <span class="p">)</span> <span class="c1">// 非字母
+</span>            <span class="p">{</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">"%c"</span><span class="p">,</span> <span class="n">sChar</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+            <span class="p">}</span>
+            <span class="k">else</span>
+            <span class="p">{</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">"%c"</span><span class="p">,</span> <span class="n">sChar</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">iNum</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+
+<span class="post-date">
+  Written on
+  
+  April
+  27th,
+  2017
+  by Yakim shu
+</span>
+<div class="post-date">Feel free to share!</div>
+  <div class="sharing-icons">
+    <a href="https://twitter.com/intent/tweet?text=【心得】CS50 - week 2&amp;url=/cs50/CS50_week2.html&amp;via=" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=/cs50/CS50_week2.html&amp;title=【心得】CS50 - week 2" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    <a href="https://plus.google.com/share?url=/cs50/CS50_week2.html" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+
+<div class="related">
+  <h1 >You may also enjoy:</h1>
+  
+  <ul class="related-posts">
+    
+      
+        
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/blogger/cs50/CS50_week1.html">
+                【心得】CS50 - week 1
+                <!--<img src="http://yakim-shu.github.io/blogger/blogger/images/">-->
+                <!--<small>March 28, 2017</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/blogger/cs50/CS50_week0.html">
+                【心得】CS50 - week 0
+                <!--<img src="http://yakim-shu.github.io/blogger/blogger/images/">-->
+                <!--<small>March 7, 2017</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/blogger/cs50/CS50_info.html">
+                【心得】CS50 - 課程介紹
+                <!--<img src="http://yakim-shu.github.io/blogger/blogger/images/">-->
+                <!--<small>March 7, 2017</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+    
+  </ul>
+</div>
+
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://yakimshu.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<script id="dsq-count-scr" src="//yakimshu.disqus.com/count.js" async></script>
+
+    </div>
+
+    <footer class="footer">
+  <a href="https://www.facebook.com/yakimshu"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
+  <a href="https://linkedin.com/in/yakimshu"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
+  <a href="mailto:toromilk80129@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
+  <div class="post-date"><a href="/about.html">Yakim shu | Hi, 這是我擴充腦內海馬體的地方。 by Yakim shu</a></div>
+</footer>
+
+
+  </div>
+
+</body>
+</html>
