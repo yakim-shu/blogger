@@ -448,6 +448,100 @@
 </code></pre>
 </div>
 
+<h3 id="vigenerec">vigenere.c</h3>
+
+<h4 id="section-12">說明</h4>
+
+<p>加密文字</p>
+
+<h4 id="section-13">步驟</h4>
+
+<ul>
+  <li>輸入一字串</li>
+  <li>把字串轉換成ascii碼</li>
+  <li>輸入需要加密的文字</li>
+  <li>輸出成加密文字</li>
+</ul>
+
+<h4 id="section-14">解題</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;ctype.h&gt;
+#include &lt;cs50.h&gt;
+#include &lt;string.h&gt;
+</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">string</span> <span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="p">(</span><span class="n">argc</span><span class="o">==</span><span class="mi">2</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"We require an integer as encryption key.</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="c1">// 把第2個參數字串轉成數字
+</span>        <span class="n">string</span> <span class="n">sNum</span> <span class="o">=</span> <span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+        <span class="kt">int</span> <span class="n">sNumLen</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">sNum</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="n">sNumLen</span><span class="p">];</span>
+        <span class="c1">//取出字串，轉換成數字
+</span>        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">sNumLen</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">isupper</span><span class="p">(</span><span class="n">sNum</span><span class="p">[</span><span class="n">j</span><span class="p">]))</span>
+            <span class="p">{</span>
+                <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">sNum</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="mi">65</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">else</span> <span class="k">if</span> <span class="p">(</span> <span class="n">islower</span><span class="p">(</span><span class="n">sNum</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">sNum</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="mi">97</span><span class="p">;</span>
+            <span class="p">}</span><span class="k">else</span> <span class="k">if</span> <span class="p">(</span> <span class="n">isdigit</span><span class="p">(</span><span class="n">sNum</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">"We require an integer as encryption key.</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+                <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        
+        <span class="n">printf</span><span class="p">(</span><span class="s">"plaintext: "</span><span class="p">);</span>
+        <span class="n">string</span> <span class="n">name</span> <span class="o">=</span> <span class="n">GetString</span><span class="p">();</span>
+        <span class="kt">int</span> <span class="n">sLen</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
+        <span class="kt">char</span> <span class="n">sChar</span><span class="p">[</span><span class="n">sLen</span><span class="p">];</span>
+        
+        <span class="n">printf</span><span class="p">(</span><span class="s">"ciphertext: "</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">sLen</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">sChar</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span><span class="p">[</span><span class="n">i</span><span class="p">];</span> 
+            <span class="k">while</span> <span class="p">(</span> <span class="n">n</span> <span class="o">==</span> <span class="n">sNumLen</span> <span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="k">if</span> <span class="p">(</span> <span class="n">isupper</span><span class="p">(</span><span class="n">sChar</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">sChar</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">90</span><span class="p">)</span> <span class="c1">// 大寫超過
+</span>            <span class="p">{</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">"%c"</span><span class="p">,</span> <span class="n">sChar</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">-</span><span class="mi">26</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="k">else</span> <span class="k">if</span> <span class="p">(</span> <span class="n">islower</span><span class="p">(</span><span class="n">sChar</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">sChar</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">122</span><span class="p">)</span> <span class="c1">// 小寫超過
+</span>            <span class="p">{</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">"%c"</span><span class="p">,</span> <span class="n">sChar</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">-</span><span class="mi">26</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="k">else</span> <span class="k">if</span> <span class="p">(</span> <span class="n">sChar</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">65</span> <span class="o">||</span> <span class="n">sChar</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">122</span> <span class="p">)</span> <span class="c1">// 非字母
+</span>            <span class="p">{</span>
+                <span class="n">n</span><span class="o">--</span><span class="p">;</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">"%c"</span><span class="p">,</span> <span class="n">sChar</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+            <span class="p">}</span>
+            <span class="k">else</span>
+            <span class="p">{</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">"%c"</span><span class="p">,</span> <span class="n">sChar</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="p">]);</span>
+            <span class="p">}</span>
+            <span class="n">n</span><span class="o">++</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
 
 <span class="post-date">
   Written on

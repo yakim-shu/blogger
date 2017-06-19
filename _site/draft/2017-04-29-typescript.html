@@ -145,7 +145,7 @@
   <li>Enum <a href="http://blog.darkthread.net/post-2014-08-20-typescript-enum.aspx">TypeScript列舉型別</a></li>
   <li>Any
     <ul>
-      <li>自由型別，跟javascript一樣，可以用 tsconfig 設定禁止用any)</li>
+      <li>自由型別，跟javascript用var一樣，可以用 tsconfig 設定禁止用any</li>
     </ul>
   </li>
 </ul>
@@ -181,6 +181,21 @@
 <hr />
 
 <h2 id="section-5">變數</h2>
+
+<ul>
+  <li>var (function scope)</li>
+  <li>let (block scope)
+    <ul>
+      <li>let不會有hoisting的問題</li>
+    </ul>
+  </li>
+  <li>const (常數)
+    <ul>
+      <li>宣告const的時候，一定要指定初值</li>
+      <li>const也不會有hoisting的問題。</li>
+    </ul>
+  </li>
+</ul>
 
 <h3 id="let">let</h3>
 
@@ -228,6 +243,8 @@
 
 <ul>
   <li>比 for in 好用</li>
+  <li>for of 是遍歷 屬性值(property values)</li>
+  <li>for in 是遍歷 屬性名(property names)</li>
   <li>可以直接取出值，而非 index</li>
 </ul>
 

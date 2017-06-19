@@ -364,3 +364,96 @@ int main(int argc, string argv[])
     }
 }
 ```
+
+
+### vigenere.c
+
+#### 說明
+
+加密文字
+
+#### 步驟
+
+- 輸入一字串
+- 把字串轉換成ascii碼
+- 輸入需要加密的文字
+- 輸出成加密文字
+
+#### 解題
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <cs50.h>
+#include <string.h>
+
+
+int main(int argc, string argv[])
+{
+    if ( !(argc==2))
+    {
+        printf("We require an integer as encryption key.\n");
+        return 1;
+    }
+    else
+    {
+        // 把第2個參數字串轉成數字
+        string sNum = argv[1];
+        int sNumLen = strlen(sNum);
+        int a[sNumLen];
+        //取出字串，轉換成數字
+        for (int j=0; j<sNumLen; j++)
+        {
+            if (isupper(sNum[j]))
+            {
+                a[j] = sNum[j]-65;
+            }
+            else if ( islower(sNum[j]) )
+            {
+                a[j] = sNum[j]-97;
+            }else if ( isdigit(sNum[j]) )
+            {
+                printf("We require an integer as encryption key.\n");
+                return 1;
+            }
+        }
+        
+        printf("plaintext: ");
+        string name = GetString();
+        int sLen = strlen(name);
+        char sChar[sLen];
+        
+        printf("ciphertext: ");
+        int n = 0;
+        for (int i=0; i<sLen; i++)
+        {
+            sChar[i] = name[i]; 
+            while ( n == sNumLen )
+            {
+                n = 0;
+            }
+
+            if ( isupper(sChar[i]) && (sChar[i]+a[n]) > 90) // 大寫超過
+            {
+                printf("%c", sChar[i]+a[n]-26);
+            }
+            else if ( islower(sChar[i]) && (sChar[i]+a[n]) > 122) // 小寫超過
+            {
+                printf("%c", sChar[i]+a[n]-26);
+            }
+            else if ( sChar[i] < 65 || sChar[i] > 122 ) // 非字母
+            {
+                n--;
+                printf("%c", sChar[i]);
+            }
+            else
+            {
+                printf("%c", sChar[i]+a[n]);
+            }
+            n++;
+        }
+        printf("\n");
+    }
+}
+```

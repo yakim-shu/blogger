@@ -58,7 +58,7 @@ title: "【心得】TypeScript新手入門班"
 
 - Enum [TypeScript列舉型別](http://blog.darkthread.net/post-2014-08-20-typescript-enum.aspx)
 - Any
-    - 自由型別，跟javascript一樣，可以用 tsconfig 設定禁止用any)
+    - 自由型別，跟javascript用var一樣，可以用 tsconfig 設定禁止用any
 
 #### 型別預設
 
@@ -87,6 +87,13 @@ Console.log(sizeString); /// Large
 ---
 
 ## 變數
+
+- var (function scope)
+- let (block scope)
+    + let不會有hoisting的問題
+- const (常數)
+    + 宣告const的時候，一定要指定初值
+    + const也不會有hoisting的問題。
 
 ### let
 
@@ -124,6 +131,8 @@ var self = this;
 ### for of
 
 - 比 for in 好用
+- for of 是遍歷 屬性值(property values)
+- for in 是遍歷 屬性名(property names)
 - 可以直接取出值，而非 index
 
 ---

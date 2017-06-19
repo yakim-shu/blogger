@@ -3,7 +3,7 @@ layout: post
 title: "【看馬男學英文】BoJack Horseman S104 - Zoës and Zeldas"
 description: ""
 category: Bojack
-image: http://i.imgur.com/1u5JEGQ.png
+image: http://i.imgur.com/CZJbPNI.png
 tags: [Bojack]
 ---
 
