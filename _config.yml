@@ -2,9 +2,9 @@
 title:               Yakim shu
 tagline:            Hi, 這是我擴充腦內海馬體的地方。
 description:
-baseurl:            "/blogger"
+baseurl:            ""
 img_url:            "../images/"
-url:                "http://yakim-shu.github.io/blogger"
+url:                "http://yakim-shu.github.io"
 github:
   # url:               "https://lenpaul.github.io/blog"
 author:
