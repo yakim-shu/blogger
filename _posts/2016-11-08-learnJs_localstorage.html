@@ -1,0 +1,33 @@
+<html>
+      <head>
+        <meta charset="UTF-8">
+        <title>2016-11-08-learnJs_localstorage.markdown</title>
+      </head>
+      <body>
+        <hr>
+<p>layout: post
+title: &quot;【學習】LocalStorage 本地端備忘錄&quot;
+description: &quot;最近在練習 Localstorage，寫了一個類似 keep ( 陽春非常多 ) 的本地端 Todolist
+可以輸入幾個訊息再重新整里，會發現訊息還在，資料是記在瀏覽器上，不同瀏覽器沒有共享喔！&quot;
+category: Html5</p>
+<h2 id="image-todolist-jpg">image: todolist.jpg</h2>
+<p>最近在練習 Localstorage，寫了一個類似 keep ( 陽春非常多 ) 的本地端 Todolist  </p>
+<p>功能就只有：</p>
+<ul>
+<li>輸入 &amp; 移除訊息</li>
+<li>加入 &amp; 移除便條</li>
+<li>設置便條顏色</li>
+</ul>
+<p>可以試著輸入幾個訊息再重新整理，會發現訊息還在  ，資料是記在瀏覽器上，不同瀏覽器不能共享喔！  </p>
+<p>因為localstorage <strong>沒有過期時間</strong> ( 不像cookie )，我也沒有特別再寫<br>所以沒有手動清除的話，資料就會一直存在唷～</p>
+<pre><code class="lang-javascript">// 設置localsotrage ，命名為 listStorage
+localStorage.setItem(&quot;listStorage&quot;, JSON.stringify(arrStorage));
+// 存取 listStorage
+var oList = JSON.parse(localStorage.getItem(&#39;listStorage&#39;));
+</code></pre>
+<p>但其實本範例其實應用到的只有 getItem &amp; setItem 而已阿阿阿，大部分的時間都花在一些無關緊要的事上。</p>
+<p>假學習、真自high</p>
+<p>→ <a href="http://output.jsbin.com/fofidep/1">Todolist 範例網址</a>{:target=&quot;_blank&quot;}  </p>
+
+      </body>
+    </html>
