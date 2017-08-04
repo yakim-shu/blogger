@@ -2,6 +2,7 @@
 title:               Yakim shu
 tagline:            Hi, 這是我擴充腦內海馬體的地方。
 description:
+<<<<<<< HEAD
 baseurl:            "/blog"
 img_url:            "../images/"
 url:                #"https://lenpaul.github.io"
@@ -15,15 +16,44 @@ author:
   github:            "lenpaul"
   facebook:          "Le.Paul.94"
   linkedin:          "lenpaul"
+=======
+baseurl:            ""
+img_url:            "../images/"
+url:                "http://yakim-shu.github.io"
+github:
+  # url:               "https://lenpaul.github.io/blog"
+author:
+  name:              "Yakim shu"
+  email:             "toromilk80129@gmail.com"
+  github:            "yakim-shu"
+  facebook:          "yakimshu"
+  linkedin:          "yakimshu"
+>>>>>>> gh-pages
 paginate:            5
 
 
 # Build settings
 markdown:            kramdown
 highlighter:         rouge
+<<<<<<< HEAD
 permalink:           none
 gems:                [jekyll-paginate]
 
+=======
+linenos:             true
+permalink:           none
+gems:                [jekyll-paginate]
+
+comments :
+  provider : disqus
+  disqus :
+    short_name : yakim-shu    # 將內容替換成剛剛在disqus上申請的site name
+  facebook :
+    appid : 123
+    num_posts: 5
+    width: 580
+    colorscheme: light
+>>>>>>> gh-pages
 
 # Serving
 detach:  false

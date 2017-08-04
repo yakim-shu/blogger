@@ -1,7 +1,11 @@
 ---
 layout: post
 title: "【書摘】 王定國 - 敵人的櫻花"
+<<<<<<< HEAD
 image: p1.jpg
+=======
+image: http://i.imgur.com/HHhAdop.jpg
+>>>>>>> gh-pages
 category: Book
 ---
 

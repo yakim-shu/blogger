@@ -1,0 +1,64 @@
+<html>
+      <head>
+        <meta charset="UTF-8">
+        <title>2016-11-09-learnCSS_background_pattern.markdown</title>
+      </head>
+      <body>
+        <hr>
+<p>layout: post
+title: &quot;【學習】CSS3 漸層 background pattern&quot;
+description: &quot;看到網路上很多很酷的CSS3漸層範例，應用的層面很廣，可以作圓點、斜線、格紋...各種花樣&quot;
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
+<h1 id="image-demo_css3_background-jpg">image: demo_css3_background.jpg</h1>
+<p>image: <a href="http://i.imgur.com/sVs4ZDL.jpg">http://i.imgur.com/sVs4ZDL.jpg</a></p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>gh-pages</p>
+<h2 id="category-css3">category: CSS3</h2>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>網路上很多很酷的CSS3漸層範例，</p>
+<ul>
+<li><a href="https://jsfiddle.net/JohnnyWorker/r30oqptu/?utm_source=website&amp;utm_medium=embed&amp;utm_campaign=r30oqptu">JSFiddle</a>{:target=&quot;_blank&quot;}</li>
+<li><a href="http://lea.verou.me/css3patterns/">CSS3 Patterns Gallery</a>{:target=&quot;_blank&quot;}</li>
+<li><a href="http://codepen.io/frank890417/pen/jrAKbO?editors=0100">Codepen_Comic Texture</a>{:target=&quot;_blank&quot;}</li>
+</ul>
+<p>應用的層面很廣，可以作圓點、斜線、格紋...各種花樣，把比較實用的類型挑出來當範例 。</p>
+<p>→ <a href="http://output.jsbin.com/hogazo">我的 CSS3 漸層 DEMO</a>{:target=&quot;_blank&quot;}  </p>
+<hr>
+<h3 id="-">基本-圓點</h3>
+<pre><code class="lang-css">background: radial-gradient(#ff8da1 30%, pink 34%);
+background-size: 30px 30px;
+</code></pre>
+<blockquote>
+<p>背景色要比圓點多1~5%，視background-size而定<br>※ background-size越小，%數差距要越多<br>→ 差距太小：邊緣會有鋸齒<br>→ 差距太大：邊緣會模糊</p>
+</blockquote>
+<hr>
+<h3 id="-">基本-線條</h3>
+<pre><code class="lang-css">background: linear-gradient(90deg, lightblue 50%, #dceef4 0%);
+background-size: 30px 30px;
+</code></pre>
+<blockquote>
+<p>橫條紋：0deg<br> 斜線並不是45deg，要用其他方法</p>
+</blockquote>
+<hr>
+<h3 id="-">格紋</h3>
+<pre><code class="lang-css">background-color: #86c5da;
+background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.3) 50%, transparent 50%), linear-gradient(rgba(255, 255, 255, 0.3) 50%, transparent 50%);
+background-size: 25px 25px;
+</code></pre>
+<hr>
+<p>其實可以變花很多花樣，但要調整可能要多花心思才不會跑版，可以打開上面的demo來修改初自己想要的樣式。</p>
+
+      </body>
+    </html>

@@ -2,7 +2,11 @@
 layout: post
 title: "【學習】CSS3 漸層 background pattern"
 description: "看到網路上很多很酷的CSS3漸層範例，應用的層面很廣，可以作圓點、斜線、格紋...各種花樣"
+<<<<<<< HEAD
 image: demo_css3_background.jpg
+=======
+image: http://i.imgur.com/sVs4ZDL.jpg
+>>>>>>> gh-pages
 category: CSS3
 ---
 

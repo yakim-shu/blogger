@@ -1,0 +1,402 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>
+    
+      【練習】Object Oriented JavaScript - 02 prototype  | Yakim shu
+    
+  </title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Yakim, toromilk80129@gmail.com">
+  <meta name="robots" content="INDEX,FOLLOW">
+  <!--og-->
+  <meta property="og:title" content="【練習】Object Oriented JavaScript - 02 prototype ">
+  <meta name="og:description" content="">
+  <meta property="og:url" content="http://yakim-shu.github.io/javascript/OOJS02.html">
+
+    
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-77560722-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+
+
+<body>
+
+  <div class="container">
+    <header class="masthead">
+  <h3 class="masthead-title">
+    <a href="/">Yakim shu</a>
+    <small class="masthead-subtitle">Hi, 這是我擴充腦內海馬體的地方。</small>
+    <div class="menu">
+  <div class="menu-content">
+    <a href="/about.html">About</a>
+    <a href="/writing.html">Writing</a>
+    <a href="/contacts.html">Contact</a>
+  </div>
+  <div class="social-icons">
+    <a href="https://www.facebook.com/yakimshu"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
+    <a href="https://linkedin.com/in/yakimshu"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
+    <a href="mailto:toromilk80129@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
+  </div>
+</div>
+
+  </h3>
+</header>
+
+
+    <div class="post-container story">
+      <h1>
+  【練習】Object Oriented JavaScript - 02 prototype 
+</h1>
+
+
+
+<p>1.承上篇，我們要為<code class="highlighter-rouge">Person</code>物件添加一個共用方法 <code class="highlighter-rouge">say</code>，會寫成以下</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cm">/*物件 Person*/</span>
+<span class="kd">function</span> <span class="nx">Person</span><span class="p">(){</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">say</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span> <span class="nx">alert</span><span class="p">(</span><span class="s2">"嘿!"</span><span class="p">)</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<hr />
+
+<p>2.基於<code class="highlighter-rouge">Person</code>，新增兩個人物，印出內存位置及內容比對</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">person1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">person2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">();</span>
+
+<span class="c1">//印出--------</span>
+<span class="c1">//內存位置不同</span>
+<span class="nx">person1</span><span class="p">.</span><span class="nx">say</span> <span class="o">==</span> <span class="nx">person2</span><span class="p">.</span><span class="nx">say</span><span class="p">;</span> <span class="c1">// false</span>
+<span class="c1">//輸出內容相同</span>
+<span class="nx">person1</span><span class="p">.</span><span class="nx">say</span><span class="p">()</span> <span class="o">==</span> <span class="nx">person2</span><span class="p">.</span><span class="nx">say</span><span class="p">();</span> <span class="c1">// true</span>
+</code></pre>
+</div>
+
+<p>可以發現<code class="highlighter-rouge">person1</code>、<code class="highlighter-rouge">person2</code>雖然都是繼承於<code class="highlighter-rouge">Person</code>物件<br />
+輸出內容一樣，但內存位置卻不同<br />
+也就是說每生成一個實例，都必須多佔用內存去放這些重複性資料<br />
+所以這時候就要用<strong><code class="highlighter-rouge">prototype</code></strong>來解決</p>
+
+<hr />
+
+<h2 id="prototype">Prototype模式</h2>
+
+<p>我們可以把不變的屬性和方法，直接定義在<code class="highlighter-rouge">prototype</code>對象上。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cm">/*物件 Person*/</span>
+<span class="kd">function</span> <span class="nx">Person</span><span class="p">(){}</span>
+<span class="nx">Person</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">say</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span> <span class="nx">alert</span><span class="p">(</span><span class="s2">"嘿!"</span><span class="p">)</span> <span class="p">};</span>
+</code></pre>
+</div>
+
+<p>這樣一來，不同對象的屬性跟方法就會指向同一內存地址，提高了運行效率!!</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">//印出--------</span>
+<span class="c1">//內存位置相同</span>
+<span class="nx">person1</span><span class="p">.</span><span class="nx">say</span> <span class="o">==</span> <span class="nx">person2</span><span class="p">.</span><span class="nx">say</span><span class="p">;</span> <span class="c1">// true</span>
+<span class="c1">//輸出內容相同</span>
+<span class="nx">person1</span><span class="p">.</span><span class="nx">say</span><span class="p">()</span> <span class="o">==</span> <span class="nx">person2</span><span class="p">.</span><span class="nx">say</span><span class="p">();</span> <span class="c1">// true</span>
+</code></pre>
+</div>
+
+<hr />
+
+<p>還有一些輔助方法來確認<code class="highlighter-rouge">prototype</code>跟對象間的關係</p>
+
+<h3 id="isprototypeof-">isPrototypeOf( )</h3>
+<p>判斷<code class="highlighter-rouge">prototype</code>與對象間的關係</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">Person</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">isPrototypeOf</span><span class="p">(</span><span class="nx">person1</span><span class="p">);</span> <span class="c1">// true</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h3 id="hasownproperty-">hasOwnProperty( )</h3>
+<p>判斷某一屬性，是本地或繼承自<code class="highlighter-rouge">prototype</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cm">/*物件 Person*/</span>
+<span class="kd">function</span> <span class="nx">Person</span><span class="p">(</span><span class="nx">name</span><span class="p">){</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">Person</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">say</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span> <span class="nx">alert</span><span class="p">(</span><span class="s2">"嘿!"</span><span class="p">)</span> <span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">person1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="s2">"yakim"</span><span class="p">);</span>
+
+<span class="c1">//印出--------</span>
+<span class="nx">person1</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s2">"name"</span><span class="p">);</span> <span class="c1">// true</span>
+<span class="nx">person1</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s2">"say"</span><span class="p">);</span> <span class="c1">// false</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h3 id="in--">in 運算符( )</h3>
+<p>判斷對象是否含有某個屬性，不管是本地或來自<code class="highlighter-rouge">prototype</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="s2">"name"</span> <span class="k">in</span> <span class="nx">person1</span><span class="p">;</span> <span class="c1">// true</span>
+<span class="s2">"say"</span> <span class="k">in</span> <span class="nx">person1</span><span class="p">;</span> <span class="c1">// true</span>
+</code></pre>
+</div>
+
+<p>也可以遍歷所有的屬性</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">prop</span> <span class="k">in</span> <span class="nx">person1</span><span class="p">){</span>
+  <span class="nx">prop</span> <span class="o">+</span><span class="s2">"="</span><span class="o">+</span><span class="nx">person1</span><span class="p">[</span><span class="nx">prop</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="c1">// 輸出</span>
+<span class="c1">// "name=yakim"</span>
+<span class="c1">// "say=function (){ alert(\"嘿!\") }"</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h3 id="section">實例</h3>
+
+<p><a class="jsbin-embed" href="http://jsbin.com/muwucu/embed?js,console">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?3.35.12"></script></p>
+
+<hr />
+<p>資料來源：<br />
+<a href="https://www.youtube.com/watch?v=O8wwnhdkPE4" target="_blank">Youtube - Object Oriented JavaScript</a><br />
+<a href="https://www.youtube.com/playlist?list=PLhW1K7xGelxd7gro3UFRFomoUD1WxHe7C" target="_blank">Youtube - JavaScript 物件導向程式設計與遊戲實作</a><br />
+<a href="http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_encapsulation.html" target="_blank">阮一峰的网络日志</a></p>
+
+
+<span class="post-date">
+  Written on
+  
+  April
+  12th,
+  2016
+  by Yakim shu
+</span>
+<div class="post-date">Feel free to share!</div>
+  <div class="sharing-icons">
+    <a href="https://twitter.com/intent/tweet?text=【練習】Object Oriented JavaScript - 02 prototype &amp;url=/javascript/OOJS02.html&amp;via=" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=/javascript/OOJS02.html&amp;title=【練習】Object Oriented JavaScript - 02 prototype " target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    <a href="https://plus.google.com/share?url=/javascript/OOJS02.html" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+
+<div class="related">
+  <h1 >You may also enjoy:</h1>
+  
+  <ul class="related-posts">
+    
+      
+        
+          <li>
+            <h3>
+              <a href="/javascript/JS_Daquan-06_2.html">
+                【筆記】Javascript大全 - 06 函式(二) 參數、引數、閉包
+                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<small>May 15, 2016</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/javascript/JS_Daquan-06_1.html">
+                【筆記】Javascript大全 - 06 函式(一) 函式的定義方法
+                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<small>May 15, 2016</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/javascript/JS_Daquan-05_2.html">
+                【筆記】Javascript大全 - 05(二) EMCAScript 5 陣列方法
+                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<small>May 5, 2016</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/javascript/JS_Daquan-05.html">
+                【筆記】Javascript大全 - 05(一) 陣列
+                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<small>May 2, 2016</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/javascript/JS_Daquan-04.html">
+                【筆記】Javascript大全 - 04 物件
+                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<small>April 25, 2016</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/javascript/JS_Daquan-03.html">
+                【筆記】Javascript大全 - 03 術句
+                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<small>April 25, 2016</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/javascript/JS_Daquan-02.html">
+                【筆記】Javascript大全 - 02 運算式與運算子 
+                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<small>April 25, 2016</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/javascript/JS_Daquan-01.html">
+                【筆記】Javascript大全 - 01 型別、值與變數
+                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<small>April 25, 2016</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/javascript/OOJS03.html">
+                【練習】Object Oriented JavaScript - 03 繼承 
+                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<small>April 18, 2016</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+        
+      
+    
+      
+        
+        
+      
+        
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/javascript/OOJS01.html">
+                【練習】Object Oriented JavaScript - 01 封裝 
+                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<small>April 12, 2016</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+    
+  </ul>
+</div>
+
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://yakimshu.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<script id="dsq-count-scr" src="//yakimshu.disqus.com/count.js" async></script>
+
+    </div>
+
+    <footer class="footer">
+  <a href="https://www.facebook.com/yakimshu"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
+  <a href="https://linkedin.com/in/yakimshu"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
+  <a href="mailto:toromilk80129@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
+  <div class="post-date"><a href="/about.html">Yakim shu | Hi, 這是我擴充腦內海馬體的地方。 by Yakim shu</a></div>
+</footer>
+
+
+  </div>
+
+</body>
+</html>

@@ -33,6 +33,7 @@ h1, h2, h3, h4, h5, h6 {
 a {
   text-decoration: none;
   color: #00aeef;
+<<<<<<< HEAD
   -o-transition:.5s;
     -ms-transition:.5s;
     -moz-transition:.5s;
@@ -42,6 +43,20 @@ a {
 
 strong {
   margin:.5em;
+=======
+  -o-transition:.3s;
+    -ms-transition:.3s;
+    -moz-transition:.3s;
+    -webkit-transition:.3s;
+    transition: .3s;
+}
+
+
+strong {
+  margin:.5em;
+  color:#a740ee;
+  font-weight:normal;
+>>>>>>> gh-pages
 }
 
 img {
@@ -123,19 +138,31 @@ table tr:hover td {
 .container {
   margin-left: auto;
   margin-right: auto;
+<<<<<<< HEAD
   width: 700px;
+=======
+  width: 800px;
+>>>>>>> gh-pages
 }
 
 @media (max-width: 1366px) {
   .container {
+<<<<<<< HEAD
     width: 45vw;
+=======
+    width: 70vw;
+>>>>>>> gh-pages
   }
 }
 
 
 @media (max-width: 48em) {
   .container {
+<<<<<<< HEAD
     width: 75vw;
+=======
+    width: 85vw;
+>>>>>>> gh-pages
   }
 }
 
@@ -172,9 +199,27 @@ table tr:hover td {
   margin-bottom: 4rem;
 }
 
+<<<<<<< HEAD
 .story a:hover {
   color: #333;
   border-bottom: 1px dashed #00aeef;
+=======
+.story a {
+  box-shadow: inset 0px -7px 0px 0px rgba(0,0,0,0.1);
+}
+
+.story h1 a, .story h1 ~ a{
+  box-shadow: none;
+}
+
+.story h1 ~ a:hover{
+  box-shadow: none;
+}
+
+.story a:hover {
+  color: #333;
+  box-shadow:inset 0px -2px 0px 0px #00aeef;
+>>>>>>> gh-pages
 }
 
 .posts {
@@ -187,6 +232,35 @@ table tr:hover td {
   color:#333;
 }
 
+<<<<<<< HEAD
+=======
+.posts h1 + a {
+  display: block;
+  height:300px;
+  overflow: hidden;
+  color:#333;
+  position: relative;
+  border-radius:5px;
+}
+
+@media (max-width: 480px) {
+  .posts h1 + a {
+    height:200px;
+  }
+}
+
+
+.posts h1 + a img {
+   max-width:100%; 
+   height:auto; 
+   position:absolute; 
+   left:50%; 
+   top:50%; 
+   transform: 
+   translate(-50%, -50%);
+}
+
+>>>>>>> gh-pages
 .posts a:hover {
   border-bottom: none;
 }
@@ -311,7 +385,11 @@ pre,
 code {
     font-size: 0.95rem;
     border-radius: 3px;
+<<<<<<< HEAD
     background-color: #f5f5f5;
+=======
+    /*background-color: #f5f5f5;*/
+>>>>>>> gh-pages
     font-family: "Source Code Pro";
     padding: 1px 5px;
     margin:0 3px;

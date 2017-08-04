@@ -3,7 +3,12 @@ layout: post
 title: "【出走】泰國-day1 洽圖洽、Red Sky高空酒吧"
 description: "一出廊曼機場，想起剛剛的女海關很兇得叫你拔下眼鏡，還搭配了斜眼看人跟咋舌套餐，就算是職業需要，但初印象還是跟友善又熱情的期待有些違和。"
 category: Travel
+<<<<<<< HEAD
 image: tai_day1.jpg
+=======
+image: http://i.imgur.com/9Y1Dqsk.jpg
+tags: [Travel, Tailand]
+>>>>>>> gh-pages
 ---
 
 一出廊曼機場，想起剛剛的女海關很兇得叫你拔下眼鏡，還搭配了斜眼看人跟咋舌套餐，就算是職業需要，但初印象還是與期待中的友善又熱情有些落差。
@@ -25,15 +30,24 @@ image: tai_day1.jpg
 十幾籃的麵包蟲在你面前蠕動，還有分瘦、中、肥的不同版本，很值得來被嚇一嚇。
 
 
+<<<<<<< HEAD
 ![洽圖洽-01]({{ site.img_url }}tai_1.jpg)
+=======
+![洽圖洽-01](http://i.imgur.com/QTYotdi.jpg)
+>>>>>>> gh-pages
 
 
 下一區十幾隻小博美被擠在一個鐵欄裡，都是幼犬。想到他們未來的命運完全未知，就跟臨江街夜市那排寵物店一樣讓人無法直視。
 
 逛完洽圖洽的結論就是，就算手裡有地圖還是會迷路，因為光一區就大到根本不知道要往哪個方向，最後逛到主要幹道上才有了頭緒。
 
+<<<<<<< HEAD
 ![洽圖洽-02]({{ site.img_url }}tai_1_2.jpg)
 ![洽圖洽-03]({{ site.img_url }}tai_1_3.jpg)
+=======
+![洽圖洽-02](http://i.imgur.com/cRzqD73.jpg)
+![洽圖洽-03](http://i.imgur.com/Ch7Kv8V.jpg)
+>>>>>>> gh-pages
 
 ---
 

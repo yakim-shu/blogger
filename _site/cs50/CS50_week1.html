@@ -1,0 +1,345 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>
+    
+      【心得】CS50 - week 1 | Yakim shu
+    
+  </title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Yakim, toromilk80129@gmail.com">
+  <meta name="robots" content="INDEX,FOLLOW">
+  <!--og-->
+  <meta property="og:title" content="【心得】CS50 - week 1">
+  <meta name="og:description" content="">
+  <meta property="og:url" content="http://yakim-shu.github.io/cs50/CS50_week1.html">
+
+    
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-77560722-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+
+
+<body>
+
+  <div class="container">
+    <header class="masthead">
+  <h3 class="masthead-title">
+    <a href="/">Yakim shu</a>
+    <small class="masthead-subtitle">Hi, 這是我擴充腦內海馬體的地方。</small>
+    <div class="menu">
+  <div class="menu-content">
+    <a href="/about.html">About</a>
+    <a href="/writing.html">Writing</a>
+    <a href="/contacts.html">Contact</a>
+  </div>
+  <div class="social-icons">
+    <a href="https://www.facebook.com/yakimshu"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
+    <a href="https://linkedin.com/in/yakimshu"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
+    <a href="mailto:toromilk80129@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
+  </div>
+</div>
+
+  </h3>
+</header>
+
+
+    <div class="post-container story">
+      <h1>
+  【心得】CS50 - week 1
+</h1>
+
+
+  <img src="http://i.imgur.com/2e9zmb2.png">
+
+
+<p>Week 1 主要課程素材 :</p>
+
+<ul>
+  <li><a href="https://video.cs50.net/2016/fall/lectures/1" target="_blank">課程視頻</a></li>
+  <li><a href="http://docs.cs50.net/2016/fall/notes/1/week1.html" target="_blank">課程文檔</a></li>
+  <li><a href="http://docs.cs50.net/2017/x/psets/1/pset1.html" target="_blank">作業</a></li>
+</ul>
+
+<p>助教課程：</p>
+
+<ul>
+  <li><a href="https://www.youtube.com/embed/poT5Yd0Ag8I?autoplay=1&amp;rel=0">指令碼 - Command Line</a></li>
+  <li><a href="https://www.youtube.com/embed/JFieJW_kZq4?autoplay=1&amp;rel=0">資料類型 - Data Types</a></li>
+  <li><a href="https://www.youtube.com/embed/_FC-8QaaYgs?autoplay=1&amp;rel=0">運算邏輯 - Operators</a></li>
+  <li><a href="https://www.youtube.com/embed/kTnp_-nyocs?autoplay=1&amp;rel=0">運算條件式 - Conditional Statements</a></li>
+  <li><a href="https://www.youtube.com/embed/kTnp_-nyocs?autoplay=1&amp;rel=0">迴圈 - Loops</a></li>
+</ul>
+
+<hr />
+
+<h2 id="scratch-vs-c">Scratch vs. C</h2>
+
+<p>這節開始比較 week 0 所使用的圖像化 <a href="https://zh.wikipedia.org/wiki/Scratch">scratch</a> 轉換成傳統的<a href="https://zh.wikipedia.org/wiki/C%E8%AF%AD%E8%A8%80">程式語言 C</a>。</p>
+
+<p>什麼？你說上節分明就沒有介紹到 scratch ，對我懶但你不能跟著懶，請自己點進去<a href="https://scratch.mit.edu/projects/editor/?tip_bar=getStarted">開始一個專案</a>玩玩~</p>
+
+<p>話說最近在練習 Canvas，引入 CreateJs 實作<a href="http://output.jsbin.com/dapakeheqo" target="_blank">電流急急棒</a>，看似很簡單，但還是碰了不少壁，但如果只是想練習寫個小程式，真得有必要熟讀操作文件去實現那些簡單的邏輯嗎？</p>
+
+<p>但再看看網路上找到的<a href="http://blog.ilc.edu.tw/blog/blog/1279/post/83251/590388">學校老師做的 scratch 實作電流急急棒</a>，用圖像化把語言模塊相接在一起，比我那一大篇js碼還要親民多了吧，而且最終成果也比我屌很多哈哈哈哈(我太弱還做不出障礙物)</p>
+
+<hr />
+
+<h2 id="helloc">Hello.c</h2>
+
+<p>所有程式教學第一步都要對世界打個招呼！</p>
+
+<p>這是一個最簡單的程式，功能只有：<strong>印出一行 “ hello, world “</strong></p>
+
+<p>在 scratch 裡可以這麼做，很清楚一看就懂</p>
+
+<p><img src="http://i.imgur.com/rOTc2nZ.png" alt="scratch - hello" /></p>
+
+<p>那用C語言寫的話，會是以下這段</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="c1">// → (黃色塊)小綠旗
+</span><span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"hello, world</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span> <span class="c1">// → (紫色塊)say
+</span><span class="p">}</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="loops">loops</h2>
+
+<p>剛剛是<strong>說一次</strong> “hello, world”，現在來試試<strong>不斷地說</strong> “hello, world”</p>
+
+<p>實現循環在程式語言中叫做 <strong>loops</strong></p>
+
+<p><img src="http://i.imgur.com/RYiOz7n.png" alt="while" /></p>
+
+<p>上圖右邊的程式碼就是說，當 <code class="highlighter-rouge">while</code> 後括號內容為真，就會不斷執行大括號 <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="p">}</span></code> 裡的內容</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="c1">// → 括號內容為 true
+</span><span class="p">{</span>
+    <span class="c1">// 不斷地運作這裡的程式碼
+</span><span class="p">}</span>
+</code></pre>
+</div>
+
+<hr />
+
+<p>剛剛是<strong>不斷地</strong>說 “hello, world”，那要是想要做<strong>有限次數</strong>的循環呢?</p>
+
+<p>說100次、50次、2次 “hello, world”，這時候就可以用 for loops</p>
+
+<p><code class="highlighter-rouge">for</code> 後括號內容為：<code class="highlighter-rouge">(起始值; 條件式; 更新值)</code></p>
+
+<p><img src="http://i.imgur.com/9KzDQGN.png" alt="for loop" /></p>
+
+<p>迴圈順序如下：</p>
+
+<ol>
+  <li>設定變數 i 為 0 <strong>(起始值)</strong></li>
+  <li>檢查 i 是否在 50 以內 <strong>(條件式)</strong>，要是不成立就跳出迴圈<strong>(步驟6.)</strong></li>
+  <li>說一次 hello, world <strong>(執行 <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="p">}</span></code> 內容)</strong></li>
+  <li>i + 1 <strong>(更新值)</strong></li>
+  <li>回到<strong>(步驟 2.)</strong></li>
+  <li>結束迴圈</li>
+</ol>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="n">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="c1">// 當i小於50，就繼續執行
+</span><span class="p">{</span>
+    <span class="c1">// 執行50次這裡的程式碼
+</span>    <span class="n">printf</span><span class="p">(</span><span class="s">"hello, world</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="if-else">if else</h2>
+
+<p><code class="highlighter-rouge">if else</code> 也是程式語言中共通的判斷式，以下圖為例：</p>
+
+<ol>
+  <li><code class="highlighter-rouge">if</code> 括號內的內容如果正確，就執行對應 <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="p">}</span></code> 裡的內容，</li>
+  <li>反之，如果錯誤了，會尋找 <code class="highlighter-rouge">else if</code> 括號內容，正確就執行對應 <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="p">}</span></code> 內容，</li>
+  <li>如果都沒找到，執行 <code class="highlighter-rouge">else</code> 對應的 <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="p">}</span></code> 內容。</li>
+</ol>
+
+<p><img src="http://i.imgur.com/Q0Js45s.png" alt="ifelse" /></p>
+
+<blockquote>
+  <p>設 x → 1, y → 2，會輸出 “x is less than y”</p>
+</blockquote>
+
+<blockquote>
+  <p>設 x → 2, y → 1，會輸出 “x is greater than y”</p>
+</blockquote>
+
+<blockquote>
+  <p>設 x → 1, y → 1，會輸出 “x is equal to y”</p>
+</blockquote>
+
+<hr />
+
+<h2 id="section">終端機</h2>
+
+<p>終端機是啥，簡單來說就是對電腦下指令，不用滑鼠就可以對電腦進行操作。</p>
+
+<blockquote>
+  <p>就是你會看到MIS走到你的電腦旁，打開一個黑色視窗然後用鍵盤咻咻咻，會瞬間覺得這人很潮(宅)，搭配說了一堆你聽不懂的話，但你腦袋自動放空只希望他把你電腦修好，不要講一些聽不懂的話。</p>
+</blockquote>
+
+<blockquote>
+  <p>要是你公司沒有MIS，那就回想所有電影演到駭客那段，桌上一定會有超多螢幕的視窗畫面就是了。</p>
+</blockquote>
+
+<p><img src="https://camo.githubusercontent.com/43fdb0a62acd9c7abb578d108e6a4913473c82c4/68747470733a2f2f6d656469612e67697068792e636f6d2f6d656469612f4e41355337463264696b4144752f67697068792e676966" alt="terminal" /></p>
+
+<p>↑ 駭客任務裡的代碼雨，只是單純覺得帥。搜尋 “Matrix rain” 可以看到很多教學哈哈哈哈莫名其妙，意外看到一個 <a href="http://thecodeplayer.com/walkthrough/matrix-rain-animation-html5-canvas-javascript" target="_blank">canvas做的好帥阿阿阿阿</a> 不得不分享~</p>
+
+<p>那終端機能辦到什麼，像是資料夾、檔案管理(新建、刪除、移動、重新命名、列表)、批次處理…</p>
+
+<p>應該還有非常多，但我只有學最基本會用到的，其他的等到需要再學吧!!</p>
+
+<p>以下是我看到不錯的教學：</p>
+
+<ul>
+  <li><a href="https://carolhsu.gitbooks.io/django-girls-tutorial-traditional-chiness/content/intro_to_command_line/README.html" target="_blank">介紹命令行(command-line)介面 - for: Mac, Windows</a></li>
+  <li><a href="http://lnpcd.blogspot.tw/2012/09/00.html" target="_blank">初學者之卷：命令提示字元 - for: Windows</a></li>
+</ul>
+
+
+<span class="post-date">
+  Written on
+  
+  March
+  28th,
+  2017
+  by Yakim shu
+</span>
+<div class="post-date">Feel free to share!</div>
+  <div class="sharing-icons">
+    <a href="https://twitter.com/intent/tweet?text=【心得】CS50 - week 1&amp;url=/cs50/CS50_week1.html&amp;via=" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=/cs50/CS50_week1.html&amp;title=【心得】CS50 - week 1" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    <a href="https://plus.google.com/share?url=/cs50/CS50_week1.html" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+
+<div class="related">
+  <h1 >You may also enjoy:</h1>
+  
+  <ul class="related-posts">
+    
+      
+        
+          <li>
+            <h3>
+              <a href="/cs50/CS50_week2.html">
+                【心得】CS50 - week 2
+                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<small>April 27, 2017</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/cs50/CS50_week0.html">
+                【心得】CS50 - week 0
+                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<small>March 7, 2017</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/cs50/CS50_info.html">
+                【心得】CS50 - 課程介紹
+                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<small>March 7, 2017</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+    
+  </ul>
+</div>
+
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://yakimshu.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<script id="dsq-count-scr" src="//yakimshu.disqus.com/count.js" async></script>
+
+    </div>
+
+    <footer class="footer">
+  <a href="https://www.facebook.com/yakimshu"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
+  <a href="https://linkedin.com/in/yakimshu"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
+  <a href="mailto:toromilk80129@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
+  <div class="post-date"><a href="/about.html">Yakim shu | Hi, 這是我擴充腦內海馬體的地方。 by Yakim shu</a></div>
+</footer>
+
+
+  </div>
+
+</body>
+</html>

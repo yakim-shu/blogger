@@ -1,0 +1,211 @@
+<html>
+      <head>
+        <meta charset="UTF-8">
+        <title>2017-04-29-typescript.markdown</title>
+      </head>
+      <body>
+        <hr>
+<p>layout: post</p>
+<h2 id="title-typescript-">title: &quot;【心得】TypeScript新手入門班&quot;</h2>
+<p>密碼： skilltree Typescript</p>
+<h1 id="typescript-">TypeScript新手入門班</h1>
+<h2 id="-">問題</h2>
+<ul>
+<li>一次只能 watch 一隻 ts 檔嗎？</li>
+</ul>
+<hr>
+<h2 id="-">環境</h2>
+<ul>
+<li>command shift p &gt; task config</li>
+<li>command shift p &gt; watch Mode</li>
+<li>command shift b &gt; build</li>
+</ul>
+<h3 id="source-map-">source map 記得打開</h3>
+<ul>
+<li>tsconfig : &quot;sourceMap&quot;: true</li>
+</ul>
+<h3 id="-sever">模擬sever</h3>
+<ul>
+<li>install : npm install -g http-server</li>
+<li>operate: http-server .</li>
+</ul>
+<h3 id="chrome-debugger">chrome debugger</h3>
+<ul>
+<li>安裝 vscode :debugger for chrome</li>
+<li>command shift p &gt; launch.json</li>
+<li>新增組態：</li>
+</ul>
+<pre><code>{
+    &quot;type&quot;: &quot;chrome&quot;,
+    &quot;request&quot;: &quot;launch&quot;,
+    &quot;name&quot;: &quot;Launch Chrome&quot;,
+    &quot;url&quot;: &quot;http://localhost:8080&quot;,
+    &quot;webRoot&quot;: &quot;${workspaceRoot}&quot;
+}
+</code></pre><h2 id="ts-node">ts-node</h2>
+<h3 id="-termianl-typescript">用 termianl 裡測試 typescript</h3>
+<p>安裝：npm install -g ts-node
+執行：ts-node app.ts</p>
+<hr>
+<h2 id="-">型別</h2>
+<h3 id="typescrpit-">typescrpit 特有型別</h3>
+<ul>
+<li>Enum <a href="http://blog.darkthread.net/post-2014-08-20-typescript-enum.aspx">TypeScript列舉型別</a></li>
+<li>Any<ul>
+<li>自由型別，跟javascript用var一樣，可以用 tsconfig 設定禁止用any</li>
+</ul>
+</li>
+</ul>
+<h4 id="-">型別預設</h4>
+<p>-沒寫型別</p>
+<pre><code>- 有給初始值
+    + 自動偵測
+- 沒給初始值
+    + any
+</code></pre><ul>
+<li>vs code &gt; 滑上去會顯示型別</li>
+</ul>
+<h3 id="-">陣列</h3>
+<ul>
+<li>同樣可以用 any</li>
+</ul>
+<h3 id="enum">Enum</h3>
+<ul>
+<li>沒指定數字，會從0開始</li>
+<li>回去試試： 轉換為文字</li>
+</ul>
+<pre><code class="lang-javascript">var size: Size = Size.Large
+var sizeString: string = Size[size];
+Console.log(sizeString); /// Large
+</code></pre>
+<hr>
+<h2 id="-">變數</h2>
+<ul>
+<li>var (function scope)</li>
+<li>let (block scope)<ul>
+<li>let不會有hoisting的問題</li>
+</ul>
+</li>
+<li>const (常數)<ul>
+<li>宣告const的時候，一定要指定初值</li>
+<li>const也不會有hoisting的問題。</li>
+</ul>
+</li>
+</ul>
+<h3 id="let">let</h3>
+<ul>
+<li>建議：沒有要共用檔案，建議使用 let</li>
+<li>限定範圍 (以大括號為準)</li>
+<li>原理：幫你重新命名一個新變數名</li>
+</ul>
+<h3 id="const">const</h3>
+<ul>
+<li>盡量少用 Magic Number，改用有意義的變數或常數</li>
+</ul>
+<hr>
+<h3 id="-">多載</h3>
+<ul>
+<li>同一個函式，不同參數使用</li>
+<li>注意：只有最後一個參數可以用</li>
+<li>spread property: 傳入多個參數</li>
+</ul>
+<h3 id="-">匿名函式</h3>
+<ul>
+<li>不需要再特別做閉包：</li>
+</ul>
+<pre><code>var self = this;
+</code></pre><hr>
+<h3 id="switch">Switch</h3>
+<ul>
+<li>switch 適合搭配 Enum</li>
+</ul>
+<h3 id="for-of">for of</h3>
+<ul>
+<li>比 for in 好用</li>
+<li>for of 是遍歷 屬性值(property values)</li>
+<li>for in 是遍歷 屬性名(property names)</li>
+<li>可以直接取出值，而非 index</li>
+</ul>
+<hr>
+<h3 id="-json">定義 json</h3>
+<p>網路上有<a href="http://json2ts.com/">轉換interface</a></p>
+<pre><code>interface Product {
+    id: number;
+    xxxxx
+}
+
+let data = Product {
+    id:ddd,
+    xxxx
+}
+</code></pre><hr>
+<h2 id="-">物件導向</h2>
+<h2 id="class">Class</h2>
+<h3 id="porperty-private">Porperty Private</h3>
+<ul>
+<li>內部使用，ex: 計算...</li>
+<li>只是提醒，還是拿得到</li>
+</ul>
+<h3 id="property-static">Property static</h3>
+<ul>
+<li>共用，不需初始化</li>
+</ul>
+<blockquote>
+<p>搞懂 property 跟 constructor </p>
+</blockquote>
+<h3 id="constructor">constructor</h3>
+<ul>
+<li>在 constructor 用 public 屬性，可以直接設定屬性及建構式<pre><code>class Student { 
+  constructor(
+    public name: string,
+    public age: number = 18) {
+}
+}
+</code></pre></li>
+</ul>
+<h3 id="interface">interface</h3>
+<ul>
+<li>切換新程式碼可以用，尤其是改版</li>
+<li>名稱前面加 i</li>
+<li>搭配工廠模式</li>
+</ul>
+<blockquote>
+<p>搞懂 interface</p>
+</blockquote>
+<h3 id="module">Module</h3>
+<ul>
+<li>記得加 export (有點像 public)</li>
+</ul>
+<blockquote>
+<p>練習 Demo
+用原本的方法＆物件導向方法</p>
+</blockquote>
+<ul>
+<li>通常是一段程式碼不斷擴充時，再來重構成 interface...
+(關注點分離)</li>
+</ul>
+<hr>
+<h2 id="-">進階物件導向</h2>
+<hr>
+<h2 id="-">非同步</h2>
+<h3 id="promise-es6">Promise ES6</h3>
+<ul>
+<li>IE 不支援</li>
+<li>參考 Promise 的文件寫法</li>
+</ul>
+<p>Lab06 以後輸入 npm install</p>
+<h3 id="async-await-">Async &amp; Await 必須成對出現</h3>
+<h2 id="-">定義檔</h2>
+<p>vs code 不用載入 reference</p>
+<hr>
+<h2 id="-">泛型</h2>
+<ul>
+<li>跟any差別在於，可以檢查是不是array</li>
+<li>會有程式碼提示</li>
+</ul>
+<blockquote>
+<p>方法簽張</p>
+</blockquote>
+
+      </body>
+    </html>
