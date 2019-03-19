@@ -2,21 +2,6 @@
 title:               Yakim shu
 tagline:            Hi, 這是我擴充腦內海馬體的地方。
 description:
-<<<<<<< HEAD
-baseurl:            "/blog"
-img_url:            "../images/"
-url:                #"https://lenpaul.github.io"
-github:
-  # url:               "https://lenpaul.github.io/blog"
-author:
-  name:              "Paul Le"
-  email:             "l.nguyen.paul@gmail.com"
-  twitter:           "paululele"
-  instagram:         "paululele"
-  github:            "lenpaul"
-  facebook:          "Le.Paul.94"
-  linkedin:          "lenpaul"
-=======
 baseurl:            ""
 img_url:            "../images/"
 url:                "http://yakim-shu.github.io"
@@ -28,18 +13,12 @@ author:
   github:            "yakim-shu"
   facebook:          "yakimshu"
   linkedin:          "yakimshu"
->>>>>>> gh-pages
 paginate:            5
 
 
 # Build settings
 markdown:            kramdown
 highlighter:         rouge
-<<<<<<< HEAD
-permalink:           none
-gems:                [jekyll-paginate]
-
-=======
 linenos:             true
 permalink:           none
 gems:                [jekyll-paginate]
@@ -53,7 +32,6 @@ comments :
     num_posts: 5
     width: 580
     colorscheme: light
->>>>>>> gh-pages
 
 # Serving
 detach:  false
