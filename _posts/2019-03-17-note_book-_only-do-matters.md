@@ -4,7 +4,8 @@ title: "【讀書筆記】練習只做重要的事"
 description: "本書的最終目的，是教導讀者在工作和生活中達到平衡，在更短的工時中達到更大的工作績效。"
 category: Note
 image: https://i.imgur.com/bOVWzfy.jpg
-tags: [Note]
+tags: [Note, book]
+file_name: 2019-03-07-note_book_more-productive
 ---
 
 

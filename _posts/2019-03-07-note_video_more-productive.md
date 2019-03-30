@@ -4,7 +4,8 @@ title: "【影片心得】如何擊對抗延症、提高生產力"
 description: "多少次立誓要好好做正經事，但過沒多久又不小心打開了邪惡的 Netflix 享受愉快的時光，影片裡介紹五種方法，教你遠離拖延、找回應有的生產力。"
 category: Note
 image: 
-tags: [Note]
+tags: [Note, video]
+file_name: 2019-03-07-note_video_more-productive
 ---
 
 # How can we be more productive

@@ -5,11 +5,15 @@
   <!-- Posts -->
   
   <url>
+    <loc>http://localhost:4000/travel/SE_asia_day_1.html</loc>
+  </url>
+  
+  <url>
     <loc>http://localhost:4000/note/note_book-_only-do-matters.html</loc>
   </url>
   
   <url>
-    <loc>http://localhost:4000/note/note_book_more-productive.html</loc>
+    <loc>http://localhost:4000/note/note_video_more-productive.html</loc>
   </url>
   
   <url>
