@@ -9,6 +9,8 @@ tags: [Note]
 
 # How can we be more productive
 
+[![](http://img.youtube.com/vi/N60bMFqkcpU/0.jpg)](http://www.youtube.com/watch?v=N60bMFqkcpU "How can we be more productive")
+
 原連結：[課程視頻](https://www.youtube.com/watch?v=N60bMFqkcpU){:target="_blank"}
 
 多少次立誓要好好做正經事，但過沒多久又不小心打開了邪惡的 Netflix 享受愉快的時光，影片裡介紹五種方法，教你遠離拖延、找回應有的生產力。
@@ -54,9 +56,8 @@ Let your minds are relaxed and not doing a particular task. so it doesn't have t
 
 There are two modes in the brain, you can think of these two states as your brain being two different types of pinball machines.
 
-        - Focus Mode: where you are focused on a particular task. (the focus mode brain has many bumpers, so once the pinball takes off, it's easy for the ball to get stuck in a certain area.)
-
-        - Diffuse Mode: where you are relaxed. (the diffuse mode brain has less bumpers, so the pinball bounces much father around and more parts of brain can be accessed.)
+> - Focus Mode: where you are focused on a particular task. (the focus mode brain has many bumpers, so once the pinball takes off, it's easy for the ball to get stuck in a certain area.)
+> - Diffuse Mode: where you are relaxed. (the diffuse mode brain has less bumpers, so the pinball bounces much father around and more parts of brain can be accessed.)
 
 - step 5: Use the flow state cycle.
 
