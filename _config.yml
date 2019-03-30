@@ -3,6 +3,7 @@ title:               Yakim shu
 tagline:            Hi, 這是我擴充腦內海馬體的地方。
 description:
 <<<<<<< HEAD
+<<<<<<< HEAD
 baseurl:            ""
 img_url:            "../images/"
 url:                "http://yakim-shu.github.io"
@@ -15,6 +16,8 @@ author:
   facebook:          "yakimshu"
   linkedin:          "yakimshu"
 =======
+=======
+>>>>>>> parent of b10b9f6... Merge branch 'gh-pages'
 baseurl:            "/blog"
 img_url:            "../images/"
 url:                #"https://lenpaul.github.io"
@@ -28,6 +31,9 @@ author:
   github:            "lenpaul"
   facebook:          "Le.Paul.94"
   linkedin:          "lenpaul"
+<<<<<<< HEAD
+>>>>>>> parent of b10b9f6... Merge branch 'gh-pages'
+=======
 >>>>>>> parent of b10b9f6... Merge branch 'gh-pages'
 paginate:            5
 
@@ -35,6 +41,7 @@ paginate:            5
 # Build settings
 markdown:            kramdown
 highlighter:         rouge
+<<<<<<< HEAD
 <<<<<<< HEAD
 linenos:             true
 permalink:           none
@@ -49,6 +56,11 @@ comments :
     num_posts: 5
     width: 580
     colorscheme: light
+=======
+permalink:           none
+gems:                [jekyll-paginate]
+
+>>>>>>> parent of b10b9f6... Merge branch 'gh-pages'
 =======
 permalink:           none
 gems:                [jekyll-paginate]
