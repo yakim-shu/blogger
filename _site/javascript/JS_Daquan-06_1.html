@@ -1,79 +1,4 @@
-<!doctype html>
-<html>
-
-<head>
-
-  <title>
-    
-      【筆記】Javascript大全 - 06 函式(一) 函式的定義方法 | Yakim shu
-    
-  </title>
-
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="JavaScript函式有三種定義方法，分別在效率、解析順序、作用域上都有不同的特性，要掌握好他們之間的區別。">
-  <meta name="author" content="Yakim, toromilk80129@gmail.com">
-  <meta name="robots" content="INDEX,FOLLOW">
-  <!--og-->
-  <meta property="og:title" content="【筆記】Javascript大全 - 06 函式(一) 函式的定義方法">
-  <meta name="og:description" content="JavaScript函式有三種定義方法，分別在效率、解析順序、作用域上都有不同的特性，要掌握好他們之間的區別。">
-  <meta property="og:url" content="http://yakim-shu.github.io/javascript/JS_Daquan-06_1.html">
-
-    
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="stylesheet" href="/css/main.css">
-  <link rel="stylesheet" href="/css/syntax.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-
-  <script type="text/javascript" async
-    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-  </script>
-
-  <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-77560722-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-
-
-</head>
-
-
-<body>
-
-  <div class="container">
-    <header class="masthead">
-  <h3 class="masthead-title">
-    <a href="/">Yakim shu</a>
-    <small class="masthead-subtitle">Hi, 這是我擴充腦內海馬體的地方。</small>
-    <div class="menu">
-  <div class="menu-content">
-    <a href="/about.html">About</a>
-    <a href="/writing.html">Writing</a>
-    <a href="/contacts.html">Contact</a>
-  </div>
-  <div class="social-icons">
-    <a href="https://www.facebook.com/yakimshu"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
-    <a href="https://linkedin.com/in/yakimshu"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
-    <a href="mailto:toromilk80129@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
-  </div>
-</div>
-
-  </h3>
-</header>
-
-
-    <div class="post-container story">
-      <h1>
+<h1>
   【筆記】Javascript大全 - 06 函式(一) 函式的定義方法
 </h1>
 
@@ -81,7 +6,7 @@
 
 <p>JavaScript函式有三種定義方法，一般來說前兩種比較常用，分別在效率、解析順序、作用域上都有不同的特性，接下來會解釋他們之間的區別。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">// 1. function語句函式</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">// 1. function語句函式</span>
 <span class="kd">function</span> <span class="nx">test1</span><span class="p">(){</span> <span class="p">};</span>
 
 <span class="c1">// 2. 函式直接賦值變數</span>
@@ -94,7 +19,7 @@
 
 <hr />
 
-<h3 id="section">編譯順序比較</h3>
+<h3 id="編譯順序比較">編譯順序比較</h3>
 
 <p>對於<strong>function語句式</strong>的函數，<strong>JavaScript解析器會優先的解釋</strong>，其後才是一行一行照順序解析</p>
 
@@ -103,7 +28,7 @@
   <li>第二種宣告方式(<code class="highlighter-rouge">test2()</code>)，只有<strong>先宣告變數</strong>(<code class="highlighter-rouge">var test2;</code>)，並沒有把函數值賦上去，查看會發現 <code class="highlighter-rouge">test2=undefined</code>，函數值等到執行到該行時，才會賦值到變數，所以不能在宣告之前調用。</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">test1</span><span class="p">();</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">test1</span><span class="p">();</span>
 <span class="c1">// "第一種宣告方式：可以先調用再宣告!"</span>
 <span class="kd">function</span> <span class="nx">test1</span><span class="p">()</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"第一種宣告方式：可以先調用再宣告!"</span><span class="p">);</span>
@@ -127,7 +52,7 @@
   <li>最後依序回傳 4, 2, 3, 3, 5, 6</li>
 </ol>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">test1</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span> <span class="p">}</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">test1</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span> <span class="p">}</span>
 <span class="nx">alert</span><span class="p">(</span><span class="nx">test1</span><span class="p">());</span>  <span class="c1">// 4 → 被第四個 test1() 蓋掉</span>
 
 <span class="kd">var</span> <span class="nx">test1</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">2</span><span class="p">;</span> <span class="p">};</span>
@@ -147,7 +72,7 @@
 </code></pre>
 </div>
 
-<h3 id="section-1">效率比較</h3>
+<h3 id="效率比較">效率比較</h3>
 
 <p>做一個執行100000次的迴圈，分別測試三種函式的作用時間 ( 可以把個別的註釋拿掉做測試 )<br />
 會發現總花費時間： 1 = 2 &lt; 3</p>
@@ -157,7 +82,7 @@
   <li>第三種方法建構式則是使用後就會被釋放掉，不占用內存，但每次調用都要再重新<code class="highlighter-rouge">new</code>一次，適合只需要調用一次的情況。</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">day1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">day1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
 <span class="kd">var</span> <span class="nx">time1</span> <span class="o">=</span> <span class="nx">day1</span><span class="p">.</span><span class="nx">getTime</span><span class="p">();</span>
 
 <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="mi">100000</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
@@ -180,7 +105,7 @@
 
 <hr />
 
-<h3 id="section-2">作用域比較</h3>
+<h3 id="作用域比較">作用域比較</h3>
 
 <p>此範例定義3種同名函式，可以把個別註釋拿掉看比較結果。</p>
 
@@ -189,7 +114,7 @@
   <li>第三種方法建構式則是頂級作用域，等於在外部宣告一個全域變數，所以會回傳 1</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">k</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//全域變數</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">k</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//全域變數</span>
 
 <span class="kd">function</span> <span class="nx">fn</span><span class="p">(){</span>
   <span class="kd">var</span> <span class="nx">k</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//區域變數</span>
@@ -210,7 +135,7 @@
 
 <hr />
 
-<h2 id="section-3">結論</h2>
+<h2 id="結論">結論</h2>
 
 <p>綜合以上比較結果，可以得出3種定義函式的不同</p>
 
@@ -280,7 +205,10 @@
   </div>
 </div>
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> gh-pages
 <div class="related">
   <h1 >You may also enjoy:</h1>
   
@@ -292,7 +220,7 @@
             <h3>
               <a href="/javascript/JS_Daquan-06_2.html">
                 【筆記】Javascript大全 - 06 函式(二) 參數、引數、閉包
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>May 15, 2016</small>-->
               </a>
             </h3>
@@ -308,7 +236,7 @@
             <h3>
               <a href="/javascript/JS_Daquan-05_2.html">
                 【筆記】Javascript大全 - 05(二) EMCAScript 5 陣列方法
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>May 5, 2016</small>-->
               </a>
             </h3>
@@ -321,7 +249,7 @@
             <h3>
               <a href="/javascript/JS_Daquan-05.html">
                 【筆記】Javascript大全 - 05(一) 陣列
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>May 2, 2016</small>-->
               </a>
             </h3>
@@ -334,7 +262,7 @@
             <h3>
               <a href="/javascript/JS_Daquan-04.html">
                 【筆記】Javascript大全 - 04 物件
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>April 25, 2016</small>-->
               </a>
             </h3>
@@ -347,7 +275,7 @@
             <h3>
               <a href="/javascript/JS_Daquan-03.html">
                 【筆記】Javascript大全 - 03 術句
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>April 25, 2016</small>-->
               </a>
             </h3>
@@ -360,7 +288,7 @@
             <h3>
               <a href="/javascript/JS_Daquan-02.html">
                 【筆記】Javascript大全 - 02 運算式與運算子 
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>April 25, 2016</small>-->
               </a>
             </h3>
@@ -373,7 +301,7 @@
             <h3>
               <a href="/javascript/JS_Daquan-01.html">
                 【筆記】Javascript大全 - 01 型別、值與變數
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>April 25, 2016</small>-->
               </a>
             </h3>
@@ -386,7 +314,7 @@
             <h3>
               <a href="/javascript/OOJS03.html">
                 【練習】Object Oriented JavaScript - 03 繼承 
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>April 18, 2016</small>-->
               </a>
             </h3>
@@ -399,7 +327,7 @@
             <h3>
               <a href="/javascript/OOJS02.html">
                 【練習】Object Oriented JavaScript - 02 prototype 
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>April 12, 2016</small>-->
               </a>
             </h3>
@@ -437,6 +365,8 @@
   </ul>
 </div>
 
+<<<<<<< HEAD
+=======
 
 <div id="disqus_thread"></div>
 <script>
@@ -459,18 +389,4 @@ s.setAttribute('data-timestamp', +new Date());
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <script id="dsq-count-scr" src="//yakimshu.disqus.com/count.js" async></script>
-
-    </div>
-
-    <footer class="footer">
-  <a href="https://www.facebook.com/yakimshu"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
-  <a href="https://linkedin.com/in/yakimshu"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
-  <a href="mailto:toromilk80129@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
-  <div class="post-date"><a href="/about.html">Yakim shu | Hi, 這是我擴充腦內海馬體的地方。 by Yakim shu</a></div>
-</footer>
-
-
-  </div>
-
-</body>
-</html>
+>>>>>>> gh-pages

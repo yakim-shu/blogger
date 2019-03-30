@@ -1,79 +1,4 @@
-<!doctype html>
-<html>
-
-<head>
-
-  <title>
-    
-      【練習】Object Oriented JavaScript - 01 封裝  | Yakim shu
-    
-  </title>
-
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="Yakim, toromilk80129@gmail.com">
-  <meta name="robots" content="INDEX,FOLLOW">
-  <!--og-->
-  <meta property="og:title" content="【練習】Object Oriented JavaScript - 01 封裝 ">
-  <meta name="og:description" content="">
-  <meta property="og:url" content="http://yakim-shu.github.io/javascript/OOJS01.html">
-
-    
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="stylesheet" href="/css/main.css">
-  <link rel="stylesheet" href="/css/syntax.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-
-  <script type="text/javascript" async
-    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-  </script>
-
-  <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-77560722-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-
-
-</head>
-
-
-<body>
-
-  <div class="container">
-    <header class="masthead">
-  <h3 class="masthead-title">
-    <a href="/">Yakim shu</a>
-    <small class="masthead-subtitle">Hi, 這是我擴充腦內海馬體的地方。</small>
-    <div class="menu">
-  <div class="menu-content">
-    <a href="/about.html">About</a>
-    <a href="/writing.html">Writing</a>
-    <a href="/contacts.html">Contact</a>
-  </div>
-  <div class="social-icons">
-    <a href="https://www.facebook.com/yakimshu"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
-    <a href="https://linkedin.com/in/yakimshu"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
-    <a href="mailto:toromilk80129@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
-  </div>
-</div>
-
-  </h3>
-</header>
-
-
-    <div class="post-container story">
-      <h1>
+<h1>
   【練習】Object Oriented JavaScript - 01 封裝 
 </h1>
 
@@ -83,10 +8,10 @@
 
 <hr />
 
-<h2 id="section">封裝</h2>
+<h2 id="封裝">封裝</h2>
 <p>1.首先建立一個<code class="highlighter-rouge">Person</code>物件</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="cm">/*物件 Person*/</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="cm">/*物件 Person*/</span>
 <span class="kd">function</span> <span class="nx">Person</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">sex</span><span class="p">){</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">sex</span> <span class="o">=</span> <span class="nx">sex</span><span class="p">;</span>
@@ -106,7 +31,7 @@
   <li>方法二：<code class="highlighter-rouge">constrcotor</code></li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">person1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="s2">"yakim"</span><span class="p">,</span> <span class="s2">"female"</span><span class="p">);</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">person1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="s2">"yakim"</span><span class="p">,</span> <span class="s2">"female"</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">person2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="s2">"Jimmy"</span><span class="p">,</span> <span class="s2">"male"</span><span class="p">)</span>
 
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">person1</span><span class="p">.</span><span class="nx">print</span><span class="p">());</span> <span class="c1">// "yakim sex is female"</span>
@@ -124,7 +49,7 @@
 
 <p>3.改變<code class="highlighter-rouge">Person</code>內容</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="cm">/*函式 changeName*/</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="cm">/*函式 changeName*/</span>
 <span class="kd">function</span> <span class="nx">changeName</span> <span class="p">(</span><span class="nx">person3</span><span class="p">){</span>
     <span class="nx">person3</span><span class="p">.</span><span class="nx">sex</span> <span class="o">=</span> <span class="s2">"male"</span><span class="p">;</span>
 <span class="p">}</span>
@@ -137,7 +62,7 @@
 
 <hr />
 
-<h3 id="section-1">實例</h3>
+<h3 id="實例">實例</h3>
 
 <p><a class="jsbin-embed" href="http://jsbin.com/zezalumega/embed?html,console">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?3.35.12"></script></p>
 
@@ -164,7 +89,10 @@
   </div>
 </div>
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> gh-pages
 <div class="related">
   <h1 >You may also enjoy:</h1>
   
@@ -176,7 +104,7 @@
             <h3>
               <a href="/javascript/JS_Daquan-06_2.html">
                 【筆記】Javascript大全 - 06 函式(二) 參數、引數、閉包
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>May 15, 2016</small>-->
               </a>
             </h3>
@@ -189,7 +117,7 @@
             <h3>
               <a href="/javascript/JS_Daquan-06_1.html">
                 【筆記】Javascript大全 - 06 函式(一) 函式的定義方法
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>May 15, 2016</small>-->
               </a>
             </h3>
@@ -202,7 +130,7 @@
             <h3>
               <a href="/javascript/JS_Daquan-05_2.html">
                 【筆記】Javascript大全 - 05(二) EMCAScript 5 陣列方法
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>May 5, 2016</small>-->
               </a>
             </h3>
@@ -215,7 +143,7 @@
             <h3>
               <a href="/javascript/JS_Daquan-05.html">
                 【筆記】Javascript大全 - 05(一) 陣列
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>May 2, 2016</small>-->
               </a>
             </h3>
@@ -228,7 +156,7 @@
             <h3>
               <a href="/javascript/JS_Daquan-04.html">
                 【筆記】Javascript大全 - 04 物件
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>April 25, 2016</small>-->
               </a>
             </h3>
@@ -241,7 +169,7 @@
             <h3>
               <a href="/javascript/JS_Daquan-03.html">
                 【筆記】Javascript大全 - 03 術句
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>April 25, 2016</small>-->
               </a>
             </h3>
@@ -254,7 +182,7 @@
             <h3>
               <a href="/javascript/JS_Daquan-02.html">
                 【筆記】Javascript大全 - 02 運算式與運算子 
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>April 25, 2016</small>-->
               </a>
             </h3>
@@ -267,7 +195,7 @@
             <h3>
               <a href="/javascript/JS_Daquan-01.html">
                 【筆記】Javascript大全 - 01 型別、值與變數
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>April 25, 2016</small>-->
               </a>
             </h3>
@@ -280,7 +208,7 @@
             <h3>
               <a href="/javascript/OOJS03.html">
                 【練習】Object Oriented JavaScript - 03 繼承 
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>April 18, 2016</small>-->
               </a>
             </h3>
@@ -293,7 +221,7 @@
             <h3>
               <a href="/javascript/OOJS02.html">
                 【練習】Object Oriented JavaScript - 02 prototype 
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>April 12, 2016</small>-->
               </a>
             </h3>
@@ -316,6 +244,8 @@
   </ul>
 </div>
 
+<<<<<<< HEAD
+=======
 
 <div id="disqus_thread"></div>
 <script>
@@ -338,18 +268,4 @@ s.setAttribute('data-timestamp', +new Date());
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <script id="dsq-count-scr" src="//yakimshu.disqus.com/count.js" async></script>
-
-    </div>
-
-    <footer class="footer">
-  <a href="https://www.facebook.com/yakimshu"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
-  <a href="https://linkedin.com/in/yakimshu"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
-  <a href="mailto:toromilk80129@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
-  <div class="post-date"><a href="/about.html">Yakim shu | Hi, 這是我擴充腦內海馬體的地方。 by Yakim shu</a></div>
-</footer>
-
-
-  </div>
-
-</body>
-</html>
+>>>>>>> gh-pages

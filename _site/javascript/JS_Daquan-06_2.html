@@ -1,79 +1,4 @@
-<!doctype html>
-<html>
-
-<head>
-
-  <title>
-    
-      【筆記】Javascript大全 - 06 函式(二) 參數、引數、閉包 | Yakim shu
-    
-  </title>
-
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="這章一開始就卡在閉包(Closures)上，有很多問題也是要反覆google才漸漸了解，正式推開了Javascript的神秘大門。">
-  <meta name="author" content="Yakim, toromilk80129@gmail.com">
-  <meta name="robots" content="INDEX,FOLLOW">
-  <!--og-->
-  <meta property="og:title" content="【筆記】Javascript大全 - 06 函式(二) 參數、引數、閉包">
-  <meta name="og:description" content="這章一開始就卡在閉包(Closures)上，有很多問題也是要反覆google才漸漸了解，正式推開了Javascript的神秘大門。">
-  <meta property="og:url" content="http://yakim-shu.github.io/javascript/JS_Daquan-06_2.html">
-
-    
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="stylesheet" href="/css/main.css">
-  <link rel="stylesheet" href="/css/syntax.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-
-  <script type="text/javascript" async
-    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-  </script>
-
-  <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-77560722-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-
-
-</head>
-
-
-<body>
-
-  <div class="container">
-    <header class="masthead">
-  <h3 class="masthead-title">
-    <a href="/">Yakim shu</a>
-    <small class="masthead-subtitle">Hi, 這是我擴充腦內海馬體的地方。</small>
-    <div class="menu">
-  <div class="menu-content">
-    <a href="/about.html">About</a>
-    <a href="/writing.html">Writing</a>
-    <a href="/contacts.html">Contact</a>
-  </div>
-  <div class="social-icons">
-    <a href="https://www.facebook.com/yakimshu"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
-    <a href="https://linkedin.com/in/yakimshu"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
-    <a href="mailto:toromilk80129@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
-  </div>
-</div>
-
-  </h3>
-</header>
-
-
-    <div class="post-container story">
-      <h1>
+<h1>
   【筆記】Javascript大全 - 06 函式(二) 參數、引數、閉包
 </h1>
 
@@ -81,7 +6,7 @@
 
 <p>函式(<code class="highlighter-rouge">function</code>)是Javascript程式碼區塊，僅定義一次就可以被多次執行或調用。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">getName</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// name → 參數</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">getName</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// name → 參數</span>
     <span class="k">return</span> <span class="nx">name</span><span class="p">;</span> <span class="c1">// name → 回傳值</span>
 <span class="p">}</span>
 <span class="nx">getName</span><span class="p">(</span><span class="s2">"yakim"</span><span class="p">);</span> <span class="c1">// "yakim" → 引數</span>
@@ -90,7 +15,7 @@
 
 <hr />
 
-<h3 id="section">調用函式</h3>
+<h3 id="調用函式">調用函式</h3>
 
 <p>函式執行是在被調用時才開始，非函式定義時，Javascript有四種調用方式</p>
 
@@ -125,7 +50,7 @@
 
 <p>就只是印出物件的特性名稱與值，不需回傳值，該函式的調用值永遠是<code class="highlighter-rouge">undefined</code>。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code> <span class="kd">var</span> <span class="nx">o</span> <span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="s2">"a"</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="s2">"b"</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span><span class="s2">"c"</span><span class="p">};</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code> <span class="kd">var</span> <span class="nx">o</span> <span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="s2">"a"</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="s2">"b"</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span><span class="s2">"c"</span><span class="p">};</span>
 
 <span class="kd">function</span> <span class="nx">print</span><span class="p">(</span><span class="nx">o</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">prop</span> <span class="k">in</span> <span class="nx">o</span><span class="p">)</span> <span class="p">{</span>
@@ -142,7 +67,7 @@
 
 <hr />
 
-<h3 id="section-1">選擇性參數</h3>
+<h3 id="選擇性參數">選擇性參數</h3>
 
 <p>函式調用的<strong>引數比參數少</strong>時，額外參數會被設為<code class="highlighter-rouge">undefined</code>，我們可以為<strong>可能不存在的參數</strong>設定<strong>預設值</strong>，使函式更有彈性。</p>
 
@@ -150,7 +75,7 @@
   <p>設計具有選擇性引數的函式時，非必須的引數要放在引數列的最後，這樣他們才能被忽略，簡單來說，注意<strong>引數順序</strong></p>
 </blockquote>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">obj1</span> <span class="o">=</span> <span class="p">{</span><span class="na">a</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span> <span class="na">b</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span> <span class="na">c</span><span class="p">:</span><span class="s2">"3"</span><span class="p">};</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">obj1</span> <span class="o">=</span> <span class="p">{</span><span class="na">a</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span> <span class="na">b</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span> <span class="na">c</span><span class="p">:</span><span class="s2">"3"</span><span class="p">};</span>
 <span class="kd">var</span> <span class="nx">obj2</span> <span class="o">=</span> <span class="p">{</span><span class="na">d</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span> <span class="na">e</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span> <span class="na">f</span><span class="p">:</span><span class="s2">"3"</span><span class="p">};</span>
 
 <span class="kd">function</span> <span class="nx">getPropertyNames</span><span class="p">(</span><span class="nx">o</span><span class="p">,</span><span class="nx">a</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// o → 必須 ; a → 可以忽略</span>
@@ -169,7 +94,7 @@
 
 <hr />
 
-<h3 id="arguments-">Arguments 物件</h3>
+<h3 id="arguments-物件">Arguments 物件</h3>
 
 <p>看完引數比參數少的情況，那倒過來看，換成參數比比引數少的時候呢，<code class="highlighter-rouge">arguments</code>就上場了<br />
 <code class="highlighter-rouge">arguments</code>物件是種「類陣列物件」，有<strong><code class="highlighter-rouge">length</code>屬性</strong>，指的就是引數的數量</p>
@@ -179,7 +104,7 @@
   <li><code class="highlighter-rouge">arguments[1]</code> → 第二個引數</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">// 抓出最大值</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">// 抓出最大值</span>
 <span class="nx">Max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">20</span><span class="p">);</span> <span class="c1">// 100</span>
 
 <span class="kd">function</span> <span class="nx">Max</span><span class="p">()</span> <span class="p">{</span>
@@ -198,11 +123,11 @@
 
 <hr />
 
-<h3 id="section-2">使用物件特性做為引數</h3>
+<h3 id="使用物件特性做為引數">使用物件特性做為引數</h3>
 
 <p>當一個函式有超過三個以上的參數，要調用時會不好記順序，這時可以把單一物件當成引數傳入，使用「名稱/值」的方式對照，無須理會正確順序。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="nx">b</span> <span class="o">=</span> <span class="p">[];</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="nx">b</span> <span class="o">=</span> <span class="p">[];</span>
 <span class="nx">copy</span><span class="p">({</span><span class="na">from</span><span class="p">:</span><span class="nx">a</span><span class="p">,</span> <span class="na">to</span><span class="p">:</span><span class="nx">b</span><span class="p">,</span> <span class="na">length</span><span class="p">:</span><span class="mi">4</span><span class="p">});</span>
 
 <span class="kd">function</span> <span class="nx">copy</span><span class="p">(</span><span class="nx">obj</span><span class="p">)</span> <span class="p">{</span>
@@ -217,11 +142,11 @@
 
 <hr />
 
-<h3 id="section-3">函式做為值</h3>
+<h3 id="函式做為值">函式做為值</h3>
 
 <p>函式也可以當做「值」，這代表他們可以被指定給變數、物件特性或陣列元素中，或是<strong>傳給函式當作引數</strong>用。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">// 計算式</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">// 計算式</span>
 <span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="nx">y</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">x</span><span class="o">+</span><span class="nx">y</span><span class="p">;</span> <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">subtract</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="nx">y</span><span class="p">)</span> <span class="p">{</span><span class="k">return</span> <span class="nx">x</span><span class="o">-</span><span class="nx">y</span><span class="p">;</span> <span class="p">}</span>
 
@@ -242,11 +167,11 @@
 
 <hr />
 
-<h3 id="section-4">定義函式特性</h3>
+<h3 id="定義函式特性">定義函式特性</h3>
 
 <p>函式是一種物件，代表也有特性可以存取，假設你要寫一個每次調用都回傳不同值的函式，且都要記錄上次存取的值，我們可以把資訊直接存在<strong>函式特性</strong>上</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">addCount</span><span class="p">.</span><span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">addCount</span><span class="p">.</span><span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="kd">function</span> <span class="nx">addCount</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">return</span> <span class="nx">addCount</span><span class="p">.</span><span class="nx">count</span><span class="o">++</span><span class="p">;</span>
 <span class="p">}</span>
@@ -261,7 +186,7 @@
 
 <hr />
 
-<h3 id="call--apply">call &amp; apply方法</h3>
+<h3 id="call--apply方法">call &amp; apply方法</h3>
 
 <p><code class="highlighter-rouge">.call()</code> 與 <code class="highlighter-rouge">.apply()</code> 可以用來傳遞參數用，但更重要的功能是用來<strong>間接調用某函式</strong>，當作是某物件的方法，<strong>第一個引數</strong>是指出要
 <strong>在哪個物件上調用</strong>，在函式內容中成為<code class="highlighter-rouge">this</code></p>
@@ -271,9 +196,9 @@
   <li><code class="highlighter-rouge">apply</code>：一組<strong>陣列</strong>當引數 <code class="highlighter-rouge">f.call(object, [num1, num2])</code></li>
 </ul>
 
-<h4 id="section-5">傳遞參數</h4>
+<h4 id="傳遞參數">傳遞參數</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">//傳遞參數用--------------</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">//傳遞參數用--------------</span>
 <span class="kd">function</span> <span class="nx">sum</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">return</span> <span class="nx">x</span><span class="o">+</span><span class="nx">y</span><span class="p">;</span>
 <span class="p">}</span>
@@ -297,9 +222,9 @@ function applyTest() {
 </code></pre>
 </div>
 
-<h4 id="section-6">間接調用函式</h4>
+<h4 id="間接調用函式">間接調用函式</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">//間接調用函式，當做是物件的方法--------------</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">//間接調用函式，當做是物件的方法--------------</span>
 <span class="kd">function</span> <span class="nx">sum</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">return</span> <span class="nx">x</span><span class="o">+</span><span class="nx">y</span><span class="p">;</span>
 <span class="p">}</span>
@@ -318,7 +243,7 @@ function applyTest() {
 
 <hr />
 
-<h3 id="closures-">Closures 閉包</h3>
+<h3 id="closures-閉包">Closures 閉包</h3>
 
 <p>閉包這邊卡了很久，網路上的教學大多看不太懂QAQ<br />
 我的理解是閉包主要用於兩部分：</p>
@@ -329,7 +254,7 @@ function applyTest() {
 
 <p>以下例子是輸出<code class="highlighter-rouge">global</code>而不是<code class="highlighter-rouge">local</code>，為什麼呢?</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="s2">"global"</span><span class="p">;</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="s2">"global"</span><span class="p">;</span>
 <span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">name</span><span class="p">:</span> <span class="s2">"local"</span><span class="p">,</span>
   <span class="na">getName</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
@@ -348,7 +273,7 @@ function applyTest() {
 
 <p><code class="highlighter-rouge">obj.getName()</code>的函式回傳值，也是一個函式</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">// a 就是一個函式</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">// a 就是一個函式</span>
 <span class="c1">// 在此範例中， this 就等於 window</span>
 <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
@@ -365,7 +290,7 @@ function applyTest() {
 <p>可以先設一個變數，將預期的物件作用域存下來，
 之後要調用就不會受到<code class="highlighter-rouge">this</code>的特性影響</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="s2">"global"</span><span class="p">;</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="s2">"global"</span><span class="p">;</span>
 <span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">name</span><span class="p">:</span> <span class="s2">"local"</span><span class="p">,</span>
   <span class="na">getName</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
@@ -387,7 +312,7 @@ function applyTest() {
   <li><strong>共享私有變數的存取權</strong></li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">counter</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">counter</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">total</span> <span class="o">=</span> <span class="nx">x</span><span class="p">;</span>
   <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">total</span> <span class="o">+=</span> <span class="nx">x</span><span class="p">;</span>
@@ -425,7 +350,10 @@ function applyTest() {
   </div>
 </div>
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> gh-pages
 <div class="related">
   <h1 >You may also enjoy:</h1>
   
@@ -440,7 +368,7 @@ function applyTest() {
             <h3>
               <a href="/javascript/JS_Daquan-06_1.html">
                 【筆記】Javascript大全 - 06 函式(一) 函式的定義方法
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>May 15, 2016</small>-->
               </a>
             </h3>
@@ -453,7 +381,7 @@ function applyTest() {
             <h3>
               <a href="/javascript/JS_Daquan-05_2.html">
                 【筆記】Javascript大全 - 05(二) EMCAScript 5 陣列方法
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>May 5, 2016</small>-->
               </a>
             </h3>
@@ -466,7 +394,7 @@ function applyTest() {
             <h3>
               <a href="/javascript/JS_Daquan-05.html">
                 【筆記】Javascript大全 - 05(一) 陣列
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>May 2, 2016</small>-->
               </a>
             </h3>
@@ -479,7 +407,7 @@ function applyTest() {
             <h3>
               <a href="/javascript/JS_Daquan-04.html">
                 【筆記】Javascript大全 - 04 物件
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>April 25, 2016</small>-->
               </a>
             </h3>
@@ -492,7 +420,7 @@ function applyTest() {
             <h3>
               <a href="/javascript/JS_Daquan-03.html">
                 【筆記】Javascript大全 - 03 術句
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>April 25, 2016</small>-->
               </a>
             </h3>
@@ -505,7 +433,7 @@ function applyTest() {
             <h3>
               <a href="/javascript/JS_Daquan-02.html">
                 【筆記】Javascript大全 - 02 運算式與運算子 
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>April 25, 2016</small>-->
               </a>
             </h3>
@@ -518,7 +446,7 @@ function applyTest() {
             <h3>
               <a href="/javascript/JS_Daquan-01.html">
                 【筆記】Javascript大全 - 01 型別、值與變數
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>April 25, 2016</small>-->
               </a>
             </h3>
@@ -531,7 +459,7 @@ function applyTest() {
             <h3>
               <a href="/javascript/OOJS03.html">
                 【練習】Object Oriented JavaScript - 03 繼承 
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>April 18, 2016</small>-->
               </a>
             </h3>
@@ -544,7 +472,7 @@ function applyTest() {
             <h3>
               <a href="/javascript/OOJS02.html">
                 【練習】Object Oriented JavaScript - 02 prototype 
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>April 12, 2016</small>-->
               </a>
             </h3>
@@ -582,6 +510,8 @@ function applyTest() {
   </ul>
 </div>
 
+<<<<<<< HEAD
+=======
 
 <div id="disqus_thread"></div>
 <script>
@@ -604,18 +534,4 @@ s.setAttribute('data-timestamp', +new Date());
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <script id="dsq-count-scr" src="//yakimshu.disqus.com/count.js" async></script>
-
-    </div>
-
-    <footer class="footer">
-  <a href="https://www.facebook.com/yakimshu"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
-  <a href="https://linkedin.com/in/yakimshu"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
-  <a href="mailto:toromilk80129@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
-  <div class="post-date"><a href="/about.html">Yakim shu | Hi, 這是我擴充腦內海馬體的地方。 by Yakim shu</a></div>
-</footer>
-
-
-  </div>
-
-</body>
-</html>
+>>>>>>> gh-pages

@@ -1,79 +1,4 @@
-<!doctype html>
-<html>
-
-<head>
-
-  <title>
-    
-      【筆記】Javascript大全 - 05(一) 陣列 | Yakim shu
-    
-  </title>
-
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Javascript陣列是一種特殊型式的物件，陣列(array)是一組有序的值，其中的值稱為元素，其索引是為整數的特性名稱。這篇也會提到陣列的操作方法。">
-  <meta name="author" content="Yakim, toromilk80129@gmail.com">
-  <meta name="robots" content="INDEX,FOLLOW">
-  <!--og-->
-  <meta property="og:title" content="【筆記】Javascript大全 - 05(一) 陣列">
-  <meta name="og:description" content="Javascript陣列是一種特殊型式的物件，陣列(array)是一組有序的值，其中的值稱為元素，其索引是為整數的特性名稱。這篇也會提到陣列的操作方法。">
-  <meta property="og:url" content="http://yakim-shu.github.io/javascript/JS_Daquan-05.html">
-
-    
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="stylesheet" href="/css/main.css">
-  <link rel="stylesheet" href="/css/syntax.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-
-  <script type="text/javascript" async
-    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-  </script>
-
-  <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-77560722-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-
-
-</head>
-
-
-<body>
-
-  <div class="container">
-    <header class="masthead">
-  <h3 class="masthead-title">
-    <a href="/">Yakim shu</a>
-    <small class="masthead-subtitle">Hi, 這是我擴充腦內海馬體的地方。</small>
-    <div class="menu">
-  <div class="menu-content">
-    <a href="/about.html">About</a>
-    <a href="/writing.html">Writing</a>
-    <a href="/contacts.html">Contact</a>
-  </div>
-  <div class="social-icons">
-    <a href="https://www.facebook.com/yakimshu"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
-    <a href="https://linkedin.com/in/yakimshu"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
-    <a href="mailto:toromilk80129@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
-  </div>
-</div>
-
-  </h3>
-</header>
-
-
-    <div class="post-container story">
-      <h1>
+<h1>
   【筆記】Javascript大全 - 05(一) 陣列
 </h1>
 
@@ -83,12 +8,12 @@
 
 <hr />
 
-<h3 id="section">創建陣列</h3>
+<h3 id="創建陣列">創建陣列</h3>
 
 <p>如果一組陣列字面值有多個逗號，逗號間又沒有值，這個陣列是<strong>稀疏</strong>的。<br />
 值被省略的陣列元素並不存在，查用會得到<code class="highlighter-rouge">undefined</code></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,,</span><span class="mi">3</span><span class="p">];</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,,</span><span class="mi">3</span><span class="p">];</span>
 <span class="kd">var</span> <span class="nx">B</span> <span class="o">=</span> <span class="p">[,,];</span>
 
 <span class="nx">A</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="c1">// undefined</span>
@@ -99,7 +24,7 @@
 
 <hr />
 
-<h3 id="section-1">陣列特性</h3>
+<h3 id="陣列特性">陣列特性</h3>
 
 <p>陣列特殊之處，當特性名稱是小於 2的32次方的非負整數(即特性索引)，陣列會自動補上<code class="highlighter-rouge">length</code>值<br />
 分別 <strong>陣列索引</strong> 與 <strong>特性名稱</strong>：</p>
@@ -109,7 +34,7 @@
   <li>特性名稱：-10, 10.5</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span> <span class="c1">// a.length → 3</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span> <span class="c1">// a.length → 3</span>
 
 <span class="nx">a</span><span class="p">[</span><span class="s2">"10"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// 索引 a.length → 11</span>
 <span class="nx">a</span><span class="p">[</span><span class="o">-</span><span class="mi">100</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// 名稱 a.length → 11 (不會變)</span>
@@ -118,7 +43,7 @@
 
 <hr />
 
-<h3 id="section-2">稀疏陣列</h3>
+<h3 id="稀疏陣列">稀疏陣列</h3>
 
 <p><code class="highlighter-rouge">length</code>長度永遠大於陣列最高索引數，所以為了保持這個不變式，陣列會自動做以下行為：</p>
 
@@ -126,7 +51,7 @@
   <li>假設一陣列<code class="highlighter-rouge">a[i] = x</code>，如果<strong>i 大於<code class="highlighter-rouge">a.length</code></strong>，<code class="highlighter-rouge">length</code>會被設為i+1</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">];</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">];</span>
 <span class="nx">a</span><span class="p">[</span><span class="mi">100</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="nx">a</span><span class="p">.</span><span class="nx">length</span> <span class="c1">// 101</span>
 </code></pre>
@@ -136,7 +61,7 @@
   <li>如果將<code class="highlighter-rouge">length</code>設為 i，並且小於目前值，<code class="highlighter-rouge">length</code>會把大於a[i]的值刪掉</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">];</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">];</span>
 <span class="nx">a</span><span class="p">.</span><span class="nx">length</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// a → [1,2,3]</span>
 <span class="nx">a</span><span class="p">.</span><span class="nx">length</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// a → []</span>
 <span class="nx">a</span><span class="p">.</span><span class="nx">length</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// a → [,,,,] (長度為5，但沒有元素)</span>
@@ -149,9 +74,9 @@
 
 <hr />
 
-<h3 id="section-3">新增或刪除陣列元素</h3>
+<h3 id="新增或刪除陣列元素">新增或刪除陣列元素</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[];</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[];</span>
 <span class="c1">// 新增</span>
 <span class="nx">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"zero"</span><span class="p">;</span>
 <span class="nx">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"one"</span><span class="p">;</span> <span class="c1">// a → ["zero", "one"]</span>
@@ -164,12 +89,12 @@
 
 <hr />
 
-<h3 id="section-4">遍歷陣列</h3>
+<h3 id="遍歷陣列">遍歷陣列</h3>
 
 <p>逐一查用陣列元素最常用的就是使用for迴圈。
 但假設陣列是稀疏的，或你想要排除<code class="highlighter-rouge">null</code>、<code class="highlighter-rouge">undefined</code>，預想測試陣列的有效性，你可以這樣寫：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">// 欲把a(稀疏陣列)中的可用元素複製到b</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">// 欲把a(稀疏陣列)中的可用元素複製到b</span>
 <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="p">,</span> <span class="p">,];</span>
 <span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="p">[];</span>
 
@@ -187,7 +112,7 @@
 
 <hr />
 
-<h2 id="section-5">陣列方法</h2>
+<h2 id="陣列方法">陣列方法</h2>
 
 <p><code class="highlighter-rouge">Array.prototype</code>中定義了數個實用的陣列操作函式，這代表他們是任何陣列都可以使用的方法，以下列出幾種：</p>
 
@@ -197,7 +122,7 @@
 
 <p><code class="highlighter-rouge">Array.join( )</code> 把所有元素轉成字串，串接回傳結果字串(預設用逗號分割)。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
 <span class="nx">a</span><span class="p">.</span><span class="nx">join</span><span class="p">();</span>    <span class="c1">// "1,2,3"</span>
 <span class="nx">a</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s2">" "</span><span class="p">);</span> <span class="c1">// "1 2 3"</span>
 <span class="nx">a</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s2">""</span><span class="p">);</span>  <span class="c1">// "123"</span>
@@ -214,7 +139,7 @@
 <p>※ 在原本陣列上進行，並不會重新創建一個新陣列<br />
 <code class="highlighter-rouge">Array.reverse( )</code>會倒轉陣列元素的順序，並回傳結果</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">];</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">];</span>
 <span class="nx">a</span><span class="p">.</span><span class="nx">reverse</span><span class="p">();</span> <span class="c1">// a → [3, 2, 1]</span>
 </code></pre>
 </div>
@@ -230,7 +155,7 @@
   <li>不帶引數時，依字母順序排序</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"banana"</span><span class="p">,</span> <span class="s2">"orange"</span><span class="p">,</span> <span class="s2">"apple"</span><span class="p">];</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"banana"</span><span class="p">,</span> <span class="s2">"orange"</span><span class="p">,</span> <span class="s2">"apple"</span><span class="p">];</span>
 <span class="nx">a</span><span class="p">.</span><span class="nx">sort</span><span class="p">();</span> <span class="c1">// a → ["apple", "banana", "orange"]</span>
 </code></pre>
 </div>
@@ -239,7 +164,7 @@
   <p>注意，用<code class="highlighter-rouge">.sort( )</code>來排序數字可能會遇到一個問題，請看以下範例</p>
 </blockquote>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">];</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">];</span>
 <span class="nx">a</span><span class="p">.</span><span class="nx">sort</span><span class="p">();</span> <span class="c1">// a會變成什麼呢??</span>
 </code></pre>
 </div>
@@ -254,7 +179,7 @@
 函式結果 &gt; 0 → 回傳結果 b、a</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">];</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">];</span>
 <span class="nx">a</span><span class="p">.</span><span class="nx">sort</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">return</span> <span class="nx">a</span><span class="o">-</span><span class="nx">b</span><span class="p">;</span> <span class="c1">// 大於0，排序變b、a</span>
 <span class="p">});</span>
@@ -270,7 +195,7 @@
 <p><code class="highlighter-rouge">Array.concat( )</code> 會把引數值加入並回傳一個新陣列<br />
 如果引數值有陣列，那就串接陣列元素而非陣列本身</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">];</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">];</span>
 <span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">a</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span>         <span class="c1">// [1, 2, 3, 4, 5]</span>
 <span class="kd">var</span> <span class="nx">c</span> <span class="o">=</span> <span class="nx">a</span><span class="p">.</span><span class="nx">concat</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]);</span>       <span class="c1">// [1, 2, 3, 4, 5]</span>
 <span class="kd">var</span> <span class="nx">d</span> <span class="o">=</span> <span class="nx">a</span><span class="p">.</span><span class="nx">concat</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">]);</span> <span class="c1">// [1, 2, 3, 4, 5, 6, 7]</span>
@@ -288,7 +213,7 @@
   <li>只有一個引數時，即回傳引數後的所有元素(包含自己)，序從0開始</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">a</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="c1">// [2,3]</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">a</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="c1">// [2,3]</span>
 
 <span class="c1">//    序：0,1,2</span>
 <span class="c1">//         ↓</span>
@@ -301,7 +226,7 @@
 如果有任何一個引數值是負的，代表從反序算起</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">];</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">];</span>
 <span class="nx">a</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>   <span class="c1">// [2,3,4]</span>
 <span class="nx">a</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>  <span class="c1">// [2,3,4]</span>
 <span class="nx">a</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">);</span> <span class="c1">// [3]</span>
@@ -322,7 +247,7 @@
   <li>第三個參數以後：要加入的新元素</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">];</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">];</span>
 
 <span class="nx">a</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>              <span class="c1">// 回傳：[4, 5] , a：[1, 2, 3]</span>
 <span class="nx">a</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>           <span class="c1">// 回傳：[2] ,    a：[1, 3]</span>
@@ -332,7 +257,7 @@
 
 <hr />
 
-<h3 id="push---pop-">.push( ) 與 .pop( )</h3>
+<h3 id="push--與-pop-">.push( ) 與 .pop( )</h3>
 
 <p>※ 在原本陣列上進行，並不會重新創建一個新陣列<br />
 <code class="highlighter-rouge">Array.push( )</code> &amp; <code class="highlighter-rouge">Array.pop( )</code> 會把陣列當作堆疊(stacks)用。</p>
@@ -342,7 +267,7 @@
   <li><strong><code class="highlighter-rouge">.pop( )</code></strong> 則是刪除陣列最後一個元素，並<strong>回傳他移除的值</strong>。</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[];</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[];</span>
 <span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">a</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span> <span class="c1">// b：4</span>
 
 <span class="nx">a</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>            <span class="c1">// 回傳：5 , a：[1, 2, 3, 4, 5]</span>
@@ -354,12 +279,12 @@
 
 <hr />
 
-<h3 id="unshift---shift-">.unshift( ) 與 .shift( )</h3>
+<h3 id="unshift--與-shift-">.unshift( ) 與 .shift( )</h3>
 
 <p>※ 在原本陣列上進行，並不會重新創建一個新陣列<br />
 <code class="highlighter-rouge">Array.unshift( )</code> &amp; <code class="highlighter-rouge">Array.shift( )</code> 行為非常類似<code class="highlighter-rouge">.push( )</code> &amp; <code class="highlighter-rouge">.pop( )</code>，不過是從<strong>陣列開頭</strong>插入或刪除。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[];</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[];</span>
 <span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">a</span><span class="p">.</span><span class="nx">unshift</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span> <span class="c1">// b：4</span>
 <span class="nx">a</span><span class="p">.</span><span class="nx">unshift</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>          <span class="c1">// 回傳：5 , a：[5, 1, 2, 3, 4]</span>
 <span class="nx">a</span><span class="p">.</span><span class="nx">shift</span><span class="p">();</span>             <span class="c1">// 回傳：5 , a：[1, 2, 3, 4]</span>
@@ -375,7 +300,7 @@
 <p><code class="highlighter-rouge">Array.toString( )</code> 把陣列元素轉成字串，用逗號分隔輸出一字串<br />
 ※ <code class="highlighter-rouge">Array.join( )</code>不帶引數時，也會傳回一樣的結果</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[];</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[];</span>
 <span class="p">[</span><span class="s2">"a"</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">,</span> <span class="s2">"c"</span><span class="p">].</span><span class="nx">toString</span><span class="p">();</span> <span class="c1">// "a,b,c"</span>
 <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">4</span><span class="p">].</span><span class="nx">toString</span><span class="p">();</span>  <span class="c1">// "1,2,3,4"</span>
 
@@ -392,7 +317,7 @@
 簡單來說就是翻譯成各國的表示方法，詳細方法可以看
 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString" target="_blank">MDN的文檔說明</a></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">num</span> <span class="o">=</span> <span class="mf">123456.789</span><span class="p">;</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">num</span> <span class="o">=</span> <span class="mf">123456.789</span><span class="p">;</span>
 
 <span class="nx">num</span><span class="p">.</span><span class="nx">toLocaleString</span><span class="p">(</span><span class="s2">"en-IN"</span><span class="p">);</span> 
 <span class="c1">// "123,456.789"</span>
@@ -426,7 +351,10 @@
   </div>
 </div>
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> gh-pages
 <div class="related">
   <h1 >You may also enjoy:</h1>
   
@@ -438,7 +366,7 @@
             <h3>
               <a href="/javascript/JS_Daquan-06_2.html">
                 【筆記】Javascript大全 - 06 函式(二) 參數、引數、閉包
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>May 15, 2016</small>-->
               </a>
             </h3>
@@ -451,7 +379,7 @@
             <h3>
               <a href="/javascript/JS_Daquan-06_1.html">
                 【筆記】Javascript大全 - 06 函式(一) 函式的定義方法
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>May 15, 2016</small>-->
               </a>
             </h3>
@@ -464,7 +392,7 @@
             <h3>
               <a href="/javascript/JS_Daquan-05_2.html">
                 【筆記】Javascript大全 - 05(二) EMCAScript 5 陣列方法
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>May 5, 2016</small>-->
               </a>
             </h3>
@@ -480,7 +408,7 @@
             <h3>
               <a href="/javascript/JS_Daquan-04.html">
                 【筆記】Javascript大全 - 04 物件
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>April 25, 2016</small>-->
               </a>
             </h3>
@@ -493,7 +421,7 @@
             <h3>
               <a href="/javascript/JS_Daquan-03.html">
                 【筆記】Javascript大全 - 03 術句
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>April 25, 2016</small>-->
               </a>
             </h3>
@@ -506,7 +434,7 @@
             <h3>
               <a href="/javascript/JS_Daquan-02.html">
                 【筆記】Javascript大全 - 02 運算式與運算子 
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>April 25, 2016</small>-->
               </a>
             </h3>
@@ -519,7 +447,7 @@
             <h3>
               <a href="/javascript/JS_Daquan-01.html">
                 【筆記】Javascript大全 - 01 型別、值與變數
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>April 25, 2016</small>-->
               </a>
             </h3>
@@ -532,7 +460,7 @@
             <h3>
               <a href="/javascript/OOJS03.html">
                 【練習】Object Oriented JavaScript - 03 繼承 
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>April 18, 2016</small>-->
               </a>
             </h3>
@@ -545,7 +473,7 @@
             <h3>
               <a href="/javascript/OOJS02.html">
                 【練習】Object Oriented JavaScript - 02 prototype 
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>April 12, 2016</small>-->
               </a>
             </h3>
@@ -583,6 +511,8 @@
   </ul>
 </div>
 
+<<<<<<< HEAD
+=======
 
 <div id="disqus_thread"></div>
 <script>
@@ -605,18 +535,4 @@ s.setAttribute('data-timestamp', +new Date());
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <script id="dsq-count-scr" src="//yakimshu.disqus.com/count.js" async></script>
-
-    </div>
-
-    <footer class="footer">
-  <a href="https://www.facebook.com/yakimshu"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
-  <a href="https://linkedin.com/in/yakimshu"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
-  <a href="mailto:toromilk80129@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
-  <div class="post-date"><a href="/about.html">Yakim shu | Hi, 這是我擴充腦內海馬體的地方。 by Yakim shu</a></div>
-</footer>
-
-
-  </div>
-
-</body>
-</html>
+>>>>>>> gh-pages
