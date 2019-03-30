@@ -5,12 +5,7 @@ description: "計劃！計劃！計劃！
 計畫的必要性不在於完全照著走就有成功的希望，這樣未免太過樂觀！  
 而是拿來檢視自己能耐的底線、何時會偷懶、通常會遇到的困境是什麼...，這些都是在執行之前無法預料到的。  "
 category: English
-<<<<<<< HEAD
 image: learnEng_1.png
-=======
-image: http://i.imgur.com/r25i0oQ.png
-tags: [English]
->>>>>>> gh-pages
 ---
 
 計劃！計劃！計劃！  
@@ -33,19 +28,11 @@ tags: [English]
 
 #### 每日進度表：
 
-<<<<<<< HEAD
 ![每日進度表]({{ site.img_url }}learnEng_1.png)
 
 #### 檢視過程：
 
 ![檢視過程]({{ site.img_url }}learnEng_2.png)
-=======
-![每日進度表](http://i.imgur.com/r25i0oQ.png)
-
-#### 檢視過程：
-
-![檢視過程](http://i.imgur.com/8Sj3CMC.png)
->>>>>>> gh-pages
 
 
 

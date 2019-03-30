@@ -3,12 +3,7 @@ layout: post
 title: "【出走】泰國-day2 招批耶河、大皇宮、Loy Nava 柚木船"
 description: "由於昨晚從redsky回來已經蠻晚，第二天也就睡晚一點再出門!!先搭BTS到Saphan Taksin站，從2號出口下來就可以看到搭船處，單程15塊。"
 category: Travel
-<<<<<<< HEAD
 image: tai_day2.jpg
-=======
-image: http://i.imgur.com/r4n3ZGX.jpg
-tags: [Travel, Tailand]
->>>>>>> gh-pages
 ---
 
 由於昨晚從redsky回來已經蠻晚，第二天也就睡晚一點再出門!!
@@ -20,13 +15,8 @@ tags: [Travel, Tailand]
 
 
 
-<<<<<<< HEAD
 ![招批耶河-1]({{ site.img_url }}tai_2.jpg)
 ![招批耶河-2]({{ site.img_url }}tai_2_3.jpg)
-=======
-![招批耶河-1](http://i.imgur.com/xVd46nM.jpg)
-![招批耶河-2](http://i.imgur.com/WSXB76x.jpg)
->>>>>>> gh-pages
 
 ---
 
@@ -35,11 +25,7 @@ tags: [Travel, Tailand]
 由於實在太熱，還沒進去就開始爆汗了，映入眼簾就是所有貼金的佛寺。就是所有，無一缺漏，完全不低調的浮誇，不過因為也沒有對佛寺的歷史事先做功課，就是走一趟處處讚嘆、看花走馬行程。
 
 
-<<<<<<< HEAD
 ![大皇宮]({{ site.img_url }}tai_2_2.jpg)
-=======
-![大皇宮](http://i.imgur.com/g90p4ex.jpg)
->>>>>>> gh-pages
 
 而且強國人多到哭爸，一團一團送進來，根本置身在中國，皇宮內有一張告示牌(中文字特大)：
 

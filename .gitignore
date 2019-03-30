@@ -1,11 +1,3 @@
-<<<<<<< HEAD
 _site
 .sass-cache
 .jekyll-metadata
-=======
-.sass-cache
-
-.jekyll-metadata
-
-blog_img/
->>>>>>> gh-pages
