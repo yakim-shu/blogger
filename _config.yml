@@ -35,8 +35,6 @@ comments :
     width: 580
     colorscheme: light
     
-=======
-
 permalink:           none
 gems:                [jekyll-paginate]
 
