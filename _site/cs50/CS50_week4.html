@@ -5,7 +5,7 @@
 
   <title>
     
-      【心得】CS50 - week 0 | Yakim shu
+      【心得】CS50 - week 4 | Yakim shu
     
   </title>
 
@@ -16,9 +16,9 @@
   <meta name="author" content="Yakim, toromilk80129@gmail.com">
   <meta name="robots" content="INDEX,FOLLOW">
   <!--og-->
-  <meta property="og:title" content="【心得】CS50 - week 0">
+  <meta property="og:title" content="【心得】CS50 - week 4">
   <meta name="og:description" content="">
-  <meta property="og:url" content="http://localhost:4000/cs50/CS50_week0.html">
+  <meta property="og:url" content="http://localhost:4000/cs50/CS50_week4.html">
 
     
   <link rel="shortcut icon" href="/favicon.ico">
@@ -74,126 +74,113 @@
 
     <div class="post-container story">
       <h1>
-  【心得】CS50 - week 0
+  【心得】CS50 - week 4
 </h1>
 
 
-  <img src="http://i.imgur.com/pG4iBq4.png">
+  <img src="http://i.imgur.com/ag930Yh.png">
 
 
-<p>Week 0 主要課程素材 :</p>
+<p>Week 4 主要課程素材 :</p>
 
 <ul>
-  <li><a href="https://video.cs50.net/2016/fall/lectures/0" target="_blank">課程視頻</a></li>
-  <li><a href="http://docs.cs50.net/2016/fall/notes/0/week0.html" target="_blank">課程文檔</a></li>
-  <li><a href="http://docs.cs50.net/2017/x/psets/0/pset0.html" target="_blank">作業</a></li>
+  <li><a href="https://video.cs50.net/2016/fall/lectures/4" target="_blank">課程視頻</a></li>
+  <li><a href="http://docs.cs50.net/2016/fall/notes/4/week4.html" target="_blank">課程文檔</a></li>
+  <li><a href="http://docs.cs50.net/2017/x/psets/4/pset4.html" target="_blank">作業</a></li>
 </ul>
 
 <p>助教課程：</p>
 
 <ul>
-  <li><a href="https://www.youtube.com/embed/poT5Yd0Ag8I?autoplay=1&amp;rel=0">線上圖形化程式程式設計 - Scratch</a></li>
+  <li><a href="https://www.youtube.com/embed/nrFHGtGdOzA?autoplay=1&amp;rel=0">16進位 - Hexadecimal</a></li>
+  <li><a href="https://www.youtube.com/embed/yOdd3uYC--A?autoplay=1&amp;rel=0">指標 - pointer</a></li>
+  <li><a href="https://www.youtube.com/embed/ywqB3ZTf8OE?autoplay=1&amp;rel=0">動態分配記憶體(堆疊&amp;堆積) - Dynamic Memory Allocation</a></li>
+  <li><a href="https://www.youtube.com/embed/6RLxPdZ59y0?autoplay=1&amp;rel=0">結構 - structure</a></li>
+  <li><a href="https://www.youtube.com/embed/wgv4xH_tVgA?autoplay=1&amp;rel=0">自訂類型 - Defining Custom Types</a></li>
+  <li><a href="https://www.youtube.com/embed/VrrnjYgDBEk?autoplay=1&amp;rel=0">遞規 - Recursion</a></li>
+  <li><a href="https://www.youtube.com/embed/beqqGIdabrE?autoplay=1&amp;rel=0">呼叫堆疊 - call stack</a></li>
+  <li><a href="https://www.youtube.com/embed/QOD2hHiHpn0?autoplay=1&amp;rel=0">檔案指標 - File pointer</a></li>
 </ul>
 
-<p>week 0 算是暖身，大概講一下基本觀念跟之後會常聽到的名詞解釋，以及在動手寫程式之前，可以先玩 <a href="https://scratch.mit.edu/projects/editor/?tip_bar=home" target="_blank">scratch</a>，了解寫程式會運用到的邏輯，對新手來說，簡單又不會被語法給卡住。</p>
-
 <hr />
 
-<h2 id="algorithms---演算法">Algorithms - 演算法</h2>
+<h2 id="yakim-不等於-yakim-">“yakim” 不等於 “yakim” ?</h2>
 
-<p>什麼是演算法，寫程式一定會常聽到這個詞，看看以下這張圖：</p>
+<p>使用者輸入 2 個字串，來比對字串是否相等。</p>
 
-<p><img src="http://i.imgur.com/pG4iBq4.png" alt="演算法" /></p>
+<div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="n">string</span> <span class="n">s</span> <span class="o">=</span> <span class="n">get_string</span><span class="p">();</span>
+<span class="n">string</span> <span class="n">t</span> <span class="o">=</span> <span class="n">get_string</span><span class="p">();</span>
 
-<p>演算法就是在 <strong>input &amp; output 中間的黑盒子</strong>，進行了丟入問題以及回傳答案的過程。</p>
-
-<p>而寫程式就是要想辦法實現那個神祕的黑盒子。</p>
-
-<hr />
-
-<h2 id="binary---2-進位">binary - 2 進位</h2>
-
-<p>生活中習慣的數字幾乎都是10進位 (decimal)，如果把 123 拆解開來會變成</p>
-
-<p><img src="http://i.imgur.com/pPMP8Y0.png" alt="10進位" /></p>
-
-<p>123： <code class="highlighter-rouge">100 * 1 + 10 * 2 + 1 * 3</code></p>
-
-<p>但是<strong>電腦只看得懂 0 &amp; 1</strong>，所以都要轉成 2 進位 (binary)，以下是 5 的 2 進位表示法</p>
-
-<p><img src="http://i.imgur.com/C4YhYlJ.png" alt="2進位" /></p>
-
-<p>5： <code class="highlighter-rouge">4 * 1 + 2 * 0 + 1 * 1</code></p>
-
-<hr />
-
-<p>課程是用燈泡代表 <code class="highlighter-rouge">128, 64, 32, 16, 8, 4, 2, 1</code></p>
-
-<p>要表示<code class="highlighter-rouge">42</code> 的 2 進位，<code class="highlighter-rouge">32, 8, 2</code> 亮燈燈愣燈!!</p>
-
-<p><img src="http://i.imgur.com/U2I5gfE.png" alt="2進位" /></p>
-
-<h4 id="練習">練習</h4>
-
-<blockquote>
-  <p>63、17的 2 進位值?</p>
-</blockquote>
-
-<h4 id="16-進位">16 進位</h4>
-
-<p>更進階一點來還有 16 進位，RGB 表示顏色也很常用到，參考這篇<a href="http://csscoke.com/2015/01/01/rgb-hsl-hex/">RGB、HSL、Hex 網頁色彩碼，看完這篇全懂了</a></p>
-
-<hr />
-
-<h2 id="ascii">ASCII</h2>
-
-<p>ASCII 是一種國際標準的通用碼，根據<a href="https://zh.wikipedia.org/wiki/ASCII">維基百科</a>的解釋</p>
-
-<blockquote>
-  <p>基於拉丁字母的一套電腦編碼系統。它主要用於顯示現代英語</p>
-</blockquote>
-
-<p><img src="http://i.imgur.com/n0dbPUN.gif" alt="ASCII" /></p>
-
-<p>也就是說當我對電腦輸入了 <code class="highlighter-rouge">HI!</code>，<strong>電腦接收到的其實是 <code class="highlighter-rouge">72 73 33</code></strong>，cool ~~~</p>
-
-<p><img src="http://i.imgur.com/yUM1FdS.png" alt="ASCII" /></p>
-
-<h3 id="延伸學習">延伸學習：</h3>
-
-<p>ASCII只有在純英文(無重音符號)的時候才堪用，如果要加上其他語言就得用不同的編碼方式，像是網頁head裡常見的</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>&lt;meta charset="utf-8"&gt;
+<span class="k">if</span> <span class="p">(</span> <span class="n">s</span> <span class="o">==</span> <span class="n">t</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"same</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span> 
+<span class="k">else</span>
+<span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"different</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
 </code></pre>
 </div>
 
-<p>其實到這邊我已經卡了老半天，想要弄懂字符編碼是怎麼一回事，發現沒那麼簡單，越查資料越搞不懂，像是從口袋拿出的耳機線一樣混亂，有興趣再延伸學習的可以參考：</p>
+<p>假如你兩次都輸入了 “yakim” ，猜猜看，會出現什麼答案?</p>
 
-<p>(先深吸一口氣)</p>
+<p>沒錯，是 different !!</p>
 
-<ul>
-  <li>想了解編碼到底在編什麼碼：<a href="http://www.csie.ntnu.edu.tw/~u91029/Code.html">演算法筆記 - Code</a></li>
-  <li>約耳趣談 - 看不懂內容至少看得懂笑話：<a href="http://local.joelonsoftware.com/wiki/The_Joel_on_Software_Translation_Project:%E8%90%AC%E5%9C%8B%E7%A2%BC">每個軟體開發者都絕對一定要會的Unicode及字元集必備知識(沒有藉口！)</a></li>
-  <li>不有趣但詳盡的說明：<a href="http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html">字符编码笔记：ASCII，Unicode和UTF-8</a></li>
-</ul>
+<p>先說說為什麼會導致這樣不符合直覺的結果</p>
+
+<blockquote>
+  <p>在 C 語言，用 <code class="highlighter-rouge">==</code> 比較兩字串，<br />
+是比較字串這 <strong>變數的地址</strong> ， <code class="highlighter-rouge">s</code> 跟 <code class="highlighter-rouge">t</code> 是<strong>不同變數</strong>，自然地址也不同。</p>
+</blockquote>
+
+<p>所以之後會提到一種專門儲存地址的變數，它叫做 <strong>指標</strong>。</p>
+
+<p>不過在深入研究指標之前，先來談談有趣的字串。</p>
 
 <hr />
 
+<h2 id="沒有所謂的字串">沒有所謂的”字串”</h2>
+
+<p>其實在 C 語言中，並不存在字串這種變數類型，</p>
+
+<p>要知道你看到得字串其實都是 <strong>以 <code class="highlighter-rouge">\0</code> 結尾的字元陣列</strong> 。燈愣 ~</p>
+
+<p>之前可以使用 string 的類別，是因為引入了標準函式庫 <code class="highlighter-rouge">&lt;string.h&gt;</code></p>
+
+<div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;string.h&gt;
+</span></code></pre>
+</div>
+
+<p>換句話說，如果要<strong>使用字串相關的函式操作</strong>，沒有引入 <code class="highlighter-rouge">&lt;string.h&gt;</code> 是不行的，</p>
+
+<p>想想看如果只能用 <code class="highlighter-rouge">s[i]</code>，這世界就太不友善了!</p>
+
+<hr />
+
+<h2 id="到底傳了什麼">到底傳了什麼!!</h2>
+
+<p>這是每個寫軟體的一定會碰到的問題，函式的參數的傳遞方式，結果傳得到底是什麼?</p>
+
+<p>每個語言的特性不同，以 JavaScript 為例，它是參數的資料類型來區別的，</p>
+
+<p>一般來說是 「物件」→ 傳址，「非物件」→ 傳值</p>
+
+<hr />
 
 
 <span class="post-date">
   Written on
   
-  March
-  7th,
+  August
+  25th,
   2017
   by Yakim shu
 </span>
 <div class="post-date">Feel free to share!</div>
   <div class="sharing-icons">
-    <a href="https://twitter.com/intent/tweet?text=【心得】CS50 - week 0&amp;url=/cs50/CS50_week0.html&amp;via=" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-    <a href="https://www.facebook.com/sharer/sharer.php?u=/cs50/CS50_week0.html&amp;title=【心得】CS50 - week 0" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-    <a href="https://plus.google.com/share?url=/cs50/CS50_week0.html" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+    <a href="https://twitter.com/intent/tweet?text=【心得】CS50 - week 4&amp;url=/cs50/CS50_week4.html&amp;via=" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=/cs50/CS50_week4.html&amp;title=【心得】CS50 - week 4" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    <a href="https://plus.google.com/share?url=/cs50/CS50_week4.html" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
   </div>
 </div>
 
@@ -205,16 +192,6 @@
     
       
         
-          <li>
-            <h3>
-              <a href="/cs50/CS50_week4.html">
-                【心得】CS50 - week 4
-                <!--<img src="http://localhost:4000/images/">-->
-                <!--<small>August 25, 2017</small>-->
-              </a>
-            </h3>
-          </li>
-          
         
       
         
@@ -244,6 +221,16 @@
         
       
         
+          <li>
+            <h3>
+              <a href="/cs50/CS50_week0.html">
+                【心得】CS50 - week 0
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>March 7, 2017</small>-->
+              </a>
+            </h3>
+          </li>
+          
         
       
         

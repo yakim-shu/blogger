@@ -1,0 +1,90 @@
+---
+layout: post
+title: "【心得】CS50 - week 4"
+description: ""
+category: CS50
+image: http://i.imgur.com/ag930Yh.png
+tags: [CS50]
+---
+
+Week 4 主要課程素材 : 
+
+- [課程視頻](https://video.cs50.net/2016/fall/lectures/4){:target="_blank"}
+- [課程文檔](http://docs.cs50.net/2016/fall/notes/4/week4.html){:target="_blank"}
+- [作業](http://docs.cs50.net/2017/x/psets/4/pset4.html){:target="_blank"}
+
+助教課程：
+
+- [16進位 - Hexadecimal](https://www.youtube.com/embed/nrFHGtGdOzA?autoplay=1&rel=0)
+- [指標 - pointer](https://www.youtube.com/embed/yOdd3uYC--A?autoplay=1&rel=0)
+- [動態分配記憶體(堆疊&堆積) - Dynamic Memory Allocation](https://www.youtube.com/embed/ywqB3ZTf8OE?autoplay=1&rel=0)
+- [結構 - structure](https://www.youtube.com/embed/6RLxPdZ59y0?autoplay=1&rel=0)
+- [自訂類型 - Defining Custom Types](https://www.youtube.com/embed/wgv4xH_tVgA?autoplay=1&rel=0)
+- [遞規 - Recursion](https://www.youtube.com/embed/VrrnjYgDBEk?autoplay=1&rel=0)
+- [呼叫堆疊 - call stack](https://www.youtube.com/embed/beqqGIdabrE?autoplay=1&rel=0)
+- [檔案指標 - File pointer](https://www.youtube.com/embed/QOD2hHiHpn0?autoplay=1&rel=0)
+
+---
+
+## "yakim" 不等於 "yakim" ?
+
+使用者輸入 2 個字串，來比對字串是否相等。
+
+```c
+string s = get_string();
+string t = get_string();
+
+if ( s == t)
+{
+    printf("same\n");
+} 
+else
+{
+    printf("different\n");
+}
+```
+
+假如你兩次都輸入了 "yakim" ，猜猜看，會出現什麼答案?
+
+沒錯，是 different !!
+
+先說說為什麼會導致這樣不符合直覺的結果
+
+> 在 C 語言，用 `` == `` 比較兩字串，  
+是比較字串這 **變數的地址** ， ``s`` 跟 ``t`` 是**不同變數**，自然地址也不同。
+
+所以之後會提到一種專門儲存地址的變數，它叫做 **指標**。
+
+不過在深入研究指標之前，先來談談有趣的字串。
+
+
+---
+
+## 沒有所謂的"字串"
+
+其實在 C 語言中，並不存在字串這種變數類型，
+
+要知道你看到得字串其實都是 **以 ``\0`` 結尾的字元陣列** 。燈愣 ~
+
+之前可以使用 string 的類別，是因為引入了標準函式庫 ``<string.h>``
+
+```c
+#include <string.h>
+```
+
+換句話說，如果要**使用字串相關的函式操作**，沒有引入 ``<string.h>`` 是不行的，
+
+想想看如果只能用 ``s[i]``，這世界就太不友善了!
+
+---
+
+## 到底傳了什麼!!
+
+這是每個寫軟體的一定會碰到的問題，函式的參數的傳遞方式，結果傳得到底是什麼?
+
+每個語言的特性不同，以 JavaScript 為例，它是參數的資料類型來區別的，
+
+一般來說是 「物件」→ 傳址，「非物件」→ 傳值
+
+
+---
