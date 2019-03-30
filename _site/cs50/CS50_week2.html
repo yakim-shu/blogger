@@ -18,7 +18,7 @@
   <!--og-->
   <meta property="og:title" content="【心得】CS50 - week 2">
   <meta name="og:description" content="">
-  <meta property="og:url" content="http://yakim-shu.github.io/cs50/CS50_week2.html">
+  <meta property="og:url" content="http://localhost:4000/cs50/CS50_week2.html">
 
     
   <link rel="shortcut icon" href="/favicon.ico">
@@ -101,7 +101,7 @@
 
 <hr />
 
-<h2 id="section">加密</h2>
+<h2 id="加密">加密</h2>
 
 <p>這節開始談到如何加密一段文字。</p>
 
@@ -123,7 +123,7 @@
 
 <hr />
 
-<h3 id="section-1">印出字串</h3>
+<h3 id="印出字串">印出字串</h3>
 
 <p>現在來試著加密一個單詞，首先印出原始字串。</p>
 
@@ -131,7 +131,7 @@
 
 <p>假如我輸入 <code class="highlighter-rouge">yakim</code>，印出 <code class="highlighter-rouge">hello, yakim</code></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
+<div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
 #include &lt;stdio.h&gt;
 </span>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
@@ -144,11 +144,11 @@
 
 <hr />
 
-<h3 id="section-2">印出此字串裡的每個字母</h3>
+<h3 id="印出此字串裡的每個字母">印出此字串裡的每個字母</h3>
 
 <p>接著我們把字串拆開來看，分成一個一個字符：<code class="highlighter-rouge">y</code>、<code class="highlighter-rouge">a</code>、<code class="highlighter-rouge">k</code>、<code class="highlighter-rouge">i</code>、<code class="highlighter-rouge">m</code></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
+<div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
 #include &lt;string.h&gt;
 #include &lt;stdio.h&gt;
 </span>
@@ -170,7 +170,7 @@
 
 <hr />
 
-<h3 id="ascii">轉換 ASCII</h3>
+<h3 id="轉換-ascii">轉換 ASCII</h3>
 
 <p>好玩的部分來了，還記的 <a href="CS50_week0.html">week 0 提到的 ASCII</a> 嗎?</p>
 
@@ -188,7 +188,7 @@
 
 <p>來印出 大寫 A ~ Z 的數字對照表</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+<div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
 </span>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 <span class="p">{</span>
@@ -208,7 +208,7 @@
 
 <p>還可以更神奇的用字元來做 for loop，兩邊結果是一樣的。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+<div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
 </span>
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 <span class="p">{</span>
@@ -227,11 +227,11 @@
 
 <hr />
 
-<h3 id="section-3">小練習：小寫轉大寫</h3>
+<h3 id="小練習小寫轉大寫">小練習：小寫轉大寫</h3>
 
 <p>寫一個小程式，讓使用者輸入的單字轉為大寫</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
+<div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
 #include &lt;ctype.h&gt;
 #include &lt;string.h&gt;
 #include &lt;stdio.h&gt;
@@ -263,7 +263,7 @@
 
 <p>或者，不需要用if else判斷，直接全部轉大寫即可</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
+<div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
 #include &lt;ctype.h&gt;
 #include &lt;string.h&gt;
 #include &lt;stdio.h&gt;
@@ -284,7 +284,7 @@
 
 <hr />
 
-<h3 id="section-4">了解字串</h3>
+<h3 id="了解字串">了解字串</h3>
 
 <p>字串的本質是由<strong>字元</strong>所組成的<strong>陣列</strong>。</p>
 
@@ -304,7 +304,7 @@
 
 <p>我們可以把剛剛的練習改寫得更簡單!!</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
+<div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
 #include &lt;ctype.h&gt;
 #include &lt;stdio.h&gt;
 </span>
@@ -325,23 +325,23 @@
 
 <hr />
 
-<h2 id="section-5">作業</h2>
+<h2 id="作業">作業</h2>
 
 <h3 id="initialsc">initials.c</h3>
 
-<h4 id="section-6">說明</h4>
+<h4 id="說明">說明</h4>
 <ul>
   <li>使用者隨意輸入一英文名字</li>
   <li>輸出首字大寫</li>
 </ul>
 
-<h4 id="section-7">範例</h4>
+<h4 id="範例">範例</h4>
 
 <p><img src="http://i.imgur.com/1idCiDE.png" alt="initials.c" /></p>
 
-<h4 id="section-8">解題</h4>
+<h4 id="解題">解題</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+<div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
 #include &lt;ctype.h&gt;
 #include &lt;cs50.h&gt;
@@ -376,11 +376,11 @@
 
 <h3 id="caesarc">caesar.c</h3>
 
-<h4 id="section-9">說明</h4>
+<h4 id="說明-1">說明</h4>
 
 <p>加密文字</p>
 
-<h4 id="section-10">步驟</h4>
+<h4 id="步驟">步驟</h4>
 
 <ul>
   <li>輸入一字串及一數字</li>
@@ -388,9 +388,9 @@
   <li>輸出成加密文字</li>
 </ul>
 
-<h4 id="section-11">解題</h4>
+<h4 id="解題-1">解題</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+<div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
 #include &lt;ctype.h&gt;
 #include &lt;cs50.h&gt;
@@ -450,11 +450,11 @@
 
 <h3 id="vigenerec">vigenere.c</h3>
 
-<h4 id="section-12">說明</h4>
+<h4 id="說明-2">說明</h4>
 
 <p>加密文字</p>
 
-<h4 id="section-13">步驟</h4>
+<h4 id="步驟-1">步驟</h4>
 
 <ul>
   <li>輸入一字串</li>
@@ -463,9 +463,9 @@
   <li>輸出成加密文字</li>
 </ul>
 
-<h4 id="section-14">解題</h4>
+<h4 id="解題-2">解題</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+<div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
 #include &lt;ctype.h&gt;
 #include &lt;cs50.h&gt;
@@ -574,7 +574,7 @@
             <h3>
               <a href="/cs50/CS50_week1.html">
                 【心得】CS50 - week 1
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>March 28, 2017</small>-->
               </a>
             </h3>
@@ -587,7 +587,7 @@
             <h3>
               <a href="/cs50/CS50_week0.html">
                 【心得】CS50 - week 0
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>March 7, 2017</small>-->
               </a>
             </h3>
@@ -600,7 +600,7 @@
             <h3>
               <a href="/cs50/CS50_info.html">
                 【心得】CS50 - 課程介紹
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>March 7, 2017</small>-->
               </a>
             </h3>

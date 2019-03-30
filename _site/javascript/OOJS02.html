@@ -18,7 +18,7 @@
   <!--og-->
   <meta property="og:title" content="【練習】Object Oriented JavaScript - 02 prototype ">
   <meta name="og:description" content="">
-  <meta property="og:url" content="http://yakim-shu.github.io/javascript/OOJS02.html">
+  <meta property="og:url" content="http://localhost:4000/javascript/OOJS02.html">
 
     
   <link rel="shortcut icon" href="/favicon.ico">
@@ -81,7 +81,7 @@
 
 <p>1.承上篇，我們要為<code class="highlighter-rouge">Person</code>物件添加一個共用方法 <code class="highlighter-rouge">say</code>，會寫成以下</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="cm">/*物件 Person*/</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="cm">/*物件 Person*/</span>
 <span class="kd">function</span> <span class="nx">Person</span><span class="p">(){</span>
   <span class="k">this</span><span class="p">.</span><span class="nx">say</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span> <span class="nx">alert</span><span class="p">(</span><span class="s2">"嘿!"</span><span class="p">)</span> <span class="p">}</span>
 <span class="p">}</span>
@@ -92,7 +92,7 @@
 
 <p>2.基於<code class="highlighter-rouge">Person</code>，新增兩個人物，印出內存位置及內容比對</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">person1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">();</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">person1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">();</span>
 <span class="kd">var</span> <span class="nx">person2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">();</span>
 
 <span class="c1">//印出--------</span>
@@ -110,11 +110,11 @@
 
 <hr />
 
-<h2 id="prototype">Prototype模式</h2>
+<h2 id="prototype模式">Prototype模式</h2>
 
 <p>我們可以把不變的屬性和方法，直接定義在<code class="highlighter-rouge">prototype</code>對象上。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="cm">/*物件 Person*/</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="cm">/*物件 Person*/</span>
 <span class="kd">function</span> <span class="nx">Person</span><span class="p">(){}</span>
 <span class="nx">Person</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">say</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span> <span class="nx">alert</span><span class="p">(</span><span class="s2">"嘿!"</span><span class="p">)</span> <span class="p">};</span>
 </code></pre>
@@ -122,7 +122,7 @@
 
 <p>這樣一來，不同對象的屬性跟方法就會指向同一內存地址，提高了運行效率!!</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">//印出--------</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">//印出--------</span>
 <span class="c1">//內存位置相同</span>
 <span class="nx">person1</span><span class="p">.</span><span class="nx">say</span> <span class="o">==</span> <span class="nx">person2</span><span class="p">.</span><span class="nx">say</span><span class="p">;</span> <span class="c1">// true</span>
 <span class="c1">//輸出內容相同</span>
@@ -137,7 +137,7 @@
 <h3 id="isprototypeof-">isPrototypeOf( )</h3>
 <p>判斷<code class="highlighter-rouge">prototype</code>與對象間的關係</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">Person</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">isPrototypeOf</span><span class="p">(</span><span class="nx">person1</span><span class="p">);</span> <span class="c1">// true</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">Person</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">isPrototypeOf</span><span class="p">(</span><span class="nx">person1</span><span class="p">);</span> <span class="c1">// true</span>
 </code></pre>
 </div>
 
@@ -146,7 +146,7 @@
 <h3 id="hasownproperty-">hasOwnProperty( )</h3>
 <p>判斷某一屬性，是本地或繼承自<code class="highlighter-rouge">prototype</code></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="cm">/*物件 Person*/</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="cm">/*物件 Person*/</span>
 <span class="kd">function</span> <span class="nx">Person</span><span class="p">(</span><span class="nx">name</span><span class="p">){</span>
   <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
 <span class="p">}</span>
@@ -162,17 +162,17 @@
 
 <hr />
 
-<h3 id="in--">in 運算符( )</h3>
+<h3 id="in-運算符-">in 運算符( )</h3>
 <p>判斷對象是否含有某個屬性，不管是本地或來自<code class="highlighter-rouge">prototype</code></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="s2">"name"</span> <span class="k">in</span> <span class="nx">person1</span><span class="p">;</span> <span class="c1">// true</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="s2">"name"</span> <span class="k">in</span> <span class="nx">person1</span><span class="p">;</span> <span class="c1">// true</span>
 <span class="s2">"say"</span> <span class="k">in</span> <span class="nx">person1</span><span class="p">;</span> <span class="c1">// true</span>
 </code></pre>
 </div>
 
 <p>也可以遍歷所有的屬性</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">prop</span> <span class="k">in</span> <span class="nx">person1</span><span class="p">){</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">prop</span> <span class="k">in</span> <span class="nx">person1</span><span class="p">){</span>
   <span class="nx">prop</span> <span class="o">+</span><span class="s2">"="</span><span class="o">+</span><span class="nx">person1</span><span class="p">[</span><span class="nx">prop</span><span class="p">];</span>
 <span class="p">}</span>
 
@@ -184,7 +184,7 @@
 
 <hr />
 
-<h3 id="section">實例</h3>
+<h3 id="實例">實例</h3>
 
 <p><a class="jsbin-embed" href="http://jsbin.com/muwucu/embed?js,console">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?3.35.12"></script></p>
 
@@ -223,7 +223,7 @@
             <h3>
               <a href="/javascript/JS_Daquan-06_2.html">
                 【筆記】Javascript大全 - 06 函式(二) 參數、引數、閉包
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>May 15, 2016</small>-->
               </a>
             </h3>
@@ -236,7 +236,7 @@
             <h3>
               <a href="/javascript/JS_Daquan-06_1.html">
                 【筆記】Javascript大全 - 06 函式(一) 函式的定義方法
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>May 15, 2016</small>-->
               </a>
             </h3>
@@ -249,7 +249,7 @@
             <h3>
               <a href="/javascript/JS_Daquan-05_2.html">
                 【筆記】Javascript大全 - 05(二) EMCAScript 5 陣列方法
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>May 5, 2016</small>-->
               </a>
             </h3>
@@ -262,7 +262,7 @@
             <h3>
               <a href="/javascript/JS_Daquan-05.html">
                 【筆記】Javascript大全 - 05(一) 陣列
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>May 2, 2016</small>-->
               </a>
             </h3>
@@ -275,7 +275,7 @@
             <h3>
               <a href="/javascript/JS_Daquan-04.html">
                 【筆記】Javascript大全 - 04 物件
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>April 25, 2016</small>-->
               </a>
             </h3>
@@ -288,7 +288,7 @@
             <h3>
               <a href="/javascript/JS_Daquan-03.html">
                 【筆記】Javascript大全 - 03 術句
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>April 25, 2016</small>-->
               </a>
             </h3>
@@ -301,7 +301,7 @@
             <h3>
               <a href="/javascript/JS_Daquan-02.html">
                 【筆記】Javascript大全 - 02 運算式與運算子 
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>April 25, 2016</small>-->
               </a>
             </h3>
@@ -314,7 +314,7 @@
             <h3>
               <a href="/javascript/JS_Daquan-01.html">
                 【筆記】Javascript大全 - 01 型別、值與變數
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>April 25, 2016</small>-->
               </a>
             </h3>
@@ -327,7 +327,7 @@
             <h3>
               <a href="/javascript/OOJS03.html">
                 【練習】Object Oriented JavaScript - 03 繼承 
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>April 18, 2016</small>-->
               </a>
             </h3>
@@ -351,7 +351,7 @@
             <h3>
               <a href="/javascript/OOJS01.html">
                 【練習】Object Oriented JavaScript - 01 封裝 
-                <!--<img src="http://yakim-shu.github.io/images/">-->
+                <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>April 12, 2016</small>-->
               </a>
             </h3>
