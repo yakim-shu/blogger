@@ -177,7 +177,54 @@
   <li>不有趣但詳盡的說明：<a href="http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html">字符编码笔记：ASCII，Unicode和UTF-8</a></li>
 </ul>
 
+<h3 id="了解演算法究竟是什麼">了解演算法究竟是什麼</h3>
+
+<p>如果我們想從一本電話簿找到 Yakim 這個人，你會試著怎麼做呢？一頁一頁的翻嗎？
+沒錯，這是一種方法，但如果想要最有效率的查找，何不試著從中間剖半！
+假如打開是開頭是 N，那就往後面查找（因為我們知道 Y 在 N 後頭），然後繼續不斷剖半尋找，我能確定在有限的查找次數中找到答案。</p>
+
+<p>其實這就是 <strong>二元搜尋法 (Binary Search)</strong> 。基本的演算法之一，聽起來好像很簡單，沒錯，是不難！
+那沒學過程式的你有辦法用程式碼表現出來呢？這時虛擬碼登場囉！</p>
+
+<h4 id="虛擬碼-pseudocode">虛擬碼 pseudocode</h4>
+
+<p>以下是維基百科對 pseudocode 的解釋：</p>
+
+<blockquote>
+  <p>虛擬碼（英語：pseudocode），又稱為偽代碼，是高層次描述演算法的一種方法。它不是一種現實存在的程式語言。
+相比於程式語言（例如Java、C++、C、Delphi 等等）它更類似自然語言。它是半形式化、不標準的語言。我們可以將整個演算法執行過程的結構用接近自然語言的形式（這裡可以使用任何一種作者熟悉的文字，例如中文、英文，重點是將程式的意思表達出來）描述出來。使用虛擬碼，可以幫助我們更好的表述演算法，不用拘泥於具體的實現。</p>
+</blockquote>
+
 <hr />
+
+<p>回到剛剛的查找 Yakim 大作戰，用虛擬碼把演算法寫下來就會長這樣：</p>
+
+<p><img src="https://i.imgur.com/arZyqnz.png" alt="pseudocode" /></p>
+
+<p>黃字的部份就被稱為動作 <strong>Function</strong></p>
+
+<p><img src="https://i.imgur.com/4tsjo8O.png" alt="Function" /></p>
+
+<p>判斷式 <strong>Condition</strong></p>
+
+<p><img src="https://i.imgur.com/iUi0yEo.png" alt="Condition" /></p>
+
+<p>條件表達式 <strong>Boolean Expression</strong></p>
+
+<p><img src="https://i.imgur.com/Tw6aLoM.png" alt="Boolean" /></p>
+
+<p>迴圈 <strong>Loop</strong></p>
+
+<p><img src="https://i.imgur.com/OGUbRZw.png" alt="Loop" /></p>
+
+<p>從以上例子中，我們學到了一些基本的程式架構</p>
+
+<ul>
+  <li>Function</li>
+  <li>Condition</li>
+  <li>Boolean Expression</li>
+  <li>Loop</li>
+</ul>
 
 
 
