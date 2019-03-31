@@ -3,7 +3,7 @@ title: "【筆記】CS50 - week 1 ( 2019年更新 )"
 layout: post
 description: ""
 category: CS50
-image: http://i.imgur.com/2e9zmb2.png
+image: https://i.imgur.com/Oj53HuS.png
 tags: [CS50]
 file_name: 2017-03-28-CS50_week1
 ---
@@ -34,7 +34,9 @@ Week 0 的 pseudocode （虛擬碼）如圖，對於一個懂英文的成年人�
 
 他可能連「書」跟「一半」的概念是什麼都還不懂，那要怎麼期待會回應正確的動作呢？語言大部分都很抽象，更何況電腦語言。所以我們要盡可能的把指令描述明確且具體，讓電腦接收到我們的指令時不產生誤解，正確的執行我們下的命令。
 
-Week 1 以一個好玩的實驗開頭，來證明描述精準的重要性。
+Week 1 以一個好玩的實驗開頭，來證明 **指令精準的重要性。**
+
+![三明治鬧劇](https://i.imgur.com/Oj53HuS.png)
 
 實驗是這樣的，David 請兩位同學上台，桌上擺了三組「製作三明治的食材與工具」，讓台下同學發號施命，一個口令一個動作，讓台上的三人執行一個「製作三明治」的動作。
 
