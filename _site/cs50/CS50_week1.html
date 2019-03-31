@@ -5,7 +5,7 @@
 
   <title>
     
-      【心得】CS50 - week 1 | Yakim shu
+      【筆記】CS50 - week 1 ( 2019年更新 ) | Yakim shu
     
   </title>
 
@@ -16,7 +16,7 @@
   <meta name="author" content="Yakim, toromilk80129@gmail.com">
   <meta name="robots" content="INDEX,FOLLOW">
   <!--og-->
-  <meta property="og:title" content="【心得】CS50 - week 1">
+  <meta property="og:title" content="【筆記】CS50 - week 1 ( 2019年更新 )">
   <meta name="og:description" content="">
   <meta property="og:url" content="http://localhost:4000/cs50/CS50_week1.html">
 
@@ -74,7 +74,7 @@
 
     <div class="post-container story">
       <h1>
-  【心得】CS50 - week 1
+  【筆記】CS50 - week 1 ( 2019年更新 )
 </h1>
 
 
@@ -101,15 +101,65 @@
 
 <hr />
 
+<blockquote>
+  <p>註：我在 2019 年又重看了一次 2018 年新出的影片，所以內容有些不一樣。</p>
+</blockquote>
+
+<p>Week 0 的 pseudocode （虛擬碼）如圖，對於一個懂英文的成年人應該可以了解其中的內容。
+<img src="https://i.imgur.com/arZyqnz.png" alt="查找電話簿的虛擬碼" /></p>
+
+<p>但要是對一個小朋友說：「請先翻開書的一半」。</p>
+
+<p>他可能連「書」跟「一半」的概念是什麼都還不懂，那要怎麼期待會回應正確的動作呢？語言大部分都很抽象，更何況電腦語言。所以我們要盡可能的把指令描述明確且具體，讓電腦接收到我們的指令時不產生誤解，正確的執行我們下的命令。</p>
+
+<p>Week 1 以一個好玩的實驗開頭，來證明描述精準的重要性。</p>
+
+<p>實驗是這樣的，David 請兩位同學上台，桌上擺了三組「製作三明治的食材與工具」，讓台下同學發號施命，一個口令一個動作，讓台上的三人執行一個「製作三明治」的動作。</p>
+
+<ol>
+  <li>打開麵包袋。（指令不夠精準）
+    <ul>
+      <li>從中間把袋子撕開</li>
+      <li>乖乖不破壞包裝地打開</li>
+    </ul>
+  </li>
+  <li>把麵包從袋子拿出。（指令不夠精準）
+    <ul>
+      <li>拿兩片吐司出來</li>
+      <li>拿整包吐司出來</li>
+    </ul>
+  </li>
+  <li>擰開草莓果醬的蓋子。（指令適當、大家都有同樣的解讀）
+    <ul>
+      <li>大家都一樣</li>
+    </ul>
+  </li>
+  <li>拿起奶油刀。（指令不夠精準）
+    <ul>
+      <li>握著刀子底部</li>
+      <li>握著刀口（嚇！！）</li>
+    </ul>
+  </li>
+  <li>…..最後還是做出一個三明治了，但完成品之嚇人，完全可以投稿臉書社團 <a href="https://www.facebook.com/groups/1405416563117881/">婦仇者廚房</a>（非常舒壓、建議加入）</li>
+</ol>
+
+<blockquote>
+  <p>目的是讓大家很清楚的意識到，台上的都是讀到哈佛的高材生，對英文的理解自然沒有問題，但是每個人對指令的解讀還是天差地遠。（當然很大程度是故意搞笑，但不影響理解這個概念）</p>
+</blockquote>
+
+<hr />
+
 <h2 id="scratch-vs-c">Scratch vs. C</h2>
 
-<p>這節開始比較 week 0 所使用的圖像化 <a href="https://zh.wikipedia.org/wiki/Scratch">scratch</a> 轉換成傳統的<a href="https://zh.wikipedia.org/wiki/C%E8%AF%AD%E8%A8%80">程式語言 C</a>。</p>
+<p>這節開始比較 Week 0 所使用的圖像化 <a href="https://zh.wikipedia.org/wiki/Scratch">Scratch</a>  轉換成傳統的 <a href="https://zh.wikipedia.org/wiki/C%E8%AF%AD%E8%A8%80">程式語言 C</a> 。</p>
 
-<p>什麼？你說上節分明就沒有介紹到 scratch ，對我懶但你不能跟著懶，請自己點進去<a href="https://scratch.mit.edu/projects/editor/?tip_bar=getStarted">開始一個專案</a>玩玩~</p>
+<p>什麼？你說上節分明就沒有介紹到 Scratch ，對我懶但你不能跟著懶，請自己點進去 <a href="https://scratch.mit.edu/projects/editor/?tip_bar=getStarted">開始一個專案</a> 玩玩~</p>
 
-<p>話說最近在練習 Canvas，引入 CreateJs 實作<a href="http://output.jsbin.com/dapakeheqo" target="_blank">電流急急棒</a>，看似很簡單，但還是碰了不少壁，但如果只是想練習寫個小程式，真得有必要熟讀操作文件去實現那些簡單的邏輯嗎？</p>
+<p>之所以使用 Scratch 當做入門，而不是 C 語言，是因為讓初學者可以專心在邏輯設計上，而不會又出現哪裡有報錯而感到很無力。（像我一開始學程式的時候，就很不解為什麼結束非得要加 <code class="highlighter-rouge">;</code>）</p>
 
-<p>但再看看網路上找到的<a href="http://blog.ilc.edu.tw/blog/blog/1279/post/83251/590388">學校老師做的 scratch 實作電流急急棒</a>，用圖像化把語言模塊相接在一起，比我那一大篇js碼還要親民多了吧，而且最終成果也比我屌很多哈哈哈哈(我太弱還做不出障礙物)</p>
+<p>話說最近在練習 Canvas，引入 CreateJs 實作 <a href="http://output.jsbin.com/dapakeheqo" target="_blank">電流急急棒</a> ，看似很簡單，但還是碰了不少壁，但如果只是想練習寫個小程式，真得有必要熟讀操作文件去實現那些簡單的邏輯嗎？</p>
+
+<p>但再看看網路上找到的 <a href="http://blog.ilc.edu.tw/blog/blog/1279/post/83251/590388">學校老師做的 scratch 實作電流急急棒</a> ，用圖像化把語言模塊相接在一起，比我那一大篇 js 還要親民多了吧，而且最終成果也比我屌很多哈哈哈哈(我太弱還做不出障礙物)</p>
 
 <hr />
 
@@ -133,53 +183,9 @@
 </code></pre>
 </div>
 
-<hr />
-
-<h2 id="loops">loops</h2>
-
-<p>剛剛是<strong>說一次</strong> “hello, world”，現在來試試<strong>不斷地說</strong> “hello, world”</p>
-
-<p>實現循環在程式語言中叫做 <strong>loops</strong></p>
-
-<p><img src="http://i.imgur.com/RYiOz7n.png" alt="while" /></p>
-
-<p>上圖右邊的程式碼就是說，當 <code class="highlighter-rouge">while</code> 後括號內容為真，就會不斷執行大括號 <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="p">}</span></code> 裡的內容</p>
-
-<div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="c1">// → 括號內容為 true
-</span><span class="p">{</span>
-    <span class="c1">// 不斷地運作這裡的程式碼
-</span><span class="p">}</span>
-</code></pre>
-</div>
-
-<hr />
-
-<p>剛剛是<strong>不斷地</strong>說 “hello, world”，那要是想要做<strong>有限次數</strong>的循環呢?</p>
-
-<p>說100次、50次、2次 “hello, world”，這時候就可以用 for loops</p>
-
-<p><code class="highlighter-rouge">for</code> 後括號內容為：<code class="highlighter-rouge">(起始值; 條件式; 更新值)</code></p>
-
-<p><img src="http://i.imgur.com/9KzDQGN.png" alt="for loop" /></p>
-
-<p>迴圈順序如下：</p>
-
-<ol>
-  <li>設定變數 i 為 0 <strong>(起始值)</strong></li>
-  <li>檢查 i 是否在 50 以內 <strong>(條件式)</strong>，要是不成立就跳出迴圈<strong>(步驟6.)</strong></li>
-  <li>說一次 hello, world <strong>(執行 <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="p">}</span></code> 內容)</strong></li>
-  <li>i + 1 <strong>(更新值)</strong></li>
-  <li>回到<strong>(步驟 2.)</strong></li>
-  <li>結束迴圈</li>
-</ol>
-
-<div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="n">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="c1">// 當i小於50，就繼續執行
-</span><span class="p">{</span>
-    <span class="c1">// 執行50次這裡的程式碼
-</span>    <span class="n">printf</span><span class="p">(</span><span class="s">"hello, world</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre>
-</div>
+<blockquote>
+  <p><code class="highlighter-rouge">\n</code> 代表的是「這行文字已經結束了」的表示符號。</p>
+</blockquote>
 
 <hr />
 
@@ -195,46 +201,92 @@
 
 <p><img src="http://i.imgur.com/Q0Js45s.png" alt="ifelse" /></p>
 
-<blockquote>
-  <p>設 x → 1, y → 2，會輸出 “x is less than y”</p>
-</blockquote>
-
-<blockquote>
-  <p>設 x → 2, y → 1，會輸出 “x is greater than y”</p>
-</blockquote>
-
-<blockquote>
-  <p>設 x → 1, y → 1，會輸出 “x is equal to y”</p>
-</blockquote>
+<ol>
+  <li>x 為 1, y 為 2
+    <ul>
+      <li>會輸出 “x is less than y”</li>
+    </ul>
+  </li>
+  <li>x 為 2, y 為 1
+    <ul>
+      <li>會輸出 “x is greater than y”</li>
+    </ul>
+  </li>
+  <li>x 為 1, y 為 1
+    <ul>
+      <li>會輸出 “x is equal to y”</li>
+    </ul>
+  </li>
+</ol>
 
 <hr />
 
-<h2 id="終端機">終端機</h2>
+<p>這邊 David 提出一點思考，在第三個判斷式中，我們需不需要寫成 <code class="highlighter-rouge">else if ( x == y )</code>?</p>
 
-<p>終端機是啥，簡單來說就是對電腦下指令，不用滑鼠就可以對電腦進行操作。</p>
+<p>從比較兩個數字大小的動作中，我們知道只會得到三種結果，大於、小於跟等於。
+也就是說，前面已經比較完大於跟小於，最後剩下的只有 <em>等於</em> 這個結果，那到底需不需要寫呢？</p>
 
-<blockquote>
-  <p>就是你會看到MIS走到你的電腦旁，打開一個黑色視窗然後用鍵盤咻咻咻，會瞬間覺得這人很潮(宅)，搭配說了一堆你聽不懂的話，但你腦袋自動放空只希望他把你電腦修好，不要講一些聽不懂的話。</p>
-</blockquote>
+<h3 id="寫下的優點">寫下的優點</h3>
 
-<blockquote>
-  <p>要是你公司沒有MIS，那就回想所有電影演到駭客那段，桌上一定會有超多螢幕的視窗畫面就是了。</p>
-</blockquote>
+<p>程式非常的明確好懂。</p>
 
-<p><img src="https://camo.githubusercontent.com/43fdb0a62acd9c7abb578d108e6a4913473c82c4/68747470733a2f2f6d656469612e67697068792e636f6d2f6d656469612f4e41355337463264696b4144752f67697068792e676966" alt="terminal" /></p>
+<p>因為這是個很簡單、大家都可以輕易理解，所以並沒有太大問題。
+但要是今天換成一個複雜的判斷，或者是只有你懂的情況，接手同事可能會感到很困擾。</p>
 
-<p>↑ 駭客任務裡的代碼雨，只是單純覺得帥。搜尋 “Matrix rain” 可以看到很多教學哈哈哈哈莫名其妙，意外看到一個 <a href="http://thecodeplayer.com/walkthrough/matrix-rain-animation-html5-canvas-javascript" target="_blank">canvas做的好帥阿阿阿阿</a> 不得不分享~</p>
+<h3 id="寫下的缺點">寫下的缺點</h3>
 
-<p>那終端機能辦到什麼，像是資料夾、檔案管理(新建、刪除、移動、重新命名、列表)、批次處理…</p>
+<p>電腦多了一層判斷。</p>
 
-<p>應該還有非常多，但我只有學最基本會用到的，其他的等到需要再學吧!!</p>
+<p>就算現在電腦的速度跑非常快，就算多了這一行判斷的時間，也快到你察覺不了。
+但如果平常沒有維持好習慣，努力縮小這些不必要的判斷時間，在你寫出成千甚至上萬行的程序後，會漸漸體會到這些差異。</p>
 
-<p>以下是我看到不錯的教學：</p>
+<hr />
 
-<ul>
-  <li><a href="https://carolhsu.gitbooks.io/django-girls-tutorial-traditional-chiness/content/intro_to_command_line/README.html" target="_blank">介紹命令行(command-line)介面 - for: Mac, Windows</a></li>
-  <li><a href="http://lnpcd.blogspot.tw/2012/09/00.html" target="_blank">初學者之卷：命令提示字元 - for: Windows</a></li>
-</ul>
+<h2 id="loops">loops</h2>
+
+<p>前面是 <strong>說一次</strong> “hello, world”，現在來試試 <strong>不斷地說</strong> “hello, world”</p>
+
+<p>實現循環在程式語言中叫做 <strong>loops</strong></p>
+
+<p><img src="http://i.imgur.com/RYiOz7n.png" alt="while" /></p>
+
+<p>上圖右邊的程式碼就是說，當 <code class="highlighter-rouge">while</code> <strong>括號內容</strong> 為真 (true)，就會不斷執行大括號 <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="p">}</span></code> 裡的內容</p>
+
+<div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="c1">// → 括號內容為 true
+</span><span class="p">{</span>
+    <span class="c1">// 不斷地運作這裡的程式碼
+</span><span class="p">}</span>
+</code></pre>
+</div>
+
+<hr />
+
+<p>懂得 <strong>不斷地</strong> 說 <code class="highlighter-rouge">hello, world</code>，那要是想要做 <strong>有限次數</strong> 的循環呢?</p>
+
+<p>說 100 次、 50 次、 2 次 <code class="highlighter-rouge">hello, world</code>，這時候就可以用 for loops</p>
+
+<p><code class="highlighter-rouge">for</code> 後括號內容為：<code class="highlighter-rouge">(起始值; 條件式; 更新值)</code></p>
+
+<p><img src="http://i.imgur.com/9KzDQGN.png" alt="for loop" /></p>
+
+<p>迴圈順序如下：</p>
+
+<ol>
+  <li>設定變數 i 為 0 <strong>( 起始值 )</strong></li>
+  <li>檢查 i 是否在 50 以內 <strong>( 條件式 )</strong>，要是不成立就跳出迴圈<strong>( 步驟6. )</strong></li>
+  <li>說一次 hello, world <strong>( 執行 <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="p">}</span></code> 內容 )</strong></li>
+  <li>i + 1 <strong>( 更新值 )</strong></li>
+  <li>回到 <strong>( 步驟 2. )</strong></li>
+  <li>結束迴圈</li>
+</ol>
+
+<div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="n">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="c1">// 當i小於50，就繼續執行
+</span><span class="p">{</span>
+    <span class="c1">// 執行50次這裡的程式碼
+</span>    <span class="n">printf</span><span class="p">(</span><span class="s">"hello, world</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
 
 
 <span class="post-date">
@@ -247,8 +299,8 @@
 </span>
 <div class="post-date">Feel free to share!</div>
   <div class="sharing-icons">
-    <a href="https://twitter.com/intent/tweet?text=【心得】CS50 - week 1&amp;url=/cs50/CS50_week1.html&amp;via=" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-    <a href="https://www.facebook.com/sharer/sharer.php?u=/cs50/CS50_week1.html&amp;title=【心得】CS50 - week 1" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    <a href="https://twitter.com/intent/tweet?text=【筆記】CS50 - week 1 ( 2019年更新 )&amp;url=/cs50/CS50_week1.html&amp;via=" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=/cs50/CS50_week1.html&amp;title=【筆記】CS50 - week 1 ( 2019年更新 )" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
     <a href="https://plus.google.com/share?url=/cs50/CS50_week1.html" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
   </div>
 </div>
@@ -293,7 +345,7 @@
           <li>
             <h3>
               <a href="/cs50/CS50_week0.html">
-                【心得】CS50 - week 0
+                【筆記】CS50 - week 0 ( 2019年更新 )
                 <!--<img src="http://localhost:4000/images/">-->
                 <!--<small>March 7, 2017</small>-->
               </a>

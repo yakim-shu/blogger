@@ -1,5 +1,5 @@
 ---
-title: "【心得】CS50 - week 0"
+title: "【筆記】CS50 - week 0 ( 2019年更新 )"
 layout: post
 description: ""
 category: CS50
@@ -18,7 +18,7 @@ Week 0 主要課程素材 :
 
 - [線上圖形化程式程式設計 - Scratch](https://www.youtube.com/embed/poT5Yd0Ag8I?autoplay=1&rel=0)
 
-week 0 算是暖身，大概講一下基本觀念跟之後會常聽到的名詞解釋，以及在動手寫程式之前，可以先玩 [scratch](https://scratch.mit.edu/projects/editor/?tip_bar=home){:target="_blank"}，了解寫程式會運用到的邏輯，對新手來說，簡單又不會被語法給卡住。
+week 0 算是暖身，大概講一下基本觀念跟之後會常聽到的名詞解釋，以及在動手寫程式之前，可以先玩完看 [Scratch](https://scratch.mit.edu/projects/editor/?tip_bar=home){:target="_blank"}，了解寫程式會運用到的邏輯，對新手來說，簡單又不會被語法給卡住。
 
 ---
 
