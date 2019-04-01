@@ -1,7 +1,7 @@
 ---
 title: "拎著爹娘去冒險 - 《河內 day 4 - 都市傳說、果汁櫥窗、海產店強力膠》"
 layout: post
-description: ""
+description: "吃飽當然要來杯 shake，因為太便宜，每天不來個兩杯好像會虧到。（價值觀偏差）"
 category: Travel
 image: https://i.imgur.com/YnmukoO.jpg
 tags: [Travel, Vietnam]
