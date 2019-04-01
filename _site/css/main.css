@@ -77,7 +77,7 @@ blockquote {
 }
 blockquote:before {
   color: #ccc;
-  /*content: open-quote;*/
+  /* content: open-quote; */
   font-size: 4em;
   line-height: 0.1em;
   margin-right: 0.25em;
@@ -345,13 +345,15 @@ pre,
 code {
     font-size: 0.95rem;
     border-radius: 3px;
-    /*background-color: #f5f5f5;*/
+    /* background-color: #f5f5f5; */
     font-family: "Source Code Pro";
     padding: 1px 5px;
     margin:0 3px;
 }
 
-
+p code.highlighter-rouge {
+    background-color: #f5f5f5;
+}
 pre {
     padding: 8px 12px;
     overflow-x: auto;

@@ -306,13 +306,9 @@
 </code></pre>
 </div>
 
-<blockquote>
-  <p>C 語言中沒有 <strong>字串</strong> 這種資料型態，所以透過引入課程中已經寫好的 <code class="highlighter-rouge">cs50.h</code> 的函式庫 (或稱 library)，我們就可以使用 <code class="highlighter-rouge">string</code> 當作變數，也可以使用 <code class="highlighter-rouge">get_string</code> 來得到使用者輸入的變數。</p>
-</blockquote>
+<p>C 語言中沒有<strong>字串</strong>這種資料型態，所以透過引入課程中已經寫好的 <code class="highlighter-rouge">cs50.h</code> 的函式庫 (或稱 library)，我們就可以使用 <code class="highlighter-rouge">string</code> 當作變數，也可以使用 <code class="highlighter-rouge">get_string</code> 來得到使用者輸入的變數。</p>
 
-<blockquote>
-  <p>同樣的，<code class="highlighter-rouge">printf( )</code> 也是透過引入 <code class="highlighter-rouge">stdio.h</code> 後才能夠使用，將電腦接收到的文字輸出在螢幕上。</p>
-</blockquote>
+<p>同樣的，<code class="highlighter-rouge">printf( )</code> 也是透過引入 <code class="highlighter-rouge">stdio.h</code> 後才能夠使用，將電腦接收到的文字輸出在螢幕上。</p>
 
 <hr />
 
@@ -337,7 +333,7 @@
 
 <p><img src="https://i.imgur.com/kjWllKx.png" alt="編譯原始碼" /></p>
 
-<p>所以當我們寫好上一個例子 hello.c，要怎麼讓他執行呢？這裡並沒有像 Scratch 裡有個神奇的綠色旗子可以按，所以我們要輸入一些指令，將 hello.c <strong>編譯</strong>、並 <strong>執行編譯後的機械碼</strong> 。</p>
+<p>所以當我們寫好上一個例子 hello.c，要怎麼讓他執行呢？這裡並沒有像 Scratch 裡有個神奇的綠色旗子可以按，所以我們要輸入一些指令，將 hello.c<strong>編譯</strong>並<strong>執行編譯後的機械碼</strong> 。</p>
 
 <h4 id="編譯成機械碼">編譯成機械碼</h4>
 
@@ -374,7 +370,7 @@
 
 <p>為什麼會造成這樣的結果呢？</p>
 
-<p><strong>電腦的記憶體是有限的</strong>，當我們想 <strong>運算無限位數的數字</strong> 該怎麼辦呢？結果就是出現 bug 了，電腦能做的只有 <strong>非常接近</strong> ，但無法達到100%的準確，所以應該要盡量避免去比較太多位數的數字。</p>
+<p><strong>電腦的記憶體是有限的</strong>，當我們想<strong>運算無限位數的數字</strong>該怎麼辦呢？結果就是出現 bug 了，電腦能做的只有<strong>非常接近</strong>，但無法達到100%的準確，所以應該要盡量避免去比較太多位數的數字。</p>
 
 <blockquote>
   <p>台下同學發問，那是不是永遠都使用 <code class="highlighter-rouge">double</code> 以保持更精確？</p>
