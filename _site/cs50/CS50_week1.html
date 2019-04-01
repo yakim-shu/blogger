@@ -102,7 +102,7 @@
 <hr />
 
 <blockquote>
-  <p>註：我在 2019 年又重看了一次 2018 年新出的影片，所以內容有些不一樣。</p>
+  <p>註：我在 2019 年又重看了一次<a href="https://www.youtube.com/playlist?list=PLhQjrBD2T382eX9-tF75Wa4lmlC7sxNDH"> 2018 年新出的影片</a>，所以內容有些不一樣。</p>
 </blockquote>
 
 <p>Week 0 的 pseudocode （虛擬碼）如圖，對於一個懂英文的成年人應該可以了解其中的內容。
@@ -289,6 +289,113 @@
 <span class="p">}</span>
 </code></pre>
 </div>
+
+<hr />
+
+<p>以下是讓使用者輸入名字，讓電腦在螢幕上輸出的小程式。
+檔名為 hello.c</p>
+
+<div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
+#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">string</span> <span class="n">name</span> <span class="o">=</span> <span class="n">get_string</span><span class="p">(</span><span class="s">"what's your name?</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"hello, %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">name</span><span class="p">);</span>    
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<blockquote>
+  <p>C 語言中沒有 <strong>字串</strong> 這種資料型態，所以透過引入課程中已經寫好的 <code class="highlighter-rouge">cs50.h</code> 的函式庫 (或稱 library)，我們就可以使用 <code class="highlighter-rouge">string</code> 當作變數，也可以使用 <code class="highlighter-rouge">get_string</code> 來得到使用者輸入的變數。</p>
+</blockquote>
+
+<blockquote>
+  <p>同樣的，<code class="highlighter-rouge">printf( )</code> 也是透過引入 <code class="highlighter-rouge">stdio.h</code> 後才能夠使用，將電腦接收到的文字輸出在螢幕上。</p>
+</blockquote>
+
+<hr />
+
+<h3 id="原始碼編譯器機械碼">原始碼、編譯器、機械碼</h3>
+
+<p>程式在電腦執行的過程應該是這樣的。</p>
+
+<ul>
+  <li>我們上面練習寫的程式碼稱為 <strong>原始碼</strong> Sorce Code
+    <ul>
+      <li>也就是人類可讀的程式語言</li>
+      <li>像是現代程式語言，常見的有 C, C++, Java, Javascript, PHP…</li>
+    </ul>
+  </li>
+  <li>原始碼透過 <strong>編譯器</strong> Compiler 編譯</li>
+  <li>編譯後成為 <strong>機械碼</strong>  Machine Code
+    <ul>
+      <li>電腦可以執行的二進位指令，即為 0 跟 1 的組成 。</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://i.imgur.com/kjWllKx.png" alt="編譯原始碼" /></p>
+
+<p>所以當我們寫好上一個例子 hello.c，要怎麼讓他執行呢？這裡並沒有像 Scratch 裡有個神奇的綠色旗子可以按，所以我們要輸入一些指令，將 hello.c <strong>編譯</strong>、並 <strong>執行編譯後的機械碼</strong> 。</p>
+
+<h4 id="編譯成機械碼">編譯成機械碼</h4>
+
+<p>在這裡課程也包裝了一個指令 <code class="highlighter-rouge">make</code>，可以將編譯的指令寫得比較精簡，如下：</p>
+
+<p><code class="highlighter-rouge">make hello</code>，這行代表著「 請將 hello.c 的檔案編譯成 hello 」</p>
+
+<p>如果沒有 <code class="highlighter-rouge">make</code> 可以用，就不能編譯了嗎？當然不是，只是要打的字多一點而已，如下：</p>
+
+<p><code class="highlighter-rouge">clang -o hello hello.c</code> ，跟上述是一樣意思，但使用 <code class="highlighter-rouge">make</code> 是不是簡單多了呢？</p>
+
+<h4 id="執行編譯後的機械碼">執行編譯後的機械碼</h4>
+
+<p>執行很簡單，只要在剛剛編譯好的機械碼前加上 <code class="highlighter-rouge">./</code> 就好了，所以當我們要執行剛剛的程式為 <code class="highlighter-rouge">./hello</code>。</p>
+
+<hr />
+
+<h3 id="注意資料型態">注意資料型態</h3>
+
+<p>2 除以 10 的答案是什麼？</p>
+
+<p>「 0.2 阿！還用說嗎？」
+「這要看變數存什麼樣的資料型態而定，還有看指定回傳的數字有多精確。」</p>
+
+<ul>
+  <li>如果是整數 <code class="highlighter-rouge">int</code> ，會回傳 <code class="highlighter-rouge">0</code> ，因為 <code class="highlighter-rouge">int</code> 是整數型，小數點以下就忽略不計。</li>
+  <li>浮點數 <code class="highlighter-rouge">float</code> ，會回傳 <code class="highlighter-rouge">0.200000</code> ，不過能夠存到小數點後第 8 位數，超過就不精準了，佔用 4 byte。</li>
+  <li>雙精度浮點數 <code class="highlighter-rouge">double</code> ，會回傳 <code class="highlighter-rouge">0.200000</code>，不過能夠存到小數點後第 16 位數，超過就不精準了，佔用 8 byte。</li>
+</ul>
+
+<p><img src="https://i.imgur.com/uPcuJ8I.png" alt="出錯的 float" /></p>
+
+<p>例如上圖，使用者輸入的 <code class="highlighter-rouge">x</code> <code class="highlighter-rouge">y</code> 雖然是整數，但以 <code class="highlighter-rouge">float</code> 的資料型態儲存 (截的這張圖看不出來)，在 <code class="highlighter-rouge">printf( )</code> 裡指定要存到小數點後 50 位數 ( <code class="highlighter-rouge">%.50f</code> )，結果就是小數點後第 17 位數開始，登愣！壞掉了。</p>
+
+<p>為什麼會造成這樣的結果呢？</p>
+
+<p><strong>電腦的記憶體是有限的</strong>，當我們想 <strong>運算無限位數的數字</strong> 該怎麼辦呢？結果就是出現 bug 了，電腦能做的只有 <strong>非常接近</strong> ，但無法達到100%的準確，所以應該要盡量避免去比較太多位數的數字。</p>
+
+<blockquote>
+  <p>台下同學發問，那是不是永遠都使用 <code class="highlighter-rouge">double</code> 以保持更精確？</p>
+</blockquote>
+
+<p>當然可以這麼想，但是要付出代價。使用 <code class="highlighter-rouge">double</code> 變數佔用的記憶體空間是 <code class="highlighter-rouge">float</code> 的兩倍，記憶體空間是有限的，代表這也佔去了其他重要的位置，更何況如果只是儲存更多的 0 呢？所以是端看當時的情況來做出取捨。</p>
+
+<hr />
+
+<h3 id="overflow-溢位">Overflow 溢位</h3>
+
+<p>剛剛的例子說明了記憶體空間的有限性，那當然 <code class="highlighter-rouge">int</code> 整數型也是有上限的，一般來說是 32 bit (4 byte)，即為 -2147483648 ~ 2147483647。一但數字超過這範圍，系統就會出錯。</p>
+
+<p>例如著名的波音 787 overflow 事件，請參考 <a href="https://www.facebook.com/JservFans/posts/波音-787-的全銜為波音787夢幻客機boeing-787-dreamliner是波音公司最新型號的廣體中型客機於-2011-年投入服務可載-242-至-39/907938812665787/">Jserv與他愉快的小夥伴 - 臉書貼文</a>。</p>
+
+<p>想深入了解搞錯資料型態的可以參考：</p>
+<ul>
+  <li><a href="https://bcc16.ncu.edu.tw/pool/1.26.shtml">資料型態的悲劇</a>（非常有趣！）</li>
+  <li><a href="https://zh.wikipedia.org/wiki/2038年问题">維基 - 2038年問題</a></li>
+  <li><a href="https://zh.wikipedia.org/wiki/2000年问题">維基 - 千禧蟲</a></li>
+</ul>
 
 
 <span class="post-date">
