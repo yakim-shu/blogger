@@ -1,7 +1,6 @@
 ---
 title: "【筆記】CS50 - week 2 編譯、陣列、加密、排序法 ( 2019年更新 )"
 layout: post
-title: "【心得】CS50 - week 2"
 description: "上一節提過的將人類可閱讀的程式碼，轉換成電腦認得的機械碼，這過程稱為編譯，編譯還可以再細分為以下 4 個步驟"
 category: CS50
 image: 
