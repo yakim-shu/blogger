@@ -1,10 +1,12 @@
 ---
+title: "【筆記】CS50 - week 2 編譯、陣列、加密、排序法 ( 2019年更新 )"
 layout: post
 title: "【心得】CS50 - week 2"
-description: ""
+description: "上一節提過的將人類可閱讀的程式碼，轉換成電腦認得的機械碼，這過程稱為編譯，編譯還可以再細分為以下 4 個步驟"
 category: CS50
-image: http://i.imgur.com/ag930Yh.png
+image: 
 tags: [CS50]
+file_name: 2017-04-27-CS50_week2
 ---
 
 Week 2 主要課程素材 : 
@@ -24,6 +26,129 @@ Week 2 主要課程素材 :
 ---
 
 
+## 編譯 Compiling
+
+上一節提過的將人類可閱讀的程式碼，轉換成電腦認得的機械碼，這**過程稱為編譯**，編譯還可以再細分為以下 4 個步驟：
+
+1. preprocessing
+    - 在之前的案例中，在主程式開始前，先引用了包裝好的 liberary 
+    - `#include <cs50.h>` 代表著先定義好了 `string get_string(string prompt)`
+    - `#include <stdio.h>` 代表著先定義好了 `int printf(const char *format, ...)`
+2. compiling
+    - 編譯成 底層語言又稱**組合語言 assembling language**（ CPU 能讀懂的 ）
+
+![組合語言](media/15545163845634/%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7%202019-04-06%20%E4%B8%8A%E5%8D%8810.33.23.png)
+
+3. assembling 
+    - 編譯成 機械碼（即 1 & 0 ）
+4. linking
+    a. `main.c` 編譯後的 2 進位碼
+    b. `cs50.h` 編譯後的 2 進位碼
+    c. `stdio.h` 編譯後的 2 進位碼
+    - 把 a, b, c 三個檔案合併起來 
+
+![linking](media/15545163845634/%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7%202019-04-07%20%E4%B8%8B%E5%8D%884.04.06.png)
+
+
+
+---
+
+### CS50 課程提供的幫助指令
+
+- `help50`
+    - 幫助你指出 bug 並提出如何解決的建議
+    - 使用方法： `help50 make buggy`
+- `printf`
+    - 適當地列出變數的值，幫助找出問題在哪裡 
+    - 使用方法：`printf("i is %i\n", i);`
+- `style50`
+    - 提供有適當縮排的範本，並建議何時該有註解
+    - 使用方法：`style50 make buggy2.c` 
+
+---
+
+## RAM 記憶體
+
+硬碟的容量大，是存放資料的地方，而記憶體只在有電源的時候運作，且容量比硬碟小很多，不過也快速許多，在你打開某個文件或運行某軟體的瞬間，CPU 會往硬碟查找資料並暫時存放在 RAM 開始運作。
+
+- Hardware
+    - 通常擁有較大空間，運行較慢
+- RAM
+    - 較少的空間，運行快速
+    - 只在有電源的狀態下運作
+- CPU
+    - 只有一個，但可以在一秒內執行非常複雜的工作  
+
+
+我們可以將 RAM 視為很多方格(Byte)組成的空間：
+- `int score1 = get_int("score1: ");`
+
+![記憶體空間](media/15545163845634/%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7%202019-04-06%20%E4%B8%8B%E5%8D%8812.27.22.png)
+
+
+---
+## 陣列 Array
+
+當我們要儲存的變數開始越來越多，且有時連需要多少變數都不知道的時候，**陣列 Array** 就派上用場了。
+
+## 字串 String
+
+其實 **字串 String** 就是 **字元 char** 組成的陣列。
+- 例如： `string name = Yakim`
+    - `name[0]` 為 `Y`
+    - `name[1]` 為 `a`
+    - ...
+    - `name[4]` 為 `m`
+
+- 我們可以使用 `strlen(name)` 來得到字串長度。在上例中，`strlen("Yakim")` 結果為 5 
+    - 要記得先引用 `#include <string.h>` 才能使用
+
+#### 更好的寫法
+
+假如我要印出字串中每個字元，在迴圈內，因為此例中字串的長度是不會變的，沒有必要每次都去詢問字串的長度為何，所以可以考慮先存在一個變數裡。
+
+![存長度在變數](media/15545163845634/%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7%202019-04-06%20%E4%B8%8B%E5%8D%8812.50.05.png)
+
+（不過 `n` 只在迴圈裡運作，如果其他地方也會使用到 `n`，就可以把 `n = strlen(s);` 提到外面。）
+
+
+#### 更進一步了解字串
+
+假設有一個 32 byte 的記憶體位置，放入一個 ``Zamyla`` 的字串。
+
+![Zamyla](http://i.imgur.com/oNmzdt8.png)
+
+假如再加入另一個的字串 ``Andi``，那電腦要如何得知這它們之間的斷點呢?
+
+所以在結束一個字串後，會自動加上 **``\0``** 的字元，當做此字串的結束。
+
+![Zamyla&Andi](http://i.imgur.com/ag930Yh.png)
+
+那知道了字串後面都會帶有 ``\0`` 能做到什麼勒~
+
+還記得剛剛計算字串長度的 ``strlen`` 函式嗎?
+
+我們可以把剛剛的練習改寫得更簡單!!
+
+```c
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    string s = get_string();
+    int n = 0;
+    while (s[n] != '\0')
+    {
+        n++;
+    }
+}
+```
+
+看以上程式，我甚至不用調用 ``strlen`` 來取出字串長度，只要判斷它還沒讀到 **``\0``**，就知道字串結束與否。
+
+---
+
 ## 加密
 
 這節開始談到如何加密一段文字。
@@ -34,69 +159,7 @@ Week 2 主要課程素材 :
 
 反過來說，你拿到一段加密後的資料，只要有正確的金鑰，就可以還原成原始資料。
 
-在做簡單加密之前，我們先完成一系列小任務：
-
-- 印出一個字串
-- 印出此字串裡的每個字母
-- 把每個字母轉換成 ascii 碼
-- 對 ascii 碼做某種運算
-- 把 ascii 碼轉換回字母
-
----
-
-### 印出字串
-
-現在來試著加密一個單詞，首先印出原始字串。
-
-寫一段簡單的程式，讓使用者輸入一個詞，並印出來。
-
-假如我輸入 ``yakim``，印出 ``hello, yakim``
-
-```c
-#include <cs50.h>
-#include <stdio.h>
-
-int main(void)
-{
-    string s = get_string();
-    printf("hello, %s\n", s);
-}
-```
-
----
-
-### 印出此字串裡的每個字母
-
-接著我們把字串拆開來看，分成一個一個字符：``y``、``a``、``k``、``i``、``m``
-
-```c
-#include <cs50.h>
-#include <string.h>
-#include <stdio.h>
-
-int main(void)
-{
-    string s = get_string();
-    for (int i=0; i<strlen(s); i++) // 註(1)
-    {
-        printf("%c\n", s[i]); // 註(2)
-    }
-}
-```
-
-> (1)： strlen → string.h 的函數，會回傳字串的長度。  
-> (2)： s[i] → 把字串當成一個陣列，列出第 i 個字符。
-
-
----
-
-### 轉換 ASCII
-
-好玩的部分來了，還記的 [week 0 提到的 ASCII](CS50_week0.html) 嗎?
-
-現在把字母轉成 ASCII ，再進行某種算式，接著再轉換回字母。
-
-登愣!!!簡單加密就完成了~~
+還記的 [week 0 提到的 ASCII](CS50_week0.html) 嗎?
 
 ![ASCII](http://i.imgur.com/d7sie6T.png)
 
@@ -106,25 +169,34 @@ int main(void)
 
 ---
 
-來印出 大寫 A ~ Z 的數字對照表
 
-```c
-#include <stdio.h>
+### 假設你要傳個愛的小紙條給隔壁桌帥哥又不想被礙事的老師發現內容：
 
-int main(void)
-{
-    for (int i = 65; i< 65 + 26; i++)
-    {
-        printf("%c is %i\n", i, i);
-    }
-}
-// 結果：
-// A is 65
-// B is 66
-// C is 67
-// ....
+好玩的部分來了，利用 ASCII 碼，自己的幸福自己追
 
-```
+> 示愛第一步：寫下深思熟慮過後的愛的訊息
+
+![加密 - step1](media/15545163845634/%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7%202019-04-07%20%E4%B8%8B%E5%8D%882.57.59.png)
+
+> 示愛第二步：把訊息轉成 ASCII 碼，會得到以下數字
+
+![加密 - step2](media/15545163845634/%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7%202019-04-07%20%E4%B8%8B%E5%8D%882.59.14.png)
+
+> 示愛第三步：想辦法加密，深怕愛到一個笨蛋，就簡單的就每個數字都 + 1
+
+![加密 - step3](media/15545163845634/%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7%202019-04-07%20%E4%B8%8B%E5%8D%883.01.31.png)
+
+> 示愛第四步：再把我們加密過後的訊息轉回字元
+
+![加密 - step4](media/15545163845634/%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7%202019-04-07%20%E4%B8%8B%E5%8D%883.02.29.png)
+
+> 登愣!!! 簡單加密就完成了
+
+等待帥哥足夠聰明、成功解碼接收到我的愛。
+
+---
+
+### 同場加映：字元也可以 Loop
 
 還可以更神奇的用字元來做 for loop，兩邊結果是一樣的。
 
@@ -204,256 +276,129 @@ int main(void)
 
 ---
 
-### 了解字串
 
-字串的本質是由**字元**所組成的**陣列**。
+## 引數
 
-假設有一個 32 byte 的記憶體位置，放入一個 ``Zamyla`` 的字串。
+`main` 可以接收到引數的資訊
 
-![Zamyla](http://i.imgur.com/oNmzdt8.png)
+> 例如： 檔名為 argv0.c ，我輸入指令執行 `./argv0 Yakim`：
 
-假如再加入另一個的字串 ``Andi``，那電腦要如何得知這它們之間的斷點呢?
-
-所以在結束一個字串後，會自動加上 **``\0``** 的字元，當做此字串的結束。
-
-![Zamyla&Andi](http://i.imgur.com/ag930Yh.png)
-
-那知道了字串後面都會帶有 ``\0`` 能做到什麼勒~
-
-還記得剛剛計算字串長度的 ``strlen`` 函式嗎?
-
-我們可以把剛剛的練習改寫得更簡單!!
+1. `int argc` 為**引數的數量**，`argc` 為 `2`。
+2. `string argv[]` 為**引數的內容**，`argv[]` 為 `["./argv0", "Yakim"]`
+    - `argv[0]` 為 `./argv0`
+    - `argv[1]` 為 `Yakim`
+ 
+> 以下程式碼會依行列出 引數中的每個字元
 
 ```c
 #include <cs50.h>
-#include <ctype.h>
 #include <stdio.h>
-
-int main(void)
-{
-    string s = get_string();
-    int n = 0;
-    while (s[n] != '\0')
-    {
-        printf("%c", toupper(s[n]));
-        n++;
-    }
-}
-```
-
-看以上程式，我甚至不用調用 ``strlen`` 來取出字串長度，只要判斷它還沒讀到 **``\0``**就持續印出。
-
----
-
-
-## 作業
-
-### initials.c
-
-#### 說明
-- 使用者隨意輸入一英文名字
-- 輸出首字大寫
-
-#### 範例
-
-![initials.c](http://i.imgur.com/1idCiDE.png)
-
-#### 解題
-
-```c
-#include <stdio.h>
-#include <stdlib.h>
-#include <ctype.h>
-#include <cs50.h>
 #include <string.h>
 
-int main()
+int main(int argc, string argv[])
 {
-    string name = GetString();
-    int counter = strlen(name);
-    int n = 0;
-    int nUpper = 0;
-    char c;
-    // 遍歷所有字元
-    while( n < counter)
+    // 列表引數中的字串
+    for(int i = 0; i < argc; i++)
     {
-        if ( n == nUpper ){
-            c = toupper(name[n]); // 轉大寫
-            printf("%c", c);
-        }
-        else if ( name[n] == ' ' ) // 當遇到空白鍵，向後算一位
+        // 列表各字串的字元
+        for(int j = 0, n = strlen(argv[i]); j < n; j++)
         {
-            nUpper = n+1;
+            printf("%c\n", argv[i][j]);
         }
-        n++;
     }
-    printf("\n");
 }
 ```
 
 ---
 
-### caesar.c
+### 錯誤代碼
 
-#### 說明
+`main` 主程式沒有出錯，預設會回傳 `0`，也可以寫上任何**錯誤代碼**來辨別是哪種錯誤訊息，就像是常看到網頁出錯會出現的 404 一樣。
 
-加密文字
+> 維基百科： HTTP 404或Not Found錯誤訊息是HTTP的其中一種「標準回應訊息」（HTTP狀態碼），此訊息代表客戶端在瀏覽網頁時，伺服器無法正常提供訊息，或是伺服器無法回應且不知原因。
 
-#### 步驟
+`echo $?` 是什麼？可以參考 [鳥哥的 Linux 私房菜](http://linux.vbird.org/linux_basic/0320bash.php)
 
-- 輸入一字串及一數字
-- 換成ascii碼，再加上剛輸入的數字
-- 輸出成加密文字
+![錯誤代碼](media/15545163845634/%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7%202019-04-07%20%E4%B8%8B%E5%8D%8812.07.47.png)
 
-#### 解題
+---
 
-```c
-#include <stdio.h>
-#include <stdlib.h>
-#include <ctype.h>
-#include <cs50.h>
-#include <string.h>
+## 排序法 Sorting
 
+![排序法](media/15545336161434/%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7%202019-04-07%20%E4%B8%8B%E5%8D%886.40.04.png)
 
-int main(int argc, string argv[])
-{
+排序(sorting)，將一組資料一使用者需求，予以重新排列其順序。一般會依資料之大小順序排序(由大至小、或由小至大)。
 
-    
-    if ( !(argc==2) )
-    {
-        printf("We require an integer as encryption key.\n");
-        return 1;
-    }
-    else
-    {
-        // 把第2個參數字串轉成數字
-        int iNum = atoi(argv[1]);
-        
-        printf("plaintext: ");
-        string name = GetString();
-        
-        int sLen = strlen(name);
-        char sChar[sLen];
-        printf("ciphertext: ");
-        
-        for (int i=0; i<sLen; i++)
-        {
-            sChar[i] = name[i]; 
-            if (iNum > 26)
-            {
-                iNum = iNum % 26;
-            }
-            if ( isupper(sChar[i]) && (sChar[i]+iNum) > 90) // 大寫超過
-            {
-                printf("%c", sChar[i]+iNum-26);
-            }
-            else if ( islower(sChar[i]) && (sChar[i]+iNum) > 122) // 小寫超過
-            {
-                printf("%c", sChar[i]+iNum-26);
-            }
-            else if ( sChar[i]+iNum < 65 || sChar[i]+iNum > 122 ) // 非字母
-            {
-                printf("%c", sChar[i]);
-            }
-            else
-            {
-                printf("%c", sChar[i]+iNum);
-            }
-        }
-        printf("\n");
-    }
-}
-```
+排序後之資料，優點為容易閱讀、統計分析、與快速搜尋所要之資料。
+
+### 泡沫排序 Bubble Sort
+
+方法：比較相鄰兩值，進行交換
+
+ ![Bubble Sort](media/15545163845634/%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7%202019-04-07%20%E4%B8%8B%E5%8D%882.54.29.png)
+ 
+假如有 8 個數字，由以下步驟進行排序：
+- 第一次：比較 7 次，[0,1] [1,2] [2,3]....[6,7]
+- 第二次：比較 6 次，，[0,1]....[6,7]，（最後一個已經排序好了)
+- ....
+- 第七次：比較 1 次，[0,1] （後面六個都排序好了）
+
+優點：最右邊已經確定，每次比較都可以少一個
+
+### 選擇排序 Selection Sort
+
+方法：找出最小的值，丟到左邊交換
+
+![Selection Sort](media/15545163845634/%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7%202019-04-07%20%E4%B8%8B%E5%8D%882.55.17.png)
+
+假如有 8 個數字，由以下步驟進行排序：
+- 第一次：找出最小的數字，把 1 交換到最左邊
+- 第二次：找出剩下最小的數字，把 2 交換到左邊
+- ...
+- 第七次：找出剩下最小的數字，把 7 交換到左邊
+
+優點：最左邊已經確定，每次比較都可以少一個人
+缺點：每次都要搜尋一遍最小數，即使一開始順序就是對的
 
 
-### vigenere.c
+### 合併排序 Merge Sort
 
-#### 說明
+方法：持續二等分，直到最小單位再開始比較，再進行合併
 
-加密文字
+![Merge Sort](media/15545163845634/%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7%202019-04-07%20%E4%B8%8B%E5%8D%883.43.12.png)
 
-#### 步驟
+假如有 8 個數字，由以下步驟進行排序：
+- 先一直二等分成最小數字，再進行合併
+    - 第一次：合併成 4 組 2 個數字
+    - 第二次：合併成 2 組 4 個數字
+    - 第三次：合併成 1 組 8 個數字
 
-- 輸入一字串
-- 把字串轉換成ascii碼
-- 輸入需要加密的文字
-- 輸出成加密文字
+優點：移動的次數比泡沫跟選擇更有效率，每個數字只移動了 3 次，8 * 3 共 24 次
+缺點：需要用到額外記憶體
 
-#### 解題
+### 結論
 
-```c
-#include <stdio.h>
-#include <stdlib.h>
-#include <ctype.h>
-#include <cs50.h>
-#include <string.h>
+> 整體來說，泡沫排序跟選擇排序的效率是差不多的，都是 (n-1)+(n-2)+....+1。我們可以說這算法的效率計算方式如下圖，時間複雜度為 `n²`。
+ 
+![n平方](media/15545163845634/%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7%202019-04-07%20%E4%B8%8B%E5%8D%883.21.16.png)
+
+> 而合併排序的效率是更好了，時間複雜度為 `n * log(n)`
+
+![時間複雜度](media/15545163845634/%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7%202019-04-07%20%E4%B8%8B%E5%8D%884.36.16.png)
 
 
-int main(int argc, string argv[])
-{
-    if ( !(argc==2))
-    {
-        printf("We require an integer as encryption key.\n");
-        return 1;
-    }
-    else
-    {
-        // 把第2個參數字串轉成數字
-        string sNum = argv[1];
-        int sNumLen = strlen(sNum);
-        int a[sNumLen];
-        //取出字串，轉換成數字
-        for (int j=0; j<sNumLen; j++)
-        {
-            if (isupper(sNum[j]))
-            {
-                a[j] = sNum[j]-65;
-            }
-            else if ( islower(sNum[j]) )
-            {
-                a[j] = sNum[j]-97;
-            }else if ( isdigit(sNum[j]) )
-            {
-                printf("We require an integer as encryption key.\n");
-                return 1;
-            }
-        }
-        
-        printf("plaintext: ");
-        string name = GetString();
-        int sLen = strlen(name);
-        char sChar[sLen];
-        
-        printf("ciphertext: ");
-        int n = 0;
-        for (int i=0; i<sLen; i++)
-        {
-            sChar[i] = name[i]; 
-            while ( n == sNumLen )
-            {
-                n = 0;
-            }
+至於什麼是**時間複雜度**，我也是看了很久才有點頭緒，頭上充滿問號的同學可以參考這篇 [初學者學演算法｜談什麼是演算法和時間複雜度](https://medium.com/appworks-school/初學者學演算法-談什麼是演算法和時間複雜度-b1f6908e4b80)，強力推薦！！寫得非常清楚到讓人感動的地步。
 
-            if ( isupper(sChar[i]) && (sChar[i]+a[n]) > 90) // 大寫超過
-            {
-                printf("%c", sChar[i]+a[n]-26);
-            }
-            else if ( islower(sChar[i]) && (sChar[i]+a[n]) > 122) // 小寫超過
-            {
-                printf("%c", sChar[i]+a[n]-26);
-            }
-            else if ( sChar[i] < 65 || sChar[i] > 122 ) // 非字母
-            {
-                n--;
-                printf("%c", sChar[i]);
-            }
-            else
-            {
-                printf("%c", sChar[i]+a[n]);
-            }
-            n++;
-        }
-        printf("\n");
-    }
-}
-```
+由以下這張 gif 可以看出三種排序法明顯的差別，以時間複雜度來說，**Merge 優於 Bubble 優於 Selection**。
+
+![Apr-07-2019 15-56-53](media/15545163845634/Apr-07-2019%2015-56-53.gif)
+
+---
+
+參考資料：
+- [編譯器與連結器的基本概念](http://shukaiyang.myweb.hinet.net/cpp/concept.zhtw.htm)
+- [排序(sorting)](http://spaces.isu.edu.tw/upload/18833/3/web/sorting.htm)
+- [初學者學演算法｜談什麼是演算法和時間複雜度](https://medium.com/appworks-school/初學者學演算法-談什麼是演算法和時間複雜度-b1f6908e4b80)
+
+
+
