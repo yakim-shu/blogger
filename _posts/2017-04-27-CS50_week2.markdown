@@ -37,17 +37,15 @@ Week 2 主要課程素材 :
 
 ![組合語言](https://i.imgur.com/TrbBRx9.png)
 
-3. assembling 
+1. assembling 
     - 編譯成 機械碼（即 1 & 0 ）
-4. linking
-    a. `main.c` 編譯後的 2 進位碼
-    b. `cs50.h` 編譯後的 2 進位碼
-    c. `stdio.h` 編譯後的 2 進位碼
+2. linking
     - 把 a, b, c 三個檔案合併起來 
+    - a. `main.c` 編譯後的 2 進位碼
+    - b. `cs50.h` 編譯後的 2 進位碼
+    - c. `stdio.h` 編譯後的 2 進位碼
 
 ![linking](https://i.imgur.com/cSzO2LL.png)
-
-
 
 ---
 

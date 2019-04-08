@@ -351,7 +351,7 @@ code {
     margin:0 3px;
 }
 
-p code.highlighter-rouge {
+p code.highlighter-rouge, li code {
     background-color: #f5f5f5;
 }
 pre {
