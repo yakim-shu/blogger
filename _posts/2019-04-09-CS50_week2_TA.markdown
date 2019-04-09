@@ -32,7 +32,7 @@ file_name: 2019-04-09-CS50_week2_TA
 
 #### 把陣列比喻成郵局信箱
 
-![螢幕快照 2019-04-08 下午3.50.36-w450](https://i.imgur.com/MlpiRIM.png)
+![螢幕快照 2019-04-08 下午3.50.36-w450](https://i.imgur.com/MlpiRIM.png){:width="450"}
 
 #### 規則
 
