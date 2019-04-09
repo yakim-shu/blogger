@@ -32,7 +32,7 @@ file_name: 2019-04-09-CS50_week2_TA
 
 #### 把陣列比喻成郵局信箱
 
-![](https://i.imgur.com/MlpiRIM.png){:width="600"}
+![-w600](https://i.imgur.com/MlpiRIM.png){:width="600"}
 
 #### 規則
 

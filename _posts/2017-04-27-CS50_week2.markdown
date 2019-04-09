@@ -35,7 +35,7 @@ Week 2 主要課程素材 :
 2. compiling
     - 編譯成 底層語言又稱**組合語言 assembling language**（ CPU 能讀懂的 ）
 
-![組合語言](https://i.imgur.com/TrbBRx9.png)
+![組合語言-w500](https://i.imgur.com/TrbBRx9.png){:width="500"}
 
 1. assembling 
     - 編譯成 機械碼（即 1 & 0 ）
@@ -45,7 +45,7 @@ Week 2 主要課程素材 :
     - b. `cs50.h` 編譯後的 2 進位碼
     - c. `stdio.h` 編譯後的 2 進位碼
 
-![linking](https://i.imgur.com/cSzO2LL.png)
+![linking-w500](https://i.imgur.com/cSzO2LL.png){:width="500"}
 
 ---
 
@@ -79,7 +79,7 @@ Week 2 主要課程素材 :
 我們可以將 RAM 視為很多方格(Byte)組成的空間：
 - `int score1 = get_int("score1: ");`
 
-![記憶體空間](https://i.imgur.com/RJpWf2f.png)
+![記憶體空間-w400](https://i.imgur.com/RJpWf2f.png){:width="400"}
 
 
 ---
@@ -103,7 +103,7 @@ Week 2 主要課程素材 :
 
 假如我要印出字串中每個字元，在迴圈內，因為此例中字串的長度是不會變的，沒有必要每次都去詢問字串的長度為何，所以可以考慮先存在一個變數裡。
 
-![存長度在變數](https://i.imgur.com/02IqpZf.png)
+![存長度在變數-w400](https://i.imgur.com/02IqpZf.png){:width="400"}
 
 （不過 `n` 只在迴圈裡運作，如果其他地方也會使用到 `n`，就可以把 `n = strlen(s);` 提到外面。）
 
@@ -112,13 +112,13 @@ Week 2 主要課程素材 :
 
 假設有一個 32 byte 的記憶體位置，放入一個 ``Zamyla`` 的字串。
 
-![Zamyla](http://i.imgur.com/oNmzdt8.png)
+![Zamyla-w450](http://i.imgur.com/oNmzdt8.png){:width="450"}
 
 假如再加入另一個的字串 ``Andi``，那電腦要如何得知這它們之間的斷點呢?
 
 所以在結束一個字串後，會自動加上 **``\0``** 的字元，當做此字串的結束。
 
-![Zamyla&Andi](http://i.imgur.com/ag930Yh.png)
+![Zamyla&Andi-w450](http://i.imgur.com/ag930Yh.png){:width="450"}
 
 那知道了字串後面都會帶有 ``\0`` 能做到什麼勒~
 
@@ -151,13 +151,13 @@ int main(void)
 
 最簡單的加密方法就是給一段**原始資料**，透過神秘的**key(金鑰)**，組成一段難以閱讀的**新資料**。
 
-![加密](http://i.imgur.com/KLyoxPR.png)
+![加密-w500](http://i.imgur.com/KLyoxPR.png){:width="500"}
 
 反過來說，你拿到一段加密後的資料，只要有正確的金鑰，就可以還原成原始資料。
 
 還記的 [week 0 提到的 ASCII](CS50_week0.html) 嗎?
 
-![ASCII](http://i.imgur.com/d7sie6T.png)
+![ASCII-w500](http://i.imgur.com/d7sie6T.png){:width="500"}
 
 參照上圖，可以看到  
 **065 - 090 → 是大寫的 A ~ Z**  
@@ -172,19 +172,19 @@ int main(void)
 
 > 示愛第一步：寫下深思熟慮過後的愛的訊息
 
-![加密 - step1](https://i.imgur.com/epvw5Hv.png)
+![加密 - step1-w350](https://i.imgur.com/epvw5Hv.png){:width="350"}
 
 > 示愛第二步：把訊息轉成 ASCII 碼，會得到以下數字
 
-![加密 - step2](https://i.imgur.com/z5KT2FC.png)
+![加密 - step2-w350](https://i.imgur.com/z5KT2FC.png){:width="350"}
 
 > 示愛第三步：想辦法加密，深怕愛到一個笨蛋，就簡單的就每個數字都 + 1
 
-![加密 - step3](https://i.imgur.com/kDy3Eks.png)
+![加密 - step3-w350](https://i.imgur.com/kDy3Eks.png){:width="350"}
 
 > 示愛第四步：再把我們加密過後的訊息轉回字元
 
-![加密 - step4](https://i.imgur.com/0eIl8pH.png)
+![加密 - step4-w350](https://i.imgur.com/0eIl8pH.png){:width="350"}
 
 > 登愣!!! 簡單加密就完成了
 
@@ -315,7 +315,7 @@ int main(int argc, string argv[])
 
 `echo $?` 是什麼？可以參考 [鳥哥的 Linux 私房菜](http://linux.vbird.org/linux_basic/0320bash.php)
 
-![錯誤代碼](https://i.imgur.com/GVTXt03.png)
+![錯誤代碼-w600](https://i.imgur.com/GVTXt03.png){:width="600"}
 
 ---
 
@@ -361,7 +361,7 @@ int main(int argc, string argv[])
 
 方法：持續二等分，直到最小單位再開始比較，再進行合併
 
-![Merge Sort](https://i.imgur.com/efsjejn.png)
+![Merge Sort-w500](https://i.imgur.com/efsjejn.png){:width="500"}
 
 假如有 8 個數字，由以下步驟進行排序：
 - 先一直二等分成最小數字，再進行合併
@@ -376,11 +376,11 @@ int main(int argc, string argv[])
 
 > 整體來說，泡沫排序跟選擇排序的效率是差不多的，都是 (n-1)+(n-2)+....+1。我們可以說這算法的效率計算方式如下圖，時間複雜度為 `n²`。
  
-![n平方](https://i.imgur.com/4SMtRq0.png)
+![n平方-w300](https://i.imgur.com/4SMtRq0.png){:width="300"}
 
 > 而合併排序的效率是更好了，時間複雜度為 `n * log(n)`
 
-![時間複雜度](https://i.imgur.com/4DaCHOz.png)
+![時間複雜度-w350](https://i.imgur.com/4DaCHOz.png){:width="350"}
 
 
 至於什麼是**時間複雜度**，我也是看了很久才有點頭緒，頭上充滿問號的同學可以參考這篇 [初學者學演算法｜談什麼是演算法和時間複雜度](https://medium.com/appworks-school/初學者學演算法-談什麼是演算法和時間複雜度-b1f6908e4b80)，強力推薦！！寫得非常清楚到讓人感動的地步。
