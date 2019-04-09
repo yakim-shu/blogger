@@ -32,7 +32,7 @@ file_name: 2019-04-09-CS50_week2_TA
 
 #### 把陣列比喻成郵局信箱
 
-![螢幕快照 2019-04-08 下午3.50.36](https://i.imgur.com/MlpiRIM.png)
+![螢幕快照 2019-04-08 下午3.50.36-w450](https://i.imgur.com/MlpiRIM.png)
 
 #### 規則
 
@@ -47,14 +47,14 @@ file_name: 2019-04-09-CS50_week2_TA
 
 陣列的宣告方式： `資料類型` `名稱``[數量]`
 
-![螢幕快照 2019-04-08 下午3.56.12](https://i.imgur.com/j3w8FZ0.png)
-![螢幕快照 2019-04-08 下午3.57.23](https://i.imgur.com/Me2yls9.png)
-![螢幕快照 2019-04-08 下午3.57.28](https://i.imgur.com/jtG426i.png)
+![螢幕快照 2019-04-08 下午3.56.12-w500](https://i.imgur.com/j3w8FZ0.png)
+![螢幕快照 2019-04-08 下午3.57.23-w200](https://i.imgur.com/Me2yls9.png) 
+![螢幕快照 2019-04-08 下午3.57.28-w200](https://i.imgur.com/jtG426i.png)
 
 ---
 
 也可以用以下方式宣告，兩種是完全一樣的
-![螢幕快照 2019-04-08 下午4.00.17](https://i.imgur.com/JVSGKy5.png)
+![螢幕快照 2019-04-08 下午4.00.17-w400](https://i.imgur.com/JVSGKy5.png)
 
 ### 二維陣列
 
@@ -67,7 +67,7 @@ int array_2[2][3] = {
 };
 ```
 
-![螢幕快照 2019-04-08 下午4.00.52](https://i.imgur.com/lq7DGOP.png)
+![螢幕快照 2019-04-08 下午4.00.52-w400](https://i.imgur.com/lq7DGOP.png)
 
 ### 複製陣列
 
@@ -75,11 +75,11 @@ int array_2[2][3] = {
 
 例如下圖，這樣是不允許的。
 
-![螢幕快照 2019-04-08 下午4.09.27](https://i.imgur.com/mKvwN7b.png)
+![螢幕快照 2019-04-08 下午4.09.27-w300](https://i.imgur.com/mKvwN7b.png)
 
 正確的方式是使用迴圈複製。
 
- ![螢幕快照 2019-04-08 下午4.10.23](https://i.imgur.com/hotbVLt.png)
+ ![螢幕快照 2019-04-08 下午4.10.23-w300](https://i.imgur.com/hotbVLt.png)
 
 ###  傳值 or 傳參考 Pass by reference, not by value
 
@@ -97,7 +97,7 @@ int array_2[2][3] = {
 
  來看看以下練習：
  
- ![螢幕快照 2019-04-08 下午4.37.07](https://i.imgur.com/jgX93Me.png)
+ ![螢幕快照 2019-04-08 下午4.37.07-w350](https://i.imgur.com/jgX93Me.png)
 
 如果你搞清楚了 Pass by value or reference 的差別，那應該知道印出的答案是什麼？
 
@@ -123,7 +123,7 @@ int array_2[2][3] = {
 
 所以一個清楚的命名、及完整的文件說明是很重要的。
 
-![螢幕快照 2019-04-09 上午11.47.48](https://i.imgur.com/1mtxawM.png)
+![螢幕快照 2019-04-09 上午11.47.48-w400](https://i.imgur.com/1mtxawM.png)
 
 ### 宣告 Declaration
 
@@ -162,7 +162,7 @@ int c = sum(a, b);
 
 影片連結：[Algorithms Summary](https://www.youtube.com/embed/ktWL3nN38ZA?autoplay=1&rel=0)
 
-![螢幕快照 2019-04-08 下午3.28.42](https://i.imgur.com/ftTnwwk.png)
+![螢幕快照 2019-04-08 下午3.28.42-w700](https://i.imgur.com/ftTnwwk.png)
 ---
 
 ## Linear Search 線性搜尋法
@@ -186,7 +186,7 @@ int c = sum(a, b);
 
 當**起始點大於終點時，一直被分化的陣列數量直到變成 0**，代表目標物不在資料裡。
 
-![螢幕快照 2019-04-08 下午4.56.27](https://i.imgur.com/X6VvVff.png)
+![螢幕快照 2019-04-08 下午4.56.27-w500](https://i.imgur.com/X6VvVff.png)
 
 參考資料：
 - [[演算法] 二分搜尋 (Binary Search)](https://ithelp.ithome.com.tw/articles/10206818)
@@ -205,8 +205,8 @@ int c = sum(a, b);
     - Best case: n
     - Worst case: n²
 
-![螢幕快照 2019-04-09 上午10.37.02](https://i.imgur.com/PlpAk0i.png)
-![螢幕快照 2019-04-09 上午10.37.26](https://i.imgur.com/9pkLrRY.png)
+![螢幕快照 2019-04-09 上午10.37.02-w450](https://i.imgur.com/PlpAk0i.png)
+![螢幕快照 2019-04-09 上午10.37.26-w450](https://i.imgur.com/9pkLrRY.png)
 
 
 
@@ -220,9 +220,9 @@ int c = sum(a, b);
     - Best case: n log n
     - Worst case: n log n
  
- ![螢幕快照 2019-04-09 上午11.03.59](https://i.imgur.com/CimK79t.png)
+![螢幕快照 2019-04-09 上午11.03.59-w450](https://i.imgur.com/CimK79t.png)
 
-![螢幕快照 2019-04-09 上午11.04.39](https://i.imgur.com/xdrsQfD.png)
+![螢幕快照 2019-04-09 上午11.04.39-w450](https://i.imgur.com/xdrsQfD.png)
 
 
 參考資料：
@@ -239,9 +239,9 @@ int c = sum(a, b);
     - Best case: n²    
     - Worst case: n²
 
-![螢幕快照 2019-04-09 上午11.11.25](https://i.imgur.com/tkixbWM.png)
+![螢幕快照 2019-04-09 上午11.11.25-w450](https://i.imgur.com/tkixbWM.png)
 
-![螢幕快照 2019-04-09 上午11.11.52](https://i.imgur.com/uv9PRsZ.png)
+![螢幕快照 2019-04-09 上午11.11.52-w450](https://i.imgur.com/uv9PRsZ.png)
 
 ----
 
@@ -286,7 +286,7 @@ int c = sum(a, b);
 
 還有更多常用的 指令，有興趣可以自己去搜尋。
 
-![螢幕快照 2019-04-08 下午5.53.48](https://i.imgur.com/CJccyk3.png)
+![螢幕快照 2019-04-08 下午5.53.48-w450](https://i.imgur.com/CJccyk3.png)
 
         
 餐考資料：
