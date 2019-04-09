@@ -1,0 +1,657 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>
+    
+      【筆記】CS50 - week 2 助教課總整理 | Yakim shu
+    
+  </title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="把助教課的筆記整理成一篇，內容有點雜又囉唆，應該只有我自己看得懂，有些跟課程內容重複到，但還是再看一次加深記憶力。">
+  <meta name="author" content="Yakim, toromilk80129@gmail.com">
+  <meta name="robots" content="INDEX,FOLLOW">
+  <!--og-->
+  <meta property="og:title" content="【筆記】CS50 - week 2 助教課總整理">
+  <meta name="og:description" content="把助教課的筆記整理成一篇，內容有點雜又囉唆，應該只有我自己看得懂，有些跟課程內容重複到，但還是再看一次加深記憶力。">
+  <meta property="og:url" content="http://localhost:4000/cs50/CS50_week2_TA.html">
+
+    
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-77560722-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+
+
+<body>
+
+  <div class="container">
+    <header class="masthead">
+  <h3 class="masthead-title">
+    <a href="/">Yakim shu</a>
+    <small class="masthead-subtitle">Hi, 這是我擴充腦內海馬體的地方。</small>
+    <div class="menu">
+  <div class="menu-content">
+    <a href="/about.html">About</a>
+    <a href="/writing.html">Writing</a>
+    <a href="/contacts.html">Contact</a>
+  </div>
+  <div class="social-icons">
+    <a href="https://www.facebook.com/yakimshu"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
+    <a href="https://linkedin.com/in/yakimshu"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
+    <a href="mailto:toromilk80129@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
+  </div>
+</div>
+
+  </h3>
+</header>
+
+
+    <div class="post-container story">
+      <h1>
+  【筆記】CS50 - week 2 助教課總整理
+</h1>
+
+
+
+<p>把助教課的筆記整理成一篇，內容很雜又囉唆，應該只有我自己看得懂，有些跟課程內容重複到，但還是再看一次加深記憶力。</p>
+
+<p>助教課程目錄：</p>
+<ul>
+  <li>Array 陣列</li>
+  <li>Function 函式</li>
+  <li>Search 搜尋法
+    <ul>
+      <li>Linear Search</li>
+      <li>Binary Search</li>
+    </ul>
+  </li>
+  <li>Sort 排序法
+    <ul>
+      <li>Insertion Sort</li>
+      <li>Merge Sort</li>
+      <li>Selection Sort</li>
+    </ul>
+  </li>
+  <li>Command line 指令</li>
+  <li>Debug 除錯</li>
+</ul>
+
+<hr />
+
+<h2 id="陣列-array">陣列 Array</h2>
+
+<p>影片連結：<a href="https://www.youtube.com/embed/K1yC1xshF40?autoplay=1&amp;rel=0">Array</a></p>
+
+<h4 id="把陣列比喻成郵局信箱">把陣列比喻成郵局信箱</h4>
+
+<p><img src="https://i.imgur.com/MlpiRIM.png" alt="螢幕快照 2019-04-08 下午3.50.36" /></p>
+
+<h4 id="規則">規則</h4>
+
+<ul>
+  <li>index 永遠都是從 0 開始
+    <ul>
+      <li>假如 <code class="highlighter-rouge">array_1[]</code> 有 n 個數量</li>
+      <li>第一個： <code class="highlighter-rouge">array_1[0]</code></li>
+      <li>最後一個： <code class="highlighter-rouge">array_1[n-1]</code></li>
+    </ul>
+  </li>
+  <li>要<strong>非常小心數量</strong>，假如 <code class="highlighter-rouge">int array_1[] = {1, 2 ,3};</code>
+    <ul>
+      <li>就不該有 <code class="highlighter-rouge">array[3]</code> 的出現（ 最後一個為 <code class="highlighter-rouge">array[2]</code> ）</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="陣列的宣告">陣列的宣告</h4>
+
+<p>陣列的宣告方式： <code class="highlighter-rouge">資料類型</code> <code class="highlighter-rouge">名稱</code><code class="highlighter-rouge">[數量]</code></p>
+
+<p><img src="https://i.imgur.com/j3w8FZ0.png" alt="螢幕快照 2019-04-08 下午3.56.12" />
+<img src="https://i.imgur.com/Me2yls9.png" alt="螢幕快照 2019-04-08 下午3.57.23" />
+<img src="https://i.imgur.com/jtG426i.png" alt="螢幕快照 2019-04-08 下午3.57.28" />
+—</p>
+
+<p>也可以用以下方式宣告，兩種是完全一樣的
+<img src="https://i.imgur.com/JVSGKy5.png" alt="螢幕快照 2019-04-08 下午4.00.17" /></p>
+
+<h3 id="二維陣列">二維陣列</h3>
+
+<p>當然也可以製造出二維的陣列，定義一個 2 * 3 的陣列：</p>
+
+<div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">array_2</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">},</span> 
+    <span class="p">{</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">}</span>
+<span class="p">};</span>
+</code></pre>
+</div>
+
+<p><img src="https://i.imgur.com/lq7DGOP.png" alt="螢幕快照 2019-04-08 下午4.00.52" /></p>
+
+<h3 id="複製陣列">複製陣列</h3>
+
+<p>這邊有一點要特別小心，在 C 語言中，我們沒辦法直接複製陣列，將 <code class="highlighter-rouge">陣列一</code> 直接賦值到 <code class="highlighter-rouge">陣列二</code> 是不被允許的，我們能做的就只有使用迴圈、將所有的內容一個一個複製過去。</p>
+
+<p>例如下圖，這樣是不允許的。</p>
+
+<p><img src="https://i.imgur.com/mKvwN7b.png" alt="螢幕快照 2019-04-08 下午4.09.27" /></p>
+
+<p>正確的方式是使用迴圈複製。</p>
+
+<p><img src="https://i.imgur.com/hotbVLt.png" alt="螢幕快照 2019-04-08 下午4.10.23" /></p>
+
+<h3 id="傳值-or-傳參考-pass-by-reference-not-by-value">傳值 or 傳參考 Pass by reference, not by value</h3>
+
+<p>在 C 語言中，大部分的資料型態都是 Pass by value（傳值），
+但陣列是 Pass by reference （傳參考）。</p>
+
+<p>這是什麼意思呢？先從傳值來探討</p>
+
+<p>當我們將變數複製給另一個變數時，<code class="highlighter-rouge">int a = b;</code>，其實並不是真的把 b 複製到 a，電腦在背後默默多了一個步驟，他將 <code class="highlighter-rouge">b</code> 先複製一個副本，再將那副本複製給 <code class="highlighter-rouge">a</code>。可以想像成 <code class="highlighter-rouge">a</code>、<code class="highlighter-rouge">b</code> 都在記憶體佔去一部分空間，彼此不相干。</p>
+
+<p>那傳參考呢？</p>
+
+<p>可以想像成傳送者與接收者是共用同一塊空間，會互相影響到。
+仔細想想也是合理的設計，因為陣列通常比較大，如果用傳值的方式，會浪費掉許多空間。</p>
+
+<p>來看看以下練習：</p>
+
+<p><img src="https://i.imgur.com/jgX93Me.png" alt="螢幕快照 2019-04-08 下午4.37.07" /></p>
+
+<p>如果你搞清楚了 Pass by value or reference 的差別，那應該知道印出的答案是什麼？</p>
+
+<blockquote>
+  <p>試著自己想想解答，再繼續往下看</p>
+</blockquote>
+
+<h3 id="參考資料">參考資料：</h3>
+<ul>
+  <li><a href="https://openhome.cc/Gossip/CGossip/TwoDimArray.html">二維陣列</a></li>
+  <li><a href="https://kopu.chat/2017/05/15/c語言-超好懂的指標，初學者請進～/">C語言: 超好懂的指標，初學者請進～</a></li>
+</ul>
+
+<p>如果算出來的答案是 <code class="highlighter-rouge">10 22</code>，恭喜你！</p>
+
+<hr />
+
+<h2 id="function-函式">function 函式</h2>
+
+<p>課程連結：<a href="https://www.youtube.com/embed/n1glFqt3g38?autoplay=1&amp;rel=0">Functions</a></p>
+
+<p>當我們架構越來越多時，不可能所有都塞在主程式裡，所以需要 function 來分化，也比較好 debug。</p>
+
+<p>可以把 function 當成一個黑盒子，有些輸入 input 跟輸出 output。</p>
+
+<p>為什麼說他是黑盒子呢？因為有些常用的 function 並不是自己寫的，像是常用的 <code class="highlighter-rouge">printf</code>，引用來自 <code class="highlighter-rouge">&lt;stdio.h&gt;</code>，我們並不了解裡頭是怎麼實現的，但知道如何使用它。</p>
+
+<p>所以一個清楚的命名、及完整的文件說明是很重要的。</p>
+
+<p><img src="https://i.imgur.com/1mtxawM.png" alt="螢幕快照 2019-04-09 上午11.47.48" /></p>
+
+<h3 id="宣告-declaration">宣告 Declaration</h3>
+
+<p>內容：<code class="highlighter-rouge">output type</code> <code class="highlighter-rouge">function name</code> <code class="highlighter-rouge">(argument-list)</code><code class="highlighter-rouge">;</code></p>
+
+<div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">add_two_int</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<h3 id="定義-definition">定義 Definition</h3>
+
+<div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">add_two_int</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">sum</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h3 id="呼叫-call">呼叫 Call</h3>
+
+<div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">sum</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<h3 id="練習---驗證是否為三角形">練習 - 驗證是否為三角形</h3>
+
+<p>條件：</p>
+<ul>
+  <li>3 個數都為正數</li>
+  <li>任意 2 邊長要大於第 3 邊</li>
+</ul>
+
+<hr />
+
+<h2 id="簡短介紹-排序法--搜尋法">簡短介紹 <strong>排序法 ＆ 搜尋法</strong></h2>
+
+<p>影片連結：<a href="https://www.youtube.com/embed/ktWL3nN38ZA?autoplay=1&amp;rel=0">Algorithms Summary</a></p>
+
+<h2><img src="https://i.imgur.com/ftTnwwk.png" alt="螢幕快照 2019-04-08 下午3.28.42" /></h2>
+
+<h2 id="linear-search-線性搜尋">Linear Search 線性搜尋</h2>
+
+<p>影片連結：<a href="https://www.youtube.com/embed/TwsgCHYmbbA?autoplay=1&amp;rel=0">Linear Search</a></p>
+
+<ul>
+  <li>從第一個開始直到最後，逐一物件搜尋目標。</li>
+  <li>時間複雜度為 n
+    <ul>
+      <li>Best case: 1</li>
+      <li>Worst case: n</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="binary-search-二元搜尋法">Binary Search 二元搜尋法</h2>
+
+<p>影片連結：<a href="https://www.youtube.com/embed/T98PIp4omUA?autoplay=1&amp;rel=0">Binary Search</a></p>
+
+<p>二分搜尋 (Binary Search) 是取 已排序資料的中間索引的值，來確認是否為要搜尋的數，若不是，則將資料以中間索引分為兩半。此時便比較待搜尋的值與中間索引的值的大小，若比較小，則選擇較小的那一半資料，反之亦然。接著再繼續從一半的資料中取中間索引的值做比較，重複以上的步驟，直到找到為止。</p>
+
+<p>記得進行 Binary Search 之前，<strong>目標資料一定是已經排序好的。</strong></p>
+
+<p>當<strong>起始點大於終點時，一直被分化的陣列數量直到變成 0</strong>，代表目標物不在資料裡。</p>
+
+<p><img src="https://i.imgur.com/X6VvVff.png" alt="螢幕快照 2019-04-08 下午4.56.27" /></p>
+
+<p>參考資料：</p>
+<ul>
+  <li><a href="https://ithelp.ithome.com.tw/articles/10206818">[演算法] 二分搜尋 (Binary Search)</a></li>
+</ul>
+
+<hr />
+
+<h2 id="insertion-sort-插入排序">Insertion Sort 插入排序</h2>
+
+<p>影片連結：<a href="https://www.youtube.com/embed/O0VbBkUvriI?autoplay=1&amp;rel=0">Insertion Sort</a></p>
+
+<p>可以很直覺的想像成玩撲克牌時，整理牌的方法。</p>
+
+<ul>
+  <li>先把最左邊的（藍色部分）當作 sorted，然後往右查找，小就插入左邊，換言之、大就插入右邊，直到所有都都排序完成。</li>
+  <li>時間複雜度為 n²
+    <ul>
+      <li>Best case: n</li>
+      <li>Worst case: n²</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://i.imgur.com/PlpAk0i.png" alt="螢幕快照 2019-04-09 上午10.37.02" />
+<img src="https://i.imgur.com/9pkLrRY.png" alt="螢幕快照 2019-04-09 上午10.37.26" />
+—</p>
+
+<h2 id="merge-sort-合併排序法">Merge Sort 合併排序法</h2>
+
+<p>影片連結：<a href="https://www.youtube.com/embed/Ns7tGNbtvV4?autoplay=1&amp;rel=0">Merge Sort</a></p>
+
+<ul>
+  <li>持續二等分，直到最小單位再開始比較，再進行合併
+    <ul>
+      <li>跟之後會教到遞迴 recursion 有關</li>
+    </ul>
+  </li>
+  <li>時間複雜度為 n log n
+    <ul>
+      <li>Best case: n log n</li>
+      <li>Worst case: n log n</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://i.imgur.com/CimK79t.png" alt="螢幕快照 2019-04-09 上午11.03.59" /></p>
+
+<p><img src="https://i.imgur.com/xdrsQfD.png" alt="螢幕快照 2019-04-09 上午11.04.39" /></p>
+
+<p>參考資料：</p>
+<ul>
+  <li><a href="http://alrightchiu.github.io/SecondRound/comparison-sort-merge-sorthe-bing-pai-xu-fa.html">Comparison Sort: Merge Sort(合併排序法)</a></li>
+</ul>
+
+<h2 id="selection-sort-選擇排序法">Selection Sort 選擇排序法</h2>
+
+<p>影片連結：<a href="https://www.youtube.com/embed/3hH8kTHFw2A?autoplay=1&amp;rel=0">Selection Sort</a></p>
+
+<ul>
+  <li>找出最小的值，丟到左邊交換</li>
+  <li>時間複雜度為 n²
+    <ul>
+      <li>Best case: n²</li>
+      <li>Worst case: n²</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://i.imgur.com/tkixbWM.png" alt="螢幕快照 2019-04-09 上午11.11.25" /></p>
+
+<p><img src="https://i.imgur.com/uv9PRsZ.png" alt="螢幕快照 2019-04-09 上午11.11.52" /></p>
+
+<hr />
+
+<h2 id="command-line-指令">Command Line 指令</h2>
+
+<p>課程連結：<a href="https://www.youtube.com/embed/BnJ013X02b8?autoplay=1&amp;rel=0">Command Line</a></p>
+
+<p>不管是使用 PC（cmd 命令提示字元） 或 Mac （ Terminal 終端機），如果我們要對電腦下命令，除了一般常用的圖形化介面 GUI，也可以用輸入指令對電腦說明要做什麼動作。</p>
+
+<p>例如說要進入桌面上的資料夾，我們習慣的操作是 <strong>對著該資料夾，使用滑鼠 double click</strong>。
+但也可以<strong>開啟 Terminal，輸入 <code class="highlighter-rouge">cd 該資料夾名稱</code></strong>，登愣！也可以辦到相同效果，是不是很酷呢？</p>
+
+<p>以下是比較常用的指令：</p>
+
+<ul>
+  <li><code class="highlighter-rouge">ls</code> 查看此位置的所有檔案</li>
+  <li><code class="highlighter-rouge">cd</code> 跳到指定的檔案夾
+    <ul>
+      <li><code class="highlighter-rouge">cd folder_1</code>（只能往下查找目標資料夾）</li>
+      <li><code class="highlighter-rouge">cd ..</code> 跳到上一層資料夾</li>
+      <li><code class="highlighter-rouge">cd</code> 後面不輸入資料夾名稱，可以直接跳到根目錄</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">pwd</code> 查看當前的檔案夾位置</li>
+  <li><code class="highlighter-rouge">mkdir</code> 新增資料夾
+    <ul>
+      <li><code class="highlighter-rouge">mkdir newfolder</code></li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">cp</code> 複製檔案
+    <ul>
+      <li>接收兩個參數 <code class="highlighter-rouge">exist_file</code> <code class="highlighter-rouge">new_file</code></li>
+      <li><code class="highlighter-rouge">cp file_1 file_2</code></li>
+      <li>如果想複製<strong>整個檔案夾與裡面的檔案</strong>
+        <ul>
+          <li><code class="highlighter-rouge">cp -r dir_1 dir_2</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">rm</code> 刪除檔案
+    <ul>
+      <li><strong>無法回復，所以要非常小心，通常會回問你「是否確定要刪除檔案？」</strong>
+        <ul>
+          <li><code class="highlighter-rouge">rm file</code></li>
+        </ul>
+      </li>
+      <li>如果不想再輸入一次 <code class="highlighter-rouge">yes</code> or <code class="highlighter-rouge">y</code>，也可以強制刪除
+        <ul>
+          <li><code class="highlighter-rouge">rm -f file</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">rm -r</code> 刪除整個檔案夾，跟 <code class="highlighter-rouge">cp</code> 很像
+    <ul>
+      <li><code class="highlighter-rouge">rm -r dir</code></li>
+      <li>同樣的，也可以<strong>強制刪除，但要非常謹慎使用</strong>
+        <ul>
+          <li><code class="highlighter-rouge">rm -rf dir</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">mv</code> 重新命名
+    <ul>
+      <li>接收兩個參數 <code class="highlighter-rouge">old_name</code> <code class="highlighter-rouge">new_name</code></li>
+      <li><code class="highlighter-rouge">mv old_name new_name</code></li>
+    </ul>
+  </li>
+</ul>
+
+<p>還有更多常用的 指令，有興趣可以自己去搜尋。</p>
+
+<p><img src="https://i.imgur.com/CJccyk3.png" alt="螢幕快照 2019-04-08 下午5.53.48" /></p>
+
+<p>餐考資料：</p>
+<ul>
+  <li><a href="https://lnpcd.blogspot.com/2012/09/00.html">命令提示字元 00：教學目錄</a>
+    <ul>
+      <li>強力推薦，寫得超級清楚！有耐心看完一系列的人絕對可以功力大增。</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<p>## Debug 除錯</p>
+
+<p>課程連結：<a href="https://www.youtube.com/embed/VtkMZjvvKaU?autoplay=1&amp;rel=0">Debugging</a></p>
+
+<h3 id="help50"><code class="highlighter-rouge">help50</code></h3>
+
+<p>在發生邏輯上的衝突、導致<strong>編譯發生錯誤</strong>時使用。</p>
+
+<p>在下任何指令前，前面加上 <code class="highlighter-rouge">help50</code> 能夠幫助你找出錯誤的位置，或提供一些頭緒除錯。</p>
+
+<h3 id="eprintf"><code class="highlighter-rouge">eprintf("")</code></h3>
+
+<p>比起 <code class="highlighter-rouge">printf</code>，<code class="highlighter-rouge">eprintf</code> 會提供是<strong>哪一行</strong>的資訊，更方便除錯。</p>
+
+<h3 id="debug50"><code class="highlighter-rouge">debug50</code></h3>
+
+<p>在編譯沒問題，但結果不如預期，試圖找出<strong>設計上錯誤</strong>時使用。</p>
+
+<p>注意，<code class="highlighter-rouge">debug50</code> 並無法直接幫你找出錯誤，畢竟電腦不知道你想要到結果是什麼，但可以幫助你更暸解程式運行的步驟，監控變數的變化，找出在哪一個環節出錯。</p>
+
+<h4 id="除錯介面">除錯介面</h4>
+
+<p><img src="https://i.imgur.com/1H5G1LC.png" alt="螢幕快照 2019-04-09 上午10.19.45" /></p>
+
+<ul>
+  <li><strong>設 breakpoint 中斷點</strong>
+    <ul>
+      <li>設定方法：在行數左邊按一下（再按一次可以取消）</li>
+      <li>暫停在某一行</li>
+    </ul>
+  </li>
+  <li>繼續執行程式
+    <ul>
+      <li><strong>stop over</strong>
+        <ul>
+          <li>往下一行執行</li>
+        </ul>
+      </li>
+      <li><strong>step into</strong>
+        <ul>
+          <li>往 function 內執行</li>
+        </ul>
+      </li>
+      <li><strong>step out</strong>
+        <ul>
+          <li>跳出 function</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>觀察面板
+    <ul>
+      <li>Call Stack
+        <ul>
+          <li>觀察在哪一個 function 裡</li>
+          <li><code class="highlighter-rouge">function name</code> <code class="highlighter-rouge">file</code></li>
+        </ul>
+      </li>
+      <li>Local Variable
+        <ul>
+          <li>觀察變數的變化</li>
+          <li><code class="highlighter-rouge">variable name</code> <code class="highlighter-rouge">value</code> <code class="highlighter-rouge">type</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
+
+<span class="post-date">
+  Written on
+  
+  April
+  9th,
+  2019
+  by Yakim shu
+</span>
+<div class="post-date">Feel free to share!</div>
+  <div class="sharing-icons">
+    <a href="https://twitter.com/intent/tweet?text=【筆記】CS50 - week 2 助教課總整理&amp;url=/cs50/CS50_week2_TA.html&amp;via=" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=/cs50/CS50_week2_TA.html&amp;title=【筆記】CS50 - week 2 助教課總整理" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    <a href="https://plus.google.com/share?url=/cs50/CS50_week2_TA.html" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+
+<div class="related">
+  <h1 >You may also enjoy:</h1>
+  
+  <ul class="related-posts">
+    
+      
+        
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/cs50/CS50_week1_problem.html">
+                【交作業】CS50 - week 1
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>April 3, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/cs50/CS50_week4.html">
+                【心得】CS50 - week 4
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>August 25, 2017</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/cs50/CS50_week2.html">
+                【筆記】CS50 - week 2 編譯、陣列、加密、排序法 ( 2019年更新 )
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>April 27, 2017</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/cs50/CS50_week1.html">
+                【筆記】CS50 - week 1 ( 2019年更新 )
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>March 28, 2017</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/cs50/CS50_week0.html">
+                【筆記】CS50 - week 0 ( 2019年更新 )
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>March 7, 2017</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/cs50/CS50_info.html">
+                【心得】CS50 - 課程介紹
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>March 7, 2017</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+    
+  </ul>
+</div>
+
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://yakimshu.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<script id="dsq-count-scr" src="//yakimshu.disqus.com/count.js" async></script>
+
+    </div>
+
+    <footer class="footer">
+  <a href="https://www.facebook.com/yakimshu"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
+  <a href="https://linkedin.com/in/yakimshu"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
+  <a href="mailto:toromilk80129@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
+  <div class="post-date"><a href="/about.html">Yakim shu | Hi, 這是我擴充腦內海馬體的地方。 by Yakim shu</a></div>
+</footer>
+
+
+  </div>
+
+</body>
+</html>
