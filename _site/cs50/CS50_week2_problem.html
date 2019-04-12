@@ -1,0 +1,581 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>
+    
+      【交作業】CS50 - week 2 | Yakim shu
+    
+  </title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="第三題光是理解題目就花了一個上午，加上冒出很多不懂的名詞，為了查清楚 1 個又冒出 3 個不懂的，真正開始實作時也整個卡住，完全不知道自己在寫什麼，這樣卡關下去也不是辦法，決定先放棄，之後變強再回來解題。">
+  <meta name="author" content="Yakim, toromilk80129@gmail.com">
+  <meta name="robots" content="INDEX,FOLLOW">
+  <!--og-->
+  <meta property="og:title" content="【交作業】CS50 - week 2">
+  <meta name="og:description" content="第三題光是理解題目就花了一個上午，加上冒出很多不懂的名詞，為了查清楚 1 個又冒出 3 個不懂的，真正開始實作時也整個卡住，完全不知道自己在寫什麼，這樣卡關下去也不是辦法，決定先放棄，之後變強再回來解題。">
+  <meta property="og:url" content="http://localhost:4000/cs50/CS50_week2_problem.html">
+
+    
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-77560722-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+
+
+<body>
+
+  <div class="container">
+    <header class="masthead">
+  <h3 class="masthead-title">
+    <a href="/">Yakim shu</a>
+    <small class="masthead-subtitle">Hi, 這是我擴充腦內海馬體的地方。</small>
+    <div class="menu">
+  <div class="menu-content">
+    <a href="/about.html">About</a>
+    <a href="/writing.html">Writing</a>
+    <a href="/contacts.html">Contact</a>
+  </div>
+  <div class="social-icons">
+    <a href="https://www.facebook.com/yakimshu"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
+    <a href="https://linkedin.com/in/yakimshu"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
+    <a href="mailto:toromilk80129@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
+  </div>
+</div>
+
+  </h3>
+</header>
+
+
+    <div class="post-container story">
+      <h1>
+  【交作業】CS50 - week 2
+</h1>
+
+
+
+<p>課程連結： <a href="https://docs.cs50.net/2019/x/psets/2/index.html">Problem 2</a></p>
+
+<p>作業測試：<a href="https://cs50.me/submissions">submissions</a>（給自己看的）</p>
+
+<hr />
+
+<h3 id="caesar-加密訊息-less-comfort">Caesar 加密訊息 (less comfort)</h3>
+
+<p>功能：將輸入的 plaintext 加上 key，輸出成 ciphertext</p>
+
+<p>判斷大小寫並加密的那部分並不難實現，只是比較麻煩而已，但判斷輸入的 <code class="highlighter-rouge">key</code> 值是不是純數字反而讓我卡了一陣子，不確定回傳 <code class="highlighter-rouge">return 1</code> 是否恰當。</p>
+
+<div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+</span>
+<span class="kt">int</span> <span class="n">check_key</span><span class="p">(</span><span class="n">string</span> <span class="n">key</span><span class="p">);</span>
+<span class="kt">void</span> <span class="n">change_text</span><span class="p">(</span><span class="n">string</span> <span class="n">text</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">);</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">string</span> <span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">argc</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// string &gt; int
+</span>        <span class="kt">int</span> <span class="n">key</span> <span class="o">=</span> <span class="n">check_key</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span> 
+        <span class="c1">// key is a number
+</span>        <span class="k">if</span> <span class="p">(</span><span class="n">key</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">string</span> <span class="n">target_text</span> <span class="o">=</span> <span class="n">get_string</span><span class="p">(</span><span class="s">"plaintext:  "</span><span class="p">);</span>
+            <span class="n">change_text</span><span class="p">(</span><span class="n">target_text</span><span class="p">,</span> <span class="n">key</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Usage: ./caesar key</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Check key is a number &amp;&amp; make sure key is less than 26
+</span><span class="kt">int</span> <span class="nf">check_key</span><span class="p">(</span><span class="n">string</span> <span class="n">key</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">key_num</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">key</span><span class="p">);</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// char &gt; int
+</span>        <span class="n">key_num</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">key</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="c1">// key is not a number (0 ~ 9)
+</span>        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">key_num</span> <span class="o">&gt;</span> <span class="mi">48</span> <span class="o">&amp;&amp;</span> <span class="n">key_num</span> <span class="o">&lt;</span> <span class="mi">57</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"Usage: ./caesar key</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+            <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>   
+    <span class="c1">// string &gt; int
+</span>    <span class="n">key_num</span> <span class="o">=</span> <span class="n">atoi</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+    <span class="c1">// change key_num to less than 26
+</span>    <span class="k">return</span> <span class="n">key_num</span> <span class="o">%</span> <span class="mi">26</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Change plaintext
+</span><span class="kt">void</span> <span class="nf">change_text</span><span class="p">(</span><span class="n">string</span> <span class="n">text</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">UPPER_A</span> <span class="o">=</span> <span class="mi">65</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">UPPER_Z</span> <span class="o">=</span> <span class="mi">90</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">LOWER_A</span> <span class="o">=</span> <span class="mi">97</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">LOWER_Z</span> <span class="o">=</span> <span class="mi">122</span><span class="p">;</span>
+    
+    <span class="n">printf</span><span class="p">(</span><span class="s">"ciphertext: "</span><span class="p">);</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">text</span><span class="p">);</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// char &gt; int
+</span>        <span class="kt">int</span> <span class="n">target</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">text</span><span class="p">[</span><span class="n">i</span><span class="p">];</span> 
+        <span class="c1">// Lowercase
+</span>        <span class="k">if</span> <span class="p">(</span> <span class="n">target</span> <span class="o">&gt;=</span> <span class="n">LOWER_A</span> <span class="o">&amp;&amp;</span> <span class="n">target</span> <span class="o">&lt;=</span> <span class="n">LOWER_Z</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">target</span> <span class="o">+=</span> <span class="n">key</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">target</span> <span class="o">&gt;</span> <span class="n">LOWER_Z</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">target</span> <span class="o">=</span> <span class="p">(</span><span class="n">target</span> <span class="o">%</span> <span class="n">LOWER_Z</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">LOWER_A</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">// start from 0
+</span>            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="c1">// Uppercase
+</span>        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span> <span class="n">target</span> <span class="o">&gt;=</span> <span class="n">UPPER_A</span> <span class="o">&amp;&amp;</span> <span class="n">target</span> <span class="o">&lt;=</span> <span class="n">UPPER_Z</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">target</span> <span class="o">+=</span> <span class="n">key</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">target</span> <span class="o">&gt;</span> <span class="n">UPPER_Z</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">target</span> <span class="o">=</span> <span class="p">(</span><span class="n">target</span> <span class="o">%</span> <span class="n">UPPER_Z</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">UPPER_A</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">// start from 0
+</span>            <span class="p">}</span>  
+        <span class="p">}</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"%c"</span><span class="p">,</span> <span class="n">target</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="vigenere-用-keyword-加密訊息">vigenere 用 keyword 加密訊息</h2>
+
+<p>又是個輕敵的狀況，以為只要把上題的 key 轉成 ASCII 就好，結果中間還是有些眉角要注意。</p>
+
+<p>尤其是當 key 有數字的情況下，一開始做運算都會算錯，後來才想起數字還是要換成 ASCII 碼的數字，可惡啊！陷阱太多了。</p>
+
+<p>不知道為什麼，提交測試最後一個沒過，一如往常的找不出原因就放棄的我。（哭）</p>
+
+<div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;cs50.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+</span>
+<span class="kt">void</span> <span class="n">change_letter</span><span class="p">(</span><span class="n">string</span> <span class="n">key</span><span class="p">,</span> <span class="n">string</span> <span class="n">text</span><span class="p">);</span>
+<span class="n">string</span> <span class="n">check_letter</span><span class="p">(</span><span class="kt">char</span> <span class="n">letter</span><span class="p">);</span>
+<span class="kt">int</span> <span class="n">shift</span><span class="p">(</span><span class="kt">char</span> <span class="n">c</span><span class="p">);</span>
+
+<span class="kt">int</span> <span class="n">UPPER_A</span> <span class="o">=</span> <span class="mi">65</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">UPPER_Z</span> <span class="o">=</span> <span class="mi">90</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">LOWER_A</span> <span class="o">=</span> <span class="mi">97</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">LOWER_Z</span> <span class="o">=</span> <span class="mi">122</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">ASCII_ONE</span> <span class="o">=</span> <span class="mi">48</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">ASCII_NINE</span> <span class="o">=</span> <span class="mi">57</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">string</span> <span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">argc</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">string</span> <span class="n">plain_text</span> <span class="o">=</span> <span class="n">get_string</span><span class="p">(</span><span class="s">"plaintext:  "</span><span class="p">);</span>
+        <span class="n">change_letter</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">plain_text</span><span class="p">);</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Usage: ./vigenere keyword</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 加密 plaintext
+</span><span class="kt">void</span> <span class="nf">change_letter</span><span class="p">(</span><span class="n">string</span> <span class="n">key</span><span class="p">,</span> <span class="n">string</span> <span class="n">text</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"ciphertext: "</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">text</span><span class="p">);</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// 循環 key loop
+</span>        <span class="k">if</span> <span class="p">(</span><span class="n">k</span> <span class="o">&gt;=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>  
+        <span class="p">}</span>
+        <span class="kt">int</span> <span class="n">add</span> <span class="o">=</span> <span class="n">shift</span><span class="p">(</span><span class="n">key</span><span class="p">[</span><span class="n">k</span><span class="p">]);</span>
+        
+        <span class="c1">// plaintext 加上轉換過的 key
+</span>        <span class="kt">int</span> <span class="n">text_num</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">text</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        
+        <span class="c1">// 字元超過範圍再做處理
+</span>        <span class="k">if</span> <span class="p">(</span> <span class="n">strcmp</span><span class="p">(</span><span class="n">check_letter</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="s">"upper"</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">k</span><span class="o">++</span><span class="p">;</span>
+            <span class="n">text_num</span> <span class="o">+=</span> <span class="n">add</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span> <span class="n">text_num</span> <span class="o">&gt;</span> <span class="n">UPPER_Z</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">text_num</span> <span class="o">=</span> <span class="n">text_num</span> <span class="o">-</span> <span class="n">UPPER_Z</span> <span class="o">+</span> <span class="p">(</span><span class="n">UPPER_A</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span> <span class="n">strcmp</span><span class="p">(</span><span class="n">check_letter</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="s">"lower"</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">k</span><span class="o">++</span><span class="p">;</span>
+            <span class="n">text_num</span> <span class="o">+=</span> <span class="n">add</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span> <span class="n">text_num</span> <span class="o">&gt;</span> <span class="n">LOWER_Z</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">text_num</span> <span class="o">=</span> <span class="n">text_num</span> <span class="o">-</span> <span class="n">LOWER_Z</span> <span class="o">+</span> <span class="p">(</span><span class="n">LOWER_A</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"%c"</span><span class="p">,</span> <span class="n">text_num</span><span class="p">);</span>        
+    <span class="p">}</span>   
+    <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 轉換 key &gt; int
+</span><span class="kt">int</span> <span class="nf">shift</span><span class="p">(</span><span class="kt">char</span> <span class="n">c</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">key_num</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">c</span><span class="p">;</span>
+    <span class="c1">// strcmp(string1, string2), 2 字串相等會 return 0
+</span>    <span class="k">if</span> <span class="p">(</span> <span class="n">strcmp</span><span class="p">(</span><span class="n">check_letter</span><span class="p">(</span><span class="n">c</span><span class="p">),</span> <span class="s">"upper"</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// A 轉成 0 開始
+</span>        <span class="n">key_num</span> <span class="o">%=</span> <span class="n">UPPER_A</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">key_num</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span> <span class="n">strcmp</span><span class="p">(</span><span class="n">check_letter</span><span class="p">(</span><span class="n">c</span><span class="p">),</span> <span class="s">"lower"</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// a 轉成 0 開始
+</span>        <span class="n">key_num</span> <span class="o">%=</span> <span class="n">LOWER_A</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">key_num</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="c1">// key_num is a number (0 ~ 9)
+</span>    <span class="c1">// 陷阱：要把數字的 ASCII 轉回 int
+</span>    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">key_num</span> <span class="o">&gt;=</span> <span class="n">ASCII_ONE</span> <span class="o">&amp;&amp;</span> <span class="n">key_num</span> <span class="o">&lt;=</span> <span class="n">ASCII_NINE</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">key_num</span> <span class="o">%=</span> <span class="n">ASCII_ONE</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">key_num</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Usage: ./vigenere keyword"</span><span class="p">);</span> 
+        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+<span class="p">}</span>
+
+<span class="c1">// 檢查字元大小寫
+</span><span class="n">string</span> <span class="nf">check_letter</span><span class="p">(</span><span class="kt">char</span> <span class="n">target</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">letter</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">target</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">letter</span> <span class="o">&gt;=</span> <span class="n">UPPER_A</span> <span class="o">&amp;&amp;</span> <span class="n">letter</span> <span class="o">&lt;=</span> <span class="n">UPPER_Z</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s">"upper"</span><span class="p">;</span>
+    <span class="p">}</span> 
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">letter</span> <span class="o">&gt;=</span> <span class="n">LOWER_A</span> <span class="o">&amp;&amp;</span> <span class="n">letter</span> <span class="o">&lt;=</span> <span class="n">LOWER_Z</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s">"lower"</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s">"non-alphbet"</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="crack-破解金鑰">Crack 破解金鑰</h2>
+
+<p>在任何登入帳號密碼系統時，通常系統儲存的不會是<strong>明碼</strong>（意指你看得到密碼是多少），他們會用某種函數將密碼轉成 hashes（一連串亂碼），當申請帳號成功後，會存著這組 hashes，之後要登入時，比對 hashes 是否跟申請帳號的那組一致。</p>
+
+<p>所以當我們按下忘記密碼的連結時，通常是會寄給你一封信重置你的密碼，而不是直接告訴你密碼到底是多少，這是為了保護使用者安全，系統也沒有儲存著明碼，但可以重置密碼。</p>
+
+<p>當然這種方法要破解也不難，還是可以靠猜測、或不斷地嘗試所有可能性來攻破，也稱作 brute force 暴力攻擊法，但密碼要是很長一串，電腦要花的時間也會非常長。</p>
+
+<blockquote>
+  <p>brute force 暴力攻擊法，參考： <a href="https://dotblogs.com.tw/jimmyyu/archive/2009/10/10/10997.aspx">[資訊安全]brute-force attack(暴力攻擊法)</a></p>
+</blockquote>
+
+<p>這題要考驗的也就是 <strong>實作暴力攻擊法</strong> 。不過因為每增加一個字元，運算的時間也會多非常多，題目算是很有人性的訂在 4 個字元。（才怪）</p>
+
+<p>有興趣的暸解更多的可以看這影片 <a href="https://www.youtube.com/watch?v=7U-RbOKanYs">Password Cracking - Computerphile</a> （主講人長得很像 Tobey Maguire，蜘蛛人在講解程式的感覺很幽默）</p>
+
+<hr />
+
+<h3 id="感到太難所以半途而廢的我">感到太難所以半途而廢的我</h3>
+
+<p>光是理解題目就花了一個上午，加上冒出很多不懂的名詞，為了 <strong>查清楚 1 個又冒出 3 個不懂的</strong> 一直循環下去，真正開始實作時也整個卡住，完全不知道自己在寫什麼，這樣卡關下去也不是辦法，決定先放棄，之後變強再回來解題。</p>
+
+<h3 id="還是留下亂七八糟的筆記給未來的自己看">還是留下亂七八糟的筆記給未來的自己看</h3>
+
+<p>題目提供的資訊：</p>
+
+<ul>
+  <li><code class="highlighter-rouge">man crypt</code>是一個課程提供的 function，會幫明碼轉成一連串隨機字元
+    <ul>
+      <li>宣告： <code class="highlighter-rouge">char *crypt(const char *key, const char *salt);</code></li>
+      <li>argument 之一的 <code class="highlighter-rouge">salt</code>
+        <ul>
+          <li>參考維基：<a href="https://zh.wikipedia.org/wiki/盐_(密码学)">鹽-密碼學</a></li>
+          <li>作用：像是做菜要加鹽，加密後丟入前 2 碼的 <code class="highlighter-rouge">salt</code>，等於是說密碼加入隨機亂碼，增加複雜性</li>
+          <li>疑問：
+            <ul>
+              <li>給的範例幾乎都是 50，是說先從 50 開始驗證嗎？</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>條件說明
+    <ul>
+      <li>CLI 只接受一個 argument: a hashed password</li>
+      <li>如果沒有 argument 或超過一個以上，回傳錯誤訊息、立刻離開 <code class="highlighter-rouge">return 1</code></li>
+      <li>不斷得印出<strong>明碼</strong><code class="highlighter-rouge">\n</code>，找到回傳 <code class="highlighter-rouge">return 0</code></li>
+      <li>確認每個明碼都呼叫 <code class="highlighter-rouge">crypt</code> 程式進行 hashed 作業</li>
+      <li>假定每個密碼都不超過 4 個字元</li>
+      <li>假定每個密碼都只有英文字母（大、小寫）</li>
+    </ul>
+  </li>
+</ul>
+
+<p>參考資料：<a href="https://sites.google.com/site/stevenattw/others/wang-zhan-mi-ma---hash-salt">網站密碼 - hash + salt</a></p>
+
+<hr />
+
+<h3 id="思考方向">思考方向</h3>
+
+<p>所以我要做的可能是 ：</p>
+
+<ol>
+  <li>列舉所有可能性的字串</li>
+  <li>丟進 <code class="highlighter-rouge">crypt</code> 處理成 11 碼 hashes（加上 <code class="highlighter-rouge">salt</code> 後共 13 碼）</li>
+  <li>再比對 input 跟 hashes 是否相同
+    <ul>
+      <li>有，回傳 0</li>
+      <li>沒有，回到步驟 (3) ，繼續找直到全部列舉完</li>
+    </ul>
+  </li>
+</ol>
+
+<p>需要列舉的：</p>
+
+<ul>
+  <li>明碼的可能性有 52⁴ 種
+    <ul>
+      <li>4 個字元，各有 52 種可能性
+        <ul>
+          <li>大寫、小寫字母</li>
+        </ul>
+      </li>
+      <li>思考
+        <ul>
+          <li><strong>字典攻擊法可能更快</strong></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>salt 的可能性有 62² 種
+    <ul>
+      <li>每個字元有 [ 0-9 A-Z a-z ] 62種可能性
+        <ul>
+          <li>大寫、小寫、數字</li>
+        </ul>
+      </li>
+      <li>思考
+        <ul>
+          <li>很常出現 <strong>50</strong> ?</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
+
+<span class="post-date">
+  Written on
+  
+  April
+  12th,
+  2019
+  by Yakim shu
+</span>
+<div class="post-date">Feel free to share!</div>
+  <div class="sharing-icons">
+    <a href="https://twitter.com/intent/tweet?text=【交作業】CS50 - week 2&amp;url=/cs50/CS50_week2_problem.html&amp;via=" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=/cs50/CS50_week2_problem.html&amp;title=【交作業】CS50 - week 2" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    <a href="https://plus.google.com/share?url=/cs50/CS50_week2_problem.html" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+
+<div class="related">
+  <h1 >You may also enjoy:</h1>
+  
+  <ul class="related-posts">
+    
+      
+        
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/cs50/CS50_week2_TA.html">
+                【筆記】CS50 - week 2 助教課總整理
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>April 9, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/cs50/CS50_week1_problem.html">
+                【交作業】CS50 - week 1
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>April 3, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/cs50/CS50_week4.html">
+                【心得】CS50 - week 4
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>August 25, 2017</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/cs50/CS50_week2.html">
+                【筆記】CS50 - week 2 編譯、陣列、加密、排序法 ( 2019年更新 )
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>April 27, 2017</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/cs50/CS50_week1.html">
+                【筆記】CS50 - week 1 ( 2019年更新 )
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>March 28, 2017</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/cs50/CS50_week0.html">
+                【筆記】CS50 - week 0 ( 2019年更新 )
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>March 7, 2017</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/cs50/CS50_info.html">
+                【心得】CS50 - 課程介紹
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>March 7, 2017</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+    
+  </ul>
+</div>
+
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://yakimshu.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<script id="dsq-count-scr" src="//yakimshu.disqus.com/count.js" async></script>
+
+    </div>
+
+    <footer class="footer">
+  <a href="https://www.facebook.com/yakimshu"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
+  <a href="https://linkedin.com/in/yakimshu"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
+  <a href="mailto:toromilk80129@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
+  <div class="post-date"><a href="/about.html">Yakim shu | Hi, 這是我擴充腦內海馬體的地方。 by Yakim shu</a></div>
+</footer>
+
+
+  </div>
+
+</body>
+</html>
