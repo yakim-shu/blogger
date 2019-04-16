@@ -5,6 +5,14 @@
   <!-- Posts -->
   
   <url>
+    <loc>http://localhost:4000/project/project_w1_Git_1.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:4000/project/project_w1_CommandLine.html</loc>
+  </url>
+  
+  <url>
     <loc>http://localhost:4000/travel/SE_asia_day_8.html</loc>
   </url>
   

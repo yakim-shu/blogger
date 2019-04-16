@@ -1,0 +1,570 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>
+    
+      [第一週] Command Line - Terminal、基本指令介紹 | Yakim shu
+    
+  </title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="有別於一般人習慣的圖形化介面 (GUI)，其實可以實現一樣的動作，差別在於 GUI 是別人 設計規劃出容易理解的介面，像關閉檔案的按鈕大部分都是紅色 X 作為識別，通常是用滑鼠操作。而 Command Line 則是 透過純文字 來操縱指定的動作。 ">
+  <meta name="author" content="Yakim, toromilk80129@gmail.com">
+  <meta name="robots" content="INDEX,FOLLOW">
+  <!--og-->
+  <meta property="og:title" content="[第一週] Command Line - Terminal、基本指令介紹">
+  <meta name="og:description" content="有別於一般人習慣的圖形化介面 (GUI)，其實可以實現一樣的動作，差別在於 GUI 是別人 設計規劃出容易理解的介面，像關閉檔案的按鈕大部分都是紅色 X 作為識別，通常是用滑鼠操作。而 Command Line 則是 透過純文字 來操縱指定的動作。 ">
+  <meta property="og:url" content="http://localhost:4000/project/project_w1_CommandLine.html">
+
+    
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-77560722-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+
+
+<body>
+
+  <div class="container">
+    <header class="masthead">
+  <h3 class="masthead-title">
+    <a href="/">Yakim shu</a>
+    <small class="masthead-subtitle">Hi, 這是我擴充腦內海馬體的地方。</small>
+    <div class="menu">
+  <div class="menu-content">
+    <a href="/about.html">About</a>
+    <a href="/writing.html">Writing</a>
+    <a href="/contacts.html">Contact</a>
+  </div>
+  <div class="social-icons">
+    <a href="https://www.facebook.com/yakimshu"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
+    <a href="https://linkedin.com/in/yakimshu"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
+    <a href="mailto:toromilk80129@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
+  </div>
+</div>
+
+  </h3>
+</header>
+
+
+    <div class="post-container story">
+      <h1>
+  [第一週] Command Line - Terminal、基本指令介紹
+</h1>
+
+
+
+<h2 id="command-line-基本理解">Command Line 基本理解</h2>
+
+<p>簡單來說就是跟電腦溝通，做出我們想要執行的動作。</p>
+
+<p>有別於一般人習慣的圖形化介面 (GUI)，其實可以實現一樣的動作，差別在於 GUI 是別人 <strong>設計規劃出容易理解的介面</strong>，像關閉檔案的按鈕大部分都是紅色 X 作為識別，通常是用滑鼠操作。</p>
+
+<p>而 Command Line 則是 <strong>透過純文字</strong> 來操縱指定的動作。</p>
+
+<hr />
+
+<h2 id="環境建置">環境建置</h2>
+
+<p>推薦 Mac 用的 Command Line Tool - iTerm2</p>
+
+<p>優點：</p>
+<ul>
+  <li>可以客製化</li>
+  <li>介面比較好看</li>
+  <li>可以開很多分頁</li>
+</ul>
+
+<p>參考：</p>
+<ul>
+  <li><a href="https://medium.com/statementdog-engineering/prettify-your-zsh-command-line-prompt-3ca2acc967f">超簡單！十分鐘打造漂亮又好用的 zsh command line 環境</a></li>
+</ul>
+
+<hr />
+
+<h4 id="客製化步驟">客製化步驟：</h4>
+
+<ol>
+  <li>換顏色
+    <ul>
+      <li>教學是寫開啟 <code class="highlighter-rouge">cmd + I</code>，但這樣好像是改 Session 的顏色，等於重開視窗就回復成預設樣式</li>
+      <li>所以我是改主程式的偏好設定 <code class="highlighter-rouge">cmd + ,</code> ，改掉預設樣式</li>
+      <li><img src="https://i.imgur.com/qRj2TLy.jpg" alt="螢幕快照 2019-04-15 上午10.37.33" /></li>
+    </ul>
+  </li>
+  <li>換字體
+    <ul>
+      <li>同樣的，記得是在主程式的偏好設定裡更改</li>
+    </ul>
+  </li>
+  <li>安裝 ZSH
+    <ul>
+      <li><code class="highlighter-rouge">sudo</code> 指令要輸入密碼，一開始沒發現輸入法是中文，一直進不了有點崩潰</li>
+    </ul>
+  </li>
+  <li>安裝 Oh My ZSH（管理 ZSH 設定檔（configuration）的框架）</li>
+  <li>安裝 Auto Suggestions（ZSH 外掛）</li>
+</ol>
+
+<blockquote>
+  <p>待查詢問題：</p>
+</blockquote>
+
+<ul>
+  <li>要怎麼知道程式跑完了？</li>
+  <li><code class="highlighter-rouge">sudo</code> 指令都要輸入密碼？</li>
+</ul>
+
+<p>參考：</p>
+<ul>
+  <li><a href="https://pjchender.blogspot.com/2017/02/mac-terminal-iterm-2-oh-my-zsh.html">為 MAC 的 Terminal 上色 - 透過 iTerm 2 和 Oh My Zsh 高亮你的終端機</a></li>
+  <li><a href="http://huli.logdown.com/posts/402147-iterm2-zsh-better-environment">[心得] iTerm2 + zsh，打造更好的工作環境</a></li>
+</ul>
+
+<hr />
+
+<h2 id="基本指令介紹">基本指令介紹</h2>
+
+<h3 id="pwd-印出目前所在位置"><code class="highlighter-rouge">pwd</code> ：印出目前所在位置</h3>
+<ul>
+  <li>Print Working Directory</li>
+</ul>
+
+<h3 id="ls--列出當前資料夾底下的所有檔案"><code class="highlighter-rouge">ls</code> ： 列出當前資料夾底下的所有檔案</h3>
+<ul>
+  <li>List</li>
+  <li>變化型
+    <ul>
+      <li><code class="highlighter-rouge">ls -al</code>：列出更詳細的資訊（ 包括隱藏檔案 ）</li>
+      <li><img src="https://i.imgur.com/HQrjieI.jpg" alt="螢幕快照 2019-04-15 上午10.25.39" width="600" /></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="cd-切換當前資料夾"><code class="highlighter-rouge">cd</code> ：切換當前資料夾</h3>
+<ul>
+  <li>Change Directory</li>
+  <li>變化型：
+    <ul>
+      <li><code class="highlighter-rouge">cd ..</code>：回到上一層資料夾</li>
+      <li><code class="highlighter-rouge">cd ~</code>： 回到根目錄</li>
+    </ul>
+  </li>
+  <li>小訣竅
+    <ul>
+      <li>當輸入 <code class="highlighter-rouge">cd 空格</code> 時，按 <code class="highlighter-rouge">tap</code> 會幫你自動列出底下的資料夾列表（ 等於是輸入 <code class="highlighter-rouge">ls</code> ）</li>
+      <li>輸入前幾個字母，再按一次 <code class="highlighter-rouge">tap</code> 會幫你自動補完資料夾名稱</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="man--使用說明書-windows-沒有-"><code class="highlighter-rouge">man</code> ： 使用說明書（ Windows 沒有 ）</h3>
+<ul>
+  <li>Manual</li>
+  <li>當你不確定某指令有哪些參數可以使用時，可以用 <code class="highlighter-rouge">man</code> 來看說明。</li>
+  <li>舉例：
+    <ul>
+      <li><code class="highlighter-rouge">man ls</code>：會列出如何使用 <code class="highlighter-rouge">ls</code> 的規範文件</li>
+      <li>按 <code class="highlighter-rouge">Q</code> 跳出說明</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="clear-清空-terminal-版面"><code class="highlighter-rouge">clear</code>： 清空 Terminal 版面</h3>
+
+<blockquote>
+  <p>待查詢問題：</p>
+</blockquote>
+
+<ul>
+  <li>要清空版面，直接下 <code class="highlighter-rouge">clear</code> 跟 使用快捷鍵 <code class="highlighter-rouge">control + L</code> 有差別嗎？</li>
+</ul>
+
+<hr />
+
+<h2 id="檔案操作的相關指令">檔案操作的相關指令</h2>
+
+<h3 id="touch-新增檔案-or-修改檔案時間"><code class="highlighter-rouge">touch</code> 新增檔案 or 修改檔案時間</h3>
+<ul>
+  <li>作用 1：如果輸入的檔案存在，則會修改檔案時間（ 好神奇 ）
+    <ul>
+      <li>當你 <code class="highlighter-rouge">touch</code> 一個現有的檔案，檔案時間會改變成當前時間</li>
+      <li><img src="https://i.imgur.com/w6BT4He.jpg" alt="螢幕快照 2019-04-15 上午10.59.11" width="600" /></li>
+    </ul>
+  </li>
+  <li>作用 2：如果輸入的檔案不存在，則會新增檔案
+    <ul>
+      <li><img src="https://i.imgur.com/DO4yOcy.jpg" alt="螢幕快照 2019-04-15 上午11.11.51" width="600" /></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="rm--刪除檔案"><code class="highlighter-rouge">rm</code> ： 刪除檔案</h3>
+<ul>
+  <li>Remove</li>
+  <li>變化型：
+    <ul>
+      <li>想刪除 test 資料夾，有以下兩種做法
+        <ul>
+          <li><code class="highlighter-rouge">rmdir test</code></li>
+          <li><code class="highlighter-rouge">rm -r test</code>
+            <ul>
+              <li><code class="highlighter-rouge">-r</code>：刪除資料夾及裡面所有檔案，謹慎使用！</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><code class="highlighter-rouge">-f</code>：跳過確認訊息，直接刪除檔案
+        <ul>
+          <li>有點危險、可能會誤刪重要檔案，盡量不要用</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="mkdir--新增資料夾"><code class="highlighter-rouge">mkdir</code> ： 新增資料夾</h3>
+<ul>
+  <li>Make Directory</li>
+</ul>
+
+<h3 id="mv--移動檔案-or-改檔名"><code class="highlighter-rouge">mv</code> ： 移動檔案 or 改檔名</h3>
+<ul>
+  <li>Move</li>
+  <li>作用 1：移動檔案
+    <ul>
+      <li>當找到該資料夾時，檔案會移到資料夾裡</li>
+      <li>舉例：
+        <ul>
+          <li><code class="highlighter-rouge">mv file foler</code>：把 <code class="highlighter-rouge">file</code> 這個檔案移到 <code class="highlighter-rouge">folder</code> 資料夾裡</li>
+        </ul>
+      </li>
+      <li>注意 <code class="highlighter-rouge">folder</code> 分為 相對路徑 &amp; 絕對路徑，假如我當前位置在桌面 <code class="highlighter-rouge">Desktop</code>，但要移動到桌面底下的 <code class="highlighter-rouge">folder</code> 資料夾
+        <ul>
+          <li>相對路徑：相對於當前資料夾（ 此例為 <code class="highlighter-rouge">Desktop</code> ）
+            <ul>
+              <li><code class="highlighter-rouge">mv file foler</code></li>
+            </ul>
+          </li>
+          <li>絕對路徑：以根目錄為為標準，通常以 <code class="highlighter-rouge">/</code> 開頭
+            <ul>
+              <li><code class="highlighter-rouge">mv file /Users/yakim/Desktop/folder</code></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>作用 2：改變檔名
+    <ul>
+      <li>當找不到該資料夾時，會改變檔案名稱</li>
+      <li>舉例：
+        <ul>
+          <li><code class="highlighter-rouge">mv file new_name</code>：把 <code class="highlighter-rouge">file</code> 這個檔案名稱改成 <code class="highlighter-rouge">new_name</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="cp--複製檔案"><code class="highlighter-rouge">cp</code> ： 複製檔案</h3>
+<ul>
+  <li>Copy</li>
+  <li>舉例：
+    <ul>
+      <li><code class="highlighter-rouge">cp file file_2</code>：複製一個 <code class="highlighter-rouge">file_2</code> 檔案</li>
+    </ul>
+  </li>
+  <li>變化型：
+    <ul>
+      <li>複製資料夾</li>
+      <li><code class="highlighter-rouge">cp -r folder folder_2</code>：複製一個 <code class="highlighter-rouge">folder_2</code> 資料夾</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="cat--快速查看檔案內容"><code class="highlighter-rouge">cat</code> ： 快速查看檔案內容</h3>
+
+<p><code class="highlighter-rouge">cat test</code>：另一個方法不用額外開啟其他文字編輯器，也可以快速查看檔案內容。</p>
+
+<p><img src="https://i.imgur.com/IZa45GW.jpg" alt="螢幕快照 2019-04-15 下午12.25.04" width="600" /></p>
+
+<hr />
+
+<h2 id="vim-文字編輯器">VIM 文字編輯器</h2>
+
+<p>極度不友善但看起來很帥的文字編輯器，有分普通 &amp; 輸入模式。</p>
+
+<h3 id="切換模式">切換模式：</h3>
+<ul>
+  <li>按下 <code class="highlighter-rouge">esc</code>：進普通模式
+    <ul>
+      <li>可以刪除、複製、貼上</li>
+      <li>但不能輸入文字</li>
+    </ul>
+  </li>
+  <li>按下 <code class="highlighter-rouge">i</code> ：進輸入模式
+    <ul>
+      <li>可以輸入文字</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="跳出編輯器先切換到普通模式">跳出編輯器：（先切換到普通模式）</h3>
+<ul>
+  <li>結束： <code class="highlighter-rouge">:q</code></li>
+  <li>存檔後結束： <code class="highlighter-rouge">:wq</code></li>
+</ul>
+
+<blockquote>
+  <p>待查詢問題：</p>
+</blockquote>
+
+<ul>
+  <li>輸入 <code class="highlighter-rouge">:wq</code> 沒有問題，但直接輸入 <code class="highlighter-rouge">:q</code> 會跳出錯誤訊息： <code class="highlighter-rouge">E37: No write since last change (add ! to override)</code>。</li>
+</ul>
+
+<hr />
+
+<h2 id="其他常見的好用指令">其他常見的好用指令</h2>
+
+<h3 id="grep-抓出並高亮關鍵字"><code class="highlighter-rouge">grep</code>： 抓出並高亮關鍵字</h3>
+<ul>
+  <li>舉例：
+    <ul>
+      <li><code class="highlighter-rouge">grep keyword file</code></li>
+      <li><img src="https://i.imgur.com/ypJqL4C.jpg" alt="螢幕快照 2019-04-15 下午12.41.02" width="600" /></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="wget--下載檔案"><code class="highlighter-rouge">wget</code> ： 下載檔案</h3>
+<ul>
+  <li>非內建指令，所以需要自行安裝：
+    <ol>
+      <li>失敗經驗，只是想記錄一下拿磚塊砸自己腳的過程
+        <ul>
+          <li>看到網路上的教程前幾則都是用 yum 安裝 wget，所以先安裝 yum</li>
+          <li>參考教學：<a href="https://newsn.net/say/centos-yum.html">centos 系统如何安装 yum 工具？</a>
+            <ul>
+              <li>yum 官網下載位置：http://yum.baseurl.org</li>
+              <li>結果教程是用 wget 下載 yum 安裝檔… （ WTF ? ）</li>
+              <li>放鬆心情、改手動下載 zip 、照步驟安裝</li>
+              <li>回報說沒有裝 rpm…（ WTF !!!!）</li>
+              <li>放棄此教學</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>看這個就好，因為超簡單就可裝好
+        <ul>
+          <li>參考教學：<a href="https://brew.sh/index_zh-tw">Homebrew</a></li>
+          <li>安裝 Homebrew</li>
+          <li>用 Homebrew 安裝： <code class="highlighter-rouge">brew install wget</code></li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="curl--送出-request"><code class="highlighter-rouge">curl</code> ： 送出 request</h3>
+<ul>
+  <li>送出 request，主要用來測試 API，也可以像 <code class="highlighter-rouge">wget</code> 下載檔案
+    <ul>
+      <li><code class="highlighter-rouge">curl API_url</code>： 輸入 api 網址，會用 get 方式顯示出回應</li>
+    </ul>
+  </li>
+  <li>變化型：
+    <ul>
+      <li><code class="highlighter-rouge">curl -I API_url</code>：顯示出更多資訊</li>
+    </ul>
+  </li>
+  <li>更多操作可以參考：
+    <ul>
+      <li><a href="https://blog.techbridge.cc/2019/02/01/linux-curl-command-tutorial/">Linux Curl Command 指令與基本操作入門教學</a></li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="指令組合技">指令組合技</h2>
+
+<h3 id="--將指令的結果存到檔案內容"><code class="highlighter-rouge">&gt;</code> ： 將指令的結果存到檔案內容</h3>
+<ul>
+  <li>Redirection</li>
+  <li>重新導向 input output</li>
+  <li>舉例：
+    <ul>
+      <li><code class="highlighter-rouge">ls &gt; file</code> ：將 <code class="highlighter-rouge">ls</code> 輸出的內容存到 <code class="highlighter-rouge">file</code> 檔案</li>
+      <li>注意：
+        <ul>
+          <li>使用 <code class="highlighter-rouge">&gt;</code> 符號為 <strong>全部覆蓋</strong>，所以原本 file 的內容會被取代</li>
+          <li>如果不想整個覆蓋掉，只是想要新增內容，可以使用 <code class="highlighter-rouge">&gt;&gt;</code>
+代替。</li>
+        </ul>
+      </li>
+      <li><img src="https://i.imgur.com/E35bX7b.jpg" alt="螢幕快照 2019-04-15 下午2.52.56" width="600" /></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="--將左邊指令的輸出變成右邊指令的輸入--這句話聽了好多遍才聽懂啊-"><code class="highlighter-rouge">|</code> ： 將左邊指令的<strong>輸出</strong>，變成右邊指令的<strong>輸入</strong> （ 這句話聽了好多遍才聽懂啊 ）</h3>
+<ul>
+  <li>Pipe</li>
+  <li><img src="https://i.imgur.com/7W0zgB5.jpg" alt="螢幕快照 2019-04-15 下午3.20.37" width="600" /></li>
+</ul>
+
+<h3 id="試試結合以上兩種符號">試試結合以上兩種符號</h3>
+
+<p><img src="https://i.imgur.com/xQoUoed.jpg" alt="螢幕快照 2019-04-15 下午3.29.44" width="600" /></p>
+
+<p>無用題外話：一聽到 Pipe ，想說這詞怎麼這麼耳熟，原來是美劇「矽谷」裡面的公司名稱 Pied Pipe。（ 很無用吧！ ）</p>
+
+<hr />
+
+<h2 id="後言">後言</h2>
+
+<p>隔天就開始學 Git ，但如果有任何的檔案改動機會，盡量都使用這一節學到的 Command Line 指令，不得不說是個很好的練習機會，跟學習語言一樣，派得上用場才會體現出價值。</p>
+
+<h3 id="學習小樂趣">學習小樂趣</h3>
+
+<p>例如當我想把資料夾 <code class="highlighter-rouge">folder1/</code> 搬到資料夾 <code class="highlighter-rouge">folder2/</code> 裡面，Huli 上一節有教到 <strong>移動檔案</strong> 的指令是 <code class="highlighter-rouge">mv</code>，然而按照之前檔案跟資料夾關係的邏輯，開始亂試會不會 <code class="highlighter-rouge">mvdir foler1 foler2</code> 或是 <code class="highlighter-rouge">mv -r foler1 foler2</code>，當然我每次這樣亂猜幾乎都不會成功啦哈哈哈哈，最後還是認命爬文比較實在。</p>
+
+<p>（後來才發現貼心的 Termial 有高亮提示，錯誤的指令在還沒送出前就可以看出來了）</p>
+
+<h4 id="爬文後學到操作資料夾的其他指令">爬文後，學到操作資料夾的其他指令</h4>
+
+<ul>
+  <li>移動資料夾： <code class="highlighter-rouge">mv foler1/ folder2/</code> （ 可惡，不能統一嗎？ ）</li>
+  <li>改資料夾檔名： <code class="highlighter-rouge">mv folder new_name</code>
+    <ul>
+      <li>和修改單個檔案名稱一樣</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>待查詢問題：</p>
+</blockquote>
+
+<ul>
+  <li>當我要刪除資料夾，使用 <code class="highlighter-rouge">rm -r folder</code> ，照理說應該要跳出提示問我：「確定要刪除嗎？」，但卻沒有跳出來，奇怪了。</li>
+</ul>
+
+
+<span class="post-date">
+  Written on
+  
+  April
+  15th,
+  2019
+  by Yakim shu
+</span>
+<div class="post-date">Feel free to share!</div>
+  <div class="sharing-icons">
+    <a href="https://twitter.com/intent/tweet?text=[第一週] Command Line - Terminal、基本指令介紹&amp;url=/project/project_w1_CommandLine.html&amp;via=" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=/project/project_w1_CommandLine.html&amp;title=[第一週] Command Line - Terminal、基本指令介紹" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    <a href="https://plus.google.com/share?url=/project/project_w1_CommandLine.html" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+
+<div class="related">
+  <h1 >You may also enjoy:</h1>
+  
+  <ul class="related-posts">
+    
+      
+        
+        
+      
+    
+      
+        
+          <li>
+            <h3>
+              <a href="/project/project_w1_Git_1.html">
+                [第一週] 版本控制 - 原理 ＆ 基本 Git 指令
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>April 16, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+        
+      
+    
+      
+        
+        
+      
+    
+  </ul>
+</div>
+
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://yakimshu.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<script id="dsq-count-scr" src="//yakimshu.disqus.com/count.js" async></script>
+
+    </div>
+
+    <footer class="footer">
+  <a href="https://www.facebook.com/yakimshu"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
+  <a href="https://linkedin.com/in/yakimshu"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
+  <a href="mailto:toromilk80129@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
+  <div class="post-date"><a href="/about.html">Yakim shu | Hi, 這是我擴充腦內海馬體的地方。 by Yakim shu</a></div>
+</footer>
+
+
+  </div>
+
+</body>
+</html>

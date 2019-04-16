@@ -1,0 +1,446 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>
+    
+      [第一週] 版本控制 - 原理 ＆ 基本 Git 指令 | Yakim shu
+    
+  </title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="版本控制簡單來說，就是把一個檔案所有歷史紀錄的版本都保存起來。Git 的好處之一，能幫你管理好檔案的所有版本，第二是在開發新功能時，能夠同時保留不同功能版本，以利於之後的合併，例如：主要的穩定版、開發新功能版、修 bug 版...">
+  <meta name="author" content="Yakim, toromilk80129@gmail.com">
+  <meta name="robots" content="INDEX,FOLLOW">
+  <!--og-->
+  <meta property="og:title" content="[第一週] 版本控制 - 原理 ＆ 基本 Git 指令">
+  <meta name="og:description" content="版本控制簡單來說，就是把一個檔案所有歷史紀錄的版本都保存起來。Git 的好處之一，能幫你管理好檔案的所有版本，第二是在開發新功能時，能夠同時保留不同功能版本，以利於之後的合併，例如：主要的穩定版、開發新功能版、修 bug 版...">
+  <meta property="og:url" content="http://localhost:4000/project/project_w1_Git_1.html">
+
+    
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-77560722-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+
+
+<body>
+
+  <div class="container">
+    <header class="masthead">
+  <h3 class="masthead-title">
+    <a href="/">Yakim shu</a>
+    <small class="masthead-subtitle">Hi, 這是我擴充腦內海馬體的地方。</small>
+    <div class="menu">
+  <div class="menu-content">
+    <a href="/about.html">About</a>
+    <a href="/writing.html">Writing</a>
+    <a href="/contacts.html">Contact</a>
+  </div>
+  <div class="social-icons">
+    <a href="https://www.facebook.com/yakimshu"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
+    <a href="https://linkedin.com/in/yakimshu"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
+    <a href="mailto:toromilk80129@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
+  </div>
+</div>
+
+  </h3>
+</header>
+
+
+    <div class="post-container story">
+      <h1>
+  [第一週] 版本控制 - 原理 ＆ 基本 Git 指令
+</h1>
+
+
+
+<h2 id="進入主題之前先來聊聊版本控制的原理">進入主題之前，先來聊聊版本控制的原理</h2>
+
+<p>版本控制簡單來說，就是把一個檔案所有歷史紀錄的版本都保存起來，像是做設計的同學一定有很深的體會。</p>
+
+<ul>
+  <li>poster.ai</li>
+  <li>poster_2.ai</li>
+  <li>poster_final.ai</li>
+  <li>poster_final_final.ai</li>
+  <li>poster_客戶去死.ai</li>
+  <li>poster_我要離職.ai</li>
+</ul>
+
+<p>最後同事都被弄到氣走了，這樣下去不是辦法，所以需要一個更有系統、且可以輕易比對各版本差異的模式來管理檔案。</p>
+
+<p>以上是 Git 的好處之一，能幫你<strong>管理好檔案的所有版本</strong>。</p>
+
+<p>第二是在開發新功能時，能夠<strong>同時保留不同功能版本，以利於之後的合併</strong>，例如：<strong>主要的穩定版</strong> 、 <strong>開發新功能版</strong> 、 <strong>修 bug 版</strong> …</p>
+
+<h2 id="簡易版控">簡易版控</h2>
+
+<p>假如一個網頁資料夾，裡面有不同檔案互相有關聯的 <code class="highlighter-rouge">index.html</code>, <code class="highlighter-rouge">main.css</code>, <code class="highlighter-rouge">index.js</code>，當你只改了其中一個檔案，那要怎麼做版本控制呢？</p>
+
+<h4 id="一個人的版控">一個人的版控</h4>
+
+<ol>
+  <li>複製單個檔案出來？
+    <ul>
+      <li>但最後會越來越複雜，而且不好對應各個檔案。</li>
+    </ul>
+  </li>
+  <li><strong>還是網頁資料夾都複製出來？</strong>
+    <ul>
+      <li>好像是個不錯的方法，來實做看看。</li>
+    </ul>
+  </li>
+</ol>
+
+<p>假設昨天修改了 <code class="highlighter-rouge">index.html</code>，那就把原本的 <code class="highlighter-rouge">web 資料夾</code> 複製一份出來成 <code class="highlighter-rouge">web_v2 資料夾</code>，這樣一個人做板控其實沒有什麼問題，但要是多人協作的情況呢？</p>
+
+<h4 id="多人協作發生衝突小明不要鬧了">多人協作發生衝突，小明不要鬧了</h4>
+
+<p>假設現在跟同事在雲端的空間上都是同步著最新的 <code class="highlighter-rouge">web_v2 資料夾</code>。</p>
+
+<p>小花需要修改檔案，所以捉一份下來要改成 <code class="highlighter-rouge">web_v3 資料夾</code>，但旁邊的同事小明剛好也抓了一份下來修改成 <code class="highlighter-rouge">web_v3 資料夾</code>，<strong>造就了現在有兩份 <code class="highlighter-rouge">web_v3 資料夾</code>，名稱一樣但內容不同的衝突情形。</strong></p>
+
+<p>所以為了解決這狀況，那就試著把資料夾名稱 <code class="highlighter-rouge">web_v3</code>，<strong>轉成 hashes 亂碼</strong> ，假設 hashes 是完全不會重複的，所以小花這份的資料夾名稱改成 <code class="highlighter-rouge">eyokend3d28sf</code>，而小明的是 <code class="highlighter-rouge">akuebh83ks02d</code>。</p>
+
+<p><img src="https://i.imgur.com/WNDyORt.jpg" alt="螢幕快照 2019-04-16 上午11.46.12" width="600" /></p>
+
+<p>( 發現 <code class="highlighter-rouge">main.css</code> 打成 <code class="highlighter-rouge">man.css</code> 了，拜託忽略這個丟臉錯誤 )
+( 提醒別人忽略是一件很矛盾的事 )</p>
+
+<h4 id="如何識別順序最新版本永保辦公室和諧">如何識別順序、最新版本，永保辦公室和諧</h4>
+
+<p>現在解決了版本號碼衝突的問題，但亂碼無法看出順序關係，該怎麼辦呢？</p>
+
+<p>不如新增一個 <code class="highlighter-rouge">版本紀錄.txt</code>，裡面記錄好上傳時間、上傳者、版本號碼：</p>
+<ul>
+  <li><code class="highlighter-rouge">4/15 08:00</code>, <code class="highlighter-rouge">小花</code>, <code class="highlighter-rouge">eyokend3d28sf</code></li>
+  <li><code class="highlighter-rouge">4/15 08:05</code>, <code class="highlighter-rouge">小明</code>, <code class="highlighter-rouge">akuebh83ks02d</code></li>
+</ul>
+
+<p>檔案隨著時間越來越大，不好看出最新的版本怎麼辦，再新增一個 <code class="highlighter-rouge">最新版本.txt</code>：</p>
+<ul>
+  <li>new: <code class="highlighter-rouge">akuebh83ks02d</code></li>
+</ul>
+
+<h4 id="不用做版本控制的檔案">不用做版本控制的檔案</h4>
+
+<p>有些檔案確定不會變動，像是<strong>電腦設定檔、 log 檔、或者是你覺得沒有必要做版控的檔案</strong>，例如剛剛管理版本號碼的文件，那要怎麼做勒？很簡單，移出資料夾就就好了。所以我們最後的版本控制目錄會變成：</p>
+
+<ul>
+  <li><code class="highlighter-rouge">最新版本.txt</code></li>
+  <li><code class="highlighter-rouge">版本紀錄.txt</code></li>
+  <li>有用版本控制的檔案
+    <ul>
+      <li><code class="highlighter-rouge">eyokend3d28sf/</code>
+        <ul>
+          <li><code class="highlighter-rouge">index.html, main.css, index.js</code></li>
+        </ul>
+      </li>
+      <li><code class="highlighter-rouge">akuebh83ks02d/</code>
+        <ul>
+          <li><code class="highlighter-rouge">index.html, main.css, index.js</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://i.imgur.com/9rA1x2C.jpg" alt="螢幕快照 2019-04-16 下午12.18.48" width="600" /></p>
+
+<p>( 這兩個檔案只是拿來舉例 )</p>
+
+<h4 id="最陽春的版本控制系統就完成啦">最陽春的版本控制系統就完成啦</h4>
+
+<p>沒錯，這樣就是版本控制的雛形拉，沒想到原理沒有很複雜啊，那為什麼我之前看了一堆教程，對 Git 還是一知半解呢？（ 回望過去 ）</p>
+
+<hr />
+
+<h2 id="正式進入-git-旅程">正式進入 Git 旅程</h2>
+
+<p>對版本控制有大致上的了解後，就可以開始正式使用囉。</p>
+
+<h3 id="init-版本控制初始化"><code class="highlighter-rouge">init</code> 版本控制初始化</h3>
+
+<p>在桌面先開一個測試資料夾 <code class="highlighter-rouge">git_test</code>， 打開 Terminal、將當前目錄改到 <code class="highlighter-rouge">git_test</code>，輸入 <code class="highlighter-rouge">git init</code>，會發現多了一個 <code class="highlighter-rouge">.git</code> 的隱藏資料夾。</p>
+
+<p>小技巧：</p>
+<blockquote>
+  <p>Mac 預設是看不到隱藏檔案的。想要開啟可以參考：<a href="https://www.macuknow.com/node/76787">三招讓 Mac 顯示出隱藏檔案</a></p>
+</blockquote>
+
+<p><img src="https://i.imgur.com/J1vhBQF.jpg" alt="螢幕快照 2019-04-16 上午10.58.46" width="600" /></p>
+
+<h3 id="status-查看狀態"><code class="highlighter-rouge">status</code> 查看狀態</h3>
+
+<p>顧名思義就是查看狀態，非常常用的指令，有事沒事就查看一下，保佑全家健康、版本正常。</p>
+
+<p><img src="https://i.imgur.com/S0QJtUd.jpg" alt="螢幕快照 2019-04-16 上午11.04.55" width="600" /></p>
+
+<p>( 按 <code class="highlighter-rouge">Q</code> 跳出 )</p>
+
+<h3 id="add-被選上的孩子們"><code class="highlighter-rouge">add</code> 被選上的孩子們</h3>
+
+<p>把檔案移到 <code class="highlighter-rouge">git_test/</code> 裡面，用 <code class="highlighter-rouge">git status</code> 查看狀態會看到下圖：</p>
+
+<p><img src="https://i.imgur.com/lNVNohT.jpg" alt="螢幕快照 2019-04-16 下午12.31.09" width="600" /></p>
+
+<p>看到 <strong>檔案內容用紅字標示</strong> ，表示這些檔案雖然在此資料夾中，但並 <strong>沒有加入版本控制</strong> ，Git 提供很貼心的提示（黃框內），表示你可以用 <code class="highlighter-rouge">git add &lt;檔案&gt;</code> 加入版控。</p>
+
+<p>那就按照提示用 <code class="highlighter-rouge">git add index.html</code> 讓 <code class="highlighter-rouge">index.html</code> 加入版控，再用 <code class="highlighter-rouge">git status</code> 查看狀態，會發現 <strong>檔案被分成兩個區域，分別是 Stage (有版控) 、 Untracked （沒版控）</strong>。</p>
+
+<p><img src="https://i.imgur.com/zNEwYU8.jpg" alt="螢幕快照 2019-04-16 下午12.41.16" width="600" /></p>
+
+<p>可以看到粉紅線提示：</p>
+<ul>
+  <li>加入版控： <code class="highlighter-rouge">git add &lt;檔案&gt;</code></li>
+  <li>取消版控： <code class="highlighter-rouge">git rm --cached &lt;檔案&gt;</code></li>
+</ul>
+
+<p>可是如果有超多檔案，可以使用 <code class="highlighter-rouge">git add .</code> ，把全部檔案加入版本控制。</p>
+
+<h2 id="commit-新建版本---人生-on-line-不要忘了存檔"><code class="highlighter-rouge">commit</code> 新建版本 - 人生 on-line 不要忘了存檔</h2>
+
+<p>安排好了哪些檔案要加入或不加入版控了，接下來要開始新建人生的第一個版本，以<strong>剛剛「簡易版控」的例子來說，就是新增一個資料夾。</strong></p>
+
+<ul>
+  <li>輸入 <code class="highlighter-rouge">git commit</code>
+    <ul>
+      <li>會進入 VIM 編輯你的版本訊息 commit message，如果你覺得很惱人也可以在 commit 的時候一次完成：<code class="highlighter-rouge">git commit -m &lt;訊息&gt;</code></li>
+    </ul>
+  </li>
+</ul>
+
+<p>注意：</p>
+
+<blockquote>
+  <p>如果檔案有變動，想要再提交一次 commit 之前，還是需要再輸入 <code class="highlighter-rouge">git add &lt;該檔案&gt;</code> ，不然是無法 commit 的喔！</p>
+</blockquote>
+
+<p>（ 慘痛教訓要記下來 ）</p>
+
+<h2 id="log-回顧---偉人都會有個時間軸"><code class="highlighter-rouge">log</code> 回顧 - 偉人都會有個時間軸</h2>
+
+<p>當然也可以查看其中的版本紀錄，就像「簡易版控」的 <code class="highlighter-rouge">版本紀錄.txt</code> 一樣，內容有：<strong>版本號碼、提交者、提交時間。</strong></p>
+
+<ul>
+  <li>輸入 <code class="highlighter-rouge">git log</code> 查看
+    <ul>
+      <li>可以看粉紅線底下，也是 <strong>「簡易版控」的 hashes 版本號碼</strong>
+<img src="https://i.imgur.com/I28vRhM.jpg" alt="螢幕快照 2019-04-16 下午1.58.07" width="600" /></li>
+      <li>變化型
+        <ul>
+          <li><code class="highlighter-rouge">git log --oneline</code>： 輸出更簡潔的 log ( 差點看成 on-line )
+            <ul>
+              <li>指輸出 <code class="highlighter-rouge">hashes 前七碼</code> &amp; <code class="highlighter-rouge">commit message</code></li>
+            </ul>
+          </li>
+          <li><img src="https://i.imgur.com/Q8fZZyz.jpg" alt="螢幕快照 2019-04-16 下午2.19.51" width="600" /></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="checkout-切換版本---回到人生的存檔點"><code class="highlighter-rouge">checkout</code> 切換版本 - 回到人生的存檔點</h2>
+
+<p>人生無法隨意切換存檔點，Git 可以。</p>
+
+<ul>
+  <li>輸入 <code class="highlighter-rouge">git checkout &lt;版本號碼&gt;</code> ：切換到任何 commit 過的版本</li>
+  <li>輸入 <code class="highlighter-rouge">git checkout master</code> ：切換到最新版本</li>
+</ul>
+
+<h2 id="gitignore-忽略不要版本控制的檔案---派對中的邊緣人"><code class="highlighter-rouge">.gitignore</code> 忽略不要版本控制的檔案 - 派對中的邊緣人</h2>
+
+<p>還記得剛剛學到 <code class="highlighter-rouge">add</code> 指令時，檔案會分成兩區嗎？（ 版控＆非版控 ）</p>
+
+<p>每次提交 <code class="highlighter-rouge">commit</code> 前都一定要 <code class="highlighter-rouge">add</code> 需要板控的檔案，但輸入 <code class="highlighter-rouge">git add .</code> 提交所有檔案，又會把不要的檔案 <code class="highlighter-rouge">add</code> 進來。</p>
+
+<p>因此 <strong>邊緣人列表 <code class="highlighter-rouge">.gitignore</code></strong> 閃亮登場，把<strong>不需要版本控制的檔案記錄</strong>在 <code class="highlighter-rouge">.gitignore</code> 裡，之後就可以放心使用  <code class="highlighter-rouge">git add .</code> ，省得擔心會加到不必要的檔案。</p>
+
+<p>注意：</p>
+<ul>
+  <li>這是<strong>一個檔案</strong>，不是 Git 指令！</li>
+  <li><strong><code class="highlighter-rouge">.gitignore</code> 檔案本身也需要加入版本控制</strong></li>
+</ul>
+
+<p><img src="https://i.imgur.com/sajNixN.jpg" alt="螢幕快照 2019-04-16 下午2.54.47" width="600" /></p>
+
+<p>( 此例中的邊緣人就是 <code class="highlighter-rouge">history.txt</code> 跟 <code class="highlighter-rouge">new.txt</code>，一樣只是拿來舉例 )</p>
+
+<p>想知道一般 <code class="highlighter-rouge">.gitignore</code> 會紀錄哪些檔案，可以參考 Huli 舉出 <a href="https://github.com/facebook/react/blob/master/.gitignore">Facebook 的開源專案 React 裡的 <code class="highlighter-rouge">.gitignore</code></a> 示範。（ 覺得很棒！不然憑空真的不好想像 ）</p>
+
+<hr />
+
+<h2 id="另外的小技巧">另外的小技巧</h2>
+
+<h3 id="commit--am-一次完成"><code class="highlighter-rouge">commit -am</code> 一次完成</h3>
+
+<p>有沒有人跟我想的一樣，人生的麻煩還不夠多嗎？每次都要 <code class="highlighter-rouge">add</code> 再 <code class="highlighter-rouge">commit</code> 也太累了吧～</p>
+
+<p>所以救星出現了！</p>
+
+<ul>
+  <li><code class="highlighter-rouge">git commit -am "message"</code> ：
+    <ul>
+      <li>比起 <code class="highlighter-rouge">-m</code> ，多一個 <code class="highlighter-rouge">a</code> 就可以讓兩個動作一次完成。</li>
+      <li>建議每次都輸入 <code class="highlighter-rouge">git commit -am "message"</code> 當成習慣，省得忘記 <code class="highlighter-rouge">add</code> 的麻煩。</li>
+      <li><strong>這裡要小心留意回報的訊息</strong>，如果出現 “no changes added to commit”，代表可能有新增的檔案忘記 <code class="highlighter-rouge">add</code></li>
+    </ul>
+  </li>
+</ul>
+
+<p>因為很遺憾的，救星沒有這麼給力，根據 <a href="https://git-scm.com/docs/git-commit">Git 官網文件</a>：</p>
+
+<p>Tell the command to automatically stage files that have been modified and deleted, <strong>but new files you have not told Git about are not affected.</strong></p>
+
+<p>意指 <code class="highlighter-rouge">-a</code> <strong>不適用於新增的檔案</strong>，所以如果有新檔案的加入，還是得先 <code class="highlighter-rouge">add</code> 再 <code class="highlighter-rouge">commit</code>。（深呼吸）</p>
+
+<h3 id="diff-查看與上一版本不同之處"><code class="highlighter-rouge">diff</code> 查看與上一版本不同之處</h3>
+
+<ul>
+  <li><code class="highlighter-rouge">git diff</code> ： 能夠查看檔案與上一版本的內容差異</li>
+</ul>
+
+<p><img src="https://i.imgur.com/FJDzjI1.jpg" alt="螢幕快照 2019-04-16 下午5.01.07" width="600" /></p>
+
+<p>（ 按 <code class="highlighter-rouge">Q</code> 跳出 ）
+（ Terminal 的顏色還沒改好、所以不是很明顯，通常以新增的內容會用綠色表示、減去用紅色表示。 ）</p>
+
+<h2 id="小小總結">小小總結</h2>
+
+<p>複習以上學到的，要開始使用 Git 的步驟如下：</p>
+
+<blockquote>
+  <p>括號的內容：對照「簡易板控」的步驟</p>
+</blockquote>
+
+<ol>
+  <li><code class="highlighter-rouge">git init</code> ： 初始化</li>
+  <li>建立檔案 <code class="highlighter-rouge">.gitignore</code> ： 忽略不需要版本控制的檔案</li>
+  <li><code class="highlighter-rouge">git add .</code> ： 把需要版本控制的檔案加進去（ 新增一個暫存資料夾 <code class="highlighter-rouge">temp/</code>，把東西丟進去 ）</li>
+  <li><code class="highlighter-rouge">git commit -am "message"</code> ： 新建一個版本 （ 把 <code class="highlighter-rouge">temp/</code> 資料夾名稱改成版本號碼 <code class="highlighter-rouge">hashes/</code> ）
+    <ul>
+      <li>如果步驟 (3.) 已經完成的話，也可以直接用 <code class="highlighter-rouge">git commit -m "message"</code></li>
+      <li>可以用 <code class="highlighter-rouge">git diff</code> 查看與上一版的差異。</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">git checkout &lt;hashes&gt;</code> ： 可以切換各個版本 （ 切換各個 <code class="highlighter-rouge">hashes/</code> 資料夾）
+    <ul>
+      <li><code class="highlighter-rouge">git checkout master</code> ： 回到最新版本</li>
+    </ul>
+  </li>
+</ol>
+
+
+
+<span class="post-date">
+  Written on
+  
+  April
+  16th,
+  2019
+  by Yakim shu
+</span>
+<div class="post-date">Feel free to share!</div>
+  <div class="sharing-icons">
+    <a href="https://twitter.com/intent/tweet?text=[第一週] 版本控制 - 原理 ＆ 基本 Git 指令&amp;url=/project/project_w1_Git_1.html&amp;via=" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=/project/project_w1_Git_1.html&amp;title=[第一週] 版本控制 - 原理 ＆ 基本 Git 指令" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    <a href="https://plus.google.com/share?url=/project/project_w1_Git_1.html" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+
+<div class="related">
+  <h1 >You may also enjoy:</h1>
+  
+  <ul class="related-posts">
+    
+      
+        
+        
+      
+    
+      
+        
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/project/project_w1_CommandLine.html">
+                [第一週] Command Line - Terminal、基本指令介紹
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>April 15, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+    
+  </ul>
+</div>
+
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://yakimshu.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<script id="dsq-count-scr" src="//yakimshu.disqus.com/count.js" async></script>
+
+    </div>
+
+    <footer class="footer">
+  <a href="https://www.facebook.com/yakimshu"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
+  <a href="https://linkedin.com/in/yakimshu"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
+  <a href="mailto:toromilk80129@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
+  <div class="post-date"><a href="/about.html">Yakim shu | Hi, 這是我擴充腦內海馬體的地方。 by Yakim shu</a></div>
+</footer>
+
+
+  </div>
+
+</body>
+</html>
