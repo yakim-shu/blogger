@@ -149,7 +149,7 @@ file_name: 2019-04-16-project_w1_Git_1
 ![螢幕快照 2019-04-16 下午1.58.07](https://i.imgur.com/I28vRhM.jpg){:width="600"}
     - 變化型
         - `git log --oneline`： 輸出更簡潔的 log ( 差點看成 on-line )
-            - 指輸出 `hashes 前七碼` & `commit message`
+            - 只輸出 `hashes 前七碼` & `commit message`
         - ![螢幕快照 2019-04-16 下午2.19.51](https://i.imgur.com/Q8fZZyz.jpg){:width="600"}
 
         

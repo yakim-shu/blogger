@@ -5,6 +5,10 @@
   <!-- Posts -->
   
   <url>
+    <loc>http://localhost:4000/project/project_w1_Git_2.html</loc>
+  </url>
+  
+  <url>
     <loc>http://localhost:4000/project/project_w1_report.html</loc>
   </url>
   

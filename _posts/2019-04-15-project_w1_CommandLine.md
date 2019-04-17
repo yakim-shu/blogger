@@ -217,6 +217,18 @@ file_name: 2019-04-15-project_w1_CommandLine
 無用題外話：一聽到 Pipe ，想說這詞怎麼這麼耳熟，原來是美劇「矽谷」裡面的公司名稱 Pied Pipe。（ 很無用吧！ ）
 
 
+### `echo` ： 將資訊輸出到 **螢幕** 或 **檔案** 中
+
+參考資料： [維基 - echo (命令)](https://zh.wikipedia.org/wiki/Echo_(命令))
+
+```shell
+$ echo This is a test.
+This is a test.
+$ echo "This is a test." > test.txt
+$ cat test.txt
+This is a test.
+```
+
 ---
 
 ## 後言
