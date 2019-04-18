@@ -1,0 +1,434 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>
+    
+      [第一週] 搞懂目錄位置 & 網路基礎概論 | Yakim shu
+    
+  </title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="另外查資料時，發現一些小方法，如果有時候目標資料夾埋在很裡頭，或是名稱很長、又是中文之類的，打一大串也太累了吧，可以試試看以下兩種加速的方法。">
+  <meta name="author" content="Yakim, toromilk80129@gmail.com">
+  <meta name="robots" content="INDEX,FOLLOW">
+  <!--og-->
+  <meta property="og:title" content="[第一週] 搞懂目錄位置 & 網路基礎概論">
+  <meta name="og:description" content="另外查資料時，發現一些小方法，如果有時候目標資料夾埋在很裡頭，或是名稱很長、又是中文之類的，打一大串也太累了吧，可以試試看以下兩種加速的方法。">
+  <meta property="og:url" content="http://localhost:4000/project/project_w1_Networking_Introduction.html">
+
+    
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-77560722-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+
+
+<body>
+
+  <div class="container">
+    <header class="masthead">
+  <h3 class="masthead-title">
+    <a href="/">Yakim shu</a>
+    <small class="masthead-subtitle">Hi, 這是我擴充腦內海馬體的地方。</small>
+    <div class="menu">
+  <div class="menu-content">
+    <a href="/about.html">About</a>
+    <a href="/writing.html">Writing</a>
+    <a href="/contacts.html">Contact</a>
+  </div>
+  <div class="social-icons">
+    <a href="https://www.facebook.com/yakimshu"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
+    <a href="https://linkedin.com/in/yakimshu"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
+    <a href="mailto:toromilk80129@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
+  </div>
+</div>
+
+  </h3>
+</header>
+
+
+    <div class="post-container story">
+      <h1>
+  [第一週] 搞懂目錄位置 & 網路基礎概論
+</h1>
+
+
+
+<h2 id="1-2-練習">1-2 練習</h2>
+
+<blockquote>
+  <p>給你一個亂數的數列，例如說：1, 8, 9, 2, 5 ,4，你能想出什麼步驟把這些數字由小到大排好嗎？ 請用本堂課程教的寫法把解法寫出來。或者用自己的話講也可以</p>
+</blockquote>
+
+<hr />
+
+<p>其實用這樣條列說明還蠻不簡單的，覺得比直接寫程式還難，一不小心就會腦袋打結 Q____Q，但我也同意想法才是重點，再加油吧！</p>
+
+<p>（ 以下不確定正確 ）</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>1. 把數列的長度設為 length、一個變數 temp、設一個空的新數列 array
+2. 設變數 i = 1、temp = 1、lowest = 第 i 個數字
+3. 當 lowest &gt; 第 i+1 個數字 
+    - lowest 設為 第 i+1 個數字 
+    - temp = i+1
+    - i + 1
+4. 當 i == length 進行以下步驟，否則，回到步驟 (3.)
+    - 把 lowest 提出來，放到 array 的後面
+    - 把第 temp 的數字從數列中刪掉
+    - length - 1
+5. 當 length == 1 進行以下步驟，否則，回到步驟 (2.)
+    - 把第 1 個數字提出，放到 array 的後面
+    - 回傳 array 2
+    - 結束程式
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="2-2基本指令練習用文字來操作檔案吧">2-2：基本指令練習，用文字來操作檔案吧！</h2>
+
+<p>講到 <code class="highlighter-rouge">~</code> 跟 <code class="highlighter-rouge">/</code> 位置的時候，感到有點抽象，試著寫下自己能夠加深理解的步驟。</p>
+
+<h3 id="cd---回到-home-目錄"><code class="highlighter-rouge">cd ~</code> ： 回到 home 目錄</h3>
+
+<ul>
+  <li>用 <code class="highlighter-rouge">pwd</code> 查看，我電腦裡的 home 目錄位置是 <code class="highlighter-rouge">/Users/yakim</code></li>
+</ul>
+
+<h3 id="cd---回到根目錄"><code class="highlighter-rouge">cd /</code> ： 回到根目錄</h3>
+
+<ul>
+  <li>用 <code class="highlighter-rouge">pwd</code> 查看，我電腦裡的 home 目錄位置是 <code class="highlighter-rouge">/</code></li>
+</ul>
+
+<hr />
+
+<h3 id="再複習一次-相對位置--絕對位置">再複習一次 相對位置 &amp; 絕對位置</h3>
+
+<p>假設我現在位置在 <code class="highlighter-rouge">/</code> 根目錄底下，想要切換到桌面 <code class="highlighter-rouge">Desktop</code> (在 home 目錄下一層)，有兩種方式：</p>
+
+<ol>
+  <li>相對位置：
+    <ul>
+      <li>要知道<strong>當前資料夾</strong>與目標位置的<strong>關係</strong></li>
+      <li>輸入 <code class="highlighter-rouge">cd Users/yakim/Desktop</code></li>
+    </ul>
+  </li>
+  <li>絕對位置：
+    <ul>
+      <li><strong>無論在哪一層資料夾</strong>都可以直接跳到目標位置</li>
+      <li>輸入 <code class="highlighter-rouge">cd ~/Desktop</code></li>
+      <li>輸入 <code class="highlighter-rouge">cd /Users/yakim/Desktop</code></li>
+    </ul>
+  </li>
+</ol>
+
+<p>意思是如果不是以 <code class="highlighter-rouge">~</code> 或 <code class="highlighter-rouge">/</code> 開頭，代表是輸入相對位置。</p>
+
+<h3 id="自己很常用要記下來">自己很常用、要記下來</h3>
+
+<ul>
+  <li><strong>回桌面</strong>： 不管我在哪個目錄下，都可以用 <code class="highlighter-rouge">~/Desktop</code> 回到桌面。</li>
+</ul>
+
+<hr />
+
+<h2 id="快速進入資料夾">快速進入資料夾</h2>
+
+<p>另外查資料時，發現一些小方法，如果有時候目標資料夾埋在很裡頭，或是名稱很長、又是中文之類的，打一大串也太累了吧，可以試試看以下兩種加速的方法。</p>
+
+<h3 id="方法一">方法一</h3>
+
+<ul>
+  <li>參考 <a href="https://www.goston.net/2013/11/19/4381/">[MAC] 小技巧 – 快速將終端機開啟在指定路徑下</a>，教學寫得非常清楚</li>
+  <li>但此教學是開預設的 Terminal，如果要開 iTerm2 的話記得要打勾，也可以直接設好快捷鍵更方便</li>
+</ul>
+
+<p><img src="https://i.imgur.com/FtgcHN2.jpg" alt="螢幕快照 2019-04-18 下午12.45.31" width="600" /></p>
+
+<p><img src="https://i.imgur.com/tIYcQv8.jpg" alt="螢幕快照 2019-04-18 下午12.42.47" width="600" /></p>
+
+<p>( 設好快捷鍵更方便！ )</p>
+
+<h3 id="方法二">方法二</h3>
+
+<p>這更簡單了，什麼都不用設定。直接按著資料夾、用滑鼠拉進終端機。</p>
+
+<p><img src="https://i.imgur.com/rND8QFi.jpg" alt="螢幕快照 2019-04-18 下午12.49.24" width="700" />
+<img src="https://i.imgur.com/PfWkVxT.jpg" alt="螢幕快照 2019-04-18 下午12.53.05" width="700" /></p>
+
+<p>就到達目的地啦！</p>
+
+<p>參考資料：<a href="https://kaochenlong.com/2011/01/06/using-terminal-in-mac-os/">Using Terminal in Mac OS</a></p>
+
+<h2 id="補充--實用小技巧">補充 － 實用小技巧</h2>
+
+<p>（ 在後面的教學影片看到的，覺得好實用、趕緊記下來 ）</p>
+
+<h3 id="open--打開所在位置"><code class="highlighter-rouge">open .</code>： 打開所在位置</h3>
+
+<p>相反的，如果終端機裡處在很深處的資料夾位置，例如：<code class="highlighter-rouge"> ~/Desktop/yakim/很冗長的資料夾，沒人想輸入/</code>，想用 finder 圖形化介面進入該資料夾該怎麼辦，滑鼠一直點進去也是很麻煩，所以可以用 <code class="highlighter-rouge">open .</code> 快速打開當前資料夾！</p>
+
+<hr />
+
+<h2 id="2-3更多常用-command-line-指令">2-3：更多常用 command line 指令</h2>
+
+<ul>
+  <li><code class="highlighter-rouge">date</code> ： 查看當下日期</li>
+  <li><code class="highlighter-rouge">top</code> ： 看當下電腦運行的狀態 (Table Of Processes)</li>
+  <li><code class="highlighter-rouge">less</code> ： 用分頁的模式顯示檔案內容，比起 <code class="highlighter-rouge">cat</code> 比較不會擾亂 terminal 介面</li>
+  <li><code class="highlighter-rouge">echo</code> ： 輸出字串到檔案或終端機上</li>
+</ul>
+
+<hr />
+
+<h2 id="4-1為什麼我連不上這個網頁網路基礎概論">4-1：為什麼我連不上這個網頁－－網路基礎概論</h2>
+
+<blockquote>
+  <p>「當你在網址列輸入：google.com，這期間發生了什麼事？」</p>
+</blockquote>
+
+<p>要回答這個問題前，必須先來點名詞解析。</p>
+
+<h3 id="網址">網址</h3>
+
+<p>顧名思義就是網路上的位置，你要到對的位置、才可以得到對的內容麻。</p>
+
+<h3 id="ip">IP</h3>
+
+<p>每一個主機都有個 IP 位置，也等於是網路上的地址，更具體一點可以想像成門牌號碼，由四個 0 ~ 255 的數字組成。
+例如：</p>
+
+<h3 id="域名--domain-">域名 （ Domain ）</h3>
+
+<p>就是我們常用的網址，比起 IP 位置更好讀且好記，例如 google.com 就是一個域名。</p>
+
+<p>可以把域名想像成 <strong>景點名稱</strong>，像「恆春圖書館」是一個域名，而「屏東縣恆春鎮天文路3號」則是 IP 位置。</p>
+
+<h3 id="dns--domain-name-system-">DNS ( Domain Name System )</h3>
+
+<p>DNS 能夠查詢域名，並指向正確的 IP 位置。</p>
+
+<p>有點像 <strong>Google 地圖</strong> 的其中一項功能，輸入 “恆春圖書館” 就可以<strong>得到恆春圖書館的地址</strong>。</p>
+
+<h3 id="小小總結一下這些名詞的關係">小小總結一下這些名詞的關係：</h3>
+
+<ul>
+  <li>如果你想到達 <strong>恆春圖書館</strong> 這個地方（ 域名 ）</li>
+  <li>但因為不知道地址在哪，所以請求 <strong>Google 地圖</strong> 幫忙（ DNS ）</li>
+  <li>大神回覆正確地址： <strong>屏東縣恆春鎮天文路3號</strong> ( IP )。</li>
+</ul>
+
+<hr />
+
+<h2 id="前端-vs-後端">前端 VS 後端</h2>
+
+<p>前端：就是打開網頁，一切你看得到的畫面，都算是前端的範疇。 
+後端：在背後處理資料的流程，都是使用者看不到的。</p>
+
+<ol>
+  <li>瀏覽器會向 Server 發出一個 request（ 前 ）</li>
+  <li>Server 再向 資料庫 存取資料（ 後 ）</li>
+  <li>資料庫再挑出資料丟回 Server（ 後 ）</li>
+  <li>Server 發出一個 response 回覆瀏覽器（ 前 ）</li>
+  <li>瀏覽器進行解析資料、並轉成畫面顯示到網頁上（ 前 ）</li>
+</ol>
+
+<hr />
+
+<p>有了基本概念就可以來回答 「當你在網址列輸入：google.com，這期間發生了什麼事？」</p>
+
+<p>以下直接截圖課程影片內容。（ 寫得太清楚！！ ）</p>
+
+<p><img src="https://i.imgur.com/3Zj9XOq.jpg" alt="螢幕快照 2019-04-18 下午2.21.18" width="500" /></p>
+
+<hr />
+
+<h2 id="4-2我的-ip-怎麼跟別人的一樣內網與外網">4-2：我的 IP 怎麼跟別人的一樣－－內網與外網</h2>
+
+<p>這章節真的把腦袋充滿問號的名詞、講解得好清楚，覺得很厲害！</p>
+
+<h3 id="內網-vs-外網">內網 VS 外網</h3>
+
+<p>家裡應該有個 IP 分享器，目的是讓家裡的不同電腦都可以同時上網，此時家裡的電腦就形成一個<strong>內網</strong>，每台主機都會被各自分配到一個<strong>虛擬 IP</strong>。</p>
+
+<p>而同一內網底下的所有電腦，雖然虛擬 IP 都各自不同，但連到外網的時候，對<strong>外網而言都是同一個 IP</strong>。</p>
+
+<p>最常見的情況應該是在公司，可能公司所有電腦都是在同一個內網底下，而<strong>有些公司的內部系統或服務，有限制只能在內網底下存取</strong>，所以當你回到家，就會發現上不了公司的系統，這也是出於安全性的考量，也是防堵一些非公司人員進入的措施。</p>
+
+<p><img src="https://i.imgur.com/IyBJfuf.jpg" alt="螢幕快照 2019-04-18 下午2.42.44" width="500" /></p>
+
+<p>（課程影片截圖）</p>
+
+<blockquote>
+  <p>待查詢問題：網路上的芳鄰？</p>
+</blockquote>
+
+<h3 id="vpn--virtual-private-network-">VPN ( Virtual Private Network )</h3>
+
+<p>以剛剛的內容來舉例，假設一個狀況劇。</p>
+
+<blockquote>
+  <p>你人在海島度假，萬惡的主管突然打來說有急事要處理、但公司的管理系統只能公司內部登入啊，救命啊！</p>
+</blockquote>
+
+<p>VPN 一個箭步登場，就算我們人處在休閒的海島，也可以透過 VPN 先連到 <strong>公司內部</strong>，就可以連上公司的系統拉。</p>
+
+<p>中國俗稱的「 翻牆 」，也是透過同樣的機制。</p>
+
+<p>當他們想連上 Facebook 這網站，但國內的 IP 會被鎖，所以會利用 VPN 先連到其他國家的伺服器、例如台灣，假裝自己來是自台灣的電腦，就可以順利連上 Facebook 了。</p>
+
+
+
+<span class="post-date">
+  Written on
+  
+  April
+  18th,
+  2019
+  by Yakim shu
+</span>
+<div class="post-date">Feel free to share!</div>
+  <div class="sharing-icons">
+    <a href="https://twitter.com/intent/tweet?text=[第一週] 搞懂目錄位置 & 網路基礎概論&amp;url=/project/project_w1_Networking_Introduction.html&amp;via=" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=/project/project_w1_Networking_Introduction.html&amp;title=[第一週] 搞懂目錄位置 & 網路基礎概論" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    <a href="https://plus.google.com/share?url=/project/project_w1_Networking_Introduction.html" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+
+<div class="related">
+  <h1 >You may also enjoy:</h1>
+  
+  <ul class="related-posts">
+    
+      
+        
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/project/project_w1_CommandLine.html">
+                [第一週] Command Line - Terminal、基本指令介紹
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>April 15, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+    
+      
+        
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/project/project_w1_Git_2.html">
+                [第一週] 版本控制 - 進階指令 & GitHub
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>April 17, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/project/project_w1_report.html">
+                [第一週] 學習進度（不時更新）
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>April 16, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/project/project_w1_Git_1.html">
+                [第一週] 版本控制 - 原理 ＆ 基本 Git 指令
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>April 16, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+        
+      
+    
+  </ul>
+</div>
+
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://yakimshu.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<script id="dsq-count-scr" src="//yakimshu.disqus.com/count.js" async></script>
+
+    </div>
+
+    <footer class="footer">
+  <a href="https://www.facebook.com/yakimshu"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
+  <a href="https://linkedin.com/in/yakimshu"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
+  <a href="mailto:toromilk80129@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
+  <div class="post-date"><a href="/about.html">Yakim shu | Hi, 這是我擴充腦內海馬體的地方。 by Yakim shu</a></div>
+</footer>
+
+
+  </div>
+
+</body>
+</html>
