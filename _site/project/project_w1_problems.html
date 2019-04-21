@@ -1,0 +1,384 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>
+    
+      [第一週] 問題總整理 | Yakim shu
+    
+  </title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="分支只是一個指向某個 Commit 的指標，刪除這個指標並不會造成那些 Commit 消失。">
+  <meta name="author" content="Yakim, toromilk80129@gmail.com">
+  <meta name="robots" content="INDEX,FOLLOW">
+  <!--og-->
+  <meta property="og:title" content="[第一週] 問題總整理">
+  <meta name="og:description" content="分支只是一個指向某個 Commit 的指標，刪除這個指標並不會造成那些 Commit 消失。">
+  <meta property="og:url" content="http://localhost:4000/project/project_w1_problems.html">
+
+    
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-77560722-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+
+
+<body>
+
+  <div class="container">
+    <header class="masthead">
+  <h3 class="masthead-title">
+    <a href="/">Yakim shu</a>
+    <small class="masthead-subtitle">Hi, 這是我擴充腦內海馬體的地方。</small>
+    <div class="menu">
+  <div class="menu-content">
+    <a href="/about.html">About</a>
+    <a href="/writing.html">Writing</a>
+    <a href="/contacts.html">Contact</a>
+  </div>
+  <div class="social-icons">
+    <a href="https://www.facebook.com/yakimshu"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
+    <a href="https://linkedin.com/in/yakimshu"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
+    <a href="mailto:toromilk80129@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
+  </div>
+</div>
+
+  </h3>
+</header>
+
+
+    <div class="post-container story">
+      <h1>
+  [第一週] 問題總整理
+</h1>
+
+
+
+<h2 id="關於-git-的疑問">關於 Git 的疑問</h2>
+
+<blockquote>
+  <p>Q: <code class="highlighter-rouge">pull</code> 跟 <code class="highlighter-rouge">clone</code> 的差別</p>
+</blockquote>
+
+<p>A: <code class="highlighter-rouge">Clone</code> 跟 <code class="highlighter-rouge">Pull</code> 這兩個指令的應用場景是不同的。如果這個專案你是第一次看到，想要下載到你的電腦裡，請使用 <code class="highlighter-rouge">Clone</code> 指令；如果你已經下載回來了，你只是想要更新最新的線上版內容，請使用 <code class="highlighter-rouge">Pull</code>（或 <code class="highlighter-rouge">Fetch</code>）指令。
+簡單的說，<code class="highlighter-rouge">Clone</code> 指令通常只會使用第一次，<code class="highlighter-rouge">Clone</code> 之後的更新，就是 <code class="highlighter-rouge">Pull/Fetch</code> 的事了。</p>
+
+<hr />
+
+<blockquote>
+  <p>Q: <code class="highlighter-rouge">fetch</code> 是什麼？</p>
+</blockquote>
+
+<p><code class="highlighter-rouge">git pull = git fetch + git merge</code></p>
+
+<p>參考資料：</p>
+<ul>
+  <li><a href="https://gitbook.tw/chapters/github/pull-from-github.html">Pull 下載更新</a></li>
+</ul>
+
+<hr />
+
+<blockquote>
+  <p>Q: <code class="highlighter-rouge">push</code> &amp; <code class="highlighter-rouge">pull</code> 是全部分支都進行同步，還是只有當前分支</p>
+</blockquote>
+
+<p>A: 預設是當前分支。</p>
+
+<p>之間的關係是 <code class="highlighter-rouge">git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</code>， <code class="highlighter-rouge">远程主机名</code> 的名稱預設應該是 <code class="highlighter-rouge">origin</code>。
+而要把本地的<strong>所有分支</strong>都推到遠端可以用 <code class="highlighter-rouge">git push --all origin</code>。</p>
+
+<p>參考資料：</p>
+<ul>
+  <li><a href="https://blog.csdn.net/sky1203850702/article/details/41344131">git push命令详解</a></li>
+  <li><a href="https://ithelp.ithome.com.tw/articles/10140305">30 天精通 Git 版本控管 (28)：了解 GitHub 的 fork 與 pull request 版控流程</a></li>
+</ul>
+
+<hr />
+
+<h3 id="為你自己學-git"><a href="https://gitbook.tw">為你自己學 Git</a></h3>
+
+<p>真的是非常詳細且講得很清楚的一系列教學，把看到有趣的紀錄下來：</p>
+
+<ul>
+  <li><a href="https://gitbook.tw/chapters/using-git/git-blame.html">【狀況題】等等，這行程式誰寫的？</a>
+    <ul>
+      <li><code class="highlighter-rouge">git blame</code> 抓兇手</li>
+    </ul>
+  </li>
+  <li><a href="https://gitbook.tw/chapters/using-git/reset-commit.html">【狀況題】剛才的 Commit 後悔了，想要拆掉重做…</a>
+    <ul>
+      <li><code class="highlighter-rouge">git reset</code> 搞清楚相對與絕對</li>
+      <li>這篇也把絕對跟相對的關係解釋得很好：<a href="https://ithelp.ithome.com.tw/articles/10136575">30 天精通 Git 版本控管 (12)：認識 Git 物件的相對名稱</a></li>
+    </ul>
+  </li>
+  <li><a href="https://gitbook.tw/chapters/branch/branch-from-old-commit.html">【狀況題】我可以從過去的某個 Commit 再長一個新的分支出來嗎？</a>
+    <ul>
+      <li>應該是蠻常見的情形</li>
+    </ul>
+  </li>
+  <li><a href="https://gitbook.tw/chapters/branch/restore-deleted-but-unmerged-branch.html">【狀況題】不小心把還沒合併的分支砍掉了，救得回來嗎？</a>
+    <ul>
+      <li>這篇對 branch 的解釋，讓我有種恍然大悟的感覺</li>
+      <li>分支只是一個指向某個 Commit 的指標，刪除這個指標並不會造成那些 Commit 消失。</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="關於-cli-的疑問">關於 CLI 的疑問</h2>
+
+<blockquote>
+  <p>Q: 要怎麼知道程式跑完了？</p>
+</blockquote>
+
+<p>因為之前也會跑一些指令，有些跑有點久、而且過程中完全沒有提示，通常是安裝或下載檔案，所以每次都很困惑、到底是還沒結束還是已經卡住了？</p>
+
+<p>（ 爬文結果，不確定正確 ）</p>
+
+<p>A: 许多命令会花费一些时间来执行，然而这中间不会给出任何提示或者进度条。一般结束后会出现一个“用户名$”的标记。如果没有出现，那么说明最后一条命令正在执行。</p>
+
+<p>參考資料：<a href="https://www.renfei.org/blog/mac-os-x-terminal-101.html">Mac OS X Terminal 101：终端使用初级教程</a></p>
+
+<hr />
+
+<blockquote>
+  <p>Q: <code class="highlighter-rouge">sudo</code> 指令都要輸入密碼？</p>
+</blockquote>
+
+<p>A: 光是要看懂 <code class="highlighter-rouge">sudo</code> 到底是什麼就不簡單，好像問錯問題了，先放棄。</p>
+
+<hr />
+
+<blockquote>
+  <p>Q: 要清空版面，直接下 <code class="highlighter-rouge">clear</code> 跟 使用快捷鍵 <code class="highlighter-rouge">control + L</code> 有差別嗎？</p>
+</blockquote>
+
+<p>A: 好像沒啥人有相同的問題，我猜應該就是一樣的。</p>
+
+<hr />
+
+<blockquote>
+  <p>Q: 輸入 <code class="highlighter-rouge">:wq</code> 沒有問題，但直接輸入 <code class="highlighter-rouge">:q</code> 會跳出錯誤訊息： <code class="highlighter-rouge">E37: No write since last change (add ! to override)</code>。</p>
+</blockquote>
+
+<p>A: 輸入 <code class="highlighter-rouge">:q!</code> 就可以不存檔離開。
+（ 其實錯誤訊息已經寫得很直白，但我一直以為是在檔案內容加上 <code class="highlighter-rouge">!</code> … ）</p>
+
+<p>參考資料：<a href="https://unix.stackexchange.com/questions/3334/how-do-i-quit-from-vi">How do I quit from Vi?</a></p>
+
+<hr />
+
+<blockquote>
+  <p>Q: 當我要刪除資料夾，使用 <code class="highlighter-rouge">rm -r folder</code> ，照理說應該要跳出提示問我：「確定要刪除嗎？」，但卻沒有跳出來，奇怪了。</p>
+</blockquote>
+
+<p>A: 再用 <code class="highlighter-rouge">man</code> 看一次文件，好像是正常的。</p>
+
+<p>如果想要有提示，可以輸入 <code class="highlighter-rouge">rm -ri folder</code>。（ 但還是就像 Huli 說的，有點危險、盡量不要用吧！ ）</p>
+
+
+<span class="post-date">
+  Written on
+  
+  April
+  21st
+    ,
+  2019
+  by Yakim shu
+</span>
+<div class="post-date">Feel free to share!</div>
+  <div class="sharing-icons">
+    <a href="https://twitter.com/intent/tweet?text=[第一週] 問題總整理&amp;url=/project/project_w1_problems.html&amp;via=" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=/project/project_w1_problems.html&amp;title=[第一週] 問題總整理" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    <a href="https://plus.google.com/share?url=/project/project_w1_problems.html" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+
+<div class="related">
+  <h1 >You may also enjoy:</h1>
+  
+  <ul class="related-posts">
+    
+      
+        
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/project/project_w1_Git_2.html">
+                [第一週] 版本控制 - 進階指令 & GitHub
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>April 17, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/project/project_w1_Git_1.html">
+                [第一週] 版本控制 - 原理 ＆ 基本 Git 指令
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>April 16, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+    
+      
+        
+        
+      
+        
+        
+      
+    
+      
+        
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/project/project_w1_Terminal_hotkey.html">
+                [第一週] Terminal 輸入快捷鍵 
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>April 21, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/project/project_w1_Networking_Introduction.html">
+                [第一週] 搞懂目錄位置 & 網路基礎概論
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>April 18, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/project/project_w1_CommandLine.html">
+                [第一週] Command Line - Terminal、基本指令介紹
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>April 15, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+    
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/project/project_w1_report.html">
+                [第一週] 學習進度（不時更新）
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>April 16, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+        
+      
+        
+        
+      
+    
+  </ul>
+</div>
+
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://yakimshu.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<script id="dsq-count-scr" src="//yakimshu.disqus.com/count.js" async></script>
+
+    </div>
+
+    <footer class="footer">
+  <a href="https://www.facebook.com/yakimshu"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
+  <a href="https://linkedin.com/in/yakimshu"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
+  <a href="mailto:toromilk80129@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
+  <div class="post-date"><a href="/about.html">Yakim shu | Hi, 這是我擴充腦內海馬體的地方。 by Yakim shu</a></div>
+</footer>
+
+
+  </div>
+
+</body>
+</html>
