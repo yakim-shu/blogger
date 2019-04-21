@@ -92,7 +92,7 @@
 <p>（ 以下不確定正確 ）</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>1. 把數列的長度設為 length、一個變數 temp、設一個空的新數列 array
-2. 設變數 i = 1、temp = 1、lowest = 第 i 個數字
+2. 設變數 i = 1、temp、lowest = 第 i 個數字
 3. 當 lowest &gt; 第 i+1 個數字 
     - lowest 設為 第 i+1 個數字 
     - temp = i+1
@@ -248,16 +248,48 @@
 
 <h2 id="前端-vs-後端">前端 VS 後端</h2>
 
-<p>前端：就是打開網頁，一切你看得到的畫面，都算是前端的範疇。 
-後端：在背後處理資料的流程，都是使用者看不到的。</p>
+<h3 id="前端--front-end-">前端 ( Front-end )</h3>
+
+<p>就是打開網頁，一切你看得到的畫面，都算是前端的範疇。</p>
+
+<p>如果要做一個簡單的個人作品集網站、公司介紹網頁，不需要套資料、做後台，東西都是寫死的，要更新內容不太方便。
+一個靜態網頁，前端三劍客就可以達成囉：<code class="highlighter-rouge">html</code>、<code class="highlighter-rouge">CSS</code>、<code class="highlighter-rouge">JavaScript</code></p>
+
+<h3 id="後端--back-end-">後端 ( Back-end )</h3>
+
+<p>在背後處理資料的流程，都是使用者看不到的。</p>
+
+<p>如果要做的網站是比較複雜的，有很多資料要存取、公司內部或使用者需要用到後台的，不可能每次都去手動更改 <code class="highlighter-rouge">html</code> 的檔案，所以後端在做的就是處理這些資料，動態的去更新 <code class="highlighter-rouge">html</code>，我們稱為動態網頁，後端使用的語言比較多選擇，有 <code class="highlighter-rouge">PHP</code>、<code class="highlighter-rouge">Ruby</code>、<code class="highlighter-rouge">Python</code>、<code class="highlighter-rouge">node.js</code>…等等。</p>
+
+<p>（ 注意，這裡的動態並不是網頁看起來有互動、特效 ）</p>
+
+<hr />
+
+<h3 id="那兩邊具體做的事是什麼呢">那兩邊具體做的事是什麼呢？</h3>
 
 <ol>
-  <li>瀏覽器會向 Server 發出一個 request（ 前 ）</li>
-  <li>Server 再向 資料庫 存取資料（ 後 ）</li>
-  <li>資料庫再挑出資料丟回 Server（ 後 ）</li>
-  <li>Server 發出一個 response 回覆瀏覽器（ 前 ）</li>
-  <li>瀏覽器進行解析資料、並轉成畫面顯示到網頁上（ 前 ）</li>
+  <li>前： 瀏覽器會向 Server 發出一個 request</li>
+  <li>後： 再向 資料庫 存取資料（ 後 ）</li>
+  <li>後： 資料庫再挑出資料丟回 Server（ 後 ）</li>
+  <li>前： Server 發出一個 response 回覆瀏覽器（ 前 ）</li>
+  <li>前： 瀏覽器進行解析資料、並轉成畫面顯示到網頁上（ 前 ）</li>
 </ol>
+
+<p>這樣聽起來還是很模糊的話，拿 <strong>餐廳</strong> 來比喻：</p>
+
+<ol>
+  <li>前台： 服務生向客人點餐後，把單子送到櫃台</li>
+  <li>廚房： 櫃檯向廚房大吼單子上的菜色</li>
+  <li>廚房： 開始處理食材成熱騰騰的餐點、進行擺盤、放到櫃檯出餐口</li>
+  <li>前台： 🔔 （叮叮）櫃檯通知服務生來拿菜</li>
+  <li>前台： 匆匆忙忙去櫃檯拿菜、把餐點的方向轉正、放到客人的桌上</li>
+</ol>
+
+<p>參考資料：</p>
+<ul>
+  <li><a href="https://noootown.wordpress.com/2016/03/23/frontend-backend-breakfast/">[前端連載] 買早餐也能了解前端 vs 後端？</a></li>
+  <li><a href="https://medium.com/appworks-school/網頁新手入門-初探網頁架構和前後端語言-a88a5dc86ee3">網頁新手入門：初探網頁架構和前後端語言</a></li>
+</ul>
 
 <hr />
 
@@ -329,6 +361,19 @@
     
       
         
+          <li>
+            <h3>
+              <a href="/project/project_w1_Terminal_hotkey.html">
+                [第一週] Terminal 輸入快捷鍵 
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>April 21, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
         
       
         
@@ -345,6 +390,9 @@
         
       
     
+      
+        
+        
       
         
         
