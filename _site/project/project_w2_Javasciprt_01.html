@@ -1,0 +1,660 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>
+    
+      [第二週] 基礎 JavaScript - 邏輯、位元運算 | Yakim shu
+    
+  </title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="回憶起大四的時候去學校圖書館找 JavaScript 的書（ 而當時的我借到的其實是 Java 的事就不提了... ），其他的運算子都非常好懂，直到翻開位元運算的那一篇。">
+  <meta name="author" content="Yakim, toromilk80129@gmail.com">
+  <meta name="robots" content="INDEX,FOLLOW">
+  <!--og-->
+  <meta property="og:title" content="[第二週] 基礎 JavaScript - 邏輯、位元運算">
+  <meta name="og:description" content="回憶起大四的時候去學校圖書館找 JavaScript 的書（ 而當時的我借到的其實是 Java 的事就不提了... ），其他的運算子都非常好懂，直到翻開位元運算的那一篇。">
+  <meta property="og:url" content="http://localhost:4000/project/project_w2_Javasciprt_01.html">
+
+    
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-77560722-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+
+
+<body>
+
+  <div class="container">
+    <header class="masthead">
+  <h3 class="masthead-title">
+    <a href="/">Yakim shu</a>
+    <small class="masthead-subtitle">Hi, 這是我擴充腦內海馬體的地方。</small>
+    <div class="menu">
+  <div class="menu-content">
+    <a href="/about.html">About</a>
+    <a href="/writing.html">Writing</a>
+    <a href="/contacts.html">Contact</a>
+  </div>
+  <div class="social-icons">
+    <a href="https://www.facebook.com/yakimshu"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
+    <a href="https://linkedin.com/in/yakimshu"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
+    <a href="mailto:toromilk80129@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
+  </div>
+</div>
+
+  </h3>
+</header>
+
+
+    <div class="post-container story">
+      <h1>
+  [第二週] 基礎 JavaScript - 邏輯、位元運算
+</h1>
+
+
+
+<h2 id="介紹-nodejs">介紹 Node.js</h2>
+
+<p>Node.js 是一個 JavaScript 的執行環境。</p>
+
+<p>在 Node.js 出現之前，JavaScript 只能在瀏覽器上運行，Node.js 就是提供 Javascript 除了瀏覽器以外的運行環境。</p>
+
+<ul>
+  <li>執行方法：
+    <ul>
+      <li><code class="highlighter-rouge">node &lt;file-name&gt;</code></li>
+      <li>或是直接執行 <code class="highlighter-rouge">node</code>，再輸入你的程式</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="題外話小技巧">題外話小技巧</h3>
+
+<ul>
+  <li>如何快速打開 VScode
+    <ul>
+      <li>先照此教學安裝指令： <a href="https://oomusou.io/vscode/cli/">如何以 CLI 啟動 VS Code ?</a>
+        <ul>
+          <li>以後要在 Terminal 快速開啟 VScode 就簡單了！</li>
+        </ul>
+      </li>
+      <li><code class="highlighter-rouge">code .</code> ： 新增工作目錄</li>
+      <li><code class="highlighter-rouge">code &lt;file-name&gt;</code> ： 開啟檔案</li>
+    </ul>
+  </li>
+  <li>快速開啟瀏覽器的開發人員工具
+    <ul>
+      <li>快捷鍵： <code class="highlighter-rouge">option</code> + <code class="highlighter-rouge">cmd</code> + <code class="highlighter-rouge">i</code></li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="基本邏輯的短路性質">基本邏輯的短路性質</h3>
+
+<p>以前對於 <code class="highlighter-rouge">||</code>、<code class="highlighter-rouge">&amp;&amp;</code> 邏輯運算子的看法是，不就是以前國中學過的嗎？這麼簡單有什麼好講的，但當時看 JavaScript 犀牛書的時候不禁讚嘆：「 原來還可以這樣？！ 」，不過這節還是補充了以前不知道的資訊，太好了！</p>
+
+<blockquote>
+  <p>注意</p>
+</blockquote>
+
+<p>在 JavaScript 裡，代表 <code class="highlighter-rouge">false</code> 的就只有幾個： <code class="highlighter-rouge">0</code>、<code class="highlighter-rouge">-0</code>、<code class="highlighter-rouge">NaN</code>、<code class="highlighter-rouge">null</code>、<code class="highlighter-rouge">undefined</code>、<code class="highlighter-rouge">""</code> ( ← 空字串 )，<strong>所以搞清楚 <code class="highlighter-rouge">false</code> 還蠻重要的喔</strong>，不然往後的日子應該有很多坑可以跳。</p>
+
+<p>剛好複習一下當時的筆記：</p>
+<ul>
+  <li><a href="https://yakimhsu.com/javascript/JS_Daquan-01.html">Javascript大全 - 01 型別、值與變數</a></li>
+  <li><a href="https://yakimhsu.com/javascript/JS_Daquan-02.html">Javascript大全 - 02 運算式與運算子</a></li>
+</ul>
+
+<hr />
+
+<h3 id="---邏輯運算子-or"><code class="highlighter-rouge"> || </code> 邏輯運算子 OR</h3>
+<ul>
+  <li>只要找到第一個 <code class="highlighter-rouge">true</code>，會回傳 <code class="highlighter-rouge">true</code> 的值，<strong>不再繼續查找後面的值</strong>。</li>
+  <li>全部都為 <code class="highlighter-rouge">false</code>，會<strong>回傳最後一個為 <code class="highlighter-rouge">false</code> 的值</strong></li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kc">undefined</span> <span class="o">||</span> <span class="mi">0</span> <span class="o">||</span> <span class="s2">"hello"</span> <span class="o">||</span> <span class="kc">false</span>  <span class="c1">// 找到 true 回傳</span>
+<span class="o">&gt;</span> <span class="s2">"hello"</span>
+<span class="kc">NaN</span> <span class="o">||</span> <span class="mi">0</span> <span class="o">||</span> <span class="kc">undefined</span> <span class="o">||</span> <span class="s2">""</span> <span class="o">||</span> <span class="kc">null</span> <span class="c1">// 全部都為 false，回傳最後一個 false 的值</span>
+<span class="o">&gt;</span> <span class="kc">null</span>
+</code></pre>
+</div>
+
+<h3 id="---邏輯運算子-and"><code class="highlighter-rouge"> &amp;&amp; </code> 邏輯運算子 AND</h3>
+<ul>
+  <li>只要找到第一個 <code class="highlighter-rouge">false</code>，會回傳 <code class="highlighter-rouge">false</code> 的值，<strong>不再繼續查找後面的值</strong>。</li>
+  <li>全部都為 <code class="highlighter-rouge">true</code>，會<strong>回傳最後一個為 <code class="highlighter-rouge">true</code> 的值</strong></li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="s2">"hello"</span> <span class="o">&amp;&amp;</span> <span class="mi">10</span> <span class="o">&amp;&amp;</span> <span class="s2">""</span> <span class="o">&amp;&amp;</span> <span class="mi">1</span> <span class="c1">// 找到 false 回傳</span>
+<span class="o">&gt;</span> <span class="s2">""</span>
+<span class="mi">10</span> <span class="o">&amp;&amp;</span> <span class="s2">"world"</span> <span class="o">&amp;&amp;</span> <span class="mi">1</span> <span class="c1">// 全部都為 true，回傳最後一個 true 的值</span>
+<span class="o">&gt;</span> <span class="mi">1</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="位元運算">位元運算</h2>
+
+<p>位元運算真的很有趣，今天整個下午都花在這了，吳鎮宇說的沒錯：「 出來混，遲早要還的 」一度逃避的東西還是被默默回來找你。</p>
+
+<p>大四的時候很想學網頁，學姊跟我說：「可以去看 JavaScript。」，然後就去了學校圖書館找 JavaScript 的書，其他的運算子都非常好懂，直到翻開位元運算的那一頁，就沒有再翻過下一頁了。（ 而且後來才發現我借到 Java… ）</p>
+
+<p>（ 回到正題，跳一下 ）</p>
+
+<p>要了解什麼是位元運算，首先要介紹<strong>位元位移</strong>，要知道什麼是位元位移，首先要有 <strong>2 進位</strong>的觀念。</p>
+
+<p>（ 不難、先不要崩潰 ）</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>2^i</th>
+      <th>2⁵</th>
+      <th>2⁴</th>
+      <th>2³</th>
+      <th>2²</th>
+      <th>2¹</th>
+      <th>2⁰</th>
+      <th>數字</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>值</td>
+      <td>32</td>
+      <td>16</td>
+      <td>8</td>
+      <td>4</td>
+      <td>2</td>
+      <td>1</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>範例 A</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>16+8+2 = 26</td>
+    </tr>
+    <tr>
+      <td>範例 B</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>32+4+1 = 37</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>意思是說 <code class="highlighter-rouge">26</code> 的二進制表示法為 <code class="highlighter-rouge">011010</code> 、 <code class="highlighter-rouge">37</code> 的二進制表示法為 <code class="highlighter-rouge">100101</code>。</p>
+
+<hr />
+
+<h2 id="---位元位移"><code class="highlighter-rouge">&gt;&gt;</code> 、 <code class="highlighter-rouge">&lt;&lt;</code> 位元位移</h2>
+<ul>
+  <li>假如任意數字 <code class="highlighter-rouge">n</code> 為上面的範例 A ：<code class="highlighter-rouge">011010</code> → <code class="highlighter-rouge">26</code></li>
+</ul>
+
+<h3 id="-位元右移"><code class="highlighter-rouge">&gt;&gt;</code> 位元右移</h3>
+<ul>
+  <li><code class="highlighter-rouge">n &gt;&gt; i</code> ： <code class="highlighter-rouge">n</code> 除以 <code class="highlighter-rouge">2 的 i 次方</code>
+    <ul>
+      <li><code class="highlighter-rouge">n &gt;&gt; 1</code>： 往右移 1 位：等於 <code class="highlighter-rouge">n / 2</code></li>
+      <li><code class="highlighter-rouge">n &gt;&gt; 2</code>： 往右移 2 位：等於 <code class="highlighter-rouge">n / 4</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="-位元左移"><code class="highlighter-rouge">&lt;&lt;</code> 位元左移</h3>
+<ul>
+  <li><code class="highlighter-rouge">n &lt;&lt; i</code> ： <code class="highlighter-rouge">n</code> 乘以 <code class="highlighter-rouge">2 的 i 次方</code>
+    <ul>
+      <li><code class="highlighter-rouge">n &lt;&lt; 1</code>： 往左移 1 位：等於 <code class="highlighter-rouge">n * 2</code></li>
+      <li><code class="highlighter-rouge">n &lt;&lt; 2</code>： 往左移 2 位：等於 <code class="highlighter-rouge">n * 4</code></li>
+    </ul>
+  </li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>// 往左位移（ 後面補 0 ）
+A: 011010 &lt;&lt; 1 → 0110100 // 等於 26 &lt;&lt; 1 等於 26 * 2 == 52
+A: 011010 &lt;&lt; 2 → 01101000 // 等於 26 &lt;&lt; 2 等於 26 * 4 == 104
+
+// 往右位移（ 後面直接捨去 ）
+A: 011010 &gt;&gt; 1 → 001101 // 等於 26 &gt;&gt; 1 等於 26 / 2 == 13
+A: 011010 &gt;&gt; 2 → 000110 // 等於 26 &gt;&gt; 2 等於 26 / 4 == 6 ( 餘數無條件捨去 )
+</code></pre>
+</div>
+
+<p>那這樣很不直覺的運算到底能幹嘛呢？</p>
+
+<p>答案是在<strong>效能</strong>上有所差異，因為電腦只認得二進制的機器碼，所以照理來說，同樣得出 <code class="highlighter-rouge">n * 2</code> 的運算結果，<code class="highlighter-rouge">n &lt;&lt; 1</code> 會比   <code class="highlighter-rouge">n * 2</code> 還要來得快。</p>
+
+<hr />
+
+<h3 id="-----位元運算子"><code class="highlighter-rouge">|</code> 、 <code class="highlighter-rouge">&amp;</code> 、 <code class="highlighter-rouge">^</code> 位元運算子</h3>
+
+<blockquote>
+  <p>注意：</p>
+</blockquote>
+
+<p>不要把位元運算子 <strong><code class="highlighter-rouge">|</code>、<code class="highlighter-rouge">&amp;</code></strong> 跟邏輯運算子 <strong><code class="highlighter-rouge">||</code>、<code class="highlighter-rouge">&amp;&amp;</code></strong> 搞混了，可以把位元運算子理解成 <strong>2 進位版的邏輯比較</strong>。</p>
+
+<hr />
+
+<h3 id="-位元-or"><code class="highlighter-rouge">|</code> 位元 OR</h3>
+
+<p>當成位元間的 <code class="highlighter-rouge">||</code>，以 <code class="highlighter-rouge">0011 | 1001</code> ( <code class="highlighter-rouge">3 | 9</code> ) 為例，會回傳 <code class="highlighter-rouge">1011</code> ( <code class="highlighter-rouge">11</code> )</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><code class="highlighter-rouge">|</code> 運算結果</th>
+      <th>1</th>
+      <th>0</th>
+      <th>1</th>
+      <th>1</th>
+      <th>11</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>範例 A</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>範例 B</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>9</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>可以拆解成以下步驟：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>- 2^3 → 0 || 1 → 1 
+- 2^2 → 0 || 0 → 0 
+- 2^1 → 1 || 0 → 1 
+- 2^0 → 1 || 1 → 1
+</code></pre>
+</div>
+
+<hr />
+
+<h3 id="-位元-and"><code class="highlighter-rouge">&amp;</code> 位元 AND</h3>
+
+<p>當成位元間的 <code class="highlighter-rouge">&amp;&amp;</code>，以 <code class="highlighter-rouge">0011 &amp; 1001</code> ( <code class="highlighter-rouge">3 &amp; 9</code> ) 為例，會回傳 <code class="highlighter-rouge">0001</code>( <code class="highlighter-rouge">1</code> )</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><code class="highlighter-rouge">&amp;</code> 運算結果</th>
+      <th>0</th>
+      <th>0</th>
+      <th>0</th>
+      <th>1</th>
+      <th>1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>範例 A</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>範例 B</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>9</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>可以拆解成以下步驟：</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>- 2^3 → 0 &amp;&amp; 1 → 0 
+- 2^2 → 0 &amp;&amp; 0 → 0 
+- 2^1 → 1 &amp;&amp; 0 → 0 
+- 2^0 → 1 &amp;&amp; 1 → 1
+</code></pre>
+</div>
+
+<hr />
+
+<h3 id="-位元-xor"><code class="highlighter-rouge">^</code> 位元 XOR</h3>
+
+<p><strong>最特別的一種，只有當兩邊是一樣的</strong>：<code class="highlighter-rouge">0 ^ 0</code> 和 <code class="highlighter-rouge">1 ^ 1</code> 的時候才會<strong>回傳 <code class="highlighter-rouge">0</code></strong>。</p>
+
+<p>同樣以 <code class="highlighter-rouge">0011 ^ 1001</code> ( <code class="highlighter-rouge">3 ^ 9</code> ) 為例，會回傳 <code class="highlighter-rouge">1010</code>( <code class="highlighter-rouge">10</code> )</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><code class="highlighter-rouge">^</code> 運算結果</th>
+      <th>1</th>
+      <th>0</th>
+      <th>1</th>
+      <th>0</th>
+      <th>10</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>範例 A</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>範例 B</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>9</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>可以拆解成以下步驟：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>- 2^3 → 0 ^ 1 → 1 
+- 2^2 → 0 ^ 0 → 0 
+- 2^1 → 1 ^ 0 → 1 
+- 2^0 → 1 ^ 1 → 0
+</code></pre>
+</div>
+
+<blockquote>
+  <p>注意：
+上面的 <code class="highlighter-rouge">2^3</code>，是為了方便表示 <strong>2 的 3 平方</strong>，不要跟 <strong>^ 位元運算子</strong>搞混了。</p>
+</blockquote>
+
+<hr />
+
+<h2 id="應用">應用</h2>
+
+<p>又回到每天都要問的問題，所以到底能幹嘛勒？！</p>
+
+<p>做個小實驗，把任意數字 <code class="highlighter-rouge">n</code> 跟 <code class="highlighter-rouge">1</code> 做 <code class="highlighter-rouge">&amp;</code> 位元運算會發生什麼事？</p>
+
+<ul>
+  <li><code class="highlighter-rouge">n &amp; 1</code> → <code class="highlighter-rouge">1</code> ，代表 <code class="highlighter-rouge">n</code> 的最後 1 個位元數 ( 2⁰ ) 是 <code class="highlighter-rouge">1</code></li>
+  <li><code class="highlighter-rouge">n &amp; 1</code> → <code class="highlighter-rouge">0</code> ，代表 <code class="highlighter-rouge">n</code> 的最後 1 個位元數 ( 2⁰ ) 是 <code class="highlighter-rouge">0</code></li>
+</ul>
+
+<blockquote>
+  <p>猜出來了嗎？將 <code class="highlighter-rouge">n &amp; 1</code> 是<strong>判斷 <code class="highlighter-rouge">n</code> 是奇數 or 偶數</strong>的小技巧。除了使用 <code class="highlighter-rouge">n % 2</code> “ 取餘數 “ 的傳統方式，<code class="highlighter-rouge">n &amp; 1</code> 是個效能更好的方法。</p>
+</blockquote>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>10 &amp; 1 → 0 // 偶數
+11 &amp; 1 → 1 // 奇數
+</code></pre>
+</div>
+
+<hr />
+
+<p>再把任意數字 <code class="highlighter-rouge">n</code> 跟 <code class="highlighter-rouge">2的任意平方</code> 做 <code class="highlighter-rouge">&amp;</code> 位元運算會發生什麼事？</p>
+
+<ul>
+  <li><code class="highlighter-rouge">n &amp; 4</code> → <code class="highlighter-rouge">1</code> ，代表 <code class="highlighter-rouge">n</code> 的倒數第 3 個位元數 ( 2² ) 是 <code class="highlighter-rouge">1</code></li>
+  <li><code class="highlighter-rouge">n &amp; 4</code> → <code class="highlighter-rouge">0</code> ，代表 <code class="highlighter-rouge">n</code> 的倒數第 3 個位元數 ( 2² ) 是 <code class="highlighter-rouge">0</code></li>
+  <li>…</li>
+  <li>以此類推下去，有點類似<strong>遮罩</strong>的概念</li>
+</ul>
+
+<hr />
+
+<h2 id="結論">結論</h2>
+
+<p>本章學到兩個<strong>效能更好的實用小技巧</strong>，稍微複習一下：</p>
+
+<ul>
+  <li><code class="highlighter-rouge">n &gt;&gt; 1</code> 效果如同 <code class="highlighter-rouge">n / 2</code></li>
+  <li><code class="highlighter-rouge">n &lt;&lt; 1</code> 效果如同 <code class="highlighter-rouge">n * 2</code></li>
+  <li><code class="highlighter-rouge">n &amp; 1</code> 效果如同 <code class="highlighter-rouge">n % 2</code> → <code class="highlighter-rouge">1</code> ， 代表 <code class="highlighter-rouge">n</code> 為 <code class="highlighter-rouge">奇數</code></li>
+  <li><code class="highlighter-rouge">n &amp; 1</code> 效果如同 <code class="highlighter-rouge">n % 2</code> → <code class="highlighter-rouge">0</code> ， 代表 <code class="highlighter-rouge">n</code> 為 <code class="highlighter-rouge">偶數</code></li>
+</ul>
+
+
+
+<span class="post-date">
+  Written on
+  
+  April
+  22nd
+    ,
+  2019
+  by Yakim shu
+</span>
+<div class="post-date">Feel free to share!</div>
+  <div class="sharing-icons">
+    <a href="https://twitter.com/intent/tweet?text=[第二週] 基礎 JavaScript - 邏輯、位元運算&amp;url=/project/project_w2_Javasciprt_01.html&amp;via=" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=/project/project_w2_Javasciprt_01.html&amp;title=[第二週] 基礎 JavaScript - 邏輯、位元運算" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    <a href="https://plus.google.com/share?url=/project/project_w2_Javasciprt_01.html" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+
+<div class="related">
+  <h1 >You may also enjoy:</h1>
+  
+  <ul class="related-posts">
+    
+      
+        
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/project/project_w1_problems.html">
+                [第一週] 問題總整理
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>April 21, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/project/project_w1_Terminal_hotkey.html">
+                [第一週] Terminal 輸入快捷鍵 
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>April 21, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/project/project_w1_Networking_Introduction.html">
+                [第一週] 搞懂目錄位置 & 網路基礎概論
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>April 18, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/project/project_w1_CommandLine.html">
+                [第一週] Command Line - Terminal、基本指令介紹
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>April 15, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+    
+      
+        
+          <li>
+            <h3>
+              <a href="/project/project_w2_report.html">
+                [第二週] 學習日誌
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>April 22, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/project/project_w1_Git_2.html">
+                [第一週] 版本控制 - 進階指令 & GitHub
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>April 17, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/project/project_w1_report.html">
+                [第一週] 學習日誌
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>April 16, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/project/project_w1_Git_1.html">
+                [第一週] 版本控制 - 原理 ＆ 基本 Git 指令
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>April 16, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+        
+      
+    
+  </ul>
+</div>
+
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://yakimshu.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<script id="dsq-count-scr" src="//yakimshu.disqus.com/count.js" async></script>
+
+    </div>
+
+    <footer class="footer">
+  <a href="https://www.facebook.com/yakimshu"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
+  <a href="https://linkedin.com/in/yakimshu"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
+  <a href="mailto:toromilk80129@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
+  <div class="post-date"><a href="/about.html">Yakim shu | Hi, 這是我擴充腦內海馬體的地方。 by Yakim shu</a></div>
+</footer>
+
+
+  </div>
+
+</body>
+</html>

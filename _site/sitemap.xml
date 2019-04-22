@@ -5,6 +5,14 @@
   <!-- Posts -->
   
   <url>
+    <loc>http://localhost:4000/project/project_w2_report.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:4000/project/project_w2_Javasciprt_01.html</loc>
+  </url>
+  
+  <url>
     <loc>http://localhost:4000/project/project_w1_problems.html</loc>
   </url>
   
