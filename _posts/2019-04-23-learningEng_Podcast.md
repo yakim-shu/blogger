@@ -4,9 +4,11 @@ title: "佛系英聽訓練法 - Podcast"
 description: ""
 category: English
 tags: [English, Podcast]
-image: 
+image: https://i.imgur.com/QZp4EMP.jpg
 file_name: 2019-04-23-learningEng_Podcast
 ---
+
+( Image from：[Apple Podcasts Preview - True Story](https://podcasts.apple.com/us/podcast/true-story/id499398411) )
 
 最近練英文的方法越來越佛，已經簡化到每天的項目只有：
 
@@ -15,7 +17,7 @@ file_name: 2019-04-23-learningEng_Podcast
 
 此訓練法的重點在於：
 1. 輕鬆就好
-    - 因為中間我幾乎不太去查字典，所以並不造成任何麻煩與痛苦。（但如果同個keyword出現太多次，還是要查啦）
+    - 因為中間我幾乎不太去查字典，所以並不造成任何麻煩與痛苦。（但如果同個 keyword 出現太多次，還是要查啦）
 2. 要真心喜歡內容
     - 目的是為了娛樂、不是學英文而聽，確定自己真的有興趣，捫心自問：「翻譯成中文還會想聽嗎？」
 
@@ -61,6 +63,8 @@ True Story 是一個蠻特別的廣播節目，不是由固定的 Host 主持，
 
 ### Sidenote （ 閒聊 ）
 
+> Mitch and Greg of AsapSCIENCE chat about controversial subjects. Then they research and splice in all the mind blowing science!
+
 主持人是我很想要有的 **Gay 蜜**類型，語速很快、主持人講話超好笑，時不時地就開始哼起歌來，非常的胡鬧，所以聽他們聊天超舒壓，就算聽不懂還是有種很開心的感覺，每集的主題都是要討論一些有點爭議的議題，最新的是：「權力遊戲是精彩還無聊？」(很會引戰！)、「動物園對動物而言，有益還是有害？」
 
 不過因為單集長度都挺長，大概 50 分鐘，所以通常我都沒聽完（哈哈哈哈）。最有印象的是，主持人說自己從小就是個非常容易入戲的人。有次去看舞台劇，主角死了，他就從台下衝到走道開始尖叫大哭，留下坐在旁邊傻眼的爸媽，工作人員還帶他去後台指著剛剛的演員說：「你看他還活著，剛剛只是在演戲，不要再傷心了～」
@@ -70,6 +74,8 @@ True Story 是一個蠻特別的廣播節目，不是由固定的 Host 主持，
 ---
 
 ## The Tim Ferriss Show （ 訪問成功人士 ）
+
+> Each episode, I deconstruct world-class performers from eclectic areas (investing, sports, business, art, etc.) to extract the tactics, tools, and routines you can use.  This includes favorite books, morning routines, exercise habits, time-management tricks, and much more.
 
 介紹這有點心虛，因為單集更長了，大概 2 個小時上下，所以很常聽到不耐煩就會切掉。
 
