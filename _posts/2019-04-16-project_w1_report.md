@@ -4,7 +4,7 @@ layout: post
 description: "雖然只是第一週，但需要懂搞的地方比想像中多，導致自己有些計畫停擺，本來還計畫要同時上 CS50 的課程 ，根本是小孩子不懂事、太太太天真惹，不過至少很確切地感受到自己的進步，給個好的入門磚我覺得是最難的部分，不艱澀又扎實的課程很棒。"
 category: project
 image: 
-tags: [project, report]
+tags: [project_week1, report]
 file_name: 2019-04-16-project_w1_report
 ---
 

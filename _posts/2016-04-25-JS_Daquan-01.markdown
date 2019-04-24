@@ -4,7 +4,7 @@ title: "【筆記】Javascript大全 - 01 型別、值與變數"
 description: "終於下定決心要來認真的翻犀牛書( Javascript大全 )，順便把似懂非懂的觀念再做一次複習，以前覺得書中廢話太多，而且很常一個段落出現太多不懂的名詞，很容易讓人挫折，但現在才知道是因為基礎沒有打深，原來精華就在碎念中阿!
 以下是僅是我自己看得筆記，以便忘記時再次加強觀念，如有錯誤請告知我更正~"
 category: JavaScript
-tags: [javascript,daquan]
+tags: [JavaSciprt,daquan]
 ---
 
 終於下定決心要來認真的翻犀牛書( Javascript大全 )，順便把似懂非懂的觀念再做一次複習，  

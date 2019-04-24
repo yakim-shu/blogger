@@ -1,10 +1,10 @@
 ---
-title: "[第二週] 基礎 JavaScript - 邏輯、位元運算"
+title: "[第二週] 基礎 JavaScript - 01 邏輯、位元運算"
 layout: post
 description: "回憶起大四的時候去學校圖書館找 JavaScript 的書（ 而當時的我借到的其實是 Java 的事就不提了... ），其他的運算子都非常好懂，直到翻開位元運算的那一篇。"
 category: project
 image: 
-tags: [JavaSciprt, project]
+tags: [JavaSciprt_JS101, project_week2]
 file_name: 2019-04-22-project_w2_Javasciprt_01
 ---
 

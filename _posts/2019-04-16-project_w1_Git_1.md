@@ -4,7 +4,7 @@ layout: post
 description: "版本控制簡單來說，就是把一個檔案所有歷史紀錄的版本都保存起來。Git 的好處之一，能幫你管理好檔案的所有版本，第二是在開發新功能時，能夠同時保留不同功能版本，以利於之後的合併，例如：主要的穩定版、開發新功能版、修 bug 版..."
 category: project
 image: 
-tags: [Git, project]
+tags: [Git, project_week1]
 file_name: 2019-04-16-project_w1_Git_1
 ---
 
