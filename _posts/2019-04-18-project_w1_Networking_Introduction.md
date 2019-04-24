@@ -4,7 +4,7 @@ layout: post
 description: "另外查資料時，發現一些小方法，如果有時候目標資料夾埋在很裡頭，或是名稱很長、又是中文之類的，打一大串也太累了吧，可以試試看以下兩種加速的方法。"
 category: project
 image: 
-tags: [CLI, project]
+tags: [CLI, project_week1]
 file_name: 2019-04-18-project_w1_Networking_Introduction
 ---
 

@@ -3,7 +3,7 @@ layout: post
 title: "【筆記】Javascript大全 - 06 函式(一) 函式的定義方法"
 description: "JavaScript函式有三種定義方法，分別在效率、解析順序、作用域上都有不同的特性，要掌握好他們之間的區別。"
 category: JavaScript
-tags: [javascript,daquan]
+tags: [JavaSciprt,daquan]
 
 ---
 

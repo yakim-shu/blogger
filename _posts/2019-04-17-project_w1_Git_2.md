@@ -4,7 +4,7 @@ layout: post
 description: "根據上一節學到 GIT 基本版本控制，都是處於線性的開發流程，每次 commit 的「新版本都是基於上一個版本的修改」，這樣單人作業的時候可能不會有太大問題，但當多人協作、或同時要開發不同功能時，可能就會有衝突產生。"
 category: project
 image: 
-tags: [Git, GitHub, project]
+tags: [Git, GitHub, project_week1]
 file_name: 2019-04-17-project_w1_Git_2
 ---
 

@@ -1,10 +1,10 @@
 ---
-title: "[第二週] 基礎 JavaScript - 變數"
+title: "[第二週] 基礎 JavaScript - 02 變數"
 layout: post
 description: "變數的命名有一套規則是非常重要的，語意化的命名可以一看名稱、就知道它的用處是什麼，才不用看整個程式架構來猜，非常的浪費時間。"
 category: project
 image: 
-tags: [JavaSciprt, project]
+tags: [JavaSciprt_JS101, project_week2]
 file_name: 2019-04-23-project_w2_Javasciprt_02
 ---
 

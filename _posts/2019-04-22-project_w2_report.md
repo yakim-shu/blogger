@@ -4,7 +4,7 @@ layout: post
 description: ""
 category: project
 image: 
-tags: [project, report]
+tags: [project_week2, report]
 file_name: 2019-04-22-project_w2_report
 ---
 

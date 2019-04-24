@@ -4,7 +4,7 @@ layout: post
 description: "分支只是一個指向某個 Commit 的指標，刪除這個指標並不會造成那些 Commit 消失。"
 category: project
 image: 
-tags: [Git, GitHub, CLI, project]
+tags: [Git, GitHub, CLI, problems, project_week1]
 file_name: 2019-04-21-project_w1_problems
 ---
 

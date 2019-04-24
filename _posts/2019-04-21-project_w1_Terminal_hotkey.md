@@ -4,7 +4,7 @@ layout: post
 description: "爬文意外看到一些 Terminal 輸入的快捷鍵，也算是有收穫。"
 category: project
 image: 
-tags: [CLI, project]
+tags: [CLI, project_week1]
 file_name: 2019-04-21-project_w1_Terminal_hotkey
 ---
 

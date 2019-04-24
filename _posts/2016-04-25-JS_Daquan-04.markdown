@@ -5,7 +5,7 @@ description: "Javascript中，任何不是字串、數字、true、false、null�
 物件是可變的，而且是通過參考(by reference)來操作，並非值(by value)。
 雖然基本型別(字串、數字、布林)並非物件，但他們的行為表現就像是不可變物件。"
 category: JavaScript
-tags: [javascript,daquan]
+tags: [JavaSciprt,daquan]
 ---
 
 Javascript中，任何不是字串、數字、true、false、null或undefined的值都是物件。
