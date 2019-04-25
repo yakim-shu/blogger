@@ -7,9 +7,6 @@ image:
 tags: [JavaSciprt_JS101, project_week2, function]
 file_name: 2019-04-24-project_w2_Javasciprt_03
 ---
-Q: 引數跟參數的命名
-
-
 ## 參數 Parameter & 引數 Argument
 
 - `a`、`b` 為 `fun1()` 的參數
