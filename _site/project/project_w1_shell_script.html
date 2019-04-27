@@ -1,0 +1,340 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>
+    
+      [第一週] Shell Script 腳本 | Yakim shu
+    
+  </title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="今天認真看了一些教學，其實語法還真的不難，被 [鳥哥的 Linux 私房菜] 的豐富內容嚇到以為很難。">
+  <meta name="author" content="Yakim, toromilk80129@gmail.com">
+  <meta name="robots" content="INDEX,FOLLOW">
+  <!--og-->
+  <meta property="og:title" content="[第一週] Shell Script 腳本">
+  <meta name="og:description" content="今天認真看了一些教學，其實語法還真的不難，被 [鳥哥的 Linux 私房菜] 的豐富內容嚇到以為很難。">
+  <meta property="og:url" content="http://localhost:4000/project/project_w1_shell_script.html">
+
+    
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-77560722-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+
+
+<body>
+
+  <div class="container">
+    <header class="masthead">
+  <h3 class="masthead-title">
+    <a href="/">Yakim shu</a>
+    <small class="masthead-subtitle">Hi, 這是我擴充腦內海馬體的地方。</small>
+    <div class="menu">
+  <div class="menu-content">
+    <a href="/about.html">About</a>
+    <a href="/writing.html">Writing</a>
+    <a href="/contacts.html">Contact</a>
+  </div>
+  <div class="social-icons">
+    <a href="https://www.facebook.com/yakimshu"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
+    <a href="https://linkedin.com/in/yakimshu"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
+    <a href="mailto:toromilk80129@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
+  </div>
+</div>
+
+  </h3>
+</header>
+
+
+    <div class="post-container story">
+      <h1>
+  [第一週] Shell Script 腳本
+</h1>
+
+
+
+<p>認真看了一些教學，其實語法還真的不難，被 <a href="http://xyz1943.idv.tw/~xyz1943/data-linux/20060117102949/#script_why">鳥哥的 Linux 私房菜</a> 的豐富內容嚇到以為很難，之後看到一個鐵人幫文章 - <a href="https://ithelp.ithome.com.tw/articles/10129445">快快樂樂學會讓電腦幫我做事</a>，寫得很簡單易懂，非常適合入門的初學者。（ 話說本來要留言表示感謝，結果被擋說等級太低無法留言… ）</p>
+
+<p>還在初階、培養興趣的階段，我還是需要一個講人話的教學啊，等到進階後、還有興趣或碰到問題時，鳥哥的存在就真的是全人類的幸福啊！</p>
+
+<h3 id="寫-script-的重點就三個字自動化">寫 script 的重點就三個字：自動化</h3>
+
+<h4 id="根據鳥哥的回答連續指令單一化">根據鳥哥的回答：連續指令單一化</h4>
+
+<p>對於新手而言， script 最簡單的功能就是：『彙整一些在 command line 下達的連續指令，將他寫入 scripts 當中，而由直接執行 scripts 來啟動一連串的 command line 指令輸出入！』</p>
+
+<blockquote>
+  <p>但具體來說，shell script 能夠如何改善我的生活？</p>
+</blockquote>
+
+<p>我知道大家都會說自動化、但我對於具體的想像還是很模糊，有什麼生活中的例子可以應用的嗎？看到一個也是鐵人幫的回答算是解答我的疑惑：</p>
+
+<p>以下說明來自：<a href="https://ithelp.ithome.com.tw/questions/10188680">Linux shell script 常用的程式有哪些</a>  ( 回答得非常具體、推薦！ )</p>
+
+<h4 id="很久才做一次又繁瑣的事情">很久才做一次、又繁瑣的事情</h4>
+
+<p>你也可以把好久才要做一次，然後每次都忘記細節要怎麼弄，查一陣子才想起來的事情自動化。例如程式發佈新版本，網站要放上最新消息，修改下載連結，軟體頁的版本與歷史版本都要更動。包含多國語系的頁面，哩哩扣扣要修改將近十個檔案。即使詳細的步驟都寫成筆記了，有一次還是漏改了檔案，乾脆讓 script 自動去處理。從此發佈新版我只要將版本號與版本說明設好，網頁要改的東西都自動處理好了。</p>
+
+<h4 id="多台環境的安裝設定">多台環境的安裝、設定</h4>
+
+<p>另一個久久才跑一次的例子是伺服器環境的安裝與設定。我們一次更新機器就是幾十台，伺服器上面除了常用的那些套件以外，還要跑自行開發的幾個服務。我在進公司以後遇到第一次更新伺服器就花時間將所有東西自動化了</p>
+
+<h4 id="重要又怕自己忘記的工作">重要又怕自己忘記的工作</h4>
+
+<p>某個沒用版本控管的網站。檔案修改後要先傳到 develop 去，修改過的檔案要移到備份資料夾並加上時間戳，確認沒問題才能傳到 production。有一次在找誰把 develop 的東西丟到 production 去，我說不是我，因為全部都 script 自動在跑，這東西跑幾個月都沒事所以不可能今天突然傳到錯的機器去。當然也不可能發生忘了備份就把檔案覆蓋的事情。</p>
+
+<hr />
+
+<h2 id="實用文章記錄備用">實用文章記錄備用</h2>
+
+<p>由鐵人幫文章中挑出幾篇實用的，以後再來認真練習：</p>
+
+<p>如果有寫過程式的人，對於 shell script 入門會非常的快，因為 shell script 本身就算是個簡單的程式，差別在於不用編譯（compile），他是逐行執行的。</p>
+
+<ul>
+  <li>也可以寫成 function：<a href="https://ithelp.ithome.com.tw/articles/10138189">[Shell Script] Day25-提高可讀性之函示寫法(一)</a></li>
+  <li>寫作業提早看到這篇就不用掙扎了哈哈哈：<a href="https://ithelp.ithome.com.tw/articles/10136126">[Shell Script] Day19-常用的指令介紹之grep和awk</a></li>
+  <li>把實用的指令帶入情境使用、寫的很生動：<a href="https://ithelp.ithome.com.tw/articles/10135661">[Shell Script] Day18-常用的指令介紹之男人與時間</a></li>
+</ul>
+
+<hr />
+
+<h2 id="反問自己能用-script-幫到什麼忙減少工作">反問：自己能用 Script 幫到什麼忙、減少工作</h2>
+
+<ul>
+  <li>重新命名巨量圖片：
+    <ul>
+      <li><a href="https://kknews.cc/other/jkokvx6.html">Linux Shell大師進化論-實戰演練之批量
+重命名</a></li>
+      <li><a href="https://www.ewdna.com/2012/04/linux-scriptmv-rename.html">Linux Script：mv, rename 單次及批次修改檔案名稱</a></li>
+    </ul>
+  </li>
+  <li>撈資料、做篩選</li>
+  <li>初始環境設置
+    <ul>
+      <li>開一個新的 Git 專案資料夾、包括 <code class="highlighter-rouge">mkdir</code>、<code class="highlighter-rouge">git init</code>、<code class="highlighter-rouge">add .gitignore</code></li>
+    </ul>
+  </li>
+  <li>要不停重複做的事
+    <ul>
+      <li>
+        <h2 id="例如用-git-上傳文章時把-add--commit--push-一起執行">例如用 Git 上傳文章時，把 <code class="highlighter-rouge">add</code> &amp; <code class="highlighter-rouge">commit</code> &amp; <code class="highlighter-rouge">push</code> 一起執行</h2>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>參考資料：</p>
+<ul>
+  <li><a href="http://xyz1943.idv.tw/~xyz1943/data-linux/20060117102949/#script_why">鳥哥的 Linux 私房菜</a></li>
+  <li><a href="https://ithelp.ithome.com.tw/questions/10188680">Linux shell script 常用的程式有哪些</a></li>
+  <li><a href="https://ithelp.ithome.com.tw/articles/10129445">鐵人幫系列文 - 快快樂樂學會讓電腦幫我做事</a></li>
+</ul>
+
+
+<span class="post-date">
+  Written on
+  
+  April
+  27th,
+  2019
+  by Yakim shu
+</span>
+<div class="post-date">Feel free to share!</div>
+  <div class="sharing-icons">
+    <a href="https://twitter.com/intent/tweet?text=[第一週] Shell Script 腳本&amp;url=/project/project_w1_shell_script.html&amp;via=" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=/project/project_w1_shell_script.html&amp;title=[第一週] Shell Script 腳本" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    <a href="https://plus.google.com/share?url=/project/project_w1_shell_script.html" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+
+<div class="related">
+  <h1 >You may also enjoy:</h1>
+  
+  <ul class="related-posts">
+    
+      
+        
+        
+      
+    
+      
+        
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/project/project_w1_problems.html">
+                [第一週] 問題總整理
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>April 21, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/project/project_w1_Terminal_hotkey.html">
+                [第一週] Terminal 輸入快捷鍵 
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>April 21, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/project/project_w1_Networking_Introduction.html">
+                [第一週] 搞懂目錄位置 & 網路基礎概論
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>April 18, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/project/project_w1_CommandLine.html">
+                [第一週] Command Line - Terminal、基本指令介紹
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>April 15, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+    
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/project/project_w1_Git_2.html">
+                [第一週] 版本控制 - 進階指令 & GitHub
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>April 17, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/project/project_w1_report.html">
+                [第一週] 學習日誌
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>April 16, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/project/project_w1_Git_1.html">
+                [第一週] 版本控制 - 原理 ＆ 基本 Git 指令
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>April 16, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+        
+      
+    
+  </ul>
+</div>
+
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://yakimshu.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<script id="dsq-count-scr" src="//yakimshu.disqus.com/count.js" async></script>
+
+    </div>
+
+    <footer class="footer">
+  <a href="https://www.facebook.com/yakimshu"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
+  <a href="https://linkedin.com/in/yakimshu"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
+  <a href="mailto:toromilk80129@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
+  <div class="post-date"><a href="/about.html">Yakim shu | Hi, 這是我擴充腦內海馬體的地方。 by Yakim shu</a></div>
+</footer>
+
+
+  </div>
+
+</body>
+</html>

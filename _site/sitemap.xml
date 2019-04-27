@@ -5,6 +5,10 @@
   <!-- Posts -->
   
   <url>
+    <loc>http://localhost:4000/project/project_w1_shell_script.html</loc>
+  </url>
+  
+  <url>
     <loc>http://localhost:4000/project/project_w2_Javasciprt_03.html</loc>
   </url>
   

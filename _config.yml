@@ -6,7 +6,6 @@ baseurl:            ""
 img_url:            "../images/"
 url:                "http://yakim-shu.github.io"
 github:
-  # url:               "https://lenpaul.github.io/blog"
 author:
   name:              "Yakim shu"
   email:             "toromilk80129@gmail.com"
