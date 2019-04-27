@@ -2,7 +2,7 @@
 layout: post
 title: "【看馬男學英文】BoJack Horseman S103 - Princkly-Muffin"
 description: ""
-category: CS50
+category: Bojack
 image: http://i.imgur.com/t798glR.png
 tags: [Bojack]
 ---

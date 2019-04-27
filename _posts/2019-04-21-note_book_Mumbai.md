@@ -2,7 +2,7 @@
 layout: post
 title: "【讀書筆記】孟買春秋、我遇過的奇葩印度人"
 description: "當她提到象神的由來時，自己在心裡尖叫：「我知道！」從躺在包包裡那本、被圖書館通緝的孟買春秋讀到。從大學開始，對莫名的對印度有太多的好奇，有任何的資訊我都會盡量去了解，明明我還沒當地，卻感覺我跟那塊土地好像有著某種神秘的連結，很期待踏上的那一天。"
-category: Note
+category: Book
 image: 
 tags: [Note, book]
 file_name: 2019-04-21-note_book_Mumbai
