@@ -5,6 +5,10 @@
   <!-- Posts -->
   
   <url>
+    <loc>http://localhost:4000/project/project_w3_report.html</loc>
+  </url>
+  
+  <url>
     <loc>http://localhost:4000/project/project_w3_Javasciprt_npm.html</loc>
   </url>
   

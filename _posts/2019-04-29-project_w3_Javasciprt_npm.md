@@ -113,6 +113,7 @@ console.log(test.sum(5, 10)); // 15
 
 參考資料：
 - [從零開始: 使用NPM套件](https://medium.com/html-test/從零開始-使用npm套件-317beefdf182)
+- [Day5 - 關於 module.exports 的兩三事](https://ithelp.ithome.com.tw/articles/10185083)
 
 ---
 
