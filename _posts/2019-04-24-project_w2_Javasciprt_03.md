@@ -218,6 +218,16 @@ var name3 = '      Yakim   ';
 console.log(name3.trim());  // Yakim
 ```
 
+#### 字串、陣列間互相轉換
+
+字串轉陣列：
+- `str.split('')` 
+    - 利用空字元 `''` ： 把 `string` 切成 `array`
+
+陣列轉字串：
+- `arr.join('')`
+    - 利用空字元 `''`： 把 `array` 轉成 `string`
+
 ---
 ### 常用的陣列相關函式
 

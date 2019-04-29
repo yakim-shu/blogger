@@ -1,0 +1,373 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>
+    
+      [第三週] JavaScript - npm 套件管理工具 | Yakim shu
+    
+  </title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="除了剛剛示範過的 Node.js 提供的 Module、自己寫好的 Module，也可以使用別人寫好的套件，那要怎麼去使用呢？則要透過 npm 來幫我們下載跟管理這些套件。">
+  <meta name="author" content="Yakim, toromilk80129@gmail.com">
+  <meta name="robots" content="INDEX,FOLLOW">
+  <!--og-->
+  <meta property="og:title" content="[第三週] JavaScript - npm 套件管理工具">
+  <meta name="og:description" content="除了剛剛示範過的 Node.js 提供的 Module、自己寫好的 Module，也可以使用別人寫好的套件，那要怎麼去使用呢？則要透過 npm 來幫我們下載跟管理這些套件。">
+  <meta property="og:url" content="http://localhost:4000/project/project_w3_Javasciprt_npm.html">
+
+    
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-77560722-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+
+
+<body>
+
+  <div class="container">
+    <header class="masthead">
+  <h3 class="masthead-title">
+    <a href="/">Yakim shu</a>
+    <small class="masthead-subtitle">Hi, 這是我擴充腦內海馬體的地方。</small>
+    <div class="menu">
+  <div class="menu-content">
+    <a href="/category.html">分類文章</a>
+    <a href="/writing.html">全文列表</a>
+    <!-- <a href="/contacts.html">Contact</a> -->
+  </div>
+  <div class="social-icons">
+    <a href="https://www.facebook.com/yakimshu"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
+    <a href="https://linkedin.com/in/yakimshu"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
+    <a href="mailto:toromilk80129@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
+  </div>
+</div>
+
+  </h3>
+</header>
+
+
+    <div class="post-container story">
+      <h1>
+  [第三週] JavaScript - npm 套件管理工具
+</h1>
+
+
+  <img src="https://i.imgur.com/vk8fV6t.png">
+
+
+<p>( image from <a href="https://www.bleepingcomputer.com/news/security/compromised-javascript-package-caught-stealing-npm-credentials/">bleepingComputer</a> )</p>
+
+<h2 id="module-模組-or-模塊">Module 模組 or 模塊</h2>
+<p>把各種功能（ 登入、金流、留言板 ）拆開來，才不會讓彼此相依性太高，產生不小心改到其他項目的悲劇。</p>
+
+<h3 id="引入-module">引入 Module</h3>
+
+<ul>
+  <li>以 Node.js 提供的其中一種 Module : <code class="highlighter-rouge">os</code> 為例，如果想查詢電腦作業系統，可以調用<code class="highlighter-rouge">.platform()</code>。</li>
+  <li>連結：<a href="https://nodejs.org/api/os.html">官方文件</a></li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">checkOs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'os'</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">checkOs</span><span class="p">.</span><span class="nx">platform</span><span class="p">());</span>
+</code></pre>
+</div>
+<p>( 記得先用 <code class="highlighter-rouge">require</code> 呼叫 <code class="highlighter-rouge">os</code> 這個 Module )</p>
+
+<p>參考資料：</p>
+<ul>
+  <li><a href="https://blog.techbridge.cc/2018/02/14/how-to-make-a-good-node-module/">如何做出一個好的 NodeJS 模組？</a></li>
+</ul>
+
+<hr />
+
+<h3 id="導出-module">導出 Module</h3>
+
+<p>假如我今天寫了一些簡單的函式，<strong>很多檔案都會用到這些函式</strong>，那也可以拆開成一個 Module 集中管理、也不用重複造輪子，更能供自己或別人使用。</p>
+
+<p>假設我寫了一個名為 <code class="highlighter-rouge">myModule.js</code> 的檔案，裡面有三個 function:  <code class="highlighter-rouge">sumOfNum</code> 、 <code class="highlighter-rouge">double()</code> 、 <code class="highlighter-rouge">triple()</code>，要幫我的三個函式包裝起來，只要<strong>傳進去 <code class="highlighter-rouge">module.exports</code></strong> 這裡面就 OK 了，是不是超簡單！</p>
+
+<ul>
+  <li>裡面刻意把 <code class="highlighter-rouge">triple()</code> 直接放在裡面，示範不同寫法</li>
+  <li>而其實 <code class="highlighter-rouge">module.exports</code> 傳什麼都可以，比較常見的應該是<strong>物件</strong>，但如果只是要傳一個陣列、變數、字串… 也可以的。</li>
+  <li><strong>註解內也有標示導出的另一種寫法</strong>，不同的是，這種寫法是直接把 <code class="highlighter-rouge">exports</code> 當作是一個物件</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">sumOfNum</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="kr">double</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">sum</span><span class="p">:</span> <span class="nx">sumOfNum</span><span class="p">,</span>
+    <span class="na">double</span><span class="p">:</span> <span class="kr">double</span><span class="p">,</span>
+    <span class="na">triple</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">x</span> <span class="o">*</span> <span class="mi">3</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="cm">/* 第二種寫法，把 exports 當作是一個物件傳入
+exports.double = double;
+exports.triple = function (x) {
+    return x * 3;
+}
+*/</span>
+</code></pre>
+</div>
+
+<h4 id="引用剛剛導出的-module">引用剛剛導出的 Module</h4>
+
+<p>其實就跟剛剛用 <code class="highlighter-rouge">require</code> 引用的方式一樣，但注意 <code class="highlighter-rouge">myModule.js</code> 是自己寫的檔案，所以記得加上<strong>檔案路徑位置 <code class="highlighter-rouge">./</code></strong>。<br />
+（ 後面的 <code class="highlighter-rouge">.js</code> 要加、不加都可以 ）</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">test</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./myModule'</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">test</span><span class="p">.</span><span class="kr">double</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span> <span class="c1">// 4</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">test</span><span class="p">.</span><span class="nx">triple</span><span class="p">(</span><span class="mi">3</span><span class="p">));</span> <span class="c1">// 9</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">test</span><span class="p">.</span><span class="nx">sum</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">));</span> <span class="c1">// 15</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="npm--node-package-manager-">npm ( Node Package Manager )</h2>
+
+<p>除了剛剛示範過的 <code class="highlighter-rouge">Node.js</code> 提供的 Module、自己寫好的 Module，也可以使用別人寫好的套件，那要怎麼去使用呢？則要透過 npm 來幫我們下載跟管理這些套件。</p>
+
+<blockquote>
+  <p>NPM 是 Node Package Manager 的簡稱，它是一個線上套件庫，可以下載各式各樣的 Javascript 套件來使用。</p>
+</blockquote>
+
+<h3 id="初始化">初始化</h3>
+
+<p>要開始使用 npm ，先將資料夾進行初始化： <code class="highlighter-rouge">npm init</code> 。</p>
+
+<p>接著會跳出訊息問你專案的資訊，不想理就全部按 <code class="highlighter-rouge">Enter</code> 跳過就好，而完成後會發現多出個 <code class="highlighter-rouge">package.json</code> 的檔案，紀錄專案資訊跟<strong>套件資訊</strong>。</p>
+
+<h3 id="packagejson">package.json</h3>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"week3"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"main"</span><span class="p">:</span><span class="w"> </span><span class="s2">"index.js"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ISC"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">//</span><span class="w"> </span><span class="err">記錄套件資訊</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>剛初始化過的 <code class="highlighter-rouge">package.json</code> 可能會長這樣，而 <code class="highlighter-rouge">"dependencies"</code> 那欄位還是空的，因為我們還沒有下載任何 npm package。</p>
+
+<p>參考資料：</p>
+<ul>
+  <li><a href="https://medium.com/html-test/從零開始-使用npm套件-317beefdf182">從零開始: 使用NPM套件</a></li>
+</ul>
+
+<hr />
+
+<h3 id="下載-package">下載 Package</h3>
+
+<p>假設我要引入 <code class="highlighter-rouge">left-pad</code> 這個套件。（ 幫字串左邊補空格或任意字元 ）先連到 left-pad 的 <a href="https://www.npmjs.com/package/left-pad">官方連結</a>，上面可以看到使用說明及版本號…等等資訊。</p>
+
+<p>在專案目錄底下打入： <code class="highlighter-rouge">npm install left-pad</code></p>
+
+<p>此時會有兩個變動：</p>
+<ul>
+  <li>專案目錄會新增一個 <code class="highlighter-rouge">node_modules</code> 的資料夾，而裡面也有剛剛下載的 package: <code class="highlighter-rouge">left-pad</code> 資料夾</li>
+  <li><code class="highlighter-rouge">package.json</code> 裡的 <code class="highlighter-rouge">"dependencies"</code> 多出了套件資訊</li>
+</ul>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"week3"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"main"</span><span class="p">:</span><span class="w"> </span><span class="s2">"index.js"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ISC"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"left-pad"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^1.3.0"</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">剛剛安裝的</span><span class="w"> </span><span class="err">left-pad</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<h3 id="packagejson-的妙用">package.json 的妙用</h3>
+
+<p>那這邊記錄下來的用處是什麼？</p>
+<ul>
+  <li>第一，可以很清楚的知道此專案依賴在哪些套件上</li>
+  <li>第二，<code class="highlighter-rouge">node_modules</code> 裡的套件可能會越來越多、專案變得肥大，更新 git 要花一段時間，而因為這些套件網路上都載的到，其實可以不要上傳，<strong>那就可以把 <code class="highlighter-rouge">.gitignore</code> 資訊加上 <code class="highlighter-rouge">node_modules</code></strong>，忽略肥大的 <code class="highlighter-rouge">node_modules</code>。</li>
+</ul>
+
+<p>而當我們要 <code class="highlighter-rouge">clone</code> 別人專案時，<strong>輸入 <code class="highlighter-rouge">npm install</code>，系統就會直接看 <code class="highlighter-rouge">package.json</code> 裡面記錄了哪些專案，一次全部下載回來</strong>，超方便！</p>
+
+<blockquote>
+  <p>注意：</p>
+</blockquote>
+
+<p>在新的版本 npm 5 以前，要輸入 <code class="highlighter-rouge">npm install &lt;pacakge-name&gt; --save</code>，才會輸入到 <code class="highlighter-rouge">package.json</code> 檔案裡面喔！</p>
+
+<h3 id="引用-package">引用 package</h3>
+
+<p>而至於怎麼引用進來呢？步驟其實跟剛剛一樣，也是使用 <code class="highlighter-rouge">require(&lt;package-name&gt;)</code></p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">test</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'left-pad'</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">test</span><span class="p">(</span><span class="s1">'abc'</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">'0'</span><span class="p">));</span> <span class="c1">// 輸出 00000abc</span>
+</code></pre>
+</div>
+
+<p>( 這邊<strong>可以不用寫路徑名</strong>，<code class="highlighter-rouge">require</code> 很聰明，會自動去 <code class="highlighter-rouge">node_modules</code> 資料夾搜尋有沒有匹配的檔名。 )</p>
+
+<hr />
+
+<h3 id="npm-script">npm Script</h3>
+
+<p>npm 也有提供自己寫一些簡單的腳本供執行，最常見的可能是，當我們要 run 一個新專案，可能裡面有不同檔案，而接手的人不知道哪一個才是主程式，所以我們可以把<strong>運行主程式</strong> 這動作記錄在 <code class="highlighter-rouge">script</code> 裡面。</p>
+
+<ul>
+  <li>打開 <code class="highlighter-rouge">package.json</code> ，可以看到裡面有個 <code class="highlighter-rouge">script 欄位</code>，新增一個 <code class="highlighter-rouge">start</code></li>
+  <li>接著試試運行 ： <code class="highlighter-rouge">npm run start</code>，就會發現跑了 <code class="highlighter-rouge">node index.js</code></li>
+</ul>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"week3"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"main"</span><span class="p">:</span><span class="w"> </span><span class="s2">"myModule.js"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node index.js"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">新增的</span><span class="w"> </span><span class="err">start</span><span class="w"> </span><span class="err">指令</span><span class="w">
+    </span><span class="nt">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ISC"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"left-pad"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^1.3.0"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>( 所以如果之後主程式改成 <code class="highlighter-rouge">index_2.js</code>，只要改成 <code class="highlighter-rouge">"start": "node index_2.js"</code>，接手的人同樣是運行 <code class="highlighter-rouge">npm run start</code>，而不用管到底主程式是哪一個檔案。 )</p>
+
+<hr />
+
+<h2 id="yarn--另一種套件管理工具-">yarn （ 另一種套件管理工具 ）</h2>
+
+<p><code class="highlighter-rouge">yarn</code> 是由 Facebook 開發的另一種套件管理工具。</p>
+
+<p>功能、指令跟 <code class="highlighter-rouge">npm</code> 都非常類似，但 <code class="highlighter-rouge">yarn</code> 的速度比較快，差別在安裝套件的指令是： <code class="highlighter-rouge">yarn add &lt;package-name&gt;</code>。</p>
+
+
+<span class="post-date">
+  Written on
+  
+  April
+  29th,
+  2019
+  by Yakim shu
+</span>
+<div class="post-date">Feel free to share!</div>
+  <div class="sharing-icons">
+    <a href="https://twitter.com/intent/tweet?text=[第三週] JavaScript - npm 套件管理工具&amp;url=/project/project_w3_Javasciprt_npm.html&amp;via=" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=/project/project_w3_Javasciprt_npm.html&amp;title=[第三週] JavaScript - npm 套件管理工具" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    <a href="https://plus.google.com/share?url=/project/project_w3_Javasciprt_npm.html" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+
+<div class="related">
+  <h1 >You may also enjoy:</h1>
+  
+  <ul class="related-posts">
+    
+      
+        
+        
+      
+    
+      
+        
+        
+      
+    
+      
+        
+        
+      
+    
+  </ul>
+</div>
+
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://yakimshu.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<script id="dsq-count-scr" src="//yakimshu.disqus.com/count.js" async></script>
+
+    </div>
+
+    <footer class="footer">
+  <a href="https://www.facebook.com/yakimshu"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
+  <a href="https://linkedin.com/in/yakimshu"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
+  <a href="mailto:toromilk80129@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
+  <div class="post-date"><a href="/about.html">Yakim shu | Hi, 這是我擴充腦內海馬體的地方。 by Yakim shu</a></div>
+</footer>
+
+
+  </div>
+
+</body>
+</html>
