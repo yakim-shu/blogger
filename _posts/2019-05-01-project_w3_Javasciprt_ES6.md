@@ -1,12 +1,18 @@
 ---
 title: "[第三週] JavaScript - ES6 語法、Babel 轉譯器"
 layout: post
-description: ""
+description: "ECMAScript 是 JavaScript 的一種語言標準。而 ES5 及 ES6 代表著 ECMAScript 發佈的不同版本。"
 category: project
-image: 
-tags: [JavaSciprt_JS102, npm, project_week3]
+image: https://i.imgur.com/7mExYJ3.jpg
+tags: [JavaSciprt_JS102, ES6, Babel, project_week3]
 file_name: 2019-05-01-project_w3_Javasciprt_ES6
 ---
+
+( image from [Bram.us](https://www.bram.us/2016/10/31/checking-if-a-browser-supports-es6/) )
+
+## ES5 VS ES6
+- ECMAScript 5 ( ES5 )：ECMAScript 的第五版，於 2009 年發佈，這個規範幾乎所有現代瀏覽器都支援。
+- ECMAScript 6 ( ES6 )：ECMAScript 的第六版，於 2015 年發佈。這個規範**大部分的現代瀏覽器都支援**，詳情可參閱 [ECMAscript ES6 支援表](https://kangax.github.io/compat-table/es6/?utm_source=caibaojian.com)。
 
 ### ECMAScript
 
@@ -14,10 +20,6 @@ file_name: 2019-05-01-project_w3_Javasciprt_ES6
 ECMAScript 是一種由 Ecma 國際通過 ECMA-262 標準化的指令碼程式設計語言。這種語言在全球資訊網上應用廣泛，它往往被稱為 JavaScript 或 JScript，但實際上後兩者是 ECMA-262 標準的實現和擴充。 
 
 > 簡單來說，ECMAScript 是 JavaScript 的一種語言標準。而 ES5 及 ES6 代表著 ECMAScript 發佈的不同版本。
-
-### ES5 VS ES6
-- ECMAScript 5 ( ES5 )：ECMAScript 的第五版，於 2009 年發佈，這個規範幾乎所有現代瀏覽器都支援。
-- ECMAScript 6 ( ES6 )：ECMAScript 的第六版，於 2015 年發佈。這個規範**大部分的現代瀏覽器都支援**，詳情可參閱 [ECMAscript ES6 支援表](https://kangax.github.io/compat-table/es6/?utm_source=caibaojian.com)。
 
 參考資料：
 - [[ES6] Javascript 開發者必須知道的 10 個新功能](https://medium.com/@peterchang_82818/es6-10-features-javascript-developer-must-know-98b9782bef44)
@@ -291,7 +293,6 @@ import * as utils from './utils';
 console.log(utils.add(1, 2), utils.PI);
 */
 ```
-
 ---
 
 ## Babel
@@ -313,8 +314,6 @@ Babel 是一個 JavaScript 的轉譯器，可以幫你轉成需要的版本、�
 }
 ```
 - 最後使用 `npx babel-node index.js` 運行即可
-
-
 
 參考資料：
 - [Webpack教學 (四)：JavaScript 與 Babel](https://medium.com/@Mike_Cheng1208/webpack教學-四-javascript-與-babel-1d7acd911e63)
