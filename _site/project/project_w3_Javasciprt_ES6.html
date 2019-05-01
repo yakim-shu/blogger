@@ -1,0 +1,528 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>
+    
+      [第三週] JavaScript - ES6 語法、Babel 轉譯器 | Yakim shu
+    
+  </title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Yakim, toromilk80129@gmail.com">
+  <meta name="robots" content="INDEX,FOLLOW">
+  <!--og-->
+  <meta property="og:title" content="[第三週] JavaScript - ES6 語法、Babel 轉譯器">
+  <meta name="og:description" content="">
+  <meta property="og:url" content="http://localhost:4000/project/project_w3_Javasciprt_ES6.html">
+
+    
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-77560722-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+
+
+<body>
+
+  <div class="container">
+    <header class="masthead">
+  <h3 class="masthead-title">
+    <a href="/">Yakim shu</a>
+    <small class="masthead-subtitle">Hi, 這是我擴充腦內海馬體的地方。</small>
+    <div class="menu">
+  <div class="menu-content">
+    <a href="/category.html">分類文章</a>
+    <a href="/writing.html">全文列表</a>
+    <!-- <a href="/contacts.html">Contact</a> -->
+  </div>
+  <div class="social-icons">
+    <a href="https://www.facebook.com/yakimshu"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
+    <a href="https://linkedin.com/in/yakimshu"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
+    <a href="mailto:toromilk80129@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
+  </div>
+</div>
+
+  </h3>
+</header>
+
+
+    <div class="post-container story">
+      <h1>
+  [第三週] JavaScript - ES6 語法、Babel 轉譯器
+</h1>
+
+
+
+<h3 id="ecmascript">ECMAScript</h3>
+
+<p>( 以下繞口令取自維基百科 )<br />
+ECMAScript 是一種由 Ecma 國際通過 ECMA-262 標準化的指令碼程式設計語言。這種語言在全球資訊網上應用廣泛，它往往被稱為 JavaScript 或 JScript，但實際上後兩者是 ECMA-262 標準的實現和擴充。</p>
+
+<blockquote>
+  <p>簡單來說，ECMAScript 是 JavaScript 的一種語言標準。而 ES5 及 ES6 代表著 ECMAScript 發佈的不同版本。</p>
+</blockquote>
+
+<h3 id="es5-vs-es6">ES5 VS ES6</h3>
+<ul>
+  <li>ECMAScript 5 ( ES5 )：ECMAScript 的第五版，於 2009 年發佈，這個規範幾乎所有現代瀏覽器都支援。</li>
+  <li>ECMAScript 6 ( ES6 )：ECMAScript 的第六版，於 2015 年發佈。這個規範<strong>大部分的現代瀏覽器都支援</strong>，詳情可參閱 <a href="https://kangax.github.io/compat-table/es6/?utm_source=caibaojian.com">ECMAscript ES6 支援表</a>。</li>
+</ul>
+
+<p>參考資料：</p>
+<ul>
+  <li><a href="https://medium.com/@peterchang_82818/es6-10-features-javascript-developer-must-know-98b9782bef44">[ES6] Javascript 開發者必須知道的 10 個新功能</a></li>
+  <li><a href="https://ithelp.ithome.com.tw/articles/10206587![]()">Day15-淺談JS版本差異！ES5、ES6</a></li>
+  <li><a href="http://caibaojian.com/toutiao/6864">JavaScript、ES5和ES6的介绍和区别</a></li>
+</ul>
+
+<hr />
+
+<h2 id="es6-新語法">ES6 新語法</h2>
+
+<h3 id="變數宣告新用法-letconst--區塊作用域-block-scope-">變數宣告新用法： let、const ( 區塊作用域 block scope )</h3>
+
+<p>相較於 ES5 的變數宣告只有 <code class="highlighter-rouge">var</code>， ES6 多了 <code class="highlighter-rouge">let</code> 跟 <code class="highlighter-rouge">const</code> 可以用。</p>
+
+<h4 id="const-常數"><code class="highlighter-rouge">const</code> 常數</h4>
+
+<p>當變數是不會也不能有變動、只能讀取的時候，我們稱為常數，常見的有圓周率、設定好的最大、小數等等。</p>
+<ul>
+  <li><code class="highlighter-rouge">const PI = 3.14</code></li>
+  <li><code class="highlighter-rouge">const MAX = 5</code></li>
+</ul>
+
+<blockquote>
+  <p>注意</p>
+</blockquote>
+
+<p><strong>這邊「 不能變動 」指的是「 記憶體位置 」</strong>，所以除了原始類型以外，<code class="highlighter-rouge">object</code>、<code class="highlighter-rouge">array</code>、<code class="highlighter-rouge">function</code> 只要不是整個賦值、記憶體位置沒變，指向的內容是可以被更改的喔！</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">const</span> <span class="nx">PI</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// 數字 → 原始類型</span>
+<span class="kr">const</span> <span class="nx">OBJ</span> <span class="o">=</span> <span class="p">{};</span> <span class="c1">// object</span>
+<span class="kr">const</span> <span class="nx">ARR</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">];</span> <span class="c1">// array</span>
+
+<span class="nx">PI</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="nx">OBJ</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'Yakim'</span><span class="p">;</span>
+<span class="nx">ARR</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">PI</span><span class="p">);</span> <span class="c1">// 錯誤： Assignment to constant variable.</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">OBJ</span><span class="p">);</span> <span class="c1">// { name : 'Yakim' }</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ARR</span><span class="p">);</span> <span class="c1">// [10]</span>
+
+<span class="nx">OBJ</span> <span class="o">=</span> <span class="p">{</span> <span class="na">name</span> <span class="p">:</span> <span class="s1">'Linda'</span> <span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">OBJ</span><span class="p">);</span> <span class="c1">// 錯誤：Assignment to constant variable.</span>
+</code></pre>
+</div>
+
+<h4 id="let-塊級變數"><code class="highlighter-rouge">let</code> 塊級變數</h4>
+
+<h5 id="特性一-未宣告不能使用">特性一： 未宣告不能使用。</h5>
+<p><code class="highlighter-rouge">let</code> 可以當成是 <code class="highlighter-rouge">var</code> 的升級版，相較於 <code class="highlighter-rouge">var</code> 會有變數提升 ( Hoisting ) 的特性（ 變數可以在宣告前使用，值為 <code class="highlighter-rouge">undefined</code> ）， <code class="highlighter-rouge">let</code> 在宣告之前不能使用。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span> <span class="c1">// undefined</span>
+<span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="s1">'Yakim'</span><span class="p">;</span> 
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">dog</span><span class="p">);</span> <span class="c1">// 錯誤：dog is not defined</span>
+<span class="kd">let</span> <span class="nx">dog</span> <span class="o">=</span> <span class="s1">'小黑'</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<h5 id="特性二-塊級作用域">特性二： 塊級作用域</h5>
+<p>ES5 只提供「 全局作用域 」跟「 函式作用域 」，要麻就是危險的暴露在全域、要麻就是用 function 包起來，所以 <code class="highlighter-rouge">let</code> 跟 <code class="highlighter-rouge">const</code> 提供了更多的選擇。</p>
+
+<p><code class="highlighter-rouge">let</code>、<code class="highlighter-rouge">const</code> 的<strong>作用域是在大括號 <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="p">}</span></code> 裡面</strong>，而不是 <code class="highlighter-rouge">function</code> 裡，大大降低了污染到其他變數的可能性。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">dog</span> <span class="o">=</span> <span class="s1">'小黑'</span><span class="p">;</span>
+    <span class="kd">let</span> <span class="nx">name</span> <span class="o">=</span> <span class="s1">'Yakim'</span><span class="p">;</span>
+    <span class="kr">const</span> <span class="nx">PI</span> <span class="o">=</span> <span class="mf">3.14</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">dog</span><span class="p">);</span> <span class="c1">// 小黑</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span> <span class="c1">// 錯誤: name is not defined</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">PI</span><span class="p">);</span> <span class="c1">// 錯誤: PI is not defined</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h3 id="template-literals-模板字串符">Template Literals 模板字串符</h3>
+
+<p>以往在 ES5 操作字串相當麻煩，所以 ES6 提供了比較方便的字串模板，用法超簡單，只要把變數放進 <code class="highlighter-rouge">${ }</code> 裡面就行，以下兩個範例都會輸出： <code class="highlighter-rouge">Yakim's dog is 小黑.</code>。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">name</span> <span class="o">=</span> <span class="s1">'Yakim'</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">dog</span> <span class="o">=</span> <span class="s1">'小黑'</span>
+<span class="c1">// ES5</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">'\'s dog is '</span> <span class="o">+</span> <span class="nx">dog</span> <span class="o">+</span> <span class="s1">'.'</span><span class="p">);</span>
+<span class="c1">// ES6</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="nx">name</span><span class="p">}</span><span class="err">'</span><span class="nx">s</span> <span class="nx">dog</span> <span class="nx">is</span> <span class="nx">$</span><span class="p">{</span><span class="nx">dog</span><span class="p">}.</span><span class="err">`</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<hr />
+<h3 id="destructuring-解構">Destructuring 解構</h3>
+
+<p>通過匹配 array 中的第 n 值，或是 object 內對應的 key的值，賦值到變數。注意，匹配陣列使用 <code class="highlighter-rouge">[ ]</code>、物件使用 <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="p">}</span></code>。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">// 陣列 ------</span>
+<span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">];</span>
+<span class="kd">let</span> <span class="p">[</span><span class="nx">first</span><span class="p">,</span> <span class="nx">second</span><span class="p">]</span> <span class="o">=</span> <span class="nx">arr</span><span class="p">;</span> <span class="c1">// 變數對應到 arr 的 序</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">first</span><span class="p">);</span> <span class="c1">// 1</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">second</span><span class="p">);</span> <span class="c1">// 2</span>
+
+<span class="c1">// 物件 ------</span>
+<span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span> 
+    <span class="na">name</span><span class="p">:</span> <span class="s1">'Yakim'</span><span class="p">,</span>
+    <span class="na">dog</span><span class="p">:</span> <span class="s1">'小黑'</span><span class="p">,</span>
+    <span class="na">family</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">father</span><span class="p">:</span> <span class="s1">'LinPiao'</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">let</span> <span class="p">{</span><span class="nx">name</span><span class="p">,</span> <span class="nx">dog</span><span class="p">}</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">;</span> <span class="c1">// 變數要對應到 obj 的 key</span>
+<span class="kd">let</span> <span class="p">{</span><span class="na">family</span><span class="p">:</span> <span class="p">{</span><span class="nx">father</span><span class="p">}}</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">;</span> <span class="c1">// 也可以對應到更裡面，但只會取出最深處的變數，此例是 father</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span> <span class="c1">// Yakim</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">dog</span><span class="p">);</span> <span class="c1">// 小黑</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">father</span><span class="p">);</span> <span class="c1">// LinPiao</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">family</span><span class="p">);</span> <span class="c1">// 錯誤：family is not defined</span>
+
+<span class="cm">/* 舊的 ES5 寫法 ---
+var first = arr[0];
+var second = arr[1];
+
+var name = obj.name;
+var dog = obj.dog;
+var father = obj.family.father;
+-------------------
+*/</span>
+</code></pre>
+</div>
+<hr />
+<h3 id="spread-operator-展開運算子">Spread Operator 展開運算子</h3>
+
+<p>用 <code class="highlighter-rouge">...</code>作為展開符號，可以<strong>展開陣列或物件</strong>， 由上個例子作為延伸。</p>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">arr2</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'a'</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">];</span>
+<span class="kd">let</span> <span class="nx">arr3</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'c'</span><span class="p">,</span> <span class="s1">'d'</span><span class="p">];</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">([...</span><span class="nx">arr2</span><span class="p">,</span> <span class="p">...</span><span class="nx">arr3</span><span class="p">]);</span> <span class="c1">// [ 'a', 'b', 'c', 'd', 'e' ]</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">([</span><span class="s1">'new'</span><span class="p">,</span> <span class="p">...</span><span class="nx">arr2</span><span class="p">,</span> <span class="s1">'last'</span><span class="p">]);</span> <span class="c1">// [ 'new', 'a', 'b', 'last' ]</span>
+
+<span class="nx">arr2</span><span class="p">.</span><span class="nx">push</span><span class="p">(...</span><span class="nx">arr3</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr2</span><span class="p">);</span> <span class="c1">// [ 'a', 'b', 'c', 'd' ]</span>
+
+<span class="kd">let</span> <span class="nx">name</span> <span class="o">=</span> <span class="p">[...</span><span class="s1">'Yakim'</span><span class="p">];</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span> <span class="c1">// [ 'Y', 'a', 'k', 'i', 'm' ]</span>
+
+<span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span><span class="na">name</span> <span class="p">:</span> <span class="s1">'Yakim'</span><span class="p">}</span>
+<span class="kd">let</span> <span class="nx">obj2</span> <span class="o">=</span> <span class="p">{...</span><span class="nx">obj</span><span class="p">};</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj2</span><span class="p">);</span> <span class="c1">// { name: 'Yakim' }</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj</span> <span class="o">===</span> <span class="nx">obj2</span><span class="p">);</span> <span class="c1">// false，記憶體位置不同</span>
+</code></pre>
+</div>
+
+<p>同樣也可以放進 function 裡當作引數</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">sum</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span> <span class="o">+</span> <span class="nx">c</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sum</span><span class="p">(...</span><span class="nx">arr</span><span class="p">));</span>
+</code></pre>
+</div>
+
+<p>參考資料：</p>
+<ul>
+  <li><a href="http://es6.ruanyifeng.com/#docs/">阮一峰 - ECMAScript 6 入门</a></li>
+  <li><a href="https://ithelp.ithome.com.tw/articles/10195477">[ES6-重點紀錄] 擴展運算子 Spread Operator</a></li>
+</ul>
+
+<hr />
+<h3 id="rest-parameters-其餘運算子">Rest Parameters 其餘運算子</h3>
+
+<p>跟展開運算子很像，也是用 <code class="highlighter-rouge">...</code> 符號，不過功能剛好相反，作用是<strong>集合剩餘的元素。</strong></p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">];</span>
+<span class="kd">let</span> <span class="p">[</span><span class="nx">first</span><span class="p">,</span> <span class="nx">second</span><span class="p">,</span> <span class="p">...</span><span class="nx">rest</span><span class="p">]</span> <span class="o">=</span> <span class="nx">arr</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(...</span><span class="nx">rest</span><span class="p">);</span> <span class="c1">// 3, 4, 5</span>
+
+<span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">a</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="na">b</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="na">c</span><span class="p">:</span> <span class="mi">3</span>
+<span class="p">}</span>
+<span class="kd">let</span> <span class="p">{</span><span class="nx">a</span><span class="p">,</span> <span class="p">...</span><span class="nx">obj2</span><span class="p">}</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">;</span> <span class="c1">// ...集合</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">obj2</span><span class="p">);</span> <span class="c1">// 1 { b: 2, c : 3 }</span>
+
+<span class="kd">let</span> <span class="nx">obj3</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">...</span><span class="nx">obj2</span><span class="p">,</span> <span class="c1">// ...展開</span>
+    <span class="na">d</span><span class="p">:</span> <span class="mi">4</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj3</span><span class="p">);</span> <span class="c1">// { b: 2, c: 3, d: 4 }</span>
+</code></pre>
+</div>
+
+<hr />
+<h3 id="default-parameters-參數預設值">Default Parameters 參數預設值</h3>
+
+<p>可以幫函式的參數加上預設值</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">whosDog</span><span class="p">(</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'Yakim'</span><span class="p">,</span> <span class="nx">dog</span> <span class="o">=</span> <span class="s1">'小黑'</span><span class="p">){</span>
+    <span class="k">return</span> <span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="nx">name</span><span class="p">}</span><span class="s1">'s dog is ${dog}`;
+}
+console.log(whosDog()); // Yakim'</span><span class="nx">s</span> <span class="nx">dog</span> <span class="nx">is</span> <span class="err">小黑</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">whosDog</span><span class="p">(</span><span class="s1">'小明'</span><span class="p">,</span> <span class="s1">'小花'</span><span class="p">));</span> <span class="c1">// 小明's dog is 小花</span>
+</code></pre>
+</div>
+<p>也可以搭配解構使用，幫不存在的 <code class="highlighter-rouge">c</code> 丟入預設值</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">a</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> 
+    <span class="na">b</span><span class="p">:</span> <span class="mi">2</span>
+<span class="p">}</span>
+<span class="kd">let</span> <span class="p">{</span><span class="nx">a</span> <span class="o">=</span> <span class="s1">'a'</span><span class="p">,</span> <span class="nx">b</span> <span class="o">=</span> <span class="s1">'b'</span><span class="p">,</span> <span class="nx">c</span> <span class="o">=</span> <span class="s1">'c'</span><span class="p">}</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">);</span> <span class="c1">// 1 2 'c'</span>
+</code></pre>
+</div>
+<hr />
+<h3 id="arrow-function-箭頭函式">Arrow Function 箭頭函式</h3>
+
+<p>其實就是 function 的簡寫</p>
+<ul>
+  <li>只有一個回傳值，可以省略 <code class="highlighter-rouge">return</code></li>
+  <li>只有一個參數，可以省略括號 <code class="highlighter-rouge">( )</code></li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="cm">/* ES5 寫法 -------
+function fn1(name){
+    return `hello, ${name}`
+}
+------------------
+*/</span>
+<span class="kr">const</span> <span class="nx">fn1</span> <span class="o">=</span> <span class="nx">name</span> <span class="o">=&gt;</span> <span class="err">`</span><span class="nx">hello</span><span class="p">,</span> <span class="nx">$</span><span class="p">{</span><span class="nx">name</span><span class="p">}</span><span class="err">`</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">fn2</span> <span class="o">=</span> <span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">times</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="err">`</span><span class="nx">hello</span><span class="p">,</span> <span class="nx">$</span><span class="p">{</span><span class="nx">name</span><span class="p">.</span><span class="nx">repeat</span><span class="p">(</span><span class="nx">times</span><span class="p">)}</span><span class="err">`</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">fn1</span><span class="p">(</span><span class="s1">'Yakim'</span><span class="p">));</span> <span class="c1">// hello, Yakim</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">fn2</span><span class="p">(</span><span class="s1">'Yakim'</span><span class="p">,</span> <span class="mi">3</span><span class="p">));</span> <span class="c1">// hello, YakimYakimYakim</span>
+</code></pre>
+</div>
+<p>大大的簡化了以往的函式操作</p>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+    <span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">value</span> <span class="o">=&gt;</span> <span class="nx">value</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">value</span> <span class="o">=&gt;</span> <span class="nx">value</span> <span class="o">*</span> <span class="mi">2</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">);</span> <span class="c1">// [ 4, 6, 8, 10 ]</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h3 id="import--export-引入跟匯出">import &amp; export 引入跟匯出</h3>
+
+<p>操作 <code class="highlighter-rouge">module</code> 的引入跟匯出，其實跟 ES5 的 <code class="highlighter-rouge">require</code> &amp; <code class="highlighter-rouge">module.exports</code> 很像。</p>
+
+<blockquote>
+  <p>注意：</p>
+</blockquote>
+
+<p>原生 node.js 還不支援 <code class="highlighter-rouge">import</code> &amp; <code class="highlighter-rouge">export</code> 的寫法，所以要用 <code class="highlighter-rouge">npx babel-node index.js</code> 來執行，下一段有安裝 Babel 的教學。</p>
+
+<h4 id="export-匯出"><code class="highlighter-rouge">export</code> 匯出</h4>
+<p>utils.js ： 匯出的 module 檔</p>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">export</span> <span class="kr">const</span> <span class="nx">add</span> <span class="o">=</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="kr">export</span> <span class="kr">const</span> <span class="nx">PI</span> <span class="o">=</span> <span class="mf">3.14</span><span class="p">;</span>
+
+<span class="cm">/* 第二種 export 寫法
+const add = (a, b) =&gt; a + b;
+const PI = 3.14;
+
+export {
+    add,
+    PI
+}
+*/</span>
+</code></pre>
+</div>
+<h4 id="import-引入"><code class="highlighter-rouge">import</code> 引入</h4>
+<ul>
+  <li>可以用 <code class="highlighter-rouge">*</code> 引入全部</li>
+  <li>也可以用 <code class="highlighter-rouge">as</code> 取別名</li>
+</ul>
+
+<p>index.js ： 主程式</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span><span class="nx">add</span><span class="p">,</span> <span class="nx">PI</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">'./utils'</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nx">PI</span><span class="p">);</span>
+
+<span class="cm">/* 第二種 import * 寫法，代表全部
+import * as utils from './utils';
+console.log(utils.add(1, 2), utils.PI);
+*/</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="babel">Babel</h2>
+
+<p>當我們需要支援比較老舊的瀏覽器時（ 例如過街老鼠 IE ），沒辦法使用 ES6 甚至 ES5，但還是想用比較潮的寫法怎麼辦？</p>
+
+<p>Babel 是一個 JavaScript 的轉譯器，可以幫你轉成需要的版本、輕鬆解決以上問題，意思是你依舊可以使用潮潮的最新語法，而不用為了使用者環境而吐血。</p>
+
+<p>設定步驟：</p>
+<ul>
+  <li><a href="https://babeljs.io">Babel 官網連結</a></li>
+  <li>安裝必要套件：<code class="highlighter-rouge">npm install --save-dev @babel/core @babel/node @babel/preset-env</code>
+    <ul>
+      <li><code class="highlighter-rouge">@babel/preset-env</code>：可以使用最新版本的JavaScript然後去編譯，不用去理會哪些語法需要轉換。</li>
+    </ul>
+  </li>
+  <li>新增 Babal 的設置檔： <code class="highlighter-rouge">.babelrc</code></li>
+  <li>在 <code class="highlighter-rouge">.babelrc</code> 裡輸入以下內容，告訴 babel 要用這個 preset：</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+ </span><span class="nt">"presets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"@babel/preset-env"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+<ul>
+  <li>最後使用 <code class="highlighter-rouge">npx babel-node index.js</code> 運行即可</li>
+</ul>
+
+<p>參考資料：</p>
+<ul>
+  <li><a href="https://medium.com/@Mike_Cheng1208/webpack教學-四-javascript-與-babel-1d7acd911e63">Webpack教學 (四)：JavaScript 與 Babel</a></li>
+</ul>
+
+
+<span class="post-date">
+  Written on
+  
+  May
+  1st
+    ,
+  2019
+  by Yakim shu
+</span>
+<div class="post-date">Feel free to share!</div>
+  <div class="sharing-icons">
+    <a href="https://twitter.com/intent/tweet?text=[第三週] JavaScript - ES6 語法、Babel 轉譯器&amp;url=/project/project_w3_Javasciprt_ES6.html&amp;via=" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=/project/project_w3_Javasciprt_ES6.html&amp;title=[第三週] JavaScript - ES6 語法、Babel 轉譯器" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    <a href="https://plus.google.com/share?url=/project/project_w3_Javasciprt_ES6.html" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+
+<div class="related">
+  <h1 >You may also enjoy:</h1>
+  
+  <ul class="related-posts">
+    
+      
+        
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/project/project_w3_Javasciprt_npm.html">
+                [第三週] JavaScript - npm 套件管理工具
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>April 29, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/project/project_w3_Javasciprt_jest.html">
+                [第三週] JavaScript - 測試、Jest、TDD
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>April 29, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+    
+      
+        
+        
+      
+        
+        
+      
+    
+      
+        
+        
+      
+        
+        
+      
+    
+  </ul>
+</div>
+
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://yakimshu.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<script id="dsq-count-scr" src="//yakimshu.disqus.com/count.js" async></script>
+
+    </div>
+
+    <footer class="footer">
+  <a href="https://www.facebook.com/yakimshu"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
+  <a href="https://linkedin.com/in/yakimshu"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
+  <a href="mailto:toromilk80129@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
+  <div class="post-date"><a href="/about.html">Yakim shu | Hi, 這是我擴充腦內海馬體的地方。 by Yakim shu</a></div>
+</footer>
+
+
+  </div>
+
+</body>
+</html>
