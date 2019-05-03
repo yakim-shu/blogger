@@ -12,12 +12,12 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="測試是一個好習慣，而 TDD 好像是個更好的流程啊，但不知道有多少公司可以落實就是，至少接案公司應該不太可能。想要在接下來的流程試試看 TDD ，但感覺前置作業是真的有點花時間，哎呀跟人生一樣，都需要有所取捨。">
+  <meta name="description" content="把第三週的筆記重新複習一次，並修正某些不通順的地方，發現筆記越寫越隨便，這樣...好像也不錯？感覺少一點痛苦，反正是給自己看的，標準很低，只求不要放棄。">
   <meta name="author" content="Yakim, toromilk80129@gmail.com">
   <meta name="robots" content="INDEX,FOLLOW">
   <!--og-->
   <meta property="og:title" content="[第三週] 學習日誌">
-  <meta name="og:description" content="測試是一個好習慣，而 TDD 好像是個更好的流程啊，但不知道有多少公司可以落實就是，至少接案公司應該不太可能。想要在接下來的流程試試看 TDD ，但感覺前置作業是真的有點花時間，哎呀跟人生一樣，都需要有所取捨。">
+  <meta name="og:description" content="把第三週的筆記重新複習一次，並修正某些不通順的地方，發現筆記越寫越隨便，這樣...好像也不錯？感覺少一點痛苦，反正是給自己看的，標準很低，只求不要放棄。">
   <meta property="og:url" content="http://localhost:4000/project/project_w3_report.html">
 
     
@@ -79,15 +79,91 @@
 
 
 
-<h2 id="20190501">2019/05/01</h2>
+<h2 id="20190503">2019/05/03</h2>
 <h3 id="本日進度">本日進度</h3>
+<ul>
+  <li>修正 week3 作業</li>
+  <li>看完影片第二期作業講解影片</li>
+  <li>複習、修正本週筆記</li>
+  <li>抱怨 NaN 的各種光怪陸離</li>
+</ul>
+
+<h3 id="心得">心得</h3>
+<ul>
+  <li>
+    <p>參考同學作業並修正<br />
+一早發現同學幫我抓 bug，超棒的大感謝，好好研究了一下大家的作業、看完作業講解影片，完全忘記有短路性質可以運用啊！！還有超多地方可以改進，感覺良好。</p>
+  </li>
+  <li>
+    <p>複習、修正本週筆記<br />
+把第三週的筆記重新複習一次，並修正某些不通順的地方，發現筆記越寫越隨便，這樣…好像也不錯？感覺少一點痛苦，反正是給自己看的，標準很低，只求不要放棄。</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">NaN == NaN</code> or <code class="highlighter-rouge">NaN === NaN</code> → 都是回傳 <code class="highlighter-rouge">false</code><br />
+寫作業時遇到這問題，卡了許久，才發現有這種奇怪的現象，剛好當天就在同學的進度報告看到解法，感謝同學助手相救！晚上研究此問題，發現此坑很深，乾脆直接把奇妙物語整理成一篇筆記。</p>
+  </li>
+</ul>
+
+<h3 id="今天學到的">今天學到的</h3>
+<ul>
+  <li>盡量不要用 <code class="highlighter-rouge">.isNaN()</code>、改用 <code class="highlighter-rouge">Number.isNaN(x)</code></li>
+  <li>短路性質很實用、應該要多練習： <code class="highlighter-rouge">x = x || 0</code> （ 如果 <code class="highlighter-rouge">x</code> 的布林值為 <code class="highlighter-rouge">false</code>，把 <code class="highlighter-rouge">x</code> 設為 0 ）</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">// 只要前面變數的布林值為 false，就回傳後面的變數值</span>
+<span class="kc">null</span> <span class="o">||</span> <span class="mi">5</span>      <span class="c1">// 5</span>
+<span class="kc">undefined</span> <span class="o">||</span> <span class="mi">5</span> <span class="c1">// 5</span>
+<span class="kc">NaN</span> <span class="o">||</span> <span class="mi">5</span>       <span class="c1">// 5</span>
+<span class="mi">0</span> <span class="o">||</span> <span class="mi">5</span>         <span class="c1">// 5</span>
+<span class="kc">false</span> <span class="o">||</span> <span class="mi">5</span>     <span class="c1">// 5</span>
+<span class="mi">10</span> <span class="o">||</span> <span class="mi">5</span>        <span class="c1">// 10</span>
+</code></pre>
+</div>
+<h3 id="筆記">筆記</h3>
+<ul>
+  <li><a href="https://yakimhsu.com/project/project_w3_Javasciprt_NaN">[第三週] JavaScript - 把你對 isNaN 的不滿都說出來</a></li>
+</ul>
+
+<hr />
+<h2 id="20190502">2019/05/02</h2>
+<h3 id="本日進度-1">本日進度</h3>
+<ul>
+  <li>寫 week3 作業</li>
+  <li>看完影片第二期：Week2 - ES6</li>
+</ul>
+
+<h3 id="心得-1">心得</h3>
+<p>一整天就花在寫作業、改作業上面，寫出來很有成就感，等等會不會又發現 bug 呢？（ 拜託不要 ）</p>
+
+<p>之前上完課立誓要用 TDD 流程，然後今天寫作業就甩到一旁，苦頭後面就嚐到了，提交之前臉就被打到腫腫的。多放一組測試資料、又傷了一次心，尤其是大數加法，測試真的很重要啊！</p>
+
+<h3 id="今天學到的-1">今天學到的</h3>
+<h4 id="淺拷貝深拷貝">「淺拷貝」＆「深拷貝」</h4>
+<p>第二期影片，講到 <code class="highlighter-rouge">obj2 = {...obj1}</code> 的時候嚇一跳，太神奇了吧！要好好認真研究（ shallow copy &amp; deep copy ） 「淺拷貝」＆「深拷貝」的差異，如果要拷貝完全的話可以參考以下方法：</p>
+<ol>
+  <li>先把物件轉成 json 字串格式： <code class="highlighter-rouge">const obj_json = JSON.stringfy(obj)</code></li>
+  <li>再把字串轉回物件： <code class="highlighter-rouge">const obj2 = JSON.parse(obj_json)</code></li>
+</ol>
+
+<p>（ 好奇葩的解法！ ）</p>
+<h4 id="n-次方寫法">n 次方寫法</h4>
+<p>寫作業的時候要算 <code class="highlighter-rouge">10</code> 的 <code class="highlighter-rouge">n</code> 次方，一開始用 <code class="highlighter-rouge">Math.pow</code>，被 ESLint 禁止了，查到可以用 <code class="highlighter-rouge">**</code> 的用法，謝謝糾察隊！<br />
+以下兩種寫法相等：</p>
+<ul>
+  <li><code class="highlighter-rouge">Math.pow(10, n)</code></li>
+  <li><code class="highlighter-rouge">10 ** n</code></li>
+</ul>
+
+<hr />
+<h2 id="20190501">2019/05/01</h2>
+<h3 id="本日進度-2">本日進度</h3>
 <ul>
   <li>寫完 ES6 筆記</li>
   <li>看完影片 → 第二期：Week2 加強 JavaScript</li>
   <li>看到一半 → 第二期：Week2 - ES6</li>
 </ul>
 
-<h3 id="心得">心得</h3>
+<h3 id="心得-2">心得</h3>
 <p>「 學完 ES6，不知道怎麼用它怎麼辦 ？ 就…不要用 」</p>
 
 <p>登愣！以前的自己胸膛中箭（ 學完 ES6 語法、我好棒棒，回頭繼續寫 ES5 ）</p>
@@ -105,17 +181,17 @@
   <li>全力寫完正經的筆記後，整個人就變得非常軟爛，就像看太多沈重紀錄片後、還是要來點銀魂平衡一下身心，所以滿口都是零營養 murmur ，總覺得還可以無限寫下去，進度報告變成廢文報告，對不起。</li>
 </ul>
 
-<h3 id="筆記">筆記</h3>
+<h3 id="筆記-1">筆記</h3>
 <p><a href="https://yakimhsu.com/project/project_w3_Javasciprt_ES6.html">JavaScript - ES6 語法、Babel 轉譯器</a></p>
 
 <hr />
 <h2 id="20190430">2019/04/30</h2>
-<h3 id="本日進度-1">本日進度</h3>
+<h3 id="本日進度-3">本日進度</h3>
 <ul>
   <li>JS102 ES6</li>
 </ul>
 
-<h3 id="心得-1">心得</h3>
+<h3 id="心得-3">心得</h3>
 <ul>
   <li>跑山跑海、電影、電玩，盡情玩樂的休假日。非上班族就是有平日出去玩的優勢，但一回來電腦差點死機嚇爆我，難道是在懲罰我有個快樂的一天（？）</li>
   <li>看完 ES6 影片，明天再來寫筆記！</li>
@@ -124,12 +200,12 @@
 
 <hr />
 <h2 id="20190429">2019/04/29</h2>
-<h3 id="本日進度-2">本日進度</h3>
+<h3 id="本日進度-4">本日進度</h3>
 <ul>
   <li>JS102 npm、測試、Jest</li>
 </ul>
 
-<h3 id="心得-2">心得</h3>
+<h3 id="心得-4">心得</h3>
 <p>最近好像越來越沒耐心，趕快回正軌，不要鬧了啊！！！ （搖自己肩膀）</p>
 
 <ul>
@@ -137,7 +213,7 @@
   <li>還是搞不太清楚 library、module、package (函式庫、模組、套件) 這些混在一起炒大鍋飯的名詞，網路上查到的都是 python 的資料，可惡。</li>
 </ul>
 
-<h3 id="筆記-1">筆記</h3>
+<h3 id="筆記-2">筆記</h3>
 <ul>
   <li><a href="https://yakimhsu.com/project/project_w3_Javasciprt_npm.html">[第三週] JavaScript - npm 套件管理工具</a></li>
   <li><a href="https://yakimhsu.com/project/project_w3_Javasciprt_jest.html">[第三週] JavaScript - 測試、Jest、TDD</a></li>
@@ -168,6 +244,50 @@
     
       
         
+          <li>
+            <h3>
+              <a href="/project/project_w3_Javasciprt_NaN.html">
+                [第三週] JavaScript - 把你對 isNaN 的不滿都說出來
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>May 3, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/project/project_w3_Javasciprt_ES6.html">
+                [第三週] JavaScript - ES6 語法、Babel 轉譯器
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>May 1, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/project/project_w3_Javasciprt_npm.html">
+                [第三週] JavaScript - npm 套件管理工具
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>April 29, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+    
+      
+        
         
       
         
@@ -181,14 +301,6 @@
             </h3>
           </li>
           
-        
-      
-    
-      
-        
-        
-      
-        
         
       
         

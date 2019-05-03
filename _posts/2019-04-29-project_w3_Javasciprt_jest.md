@@ -11,7 +11,9 @@ file_name: 2019-04-29-project_w3_Javasciprt_jest
 
 當我們寫好一段程式碼，想知道結果正確與否，應該說**想確認是否為我們預期的結果**。
 
-畢竟**程式碼是照你「寫」的跑、不是照你「想」的跑**，所以需要寫測試，而最簡單的測試方法就是把結果印出來： `console.log()`。
+> 畢竟，程式碼是照你「寫」的跑、不是照你「想」的跑
+
+所以需要寫測試，而最簡單的測試方法就是把結果印出來： `console.log()`。
 
 #### 最陽春的測試 - 印出來
 假設我要寫一個重複字串的函式 `repeat()`，有 `str` 跟 `times` 兩個參數。 那就看 `log` 出來的結果跟我們預期的是否相同。而且最好多放一些**極端情況**的測試資料，例如：
@@ -36,14 +38,16 @@ console.log(repeat('abc', 0)); // (空字串)
 
 ## Jest 
 
-因為剛剛的測試方法沒辦法自動化、也會將測試檔跟主程式混在一起，當結構越來越大時並不符合使用，所以我們引入 Jest ，這個由 Facebook 開發的 JavaScript 測試框架。
+因為剛剛的測試方法沒辦法自動化、也會**將測試檔跟主程式混在一起，當結構越來越大時並不符合使用**。
+
+> 所以我們引入 Jest ，這個由 Facebook 開發的 JavaScript 測試框架。
 
 ### 用 Jest 改寫剛剛的測試
 
 1. 先用 `npm` or `yarn` 下載套件：
     - `npm install jest --save-dev`
-2. 打開 `package.json` 可以看到 `jest` 已經被記錄在 `devDependencies`
-3. 修改 `script` 的 `test` 指令為 `jest`： 
+2. 打開 `package.json` 可以看到 `jest` 已經被記錄在 `devDependencies` 欄位裡
+3. 修改 `script` 欄位的 `test` 指令為 `jest`： 
     - `"test": "jest"`
 4. 設定好後，只需要在 Terminal 輸入： `npm run test`
 
@@ -65,7 +69,14 @@ console.log(repeat('abc', 0)); // (空字串)
 
 ### 開始測試
 
-`Jest` 進行測試時，**會先找專案中副檔名為 `.test.js` 的檔案**，這邊建立一個 `repeat.test.js` 來測試剛剛的函式 `repeat()`。
+`Jest` 進行測試時，**會先找專案中副檔名為 `.test.js` 的檔案**。
+
+- 跑當**前資料夾底下的所有的測試檔**： `npm run test`
+    - 其實也就等於 `npx jest`
+- 跑**單一測試檔**： `npm run test <file-name>.test.js`
+    - 其實也就等於 `npx jest <file-name>.test.js`
+
+這邊建立一個 `repeat.test.js` 來測試剛剛的函式 `repeat()`。
 
 所以我們會有兩個檔案：
 - `repeat.js` 被測試的檔案 ( Unit, Module, 主程式... )
@@ -80,12 +91,12 @@ function repeat(str, times) {
     }
     return result;
 }
-module.exports = repeat;
+module.exports = repeat; // 匯出函式 repeat()
 ```
 
 #### repeat.test.js  （ 測試檔 ）
 ``` javascript
-var repeat = require('./repeat');
+var repeat = require('./repeat'); // 引入函式 repeat()
 
 describe("測試 function - repeat()", () => {
 

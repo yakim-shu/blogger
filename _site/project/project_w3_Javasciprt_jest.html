@@ -83,7 +83,11 @@
 
 <p>當我們寫好一段程式碼，想知道結果正確與否，應該說<strong>想確認是否為我們預期的結果</strong>。</p>
 
-<p>畢竟<strong>程式碼是照你「寫」的跑、不是照你「想」的跑</strong>，所以需要寫測試，而最簡單的測試方法就是把結果印出來： <code class="highlighter-rouge">console.log()</code>。</p>
+<blockquote>
+  <p>畢竟，程式碼是照你「寫」的跑、不是照你「想」的跑</p>
+</blockquote>
+
+<p>所以需要寫測試，而最簡單的測試方法就是把結果印出來： <code class="highlighter-rouge">console.log()</code>。</p>
 
 <h4 id="最陽春的測試---印出來">最陽春的測試 - 印出來</h4>
 <p>假設我要寫一個重複字串的函式 <code class="highlighter-rouge">repeat()</code>，有 <code class="highlighter-rouge">str</code> 跟 <code class="highlighter-rouge">times</code> 兩個參數。 那就看 <code class="highlighter-rouge">log</code> 出來的結果跟我們預期的是否相同。而且最好多放一些<strong>極端情況</strong>的測試資料，例如：</p>
@@ -110,7 +114,11 @@
 
 <h2 id="jest">Jest</h2>
 
-<p>因為剛剛的測試方法沒辦法自動化、也會將測試檔跟主程式混在一起，當結構越來越大時並不符合使用，所以我們引入 Jest ，這個由 Facebook 開發的 JavaScript 測試框架。</p>
+<p>因為剛剛的測試方法沒辦法自動化、也會<strong>將測試檔跟主程式混在一起，當結構越來越大時並不符合使用</strong>。</p>
+
+<blockquote>
+  <p>所以我們引入 Jest ，這個由 Facebook 開發的 JavaScript 測試框架。</p>
+</blockquote>
 
 <h3 id="用-jest-改寫剛剛的測試">用 Jest 改寫剛剛的測試</h3>
 
@@ -120,8 +128,8 @@
       <li><code class="highlighter-rouge">npm install jest --save-dev</code></li>
     </ul>
   </li>
-  <li>打開 <code class="highlighter-rouge">package.json</code> 可以看到 <code class="highlighter-rouge">jest</code> 已經被記錄在 <code class="highlighter-rouge">devDependencies</code></li>
-  <li>修改 <code class="highlighter-rouge">script</code> 的 <code class="highlighter-rouge">test</code> 指令為 <code class="highlighter-rouge">jest</code>：
+  <li>打開 <code class="highlighter-rouge">package.json</code> 可以看到 <code class="highlighter-rouge">jest</code> 已經被記錄在 <code class="highlighter-rouge">devDependencies</code> 欄位裡</li>
+  <li>修改 <code class="highlighter-rouge">script</code> 欄位的 <code class="highlighter-rouge">test</code> 指令為 <code class="highlighter-rouge">jest</code>：
     <ul>
       <li><code class="highlighter-rouge">"test": "jest"</code></li>
     </ul>
@@ -149,7 +157,22 @@
 
 <h3 id="開始測試">開始測試</h3>
 
-<p><code class="highlighter-rouge">Jest</code> 進行測試時，<strong>會先找專案中副檔名為 <code class="highlighter-rouge">.test.js</code> 的檔案</strong>，這邊建立一個 <code class="highlighter-rouge">repeat.test.js</code> 來測試剛剛的函式 <code class="highlighter-rouge">repeat()</code>。</p>
+<p><code class="highlighter-rouge">Jest</code> 進行測試時，<strong>會先找專案中副檔名為 <code class="highlighter-rouge">.test.js</code> 的檔案</strong>。</p>
+
+<ul>
+  <li>跑當<strong>前資料夾底下的所有的測試檔</strong>： <code class="highlighter-rouge">npm run test</code>
+    <ul>
+      <li>其實也就等於 <code class="highlighter-rouge">npx jest</code></li>
+    </ul>
+  </li>
+  <li>跑<strong>單一測試檔</strong>： <code class="highlighter-rouge">npm run test &lt;file-name&gt;.test.js</code>
+    <ul>
+      <li>其實也就等於 <code class="highlighter-rouge">npx jest &lt;file-name&gt;.test.js</code></li>
+    </ul>
+  </li>
+</ul>
+
+<p>這邊建立一個 <code class="highlighter-rouge">repeat.test.js</code> 來測試剛剛的函式 <code class="highlighter-rouge">repeat()</code>。</p>
 
 <p>所以我們會有兩個檔案：</p>
 <ul>
@@ -165,12 +188,12 @@
     <span class="p">}</span>
     <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">repeat</span><span class="p">;</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">repeat</span><span class="p">;</span> <span class="c1">// 匯出函式 repeat()</span>
 </code></pre>
 </div>
 
 <h4 id="repeattestjs---測試檔-">repeat.test.js  （ 測試檔 ）</h4>
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">repeat</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./repeat'</span><span class="p">);</span>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">repeat</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./repeat'</span><span class="p">);</span> <span class="c1">// 引入函式 repeat()</span>
 
 <span class="nx">describe</span><span class="p">(</span><span class="s2">"測試 function - repeat()"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
 

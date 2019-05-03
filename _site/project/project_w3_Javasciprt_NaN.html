@@ -1,0 +1,291 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>
+    
+      [第三週] JavaScript - 把你對 isNaN 的不滿都說出來 | Yakim shu
+    
+  </title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Yakim, toromilk80129@gmail.com">
+  <meta name="robots" content="INDEX,FOLLOW">
+  <!--og-->
+  <meta property="og:title" content="[第三週] JavaScript - 把你對 isNaN 的不滿都說出來">
+  <meta name="og:description" content="">
+  <meta property="og:url" content="http://localhost:4000/project/project_w3_Javasciprt_NaN.html">
+
+    
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-77560722-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+
+
+<body>
+
+  <div class="container">
+    <header class="masthead">
+  <h3 class="masthead-title">
+    <a href="/">Yakim shu</a>
+    <small class="masthead-subtitle">Hi, 這是我擴充腦內海馬體的地方。</small>
+    <div class="menu">
+  <div class="menu-content">
+    <a href="/category.html">分類文章</a>
+    <a href="/writing.html">全文列表</a>
+    <!-- <a href="/contacts.html">Contact</a> -->
+  </div>
+  <div class="social-icons">
+    <a href="https://www.facebook.com/yakimshu"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
+    <a href="https://linkedin.com/in/yakimshu"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
+    <a href="mailto:toromilk80129@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
+  </div>
+</div>
+
+  </h3>
+</header>
+
+
+    <div class="post-container story">
+      <h1>
+  [第三週] JavaScript - 把你對 isNaN 的不滿都說出來
+</h1>
+
+
+
+<blockquote>
+  <p><code class="highlighter-rouge">NaN == NaN</code> or <code class="highlighter-rouge">NaN === NaN</code> → 都是回傳 <code class="highlighter-rouge">false</code></p>
+</blockquote>
+
+<p>寫作業時遇到這問題，卡了許久，才發現有這種奇怪的現象，剛好當天就在同學的進度報告看到解法，感謝同學助手相救！</p>
+
+<p>今天找時間來研究一下，原來要用 <code class="highlighter-rouge">isNaN()</code> or <code class="highlighter-rouge">Number.isNaN()</code> 才能判斷，但這當中有更多奇葩特性，真是看得我吐了滿地血。</p>
+
+<ul>
+  <li><code class="highlighter-rouge">NaN</code> : 全名為 Not a Number ，屬於全域物件，代表不是數字
+    <ul>
+      <li>通常都是作為<strong>回傳值</strong>，一般不會去設定跟覆寫</li>
+      <li>常見是在 Math 函式計算失敗 <code class="highlighter-rouge">Math.sqrt(-1)</code> 、或函式解析數字失敗<code class="highlighter-rouge">parseInt("blabla")</code> 後才會回傳。</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">.isNaN(x)</code> : 判斷 <code class="highlighter-rouge">x</code> 是不是 <code class="highlighter-rouge">NaN</code> 的函式
+    <ul>
+      <li><strong>會先將 <code class="highlighter-rouge">x</code> 轉換成數字類型 → <code class="highlighter-rouge">.isNaN(Number(x))</code></strong>，再進行比對是否為 <code class="highlighter-rouge">NaN</code></li>
+      <li>所以造成了許多光怪陸離的結果…</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">Number.isNaN(x)</code> : 同樣也是判斷 <code class="highlighter-rouge">x</code> 是不是 <code class="highlighter-rouge">NaN</code> 的函式
+    <ul>
+      <li>ES6 出的新語法，又比 <code class="highlighter-rouge">.isNaN()</code> 可靠又嚴格一點</li>
+      <li>只有傳入 <strong>型態為 <code class="highlighter-rouge">number</code> 的 <code class="highlighter-rouge">NaN</code> 才回傳 <code class="highlighter-rouge">true</code></strong>（ 意思是 <code class="highlighter-rouge">'NaN'</code> 不行喔！）</li>
+      <li>其於皆為 <code class="highlighter-rouge">false</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="isnanx"><code class="highlighter-rouge">.isNaN(x)</code></h4>
+<p>以下範例來自 MDN ：</p>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nb">isNaN</span><span class="p">(</span><span class="kc">NaN</span><span class="p">);</span>       <span class="c1">// true</span>
+<span class="nb">isNaN</span><span class="p">(</span><span class="kc">undefined</span><span class="p">);</span> <span class="c1">// true</span>
+<span class="nb">isNaN</span><span class="p">({});</span>        <span class="c1">// true</span>
+
+<span class="nb">isNaN</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>      <span class="c1">// false</span>
+<span class="nb">isNaN</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>      <span class="c1">// false</span>
+<span class="nb">isNaN</span><span class="p">(</span><span class="mi">37</span><span class="p">);</span>        <span class="c1">// false</span>
+
+<span class="c1">// 字串</span>
+<span class="nb">isNaN</span><span class="p">(</span><span class="s2">"37"</span><span class="p">);</span>      <span class="c1">// false: "37" 轉換成數字的 37 後就不是 NaN 了</span>
+<span class="nb">isNaN</span><span class="p">(</span><span class="s2">"37.37"</span><span class="p">);</span>   <span class="c1">// false: "37.37" 轉換成數字的 37.37 後就不是 NaN 了</span>
+<span class="nb">isNaN</span><span class="p">(</span><span class="s2">"123ABC"</span><span class="p">);</span>  <span class="c1">// true:  parseInt("123ABC") 是 123 但 Number("123ABC") 是 NaN</span>
+<span class="nb">isNaN</span><span class="p">(</span><span class="s2">""</span><span class="p">);</span>        <span class="c1">// false: 空字串轉換成數字的 0 後就不是 NaN 了</span>
+<span class="nb">isNaN</span><span class="p">(</span><span class="s2">" "</span><span class="p">);</span>       <span class="c1">// false: 有空白的字串轉換成數字的 0 後就不是 NaN 了</span>
+
+<span class="c1">// 日期</span>
+<span class="nb">isNaN</span><span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">());</span>                <span class="c1">// false</span>
+<span class="nb">isNaN</span><span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">toString</span><span class="p">());</span>     <span class="c1">// true</span>
+
+<span class="c1">// 這個偵測的錯誤是不能完全信賴 isNaN 的理由</span>
+<span class="nb">isNaN</span><span class="p">(</span><span class="s2">"blabla"</span><span class="p">)</span>   <span class="c1">// true: "blabla" 被轉換為數字，將其解析為數字失敗後回傳了 NaN</span>
+</code></pre>
+</div>
+
+<h4 id="numberisnanx"><code class="highlighter-rouge">Number.isNaN(x)</code></h4>
+<p>以下範例來自 MDN ：</p>
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">// 只有這三種例子會回傳 true</span>
+<span class="nb">Number</span><span class="p">.</span><span class="nb">isNaN</span><span class="p">(</span><span class="kc">NaN</span><span class="p">);</span>        <span class="c1">// true</span>
+<span class="nb">Number</span><span class="p">.</span><span class="nb">isNaN</span><span class="p">(</span><span class="nb">Number</span><span class="p">.</span><span class="kc">NaN</span><span class="p">);</span> <span class="c1">// true</span>
+<span class="nb">Number</span><span class="p">.</span><span class="nb">isNaN</span><span class="p">(</span><span class="mi">0</span> <span class="o">/</span> <span class="mi">0</span><span class="p">);</span>      <span class="c1">// true</span>
+
+<span class="c1">// 底下會回傳 false，但用 .isNaN() 會回傳 ture</span>
+<span class="nb">Number</span><span class="p">.</span><span class="nb">isNaN</span><span class="p">(</span><span class="s1">'NaN'</span><span class="p">);</span>      <span class="c1">// false</span>
+<span class="nb">Number</span><span class="p">.</span><span class="nb">isNaN</span><span class="p">(</span><span class="kc">undefined</span><span class="p">);</span>  <span class="c1">// false</span>
+<span class="nb">Number</span><span class="p">.</span><span class="nb">isNaN</span><span class="p">({});</span>         <span class="c1">// false</span>
+<span class="nb">Number</span><span class="p">.</span><span class="nb">isNaN</span><span class="p">(</span><span class="s1">'blabla'</span><span class="p">);</span>   <span class="c1">// false</span>
+
+<span class="c1">// 以下會回傳 false</span>
+<span class="nb">Number</span><span class="p">.</span><span class="nb">isNaN</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="nb">Number</span><span class="p">.</span><span class="nb">isNaN</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+<span class="nb">Number</span><span class="p">.</span><span class="nb">isNaN</span><span class="p">(</span><span class="mi">37</span><span class="p">);</span>
+<span class="nb">Number</span><span class="p">.</span><span class="nb">isNaN</span><span class="p">(</span><span class="s1">'37'</span><span class="p">);</span>
+<span class="nb">Number</span><span class="p">.</span><span class="nb">isNaN</span><span class="p">(</span><span class="s1">'37.37'</span><span class="p">);</span>
+<span class="nb">Number</span><span class="p">.</span><span class="nb">isNaN</span><span class="p">(</span><span class="s1">''</span><span class="p">);</span>
+<span class="nb">Number</span><span class="p">.</span><span class="nb">isNaN</span><span class="p">(</span><span class="s1">' '</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<blockquote>
+  <p>讓我們搭著彼此的肩膀、同聲譴責：「 JavaScript ，你好靠杯 」</p>
+</blockquote>
+
+<p>參考資料：</p>
+<ul>
+  <li><a href="https://coder.tw/?p=7435">JavaScript 判斷變數是否等於 NaN</a></li>
+  <li><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/NaN">MDN - NaN</a></li>
+  <li><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/isNaN">MDN - isNaN()</a>（ 十分詳細！ ）</li>
+  <li><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN">MDN - Number.isNaN()</a></li>
+</ul>
+
+
+<span class="post-date">
+  Written on
+  
+  May
+  3rd
+    ,
+  2019
+  by Yakim shu
+</span>
+<div class="post-date">Feel free to share!</div>
+  <div class="sharing-icons">
+    <a href="https://twitter.com/intent/tweet?text=[第三週] JavaScript - 把你對 isNaN 的不滿都說出來&amp;url=/project/project_w3_Javasciprt_NaN.html&amp;via=" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=/project/project_w3_Javasciprt_NaN.html&amp;title=[第三週] JavaScript - 把你對 isNaN 的不滿都說出來" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    <a href="https://plus.google.com/share?url=/project/project_w3_Javasciprt_NaN.html" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+
+<div class="related">
+  <h1 >You may also enjoy:</h1>
+  
+  <ul class="related-posts">
+    
+      
+        
+        
+      
+    
+      
+        
+        
+      
+    
+      
+        
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/project/project_w3_Javasciprt_ES6.html">
+                [第三週] JavaScript - ES6 語法、Babel 轉譯器
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>May 1, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/project/project_w3_report.html">
+                [第三週] 學習日誌
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>April 29, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/project/project_w3_Javasciprt_npm.html">
+                [第三週] JavaScript - npm 套件管理工具
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>April 29, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+    
+  </ul>
+</div>
+
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://yakimshu.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<script id="dsq-count-scr" src="//yakimshu.disqus.com/count.js" async></script>
+
+    </div>
+
+    <footer class="footer">
+  <a href="https://www.facebook.com/yakimshu"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
+  <a href="https://linkedin.com/in/yakimshu"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
+  <a href="mailto:toromilk80129@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
+  <div class="post-date"><a href="/about.html">Yakim shu | Hi, 這是我擴充腦內海馬體的地方。 by Yakim shu</a></div>
+</footer>
+
+
+  </div>
+
+</body>
+</html>

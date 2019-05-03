@@ -32,7 +32,7 @@ ECMAScript 是一種由 Ecma 國際通過 ECMA-262 標準化的指令碼程式�
 
 ### 變數宣告新用法： let、const ( 區塊作用域 block scope )
 
-相較於 ES5 的變數宣告只有 `var`， ES6 多了 `let` 跟 `const` 可以用。
+相較於 ES5 的變數宣告只有 `var`， ES6 多了 `let` 跟 `const` 可以用，重點多了作用域的不同。
 
 #### `const` 常數
 
@@ -46,19 +46,19 @@ ECMAScript 是一種由 Ecma 國際通過 ECMA-262 標準化的指令碼程式�
 
 ```javascript
 const PI = 5; // 數字 → 原始類型
-const OBJ = {}; // object
-const ARR = [5]; // array
+const obj = {}; // object
+const arr = [5]; // array
 
 PI = 10;
-OBJ.name = 'Yakim';
-ARR[0] = 10;
+obj.name = 'Yakim';
+arr[0] = 10;
 
 console.log(PI); // 錯誤： Assignment to constant variable.
-console.log(OBJ); // { name : 'Yakim' }
-console.log(ARR); // [10]
+console.log(obj); // { name : 'Yakim' }
+console.log(arr); // [10]
 
-OBJ = { name : 'Linda' }
-console.log(OBJ); // 錯誤：Assignment to constant variable.
+obj = { name : 'Linda' }
+console.log(obj); // 錯誤：Assignment to constant variable.
 ```
 
 #### `let` 塊級變數
@@ -76,7 +76,8 @@ let dog = '小黑';
 ##### 特性二： 塊級作用域
 ES5 只提供「 全局作用域 」跟「 函式作用域 」，要麻就是危險的暴露在全域、要麻就是用 function 包起來，所以 `let` 跟 `const` 提供了更多的選擇。
 
- `let`、`const` 的**作用域是在大括號 `{ }` 裡面**，而不是 `function` 裡，大大降低了污染到其他變數的可能性。
+ `let`、`const` 的**作用域是在大括號 `{ }` 裡面**，而不是 `function` 裡，稱為「 塊級作用域 」。
+ 大大降低了污染到其他變數的可能性。
  
 ```javascript
 if (true) {
@@ -93,21 +94,43 @@ console.log(PI); // 錯誤: PI is not defined
 
 ### Template Literals 模板字串符
 
-以往在 ES5 操作字串相當麻煩，所以 ES6 提供了比較方便的字串模板，用法超簡單，只要把變數放進 `${ }` 裡面就行，以下兩個範例都會輸出： `Yakim's dog is 小黑.`。
+以往在 ES5 操作字串相當麻煩，所以 ES6 提供了比較方便的字串模板，用法超簡單，只要把變數放進 `${ }` 裡面就行，而且多行字串也變得相當容易，參考以下兩種範例：
 
 ```javascript
 let name = 'Yakim';
 let dog = '小黑'
 // ES5
-console.log(name + '\'s dog is ' + dog + '.');
+// 如果字串裡有用到引號 '，就必須在前面加上反斜線 → \'
+console.log(name + '\'s dog is ' + dog + '.'); 
 // ES6
 console.log(`${name}'s dog is ${dog}.`);
+
+// ES5
+// 以往多行字串結尾都要加上 \n 換行，再加上一堆引號跟加號，非常難閱讀
+var str = '開頭\n' + 
+'多行字串\n' +
+'結束';
+console.log(str);
+// ES6
+var str2 = `開頭
+多行字串
+結束`;
+console.log(str2);
+```
+
+1. 字串 + 變數： `Yakim's dog is 小黑.`。
+2. 多行字串：
+
+```
+開頭
+多行字串
+結束
 ```
 
 ---
 ### Destructuring 解構
 
-通過匹配 array 中的第 n 值，或是 object 內對應的 key的值，賦值到變數。注意，匹配陣列使用 `[ ]`、物件使用 `{ }`。
+通過匹配 array 中的第 n 值，或是 object 內對應的 key 的值，賦值到變數。注意，匹配陣列使用 `[ ]`、物件使用 `{ }`。
 
 ```javascript
 // 陣列 ------
@@ -234,7 +257,7 @@ console.log(a, b, c); // 1 2 'c'
 ```javascript
 /* ES5 寫法 -------
 function fn1(name){
-    return `hello, ${name}`
+    return 'hello, ' + name;
 }
 ------------------
 */

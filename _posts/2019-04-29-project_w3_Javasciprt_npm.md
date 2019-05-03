@@ -10,12 +10,11 @@ file_name: 2019-04-29-project_w3_Javasciprt_npm
 ( image from [bleepingComputer](https://www.bleepingcomputer.com/news/security/compromised-javascript-package-caught-stealing-npm-credentials/) )
 
 ## Module 模組 or 模塊
-把各種功能（ 登入、金流、留言板 ）拆開來，才不會讓彼此相依性太高，產生不小心改到其他項目的悲劇。
-
+模組 Module 的作用是，把各種功能（ 登入、金流、留言板 ）拆開來，才不會讓彼此相依性太高，產生不小心改到其他項目的悲劇。
 
 ### 引入 Module
 
-- 以 Node.js 提供的其中一種 Module : `os` 為例，如果想查詢電腦作業系統，可以調用`.platform()`。
+- 以 Node.js 提供的其中一種 Module : `os` 為例，如果想查詢電腦作業系統，可以調用`.platform()` 方法。
 - 連結：[官方文件](https://nodejs.org/api/os.html)
 
 ```javascript
@@ -33,11 +32,12 @@ console.log(checkOs.platform());
 
 假如我今天寫了一些簡單的函式，**很多檔案都會用到這些函式**，那也可以拆開成一個 Module 集中管理、也不用重複造輪子，更能供自己或別人使用。
 
-假設我寫了一個名為 `myModule.js` 的檔案，裡面有三個 function:  `sumOfNum` 、 `double()` 、 `triple()`，要幫我的三個函式包裝起來，只要**傳進去 `module.exports`** 這裡面就 OK 了，是不是超簡單！  
+假設我寫了一個名為 `myModule.js` 的檔案，裡面有三個 function:  `sumOfNum` 、 `double()` 、 `triple()`，要幫我的三個函式包裝起來，只要**傳進去 `module.exports`** 就 OK 了，是不是超簡單！  
 
-- 裡面刻意把 `triple()` 直接放在裡面，示範不同寫法
+#### module.exports
+- 為了示範不同寫法，以下範例刻意把函式 `triple()` 直接放在 `module.exports ` 裡面
 - 而其實 `module.exports` 傳什麼都可以，比較常見的應該是**物件**，但如果只是要傳一個陣列、變數、字串... 也可以的。
-- **註解內也有標示導出的另一種寫法**，不同的是，這種寫法是直接把 `exports` 當作是一個物件
+- **註解內也有標示導出的另一種寫法**，不同的是，這種寫法是直接把 `exports` 當作物件傳入
 
 ```javascript
 function sumOfNum(x, y) {
@@ -65,7 +65,7 @@ exports.triple = function (x) {
 #### 引用剛剛導出的 Module
 
 其實就跟剛剛用 `require` 引用的方式一樣，但注意 `myModule.js` 是自己寫的檔案，所以記得加上**檔案路徑位置 `./`**。  
-（ 後面的 `.js` 要加、不加都可以 ）
+（ 副檔名 `.js` 要加不加都可以，優秀的 `require` 都找得到！ ）
 
 ```javascript
 var test = require('./myModule');
@@ -91,6 +91,8 @@ console.log(test.sum(5, 10)); // 15
 
 ### package.json
 
+（ 剛初始化過的 `package.json` 可能會長這樣 ）
+
 ```json
 {
   "name": "week3",
@@ -107,9 +109,7 @@ console.log(test.sum(5, 10)); // 15
   }
 }
 ```
-
-剛初始化過的 `package.json` 可能會長這樣，而 `"dependencies"` 那欄位還是空的，因為我們還沒有下載任何 npm package。
-
+而 `"dependencies"` 那欄位還是空的，因為我們還沒有下載任何 npm package。
 
 參考資料：
 - [從零開始: 使用NPM套件](https://medium.com/html-test/從零開始-使用npm套件-317beefdf182)
@@ -119,9 +119,10 @@ console.log(test.sum(5, 10)); // 15
 
 ### 下載 Package
 
-假設我要引入 `left-pad` 這個套件。（ 幫字串左邊補空格或任意字元 ）先連到 left-pad 的 [官方連結](https://www.npmjs.com/package/left-pad)，上面可以看到使用說明及版本號...等等資訊。
+假設我要引入 `left-pad` 這個套件。（ 幫字串左邊補空格或任意字元 ）
 
-在專案目錄底下打入： `npm install left-pad`
+- 先連到 left-pad 的 [官方連結](https://www.npmjs.com/package/left-pad)，上面可以看到使用說明及版本號...等等資訊。
+- 在專案目錄底下打入： `npm install left-pad`
 
 此時會有兩個變動：
 - 專案目錄會新增一個 `node_modules` 的資料夾，而裡面也有剛剛下載的 package: `left-pad` 資料夾
@@ -148,7 +149,7 @@ console.log(test.sum(5, 10)); // 15
 
 那這邊記錄下來的用處是什麼？
 - 第一，可以很清楚的知道此專案依賴在哪些套件上
-- 第二，`node_modules` 裡的套件可能會越來越多、專案變得肥大，更新 git 要花一段時間，而因為這些套件網路上都載的到，其實可以不要上傳，**那就可以把 `.gitignore` 資訊加上 `node_modules`**，忽略肥大的 `node_modules`。
+- 第二，`node_modules` 裡的套件可能會越來越多、專案變得肥大，更新 git 要花一段時間，而因為這些套件網路上都載的到，其實可以不要上傳，**那就可以把 `.gitignore` 資訊加上 `node_modules`**，忽略肥大的 `node_modules` 資料夾裡的所有檔案。
 
 而當我們要 `clone` 別人專案時，**輸入 `npm install`，系統就會直接看 `package.json` 裡面記錄了哪些專案，一次全部下載回來**，超方便！
 
@@ -165,7 +166,7 @@ var test = require('left-pad');
 console.log(test('abc', 8, '0')); // 輸出 00000abc
 ```
 
-( 這邊**可以不用寫路徑名**，`require` 很聰明，會自動去 `node_modules` 資料夾搜尋有沒有匹配的檔名。 )
+( **可以不用寫路徑名**，優秀的 `require` 會自動去 `node_modules` 資料夾搜尋有沒有匹配的檔名。 )
 
 ---
 
@@ -175,6 +176,7 @@ npm 也有提供自己寫一些簡單的腳本供執行，最常見的可能是�
 
 - 打開 `package.json` ，可以看到裡面有個 `script 欄位`，新增一個 `start` 
 - 接著試試運行 ： `npm run start`，就會發現跑了 `node index.js`
+- 可以自行發揮創意，在 `script` 欄位加上要做的指令，運行輸入： `npm run <script key>`
 
 ```json
 {

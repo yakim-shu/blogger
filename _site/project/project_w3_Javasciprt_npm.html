@@ -84,12 +84,12 @@
 <p>( image from <a href="https://www.bleepingcomputer.com/news/security/compromised-javascript-package-caught-stealing-npm-credentials/">bleepingComputer</a> )</p>
 
 <h2 id="module-模組-or-模塊">Module 模組 or 模塊</h2>
-<p>把各種功能（ 登入、金流、留言板 ）拆開來，才不會讓彼此相依性太高，產生不小心改到其他項目的悲劇。</p>
+<p>模組 Module 的作用是，把各種功能（ 登入、金流、留言板 ）拆開來，才不會讓彼此相依性太高，產生不小心改到其他項目的悲劇。</p>
 
 <h3 id="引入-module">引入 Module</h3>
 
 <ul>
-  <li>以 Node.js 提供的其中一種 Module : <code class="highlighter-rouge">os</code> 為例，如果想查詢電腦作業系統，可以調用<code class="highlighter-rouge">.platform()</code>。</li>
+  <li>以 Node.js 提供的其中一種 Module : <code class="highlighter-rouge">os</code> 為例，如果想查詢電腦作業系統，可以調用<code class="highlighter-rouge">.platform()</code> 方法。</li>
   <li>連結：<a href="https://nodejs.org/api/os.html">官方文件</a></li>
 </ul>
 
@@ -110,12 +110,13 @@
 
 <p>假如我今天寫了一些簡單的函式，<strong>很多檔案都會用到這些函式</strong>，那也可以拆開成一個 Module 集中管理、也不用重複造輪子，更能供自己或別人使用。</p>
 
-<p>假設我寫了一個名為 <code class="highlighter-rouge">myModule.js</code> 的檔案，裡面有三個 function:  <code class="highlighter-rouge">sumOfNum</code> 、 <code class="highlighter-rouge">double()</code> 、 <code class="highlighter-rouge">triple()</code>，要幫我的三個函式包裝起來，只要<strong>傳進去 <code class="highlighter-rouge">module.exports</code></strong> 這裡面就 OK 了，是不是超簡單！</p>
+<p>假設我寫了一個名為 <code class="highlighter-rouge">myModule.js</code> 的檔案，裡面有三個 function:  <code class="highlighter-rouge">sumOfNum</code> 、 <code class="highlighter-rouge">double()</code> 、 <code class="highlighter-rouge">triple()</code>，要幫我的三個函式包裝起來，只要<strong>傳進去 <code class="highlighter-rouge">module.exports</code></strong> 就 OK 了，是不是超簡單！</p>
 
+<h4 id="moduleexports">module.exports</h4>
 <ul>
-  <li>裡面刻意把 <code class="highlighter-rouge">triple()</code> 直接放在裡面，示範不同寫法</li>
+  <li>為了示範不同寫法，以下範例刻意把函式 <code class="highlighter-rouge">triple()</code> 直接放在 <code class="highlighter-rouge">module.exports </code> 裡面</li>
   <li>而其實 <code class="highlighter-rouge">module.exports</code> 傳什麼都可以，比較常見的應該是<strong>物件</strong>，但如果只是要傳一個陣列、變數、字串… 也可以的。</li>
-  <li><strong>註解內也有標示導出的另一種寫法</strong>，不同的是，這種寫法是直接把 <code class="highlighter-rouge">exports</code> 當作是一個物件</li>
+  <li><strong>註解內也有標示導出的另一種寫法</strong>，不同的是，這種寫法是直接把 <code class="highlighter-rouge">exports</code> 當作物件傳入</li>
 </ul>
 
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">sumOfNum</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
@@ -144,7 +145,7 @@ exports.triple = function (x) {
 <h4 id="引用剛剛導出的-module">引用剛剛導出的 Module</h4>
 
 <p>其實就跟剛剛用 <code class="highlighter-rouge">require</code> 引用的方式一樣，但注意 <code class="highlighter-rouge">myModule.js</code> 是自己寫的檔案，所以記得加上<strong>檔案路徑位置 <code class="highlighter-rouge">./</code></strong>。<br />
-（ 後面的 <code class="highlighter-rouge">.js</code> 要加、不加都可以 ）</p>
+（ 副檔名 <code class="highlighter-rouge">.js</code> 要加不加都可以，優秀的 <code class="highlighter-rouge">require</code> 都找得到！ ）</p>
 
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">test</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./myModule'</span><span class="p">);</span>
 
@@ -172,6 +173,8 @@ exports.triple = function (x) {
 
 <h3 id="packagejson">package.json</h3>
 
+<p>（ 剛初始化過的 <code class="highlighter-rouge">package.json</code> 可能會長這樣 ）</p>
+
 <div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"week3"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
@@ -188,8 +191,7 @@ exports.triple = function (x) {
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 </div>
-
-<p>剛初始化過的 <code class="highlighter-rouge">package.json</code> 可能會長這樣，而 <code class="highlighter-rouge">"dependencies"</code> 那欄位還是空的，因為我們還沒有下載任何 npm package。</p>
+<p>而 <code class="highlighter-rouge">"dependencies"</code> 那欄位還是空的，因為我們還沒有下載任何 npm package。</p>
 
 <p>參考資料：</p>
 <ul>
@@ -201,9 +203,12 @@ exports.triple = function (x) {
 
 <h3 id="下載-package">下載 Package</h3>
 
-<p>假設我要引入 <code class="highlighter-rouge">left-pad</code> 這個套件。（ 幫字串左邊補空格或任意字元 ）先連到 left-pad 的 <a href="https://www.npmjs.com/package/left-pad">官方連結</a>，上面可以看到使用說明及版本號…等等資訊。</p>
+<p>假設我要引入 <code class="highlighter-rouge">left-pad</code> 這個套件。（ 幫字串左邊補空格或任意字元 ）</p>
 
-<p>在專案目錄底下打入： <code class="highlighter-rouge">npm install left-pad</code></p>
+<ul>
+  <li>先連到 left-pad 的 <a href="https://www.npmjs.com/package/left-pad">官方連結</a>，上面可以看到使用說明及版本號…等等資訊。</li>
+  <li>在專案目錄底下打入： <code class="highlighter-rouge">npm install left-pad</code></li>
+</ul>
 
 <p>此時會有兩個變動：</p>
 <ul>
@@ -233,7 +238,7 @@ exports.triple = function (x) {
 <p>那這邊記錄下來的用處是什麼？</p>
 <ul>
   <li>第一，可以很清楚的知道此專案依賴在哪些套件上</li>
-  <li>第二，<code class="highlighter-rouge">node_modules</code> 裡的套件可能會越來越多、專案變得肥大，更新 git 要花一段時間，而因為這些套件網路上都載的到，其實可以不要上傳，<strong>那就可以把 <code class="highlighter-rouge">.gitignore</code> 資訊加上 <code class="highlighter-rouge">node_modules</code></strong>，忽略肥大的 <code class="highlighter-rouge">node_modules</code>。</li>
+  <li>第二，<code class="highlighter-rouge">node_modules</code> 裡的套件可能會越來越多、專案變得肥大，更新 git 要花一段時間，而因為這些套件網路上都載的到，其實可以不要上傳，<strong>那就可以把 <code class="highlighter-rouge">.gitignore</code> 資訊加上 <code class="highlighter-rouge">node_modules</code></strong>，忽略肥大的 <code class="highlighter-rouge">node_modules</code> 資料夾裡的所有檔案。</li>
 </ul>
 
 <p>而當我們要 <code class="highlighter-rouge">clone</code> 別人專案時，<strong>輸入 <code class="highlighter-rouge">npm install</code>，系統就會直接看 <code class="highlighter-rouge">package.json</code> 裡面記錄了哪些專案，一次全部下載回來</strong>，超方便！</p>
@@ -253,7 +258,7 @@ exports.triple = function (x) {
 </code></pre>
 </div>
 
-<p>( 這邊<strong>可以不用寫路徑名</strong>，<code class="highlighter-rouge">require</code> 很聰明，會自動去 <code class="highlighter-rouge">node_modules</code> 資料夾搜尋有沒有匹配的檔名。 )</p>
+<p>( <strong>可以不用寫路徑名</strong>，優秀的 <code class="highlighter-rouge">require</code> 會自動去 <code class="highlighter-rouge">node_modules</code> 資料夾搜尋有沒有匹配的檔名。 )</p>
 
 <hr />
 
@@ -264,6 +269,7 @@ exports.triple = function (x) {
 <ul>
   <li>打開 <code class="highlighter-rouge">package.json</code> ，可以看到裡面有個 <code class="highlighter-rouge">script 欄位</code>，新增一個 <code class="highlighter-rouge">start</code></li>
   <li>接著試試運行 ： <code class="highlighter-rouge">npm run start</code>，就會發現跑了 <code class="highlighter-rouge">node index.js</code></li>
+  <li>可以自行發揮創意，在 <code class="highlighter-rouge">script</code> 欄位加上要做的指令，運行輸入： <code class="highlighter-rouge">npm run &lt;script key&gt;</code></li>
 </ul>
 
 <div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
@@ -355,6 +361,32 @@ exports.triple = function (x) {
     
       
         
+          <li>
+            <h3>
+              <a href="/project/project_w3_Javasciprt_NaN.html">
+                [第三週] JavaScript - 把你對 isNaN 的不滿都說出來
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>May 3, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/project/project_w3_report.html">
+                [第三週] 學習日誌
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>April 29, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
         
       
         

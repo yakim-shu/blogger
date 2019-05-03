@@ -111,7 +111,7 @@ ECMAScript 是一種由 Ecma 國際通過 ECMA-262 標準化的指令碼程式�
 
 <h3 id="變數宣告新用法-letconst--區塊作用域-block-scope-">變數宣告新用法： let、const ( 區塊作用域 block scope )</h3>
 
-<p>相較於 ES5 的變數宣告只有 <code class="highlighter-rouge">var</code>， ES6 多了 <code class="highlighter-rouge">let</code> 跟 <code class="highlighter-rouge">const</code> 可以用。</p>
+<p>相較於 ES5 的變數宣告只有 <code class="highlighter-rouge">var</code>， ES6 多了 <code class="highlighter-rouge">let</code> 跟 <code class="highlighter-rouge">const</code> 可以用，重點多了作用域的不同。</p>
 
 <h4 id="const-常數"><code class="highlighter-rouge">const</code> 常數</h4>
 
@@ -128,19 +128,19 @@ ECMAScript 是一種由 Ecma 國際通過 ECMA-262 標準化的指令碼程式�
 <p><strong>這邊「 不能變動 」指的是「 記憶體位置 」</strong>，所以除了原始類型以外，<code class="highlighter-rouge">object</code>、<code class="highlighter-rouge">array</code>、<code class="highlighter-rouge">function</code> 只要不是整個賦值、記憶體位置沒變，指向的內容是可以被更改的喔！</p>
 
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">const</span> <span class="nx">PI</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// 數字 → 原始類型</span>
-<span class="kr">const</span> <span class="nx">OBJ</span> <span class="o">=</span> <span class="p">{};</span> <span class="c1">// object</span>
-<span class="kr">const</span> <span class="nx">ARR</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">];</span> <span class="c1">// array</span>
+<span class="kr">const</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{};</span> <span class="c1">// object</span>
+<span class="kr">const</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">];</span> <span class="c1">// array</span>
 
 <span class="nx">PI</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-<span class="nx">OBJ</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'Yakim'</span><span class="p">;</span>
-<span class="nx">ARR</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'Yakim'</span><span class="p">;</span>
+<span class="nx">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
 
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">PI</span><span class="p">);</span> <span class="c1">// 錯誤： Assignment to constant variable.</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">OBJ</span><span class="p">);</span> <span class="c1">// { name : 'Yakim' }</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ARR</span><span class="p">);</span> <span class="c1">// [10]</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span> <span class="c1">// { name : 'Yakim' }</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">);</span> <span class="c1">// [10]</span>
 
-<span class="nx">OBJ</span> <span class="o">=</span> <span class="p">{</span> <span class="na">name</span> <span class="p">:</span> <span class="s1">'Linda'</span> <span class="p">}</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">OBJ</span><span class="p">);</span> <span class="c1">// 錯誤：Assignment to constant variable.</span>
+<span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span> <span class="na">name</span> <span class="p">:</span> <span class="s1">'Linda'</span> <span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span> <span class="c1">// 錯誤：Assignment to constant variable.</span>
 </code></pre>
 </div>
 
@@ -159,7 +159,8 @@ ECMAScript 是一種由 Ecma 國際通過 ECMA-262 標準化的指令碼程式�
 <h5 id="特性二-塊級作用域">特性二： 塊級作用域</h5>
 <p>ES5 只提供「 全局作用域 」跟「 函式作用域 」，要麻就是危險的暴露在全域、要麻就是用 function 包起來，所以 <code class="highlighter-rouge">let</code> 跟 <code class="highlighter-rouge">const</code> 提供了更多的選擇。</p>
 
-<p><code class="highlighter-rouge">let</code>、<code class="highlighter-rouge">const</code> 的<strong>作用域是在大括號 <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="p">}</span></code> 裡面</strong>，而不是 <code class="highlighter-rouge">function</code> 裡，大大降低了污染到其他變數的可能性。</p>
+<p><code class="highlighter-rouge">let</code>、<code class="highlighter-rouge">const</code> 的<strong>作用域是在大括號 <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="p">}</span></code> 裡面</strong>，而不是 <code class="highlighter-rouge">function</code> 裡，稱為「 塊級作用域 」。
+ 大大降低了污染到其他變數的可能性。</p>
 
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">dog</span> <span class="o">=</span> <span class="s1">'小黑'</span><span class="p">;</span>
@@ -176,21 +177,45 @@ ECMAScript 是一種由 Ecma 國際通過 ECMA-262 標準化的指令碼程式�
 
 <h3 id="template-literals-模板字串符">Template Literals 模板字串符</h3>
 
-<p>以往在 ES5 操作字串相當麻煩，所以 ES6 提供了比較方便的字串模板，用法超簡單，只要把變數放進 <code class="highlighter-rouge">${ }</code> 裡面就行，以下兩個範例都會輸出： <code class="highlighter-rouge">Yakim's dog is 小黑.</code>。</p>
+<p>以往在 ES5 操作字串相當麻煩，所以 ES6 提供了比較方便的字串模板，用法超簡單，只要把變數放進 <code class="highlighter-rouge">${ }</code> 裡面就行，而且多行字串也變得相當容易，參考以下兩種範例：</p>
 
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">name</span> <span class="o">=</span> <span class="s1">'Yakim'</span><span class="p">;</span>
 <span class="kd">let</span> <span class="nx">dog</span> <span class="o">=</span> <span class="s1">'小黑'</span>
 <span class="c1">// ES5</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">'\'s dog is '</span> <span class="o">+</span> <span class="nx">dog</span> <span class="o">+</span> <span class="s1">'.'</span><span class="p">);</span>
+<span class="c1">// 如果字串裡有用到引號 '，就必須在前面加上反斜線 → \'</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">'\'s dog is '</span> <span class="o">+</span> <span class="nx">dog</span> <span class="o">+</span> <span class="s1">'.'</span><span class="p">);</span> 
 <span class="c1">// ES6</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="nx">name</span><span class="p">}</span><span class="err">'</span><span class="nx">s</span> <span class="nx">dog</span> <span class="nx">is</span> <span class="nx">$</span><span class="p">{</span><span class="nx">dog</span><span class="p">}.</span><span class="err">`</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="nx">name</span><span class="p">}</span><span class="s1">'s dog is ${dog}.`);
+
+// ES5
+// 以往多行字串結尾都要加上 \n 換行，再加上一堆引號跟加號，非常難閱讀
+var str = '</span><span class="err">開頭\</span><span class="nx">n</span><span class="s1">' + 
+'</span><span class="err">多行字串\</span><span class="nx">n</span><span class="s1">' +
+'</span><span class="err">結束'</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">str</span><span class="p">);</span>
+<span class="c1">// ES6</span>
+<span class="kd">var</span> <span class="nx">str2</span> <span class="o">=</span> <span class="err">`開頭</span>
+<span class="err">多行字串</span>
+<span class="err">結束`</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">str2</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<ol>
+  <li>字串 + 變數： <code class="highlighter-rouge">Yakim's dog is 小黑.</code>。</li>
+  <li>多行字串：</li>
+</ol>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>開頭
+多行字串
+結束
 </code></pre>
 </div>
 
 <hr />
 <h3 id="destructuring-解構">Destructuring 解構</h3>
 
-<p>通過匹配 array 中的第 n 值，或是 object 內對應的 key的值，賦值到變數。注意，匹配陣列使用 <code class="highlighter-rouge">[ ]</code>、物件使用 <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="p">}</span></code>。</p>
+<p>通過匹配 array 中的第 n 值，或是 object 內對應的 key 的值，賦值到變數。注意，匹配陣列使用 <code class="highlighter-rouge">[ ]</code>、物件使用 <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="p">}</span></code>。</p>
 
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">// 陣列 ------</span>
 <span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">];</span>
@@ -320,7 +345,7 @@ console.log(whosDog()); // Yakim'</span><span class="nx">s</span> <span class="n
 
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="cm">/* ES5 寫法 -------
 function fn1(name){
-    return `hello, ${name}`
+    return 'hello, ' + name;
 }
 ------------------
 */</span>
@@ -485,6 +510,32 @@ console.log(utils.add(1, 2), utils.PI);
     
       
         
+          <li>
+            <h3>
+              <a href="/project/project_w3_Javasciprt_NaN.html">
+                [第三週] JavaScript - 把你對 isNaN 的不滿都說出來
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>May 3, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/project/project_w3_report.html">
+                [第三週] 學習日誌
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>April 29, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
         
       
         
