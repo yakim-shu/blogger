@@ -5,6 +5,10 @@
   <!-- Posts -->
   
   <url>
+    <loc>http://localhost:4000/project/project_w4_Network_http.html</loc>
+  </url>
+  
+  <url>
     <loc>http://localhost:4000/travel/SE_asia_day_9.html</loc>
   </url>
   
