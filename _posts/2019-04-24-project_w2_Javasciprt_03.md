@@ -189,8 +189,8 @@ console.log(num+'');
 - `length` ： 回傳字串的長度
 - `toUpperCase()` ： 將字串全部轉為大寫
 - `toLower​Case()` ： 將字串全部轉為小寫
-- `charCodeAt(index)` ： 取出**字元**的 ASCII 碼
-- `charCodeAt(index)` ： 將 ASCII 碼轉成**字元**
+- `charCodeAt(char)` ： 取出**字元**的 ASCII 碼
+- `String.fromCharCode(num)` ： 將 ASCII 碼轉成**字元**
 - `indexOf(keyword)` ： 找出關鍵字 keyword 有沒有在字串裡
     - 有，回傳 keyword 索引值
     - 沒有，回傳 `-1`
