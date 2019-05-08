@@ -20,7 +20,7 @@ markdown:            kramdown
 highlighter:         rouge
 linenos:             true
 permalink:           none
-gems:                [jekyll-paginate]
+plugins:                [jekyll-paginate]
 
 comments :
   provider : disqus
@@ -37,3 +37,7 @@ detach:  false
 port:    4000
 host:    127.0.0.1
 show_dir_listing: false
+
+# Server Config options
+livereload: true     # You no longer need to include --livereload
+reload_port: 5678    # If you don't want to use the default port
