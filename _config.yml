@@ -21,6 +21,7 @@ highlighter:         rouge
 linenos:             true
 permalink:           none
 pulgins:                [jekyll-paginate]
+gems:                [jekyll-paginate]
 
 comments :
   provider : disqus
