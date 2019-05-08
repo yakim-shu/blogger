@@ -138,7 +138,7 @@ table tr:hover td {
 
 @media (max-width: 48em) {
   .container {
-    width: 75vw;
+    width: 85vw;
   }
 }
 
