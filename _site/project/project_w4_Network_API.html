@@ -1,0 +1,498 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>
+    
+      [第四週] API 基礎 - RESTful API、JSON、curl 指令 | Yakim shu
+    
+  </title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="以網頁用的 Web API 來舉例，就像是對方定義好了插座的規格，我們只要照著規格、把形狀合適的插頭插上去，就可以得到我要的資料，而你不會知道資料是怎麼來的，就像你不知道電是怎麼傳過來的">
+  <meta name="author" content="Yakim, toromilk80129@gmail.com">
+  <meta name="robots" content="INDEX,FOLLOW">
+  <!--og-->
+  <meta property="og:title" content="[第四週] API 基礎 - RESTful API、JSON、curl 指令">
+  <meta name="og:description" content="以網頁用的 Web API 來舉例，就像是對方定義好了插座的規格，我們只要照著規格、把形狀合適的插頭插上去，就可以得到我要的資料，而你不會知道資料是怎麼來的，就像你不知道電是怎麼傳過來的">
+  <meta property="og:url" content="http://localhost:4000/project/project_w4_Network_API.html">
+
+    
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-77560722-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+
+
+<body>
+
+  <div class="container">
+    <header class="masthead">
+  <h3 class="masthead-title">
+    <a href="/">Yakim shu</a>
+    <small class="masthead-subtitle">Hi, 這是我擴充腦內海馬體的地方。</small>
+    <div class="menu">
+  <div class="menu-content">
+    <a href="/category.html">分類文章</a>
+    <a href="/writing.html">全文列表</a>
+    <!-- <a href="/contacts.html">Contact</a> -->
+  </div>
+  <div class="social-icons">
+    <a href="https://www.facebook.com/yakimshu"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
+    <a href="https://linkedin.com/in/yakimshu"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
+    <a href="mailto:toromilk80129@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
+  </div>
+</div>
+
+  </h3>
+</header>
+
+
+    <div class="post-container story">
+      <h1>
+  [第四週] API 基礎 - RESTful API、JSON、curl 指令
+</h1>
+
+
+
+<h1 id="api-是什麼">API 是什麼？</h1>
+
+<p>全名為 Application Programming Interface，中文翻譯為「應用程式介面」</p>
+
+<blockquote>
+  <p>簡單來說就是方便溝通、交換資料的管道。</p>
+</blockquote>
+
+<p>怎麼說方便溝通呢？ 我自己覺得中國的翻譯：「接口」，比較容易想像。</p>
+
+<p>就像是把家裡的 <strong>插頭 (開發者)</strong> 插進 <strong>插座(API)</strong> 就 <strong>有電(資料交換)</strong>。</p>
+
+<p>而 API 有分很多種：</p>
+<ul>
+  <li>軟硬體廠商的 API</li>
+  <li>有作業系統用的 API ，用於傳輸、寫入、讀取資料…等等電腦上一切的操作</li>
+  <li>自己團隊內部用的 API</li>
+  <li>而對於網頁來說就是 Web API
+    <ul>
+      <li>是基於 http 協定下運作的 API</li>
+    </ul>
+  </li>
+</ul>
+
+<p>以網頁用的 Web API 來舉例，就像是對方定義好了插座的規格，我們只要照著規格、把形狀合適的插頭插上去，就可以得到我要的資料，而你不會知道資料是怎麼來的，就像你不知道電是怎麼傳過來的（ 或許你知道 ）</p>
+
+<blockquote>
+  <p>你只是呼叫 function 加上參數，就會得到一個結果，中間的商業邏輯與資料篩選是提供 API 的 Server 端來處理。</p>
+</blockquote>
+
+<h4 id="web-api-實際上最常應用的場景">Web API 實際上最常應用的場景</h4>
+<p>一般來說，Web API 就是只透過 HTTP 協定的 API，有幾個常見的應用：</p>
+
+<ul>
+  <li>會員登入</li>
+  <li>社群嵌入
+    <ul>
+      <li>分享、按讚按鈕、嵌入貼文、留言板、影音</li>
+      <li>例如：<a href="https://developers.facebook.com/docs/graph-api?locale=zh_TW">Facebook Graphic</a></li>
+    </ul>
+  </li>
+  <li>資料嵌入
+    <ul>
+      <li>例如：<a href="https://developer.yahoo.com/weather/">Yahoo 氣象</a>、<a href="https://developers.google.com/maps/documentation/timezone/start?hl=zh-tw">Google 地圖</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>以網站來說，最常用的應該是登入系統，現在不管哪個網站，在會員登入頁，大部分都會有 Facebook 跟 Google 登入按鈕，<strong>這麼做對開發者、用戶、甚至是供應商，都是有利的狀況</strong>：</p>
+<ul>
+  <li>開發者： 取自大神的登入功能，安全又省力</li>
+  <li>用戶： 幾乎每個人都有帳號，無須花時間填寫會員資料</li>
+  <li>API 供應者：
+    <ul>
+      <li>免費的廣告</li>
+      <li>獲取使用者操作與使用習慣的資料，再進行分析，以方便投放更精準的廣告</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="一個好的-api-應該要有下列條件">一個好的 API 應該要有下列條件</h4>
+<ul>
+  <li>完整的 API 文件說明與規範</li>
+  <li>有範例程式，解釋如何運用於應用程式中</li>
+  <li>有教學指引，一步一步帶領開發者學習使用 API</li>
+  <li>合理的命名規則</li>
+  <li>適當的防呆措施、必須預防開發者在錯誤使用時，也不會造成嚴重的傷害</li>
+  <li>一開始就要有清楚的規劃、使用情境，因為一但更新或改動，客戶端都要做相對的審視與修改。</li>
+</ul>
+
+<p>參考資料：</p>
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=B9vPoCOP7oY">What is an API? - Application Programming Interface</a></li>
+  <li><a href="https://www.youtube.com/watch?v=Pbx4elFAXR0">什么是API，接口？</a></li>
+  <li><a href="https://www.ithome.com.tw/voice/87207">API設計和應用程式設計的不同？</a></li>
+  <li><a href="https://blog.jyny.tw/2013/01/api-sdk.html">API ? SDK? 傻傻分清楚</a></li>
+  <li><a href="https://cola.workxplay.net/what-is-an-api/">什麼是API?</a> ( 販賣機例子非常好懂 )</li>
+</ul>
+
+<hr />
+
+<h2 id="restful-api">RESTful API</h2>
+<p>現代 API 有一大部分都是走 RESTful 設計風格。</p>
+
+<blockquote>
+  <p>注意： 是一種廣泛流行的 API 設計規範、<strong>不是規定</strong></p>
+</blockquote>
+
+<h3 id="-非--restful-api-長怎樣">「 非 」 RESTful API 長怎樣？</h3>
+<p>簡單設計一個非 RESTful 的 API，功能在於操作文章，可以看得出來 <strong>「 動詞是寫在 URL 」</strong>上。</p>
+<ul>
+  <li><code class="highlighter-rouge">GET</code> + <code class="highlighter-rouge">/Get_allArticle</code>： 獲取 所有文章</li>
+  <li><code class="highlighter-rouge">GET</code> + <code class="highlighter-rouge">/Get_Article/5</code>： 獲取 <code class="highlighter-rouge">id 為 5</code> 的文章</li>
+  <li><code class="highlighter-rouge">POST</code> + <code class="highlighter-rouge">/Create_Article</code>： 新增 文章</li>
+  <li><code class="highlighter-rouge">POST</code> + <code class="highlighter-rouge">/Delete_Article/5</code>： 刪除 <code class="highlighter-rouge">id 為 5</code> 的文章</li>
+</ul>
+
+<h3 id="改成-restful-風格又會長怎樣">改成 RESTful 風格又會長怎樣？</h3>
+<p>如果內容要做得非常 RESTful ，其實還滿嚴格的，我還沒深入研究。</p>
+
+<p>但如果只是想要淺略了解的話，核心在於 request 要符合 <strong>「 語易化的動詞 Method 」 + 「 名詞 URL 」</strong>的格式，例如：</p>
+
+<ul>
+  <li><code class="highlighter-rouge">GET</code> + <code class="highlighter-rouge">/articles</code>： 獲取 所有文章</li>
+  <li><code class="highlighter-rouge">GET</code> + <code class="highlighter-rouge">/articles/5</code>： 獲取 <code class="highlighter-rouge">id 為 5</code> 的文章</li>
+  <li><code class="highlighter-rouge">POST</code> + <code class="highlighter-rouge">/articles</code>：  新增  文章</li>
+  <li><code class="highlighter-rouge">DELETE</code> + <code class="highlighter-rouge">/articles/5</code>： 刪除 <code class="highlighter-rouge">id 為 5</code> 的文章</li>
+  <li><code class="highlighter-rouge">PATCH</code> + <code class="highlighter-rouge">/articles/5</code>： 修改 <code class="highlighter-rouge">id 為 5</code> 的文章部分內容</li>
+  <li><code class="highlighter-rouge">PUT</code> + <code class="highlighter-rouge">/articles/5</code>： 更新 <code class="highlighter-rouge">id 為 5</code> 的文章全部內容 ( 換句話說，就是覆蓋 )</li>
+</ul>
+
+<blockquote>
+  <p>Huli 在課程舉了一個我認為很好理解的例子。</p>
+</blockquote>
+
+<p>「 就像你寫網頁的時候，你也可以整個 html 檔案全部都用 <code class="highlighter-rouge">div</code> 標籤，但使用更有語意化的標籤（ 例如<code class="highlighter-rouge">section</code>、<code class="highlighter-rouge">article</code> ），可以更好從結構裡看出內容的作用。 」</p>
+
+<h3 id="crud-原則">CRUD 原則</h3>
+<p>也就是說，就算你只用 <code class="highlighter-rouge">GET</code> 跟 <code class="highlighter-rouge">POST</code> 也可以達到以上功能，但充份善用 HTTP Method 可以讓開發者更快速地了解如何使用此 API，也<strong>符合 CRUD 原則的</strong>、分別是 Create (Post)、Read (Get)、Update (Put)、Delete (Delete)，我們就把這種風格稱為 RESTful API。</p>
+
+<h4 id="參考資料">參考資料：</h4>
+<ul>
+  <li><a href="https://progressbar.tw/posts/53">[不是工程師] 休息(REST)式架構? 寧靜式(RESTful)的Web API是現在的潮流？</a></li>
+  <li><a href="https://ithelp.ithome.com.tw/articles/10157431">[API] (1) - 定義 1 - 什麼是 REST/RESTful ?</a></li>
+  <li><a href="https://dotblogs.com.tw/jeffyang/2018/04/21/233001">何謂RESTful API？</a>
+    <ul>
+      <li>推薦給想看更深入定義 RESTful API 的人</li>
+    </ul>
+  </li>
+  <li><a href="https://blog.darkthread.net/blog/is-restful-required/">閒聊 - Web API 是否一定要 RESTful?</a>
+    <ul>
+      <li>討論了 RESTful 有可能造成哪些問題。雖然我只看得懂一小部分，但也明白了 RESTful 潛在的風險，值得一看！</li>
+    </ul>
+  </li>
+  <li><a href="http://www.ruanyifeng.com/blog/2018/10/restful-api-best-practices.html">RESTful API 最佳实践</a>
+    <ul>
+      <li>神人、總免不了一拜</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="資料格式-xml--json">資料格式 XML &amp; JSON</h2>
+<p>常用的資料格式有兩種： XML、JSON</p>
+
+<h3 id="xml">XML</h3>
+<blockquote>
+  <p>以前傳資料的格式，現代開發比較少用</p>
+</blockquote>
+
+<ul>
+  <li>全名為 Extensible Markup Language</li>
+  <li>跟 HTML 有點像、都是標記語言 Markup Language，特色是「 內容用<strong>前後標籤</strong>包起來 」，因為此格式檔案較大、且不好閱讀，所以現代開發比較少人用 XML。</li>
+</ul>
+
+<h3 id="json">JSON</h3>
+<blockquote>
+  <p>比起 XML 更輕量，<strong>為現代最普遍、常用的資料格式</strong>。</p>
+</blockquote>
+
+<ul>
+  <li>全名為 JavaScript Object Notation</li>
+  <li>儘管來源自 JavaScript 的子集，但其實廣泛運用在其實程式語言，幾乎所有與網頁開發相關的語言都有JSON函式庫。</li>
+  <li>乍看跟 JavaScript 的物件很像，但 <code class="highlighter-rouge">key</code> 值必須要用雙引號 <code class="highlighter-rouge">"key"</code> 包起來</li>
+  <li>JSON 字串可以包含 <strong>陣列 ( 用中括號 <code class="highlighter-rouge">[ ]</code> )</strong> 以及 <strong>物件 ( 用大括號 <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="p">}</span></code> )</strong></li>
+  <li>如果還是有點模糊，非常推薦點進去這網站：<a href="https://jsoneditoronline.org">JSON Editor online</a>，左右對照、一目了然！</li>
+  <li>整個 JSON 格式不能使用註解</li>
+  <li><code class="highlighter-rouge">Vaule</code> 值沒有辦法放 function</li>
+</ul>
+
+<h3 id="實際來處理-json-格式">實際來處理 JSON 格式</h3>
+<p>所以當我們發出一個 request，收到資料格式為 JSON 的 response 要怎麼處理呢？</p>
+
+<p>一樣用 <a href="https://reqres.in">reqres.in 的 API</a> 為例，請看以下程式碼：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'request'</span><span class="p">);</span>
+<span class="nx">request</span><span class="p">(</span><span class="err">`</span><span class="nx">https</span><span class="err">:</span><span class="c1">//reqres.in/api/users/5`, function (error, response, body) {</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'原始格式，JSON 格式的字串----------'</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'轉成 JS 物件--------------------'</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">body</span><span class="p">));</span>
+</code></pre>
+</div>
+
+<p>如果只是把 <code class="highlighter-rouge">response 的 body</code> 印出來，會發現是<strong>「 JSON 格式 」的 「 字串 」</strong>，所以用內建的函式 <code class="highlighter-rouge">JSON.parse(&lt;JSON&gt;)</code> 做處理，就會轉成<strong>「 JS 物件 」</strong>。</p>
+
+<p><img src="https://i.imgur.com/T1nNFzp.jpg" alt="螢幕快照 2019-05-08 上午11.42.58" /></p>
+
+<blockquote>
+  <p>反過來說，如果想要把 「 JS 物件 」轉成「 JSON 格式的字串 」，可以用：  <code class="highlighter-rouge">JSON.stringify( &lt;object&gt; )</code></p>
+</blockquote>
+
+<h4 id="參考資料-1">參考資料：</h4>
+<ul>
+  <li><a href="https://zh.wikipedia.org/wiki/JSON">JSON - 維基百科</a></li>
+  <li><a href="http://j796160836.pixnet.net/blog/post/30530326-瞭解json格式">瞭解JSON格式</a></li>
+  <li><a href="https://blog.wu-boy.com/2011/04/你不可不知的-json-基本介紹/">你不可不知的 JSON 基本介紹</a></li>
+  <li><a href="https://pjchender.blogspot.com/2016/01/javascriptobjectjson.html">[筆記] JavaScript中物件(object)和JSON格式的轉換</a></li>
+</ul>
+
+<hr />
+
+<h2 id="必學指令--curl">必學指令  <code class="highlighter-rouge">curl</code></h2>
+
+<p>( 以下內容完全參考至這篇文章： <a href="https://blog.techbridge.cc/2019/02/01/linux-curl-command-tutorial/">Linux Curl Command 指令與基本操作入門教學</a>，詳細又好懂，感謝！ )</p>
+
+<p>隨便看一個 Web API 文件，一定都會看到上面用 <code class="highlighter-rouge">curl</code> 示範如何發出正確的 request，因為此做法最簡單、沒有任何門檻，只要在終端機 ( Terminal ) 輸入指令就可以發 request！</p>
+
+<p>雖然很簡單使用，但 curl 可是很強大的，支援發 HTTP request 、下載及上傳檔案的功能，基本格式為：</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>curl [options] [URL...]
+</code></pre>
+</div>
+
+<h3 id="預設是-get-方法">預設是 <code class="highlighter-rouge">GET</code> 方法</h3>
+<p>簡單示範一下，用 <code class="highlighter-rouge">curl</code> 發 request 到 google 首頁</p>
+<ul>
+  <li>最基本的作法就是： <code class="highlighter-rouge">curl http://www.google.com</code></li>
+  <li>也可以輸出 response 到 <code class="highlighter-rouge">google.html</code> 這個檔案： <code class="highlighter-rouge">curl http://www.google.com &gt; google.html</code></li>
+</ul>
+
+<h3 id="加上參數">加上參數</h3>
+<ul>
+  <li><code class="highlighter-rouge">-I</code>
+    <ul>
+      <li><code class="highlighter-rouge">--head</code> 只需要 <code class="highlighter-rouge">response header</code></li>
+      <li><code class="highlighter-rouge">curl -I http://www.google.com</code></li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">-o</code>
+    <ul>
+      <li>小寫 <code class="highlighter-rouge">O</code></li>
+      <li><code class="highlighter-rouge">--output</code> 下載 response 到新檔案，假設為 <code class="highlighter-rouge">google.html</code></li>
+      <li><code class="highlighter-rouge">curl -o google.html http://www.google.com</code>，其效果等同： <code class="highlighter-rouge">curl http://www.google.com &gt; google.html</code></li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">-O</code>
+    <ul>
+      <li>大寫 <code class="highlighter-rouge">O</code></li>
+      <li><code class="highlighter-rouge">--remote-name</code> 下載指定網址的檔案內容</li>
+      <li>例如下載 google 首頁圖片，拿到檔案 <code class="highlighter-rouge">googlelogo_color_272x92dp.png</code>
+        <ul>
+          <li><code class="highlighter-rouge">curl -O https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">-L</code>
+    <ul>
+      <li>直接跟隨 Status Code 為 <code class="highlighter-rouge">301 / 302</code> 轉址後的網址</li>
+      <li><code class="highlighter-rouge">curl -L google.com</code></li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">-X</code>
+    <ul>
+      <li><code class="highlighter-rouge">--request</code> 使用 HTTP Method 來發出 request，後面要加上 <code class="highlighter-rouge">GET</code>/<code class="highlighter-rouge">POST</code>/<code class="highlighter-rouge">PUT</code>/<code class="highlighter-rouge">DELETE</code>/<code class="highlighter-rouge">PATCH</code></li>
+      <li><code class="highlighter-rouge">curl -X GET "http://www.example.com/api/resources</code></li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">-H</code>
+    <ul>
+      <li><code class="highlighter-rouge">--header</code> 設定 request 要攜帶的 header
+        <ul>
+          <li><code class="highlighter-rouge">curl -H http://www.example.com "X-TestHeader1:111"</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">-s</code>
+    <ul>
+      <li><code class="highlighter-rouge">--silent</code> 靜音模式，不輸出任何東西</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="常見-restful-crud-指令">常見 Restful CRUD 指令：</h3>
+<ul>
+  <li>取得資料： GET
+    <ul>
+      <li><code class="highlighter-rouge">curl -X GET "http://www.example.com/api/resources</code></li>
+    </ul>
+  </li>
+  <li>新增 JSON 資料： POST
+    <ul>
+      <li><code class="highlighter-rouge">$ curl -X POST -H "Content-Type: application/json" -d '{"status" : false, "name" : "Jack"}' "http://www.example.com/api/resources"</code></li>
+    </ul>
+  </li>
+  <li>刪除資料： DELETE
+    <ul>
+      <li><code class="highlighter-rouge">curl -X DELETE "http://www.example.com/api/resources/1</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="參考資料-2">參考資料：</h4>
+<ul>
+  <li><a href="https://blog.51cto.com/doiido/1564631">linux指令 curl指令详解</a></li>
+  <li><a href="https://blog.techbridge.cc/2019/02/01/linux-curl-command-tutorial/">Linux Curl Command 指令與基本操作入門教學</a></li>
+</ul>
+
+
+<span class="post-date">
+  Written on
+  
+  May
+  8th,
+  2019
+  by Yakim shu
+</span>
+<div class="post-date">Feel free to share!</div>
+  <div class="sharing-icons">
+    <a href="https://twitter.com/intent/tweet?text=[第四週] API 基礎 - RESTful API、JSON、curl 指令&amp;url=/project/project_w4_Network_API.html&amp;via=" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=/project/project_w4_Network_API.html&amp;title=[第四週] API 基礎 - RESTful API、JSON、curl 指令" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    <a href="https://plus.google.com/share?url=/project/project_w4_Network_API.html" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+
+<div class="related">
+  <h1 >You may also enjoy:</h1>
+  
+  <ul class="related-posts">
+    
+      
+        
+        
+      
+    
+      
+        
+        
+      
+    
+      
+        
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/project/project_w4_report.html">
+                [第四週] 學習日誌
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>May 6, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/project/project_w4_Network_http.html">
+                [第四週] 網路基礎 - HTTP、Request、Response
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>May 6, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+        
+          <li>
+            <h3>
+              <a href="/project/project_w4_Network_TCP_IP.html">
+                [第四週] 網路基礎 - TCP/IP
+                <!--<img src="http://localhost:4000/images/">-->
+                <!--<small>May 6, 2019</small>-->
+              </a>
+            </h3>
+          </li>
+          
+        
+      
+    
+  </ul>
+</div>
+
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://yakimshu.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<script id="dsq-count-scr" src="//yakimshu.disqus.com/count.js" async></script>
+
+    </div>
+
+    <footer class="footer">
+  <a href="https://www.facebook.com/yakimshu"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
+  <a href="https://linkedin.com/in/yakimshu"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
+  <a href="mailto:toromilk80129@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
+  <div class="post-date"><a href="/about.html">Yakim shu | Hi, 這是我擴充腦內海馬體的地方。 by Yakim shu</a></div>
+</footer>
+
+
+  </div>
+
+</body>
+</html>
