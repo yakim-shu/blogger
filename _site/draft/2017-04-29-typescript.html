@@ -5,19 +5,19 @@
 
   <title>
     
-      【心得】TypeScript新手入門班 | Yakim shu
+      【心得】TypeScript新手入門班 | Your awesome title
     
   </title>
 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
+  <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
   <meta name="author" content="Yakim, toromilk80129@gmail.com">
   <meta name="robots" content="INDEX,FOLLOW">
   <!--og-->
   <meta property="og:title" content="【心得】TypeScript新手入門班">
-  <meta name="og:description" content="">
+  <meta name="og:description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
   <meta property="og:url" content="http://localhost:4000/draft/2017-04-29-typescript.html">
 
     
@@ -53,8 +53,8 @@
   <div class="container">
     <header class="masthead">
   <h3 class="masthead-title">
-    <a href="/">Yakim shu</a>
-    <small class="masthead-subtitle">Hi, 這是我擴充腦內海馬體的地方。</small>
+    <a href="/">Your awesome title</a>
+    <small class="masthead-subtitle"></small>
     <div class="menu">
   <div class="menu-content">
     <a href="/category.html">分類文章</a>
@@ -62,9 +62,9 @@
     <!-- <a href="/contacts.html">Contact</a> -->
   </div>
   <div class="social-icons">
-    <a href="https://www.facebook.com/yakimshu"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
-    <a href="https://linkedin.com/in/yakimshu"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
-    <a href="mailto:toromilk80129@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
+    <a href="https://www.facebook.com/"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
+    <a href="https://linkedin.com/in/"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
+    <a href="mailto:"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
   </div>
 </div>
 
@@ -119,15 +119,14 @@
   <li>新增組態：</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chrome"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"request"</span><span class="p">:</span><span class="w"> </span><span class="s2">"launch"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Launch Chrome"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8080"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"webRoot"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${workspaceRoot}"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+    "type": "chrome",
+    "request": "launch",
+    "name": "Launch Chrome",
+    "url": "http://localhost:8080",
+    "webRoot": "${workspaceRoot}"
+}
+</code></pre></div></div>
 
 <h2 id="ts-node">ts-node</h2>
 <h3 id="用-termianl-裡測試-typescript">用 termianl 裡測試 typescript</h3>
@@ -174,11 +173,10 @@
   <li>回去試試： 轉換為文字</li>
 </ul>
 
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">size</span><span class="err">:</span> <span class="nx">Size</span> <span class="o">=</span> <span class="nx">Size</span><span class="p">.</span><span class="nx">Large</span>
-<span class="kd">var</span> <span class="nx">sizeString</span><span class="err">:</span> <span class="nx">string</span> <span class="o">=</span> <span class="nx">Size</span><span class="p">[</span><span class="nx">size</span><span class="p">];</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">size</span><span class="p">:</span> <span class="nx">Size</span> <span class="o">=</span> <span class="nx">Size</span><span class="p">.</span><span class="nx">Large</span>
+<span class="kd">var</span> <span class="nx">sizeString</span><span class="p">:</span> <span class="nx">string</span> <span class="o">=</span> <span class="nx">Size</span><span class="p">[</span><span class="nx">size</span><span class="p">];</span>
 <span class="nx">Console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sizeString</span><span class="p">);</span> <span class="c1">/// Large</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <hr />
 
@@ -229,9 +227,8 @@
   <li>不需要再特別做閉包：</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>var self = this;
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var self = this;
+</code></pre></div></div>
 
 <hr />
 
@@ -256,7 +253,7 @@
 
 <p>網路上有<a href="http://json2ts.com/">轉換interface</a></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>interface Product {
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>interface Product {
     id: number;
     xxxxx
 }
@@ -265,8 +262,7 @@ let data = Product {
     id:ddd,
     xxxx
 }
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <hr />
 
@@ -295,14 +291,13 @@ let data = Product {
 
 <ul>
   <li>在 constructor 用 public 屬性，可以直接設定屬性及建構式
-    <div class="highlighter-rouge"><pre class="highlight"><code>class Student { 
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class Student { 
   constructor(
     public name: string,
     public age: number = 18) {
 }
 }
-</code></pre>
-    </div>
+</code></pre></div>    </div>
   </li>
 </ul>
 
@@ -378,7 +373,7 @@ let data = Product {
   
   th,
   
-  by Yakim shu
+  by 
 </span>
 <div class="post-date">Feel free to share!</div>
   <div class="sharing-icons">
@@ -423,10 +418,10 @@ s.setAttribute('data-timestamp', +new Date());
     </div>
 
     <footer class="footer">
-  <a href="https://www.facebook.com/yakimshu"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
-  <a href="https://linkedin.com/in/yakimshu"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
-  <a href="mailto:toromilk80129@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
-  <div class="post-date"><a href="/about.html">Yakim shu | Hi, 這是我擴充腦內海馬體的地方。 by Yakim shu</a></div>
+  <a href="https://www.facebook.com/"><i class="fa fa-facebook" aria-hidden="true" target="_blank"></i></a>
+  <a href="https://linkedin.com/in/"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
+  <a href="mailto:"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
+  <div class="post-date"><a href="/about.html">Your awesome title |  by </a></div>
 </footer>
 
 
