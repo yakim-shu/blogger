@@ -109,7 +109,7 @@ request('https://yakimhsu.com',
 
 #### 小補充 ： `process` 模組
 
-`process` 是 Node.js 內建的模組，功能為「 取得令參數 」。
+`process` 是 Node.js 內建的模組，功能為「 取得指令的參數 」。
 
 - 引入： `const process = require('process')`
 - 取得指令參數： `process.argv`
