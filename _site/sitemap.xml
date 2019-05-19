@@ -5,7 +5,15 @@
   <!-- Posts -->
   
   <url>
+    <loc>http://localhost:4000/project/project_w6_CSS_flex.html</loc>
+  </url>
+  
+  <url>
     <loc>http://localhost:4000/project/project_w5_review.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:4000/project/project_w5_report.html</loc>
   </url>
   
   <url>
