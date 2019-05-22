@@ -8,6 +8,35 @@ tags: [project_week5, report]
 file_name: 2019-05-13-project_w5_report
 ---
 
+## 2019/05/19
+#### 本日進度
+- hw3 選擇器 遊戲
+- hw4 flex 遊戲
+- 寫 flex 筆記
+
+#### 心得
+
+作業 hw3, hw4 玩得很開心。
+
+青蛙 flex 小遊戲其實以前玩過不少次，但都沒有記到腦子裡，就真的只是在玩而已哈哈哈哈
+
+想說作業 hw2 不要用 float，試試看全部都用 flex 排，所以搞了一整天在研究 flex 的所有屬性。
+
+有些屬性其實還滿複雜的，尤其是子元素的 `flex-grow`, `flex-shrink`, `flex-basis`，為了搞懂花上不少時間，功能真的很強大。
+
+下午看到一個設計師的簡報 - [How can I make this Fucking layout?](https://www.slideshare.net/DavideDiPumpo/understanding-flex-box-css-day-2016)  介紹 flex 改善了哪些以前的排版問題，內容蠻有趣的。
+
+例如談到 `inline-block` 的 White Space 空白問題
+> 「 Oh god, why? 」 
+
+#### 筆記
+[[第六週] CSS - 跟著 🐸🐸 學 Flex 排版](https://yakimhsu.com/project/project_w6_CSS_flex.html)
+
+（ 發現標題可以用 Emoji 非常興奮！不過很有可能在其他電腦變亂碼，但...管他的 )
+
+----
+
+##### 位元運算
 ## 2019/05/18
 #### 本日進度
 - OJ #2 - PK 賽
@@ -173,4 +202,3 @@ As always，找圖、想標題、想假文都會花很多時間，以結果來�
 
 明天要去高雄玩三天，希望能夠爽爽玩，計畫帶著紙筆解看似比較難的題目。
 啊超討厭手機打字，所以假期能否更新學習報告還是個謎。
-
