@@ -4,7 +4,7 @@ tagline:            Hi, 這是我擴充腦內海馬體的地方。
 description:
 baseurl:            ""
 img_url:            "../images/"
-url:                "http://yakim-shu.github.io"
+url:                "https://yakimhsu.com"
 github:
 author:
   name:              "Yakim shu"
@@ -32,9 +32,3 @@ comments :
     num_posts: 5
     width: 580
     colorscheme: light
-
-# Serving
-detach:  false
-port:    4000
-host:    127.0.0.1
-show_dir_listing: false
