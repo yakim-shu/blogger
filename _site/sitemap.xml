@@ -5,6 +5,10 @@
   <!-- Posts -->
   
   <url>
+    <loc>http://localhost:4000/project/project_w6_HTML_SEO.html</loc>
+  </url>
+  
+  <url>
     <loc>http://localhost:4000/project/project_w6_report.html</loc>
   </url>
   

@@ -191,5 +191,3 @@ HTML5 新屬性：
 - [[HTML5] script 的新增屬性 defer, async](http://n.sfs.tw/content/index/10323)
 - [script tag 屬性 async defer 差別](https://blog.xuite.net/vexed/tech/61308318-script+tag+屬性+async+defer+差別)
 - [async vs defer attributes](https://www.growingwiththeweb.com/2014/02/async-vs-defer-attributes.html)
-
-
