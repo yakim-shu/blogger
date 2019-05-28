@@ -1,6 +1,6 @@
 ---
 title: "[第六週] HTML - 表單 form 介紹"
-layout: post
+layout: post_project
 description: ""
 category: project
 image: https://i.imgur.com/W8Hk65w.jpgㄋ

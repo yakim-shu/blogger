@@ -1,6 +1,6 @@
 ---
 title: "[第六週] 基礎 SEO 標籤 - meta、og、JSON-LD"
-layout: post
+layout: post_project
 description: ""
 category: project
 image: https://i.imgur.com/qON6YOo.jpg

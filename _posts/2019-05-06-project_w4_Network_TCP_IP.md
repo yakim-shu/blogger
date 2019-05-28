@@ -1,6 +1,6 @@
 ---
 title: "[第四週] 網路基礎 - TCP/IP"
-layout: post
+layout: post_project
 description: "一般來說，普通使用者跟家用電腦大部分是浮動 IP，意指你每次連上網路的時候，IP 位置都會不一樣，別人還是可以連到這個 IP，只是這 IP 位置會隨再次上線時、有所變動。"
 category: project
 tags: [TCP, IP, project_week4]

@@ -1,6 +1,6 @@
 ---
 title: "[第二週] 基礎 JavaScript - 03 函式 Function"
-layout: post
+layout: post_project
 description: "不同的程式語言總會有些自己的內建函式，目的在於簡化一些常用的功能，總之就是有人貼心造好的輪子，就不用再自己造了。"
 category: project
 image: 

@@ -1,6 +1,6 @@
 ---
 title: "[第三週] JavaScript - ES6 語法、Babel 轉譯器"
-layout: post
+layout: post_project
 description: "ECMAScript 是 JavaScript 的一種語言標準。而 ES5 及 ES6 代表著 ECMAScript 發佈的不同版本。"
 category: project
 image: https://i.imgur.com/7mExYJ3.jpg

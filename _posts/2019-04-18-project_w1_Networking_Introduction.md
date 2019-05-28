@@ -1,6 +1,6 @@
 ---
 title: "[第一週] 搞懂目錄位置 & 網路基礎概論"
-layout: post
+layout: post_project
 description: "另外查資料時，發現一些小方法，如果有時候目標資料夾埋在很裡頭，或是名稱很長、又是中文之類的，打一大串也太累了吧，可以試試看以下兩種加速的方法。"
 category: project
 image: 

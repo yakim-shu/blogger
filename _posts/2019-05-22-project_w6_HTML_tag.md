@@ -1,6 +1,6 @@
 ---
 title: "[第六週] HTML - tag 基礎標籤介紹"
-layout: post
+layout: post_project
 description: ""
 category: project
 image: https://i.imgur.com/yI8OjLW.jpg

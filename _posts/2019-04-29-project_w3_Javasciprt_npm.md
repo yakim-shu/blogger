@@ -1,6 +1,6 @@
 ---
 title: "[第三週] JavaScript - npm 套件管理工具"
-layout: post
+layout: post_project
 description: "除了剛剛示範過的 Node.js 提供的 Module、自己寫好的 Module，也可以使用別人寫好的套件，那要怎麼去使用呢？則要透過 npm 來幫我們下載跟管理這些套件。"
 category: project
 image: https://i.imgur.com/vk8fV6t.png

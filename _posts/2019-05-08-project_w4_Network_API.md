@@ -1,6 +1,6 @@
 ---
 title: "[第四週] API 基礎 - RESTful API、JSON、curl 指令"
-layout: post
+layout: post_project
 description: "以網頁用的 Web API 來舉例，就像是對方定義好了插座的規格，我們只要照著規格、把形狀合適的插頭插上去，就可以得到我要的資料，而你不會知道資料是怎麼來的，就像你不知道電是怎麼傳過來的"
 category: project
 tags: [API, RESTful API, project_week4]

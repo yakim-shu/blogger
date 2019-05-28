@@ -1,6 +1,6 @@
 ---
 title: "[第二週] 基礎 JavaScript - 02 變數"
-layout: post
+layout: post_project
 description: "變數的命名有一套規則是非常重要的，語意化的命名可以一看名稱、就知道它的用處是什麼，才不用看整個程式架構來猜，非常的浪費時間。"
 category: project
 image: 

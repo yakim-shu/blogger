@@ -1,6 +1,6 @@
 ---
 title: "[第二週] 基礎 JavaScript - 01 邏輯、位元運算"
-layout: post
+layout: post_project
 description: "回憶起大四的時候去學校圖書館找 JavaScript 的書（ 而當時的我借到的其實是 Java 的事就不提了... ），其他的運算子都非常好懂，直到翻開位元運算的那一篇。"
 category: project
 image: 

@@ -1,6 +1,6 @@
 ---
 title: "[第一週] Command Line - Terminal、基本指令介紹"
-layout: post
+layout: post_project
 description: "有別於一般人習慣的圖形化介面 (GUI)，其實可以實現一樣的動作，差別在於 GUI 是別人 設計規劃出容易理解的介面，像關閉檔案的按鈕大部分都是紅色 X 作為識別，通常是用滑鼠操作。而 Command Line 則是 透過純文字 來操縱指定的動作。 "
 category: project
 image: 

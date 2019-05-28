@@ -1,6 +1,6 @@
 ---
 title: "[第三週] JavaScript - 測試、Jest、TDD"
-layout: post
+layout: post_project
 description: "畢竟程式碼是照你「寫」的跑、不是照你「想」的跑，所以需要寫測試。"
 category: project
 image:

@@ -1,6 +1,6 @@
 ---
 title: "[第四週] 網路基礎 - HTTP、Request、Response"
-layout: post
+layout: post_project
 description: "HTTP 就是一套網路傳輸協定，而今天要學的就是這套協定的內容是什麼，以及如何實作一個簡單的 Client 與 Server 端。要了解全球通訊網的基礎，才有辦法依照標準來實作網站。"
 category: project
 tags: [HTTP, Request, Response, project_week4]
