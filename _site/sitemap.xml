@@ -5,6 +5,10 @@
   <!-- Posts -->
   
   <url>
+    <loc>http://localhost:4000/project/project_w7_eventListener.html</loc>
+  </url>
+  
+  <url>
     <loc>http://localhost:4000/project/project_w7_DOM.html</loc>
   </url>
   
