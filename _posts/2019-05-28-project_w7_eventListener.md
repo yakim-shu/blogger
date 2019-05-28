@@ -34,7 +34,7 @@ function addEvent(className) {
 
 但奇怪的事情來了，當我點擊最內層元素 `btn`，不只 `btn` 的 `click` 事件被觸發，連上兩層的元素都被觸發了，這種詭異的現象其實是「 冒泡事件 」。
 
-![螢幕快照 2019-05-27 下午6.47.07](https://i.imgur.com/qBPcmlZ.jpg)
+![螢幕快照 2019-05-27 下午6.47.07](https://i.imgur.com/qBPcmlZ.jpg){:width="700px"}
 
 ---
 

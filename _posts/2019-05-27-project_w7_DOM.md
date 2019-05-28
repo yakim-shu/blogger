@@ -1,10 +1,10 @@
 ---
-title: "[第七週] DOM - 操作 DOM 介面"
+title: "[第七週] DOM - 操作 DOM 介面、事件監聽"
 layout: post_project
 description: ""
 category: project
 image: 
-tags: [DOM, project_week7]
+tags: [DOM, eventListener, project_week7]
 file_name: 2019-05-27-project_w7_DOM
 ---
 
