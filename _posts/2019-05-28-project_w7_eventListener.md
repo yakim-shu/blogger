@@ -8,7 +8,10 @@ tags: [eventListener, bubbling, project_week7]
 file_name: 2019-05-28-project_w7_eventListener
 ---
 
-事件是會被傳送上去的，最簡單的範例如下：
+### 奇怪！我只點了一個按鈕，為什麼上層元素也被觸發了？
+
+因為 DOM 事件是會被傳遞下去的，最簡單的範例如下：
+
 ```html
 <div class="outer">
     outer
@@ -54,9 +57,12 @@ const unsigned short      BUBBLING_PHASE                 = 3; 冒泡
 - 先捕獲，再冒泡
 - 當事件傳到 target 本身，沒有分捕獲跟冒泡
 
-### 改變事件的傳遞方式
+### 改變監聽位置
 
-要改變事件的傳遞方式，可以在 `.addEventListener` 方法加上第 3 個參數，為 boolean 值。
+要改變「 在哪個階段加上監聽器 」，可以在 `.addEventListener` 方法加上第 3 個參數，為 boolean 值。
+
+> 2019.06.03 註：  
+> 之前寫錯了，其實並不是**改變「 事件的傳遞方式 」，改變的是「 在哪個階段做監聽？ 」**因為不管在哪裡監聽它，都一樣是以先捕獲再冒泡，事件的傳遞方式是不會變的。
 
 - `true => 捕獲 ; false => 冒泡`
 - 不加參數的話，預設值是 `false`
@@ -96,11 +102,11 @@ function addEvent(className) {
 
 ## 阻止事件傳遞 `e.stopPropagation()`
 
-`e.stopPropagation()` 就是阻止事件的傳遞，換句話說，就是不向上（ 或下 ）級傳遞。
+`e.stopPropagation()` 就是阻止事件的傳遞，換句話說，就是**不向上（ 或下 ）級**傳遞。
 
 > 請注意，根據不同的指定傳遞方式，結果也會有所不同
 
-以剛剛的例子來看，為了方便觀看，綁定的順序改成先「 捕獲 」 再 「 冒泡 」，也把中文去掉以免造成混淆。
+以剛剛的例子來看，為了方便觀看，綁定的順序把「 監聽捕獲 」放在前面，也把中文去掉以免造成混淆。
 
 ### ☞ 阻止冒泡
 
@@ -170,19 +176,19 @@ function addEvent(className) {
 
 由此可以觀察到一點有趣的事情。
 
-> 如果該元素是最上層的元素，事件傳遞方式指定為捕獲，那底下所有的元素事件傳遞都會被停止。
+> 如果該元素是最上層的元素，事件監聽方式指定為「 從捕獲階段就開始監聽 」，那底下所有的元素事件傳遞都會被停止。
 
 ---
 
 ### 實際應用： 停止頁面上所有元素的預設動作
 
-換句話說，如果我想要阻止頁面上所有的 `click` 事件（ 包括 `<a>` 預設的動作 ），可以在 `window` 以捕獲方式做阻止：
+換句話說，如果我想要阻止頁面上所有的 `click` 事件（ 包括 `<a>` 預設的動作 ），可以在 `window` 物件監聽捕獲階段，來阻止底下的所有元素：
 
 ```javascript
 window.addEventListener('click', function (e) {
   e.preventDefault(); // 停止預設功能
   e.stopPropagation(); // 停止後續傳遞
-}, true) // 指定為捕獲
+}, true) // 指定為從捕獲階段開始監聽
 
 // 底下的事件傳遞全都被阻止了
 function addEvent(className) {
@@ -201,7 +207,7 @@ function addEvent(className) {
 
 ### `e.stopImmediatePropagation()` 阻止後續相同事件
 
-一個元素可以綁定多個事件，例如以剛剛的例子，我在 `btn` 上面又多綁了 2 個 `click`，分別輸出 `第一個 click` & `第二個 click`，全部不加參數、以預設的冒泡方式傳遞：
+一個元素可以綁定多個事件，例如以剛剛的例子，我在 `btn` 上面又多綁了 2 個 `click`，分別輸出 `第一個 click` & `第二個 click`，全部不加參數、預設為冒泡：
 
 ```javascript
 document.querySelector('.btn')
@@ -216,7 +222,7 @@ document.querySelector('.btn')
 });
 ```
 
-會輸出以下，可以看得出來傳遞順序是 `btn` 上面綁的三個 eventLister `(2)` > 冒泡到上層 `(3)`。
+會輸出以下，可以看得出來監聽到的順序是 `btn` 上面綁的三個 eventLister `(2)` > 冒泡到上層 `(3)`。
 
 ```javascript
 .btn 2
