@@ -5,6 +5,34 @@
   <!-- Posts -->
   
   <url>
+    <loc>http://localhost:4000/project/project_w10_review_Ajax_JSONP.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:4000/project/project_w10_review_DOM&amp;EventListener.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:4000/project/project_w10_report.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:4000/project/project_w9_report.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:4000/project/project_w8_CORS_JSONP.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:4000/project/project_w8_Ajax_Form.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:4000/project/project_w8_repor.html</loc>
+  </url>
+  
+  <url>
     <loc>http://localhost:4000/project/project_w7_storage.html</loc>
   </url>
   

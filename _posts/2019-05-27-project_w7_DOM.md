@@ -1,7 +1,7 @@
 ---
 title: "[第七週] DOM - 操作 DOM 介面、事件監聽"
 layout: post_project
-description: ""
+description: "JavaScript 在網頁上的操作不外乎以下三種，而這章會談到改變介面跟事件監聽的部分。"
 category: project
 image: 
 tags: [DOM, eventListener, project_week7]
@@ -81,6 +81,7 @@ element.classList.add('active')
 - 移除 : `.classList.remove("active")`
 - 開關 : `.classList.toggle("active")`
     - 沒有此 class → 新增、有此 class → 移除
+- 是否包含該 class : `.classList.contains("active")`    
 
 ### 抓取、改變文字或標籤內容
 #### `.innerText` 
@@ -134,6 +135,34 @@ element.addEventListener('click', function(){
 ### 回呼函式 Callback function
 白話文就是先註冊一個事件，程式不會停下來等，繼續去跑其他地方，等事件被觸發了才執行 callback function 的內容。
 
+### 如何使用 Callback function
+其實就是把 function 當參數，當拿到 response 才執行 callback function
+```javascript
+function callMe(data) {
+    cosnole.log(data);
+}
+function getData(callback) {
+    // ... 送一個 request
+    // ... 收到 response
+    callback(response);
+}
+getData(callMe);
+```
+又可以改成匿名函式的 callback function
+
+```javascript
+function getData(callback) {
+    // ... 送一個 request
+    // ... 收到 response
+    callback(response);
+}
+getData(function (data) {
+    cosnole.log(data);
+});
+```
+
+---
+
 ### 事件資訊 `function(e)`
 
 event 資訊會放在 callback function 裡面的**第一個參數**，通常都是取名 `event` 或簡寫 `e`，可以當成是一個「 物件 」，裡面有各種此事件的參數值，例如：
@@ -144,7 +173,7 @@ event 資訊會放在 callback function 裡面的**第一個參數**，通常都
 - `keydown` 按下按鍵
     - `e.key` 按鍵號碼
 
-    
+
 ### 表單事件處理 `onSubmit` 
 
 當表單 `form` 中的 `submit` 按鈕 `click` 的時候，會有個預設行為，就是「 送出表單 」，預設是 GET 方法，並把參數帶入原網址送出，而 `submit` 事件是在**表單送出前會觸發**，用處是可以拿來驗證表單內容。
