@@ -42,6 +42,7 @@ JS 可以操作物件，但不能直接操作頁面上的標籤，所以 DOM 就
   - 最方便，就像寫 CSS 來選擇元素。
   - id 用 `#`、class 用 `.`、 tag 用 `<tag 本身>`、關係選擇器 `> + ~`
   - 但 `querySelector` 只會回傳第一個元素，如果想要選取到所有匹配到的元素，可以改用 `querySelectorAll`。
+- `element.closest()` 最靠近的父層元素
 
 ```javascript
 const header = document.getElementsByTagName("header"); // tag
