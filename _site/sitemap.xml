@@ -5,6 +5,34 @@
   <!-- Posts -->
   
   <url>
+    <loc>http://localhost:4000/project/project_w12_Info_Security-CSRF.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:4000/project/project_w12_Info_Security-XSS_SQL.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:4000/project/project_w12_report.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:4000/project/project_w11_Info_Security-Session.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:4000/project/project_w11_Info_Security-Hash.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:4000/project/project_w11_report.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:4000/project/project_w10_review.html</loc>
+  </url>
+  
+  <url>
     <loc>http://localhost:4000/project/project_w10_review_Ajax_JSONP.html</loc>
   </url>
   
