@@ -5,6 +5,14 @@
   <!-- Posts -->
   
   <url>
+    <loc>http://localhost:4000/project/project_w17_type_primitive&amp;object.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:4000/project/project_w16_EventLoop.html</loc>
+  </url>
+  
+  <url>
     <loc>http://localhost:4000/project/project_w12_Info_Security-CSRF.html</loc>
   </url>
   

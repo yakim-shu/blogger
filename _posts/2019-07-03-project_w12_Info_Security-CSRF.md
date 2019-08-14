@@ -21,6 +21,8 @@ file_name: 2019-07-03-project_w12_Info_Security-CSRF
 
 聽起來還是不知道可怕在哪，只要試想把 B 網站換成「 我們常用的網路銀行 」，有可能你默默就把錢轉出去也沒發現，就知道 CSRF 是很危險的。
 
+---
+
 ## 防範方法
 
 以下內容完全就是看 Huli 大的好文 [讓我們來談談 CSRF](https://blog.techbridge.cc/2017/02/25/csrf-introduction/) 筆記內容，原來有這麼多方法，其實還滿有趣的，簡直就是開發者跟駭客之間角力戰的歷史過程。

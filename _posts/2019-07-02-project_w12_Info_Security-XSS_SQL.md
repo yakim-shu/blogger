@@ -41,8 +41,8 @@ SELECT * FROM users HWERE user='' or 1=1 --' AND pwd =''; // => 永遠成立
 - 照理來說會登入**第一個**篩選到的帳號
 
 ---
-### 解決方法： prepare statement
-prepare statement 做的就是幫我們處理 SQL 跳脫這件事
+### 解決方法： Prepare Statement
+Prepare Statement 做的就是幫我們處理 SQL 跳脫這件事
 
 步驟：
 - 把要放的參數都改成問號
@@ -173,7 +173,7 @@ echo htmlspecialchars($str, ENT_QUOTES, 'utf-8')
 - 通常是輸出資料的時候才要 escape，而存在資料庫裡的應該還要是明碼（除了密碼）
 
 ### 哪些地方要做 prepare statement ?
-- 有使用者可以操作的地方都需要，而如果都是自己可以控制的，照理還說不需要
+- 有使用者可以操作的地方都需要，而如果都是自己可以控制的，照理來說不需要
 - 但還是建議每個地方都用，但全都加上是一個好習慣，理由是：
   - 統一標準
   - 需求會改，有可能現在不用，未來還是有可能改成使用者會 輸入的欄位
