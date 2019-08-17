@@ -1,5 +1,5 @@
 ---
-title: "[第十七週] 面試愛考題：打好基礎的第一步，從了解什麼是 EC 開始"
+title: "[第十七週] JavaScript 進階：打好基礎的第一步，從了解什麼是 EC 開始"
 layout: post_project
 description: ""
 category: project

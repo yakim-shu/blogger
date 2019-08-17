@@ -5,6 +5,18 @@
   <!-- Posts -->
   
   <url>
+    <loc>http://localhost:4000/project/project_w17_advancedJS_04_Clousure.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:4000/project/project_w17_advancedJS_03_Clousure.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:4000/project/project_w17_advancedJS_02_Hoisting.html</loc>
+  </url>
+  
+  <url>
     <loc>http://localhost:4000/project/project_w17_advancedJS_01_EC.html</loc>
   </url>
   
