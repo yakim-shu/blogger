@@ -7,7 +7,7 @@ tags: [Closure, project_week17]
 file_name: 2019-08-08-project_w17_advancedJS_04_Clousure
 ---
 
-延續上一篇：[[第十七週] 面試愛考題：什麼是閉包 Closure 與實際應用](https://yakimhsu.com/project/project_w17_advancedJS_03_Clousure.html)
+延續上一篇：[JavaScript 進階：什麼是閉包 Closure 與實際應用](https://yakimhsu.com/project/project_w17_advancedJS_03_Clousure.html)
 
 以下是一個 closure 範例：
 
