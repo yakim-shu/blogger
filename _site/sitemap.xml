@@ -5,6 +5,26 @@
   <!-- Posts -->
   
   <url>
+    <loc>http://localhost:4000/project/project_w21_05_React_basic_CSS.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:4000/project/project_w21_04_React_basic_functional-component.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:4000/project/project_w21_03_React_basic_state_props_setState.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:4000/project/project_w21_02_React_basic_component_JSX.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:4000/project/project_w21_01_React_environment_setup.html</loc>
+  </url>
+  
+  <url>
     <loc>http://localhost:4000/project/project_w17_advancedJS_07_OOP.html</loc>
   </url>
   
