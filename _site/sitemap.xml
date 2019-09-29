@@ -5,6 +5,18 @@
   <!-- Posts -->
   
   <url>
+    <loc>http://localhost:4000/project/project_w21_03_React_life_componentDidUpdate.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:4000/project/project_w21_02_React_life_-shouldComponentUpdate.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:4000/project/project_w21_01_React_life_constructor.html</loc>
+  </url>
+  
+  <url>
     <loc>http://localhost:4000/project/project_w21_05_React_basic_CSS.html</loc>
   </url>
   

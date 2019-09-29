@@ -84,7 +84,7 @@ npm run start
 ---
 ## 2. babel 轉成 ES5
 
-因為許多瀏覽器還是不支援 ES6 語法，所以需要 babel 轉成 ES5 語法
+因為許多瀏覽器還是不支援 ES6 語法，所以需要 babel 轉成 ES5 語法，而且需要 babel 轉化 JSX 語法
 
 - 先安裝 `@babel/core`、`@babel/preset-env`
 - `babel-loader` 給 webpack 用的
