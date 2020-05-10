@@ -5,6 +5,10 @@
   <!-- Posts -->
   
   <url>
+    <loc>http://localhost:4000/project/mtr_4th_web_thoughts.html</loc>
+  </url>
+  
+  <url>
     <loc>http://localhost:4000/project/project_w21_03_React_life_componentDidUpdate.html</loc>
   </url>
   

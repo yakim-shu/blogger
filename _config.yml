@@ -12,16 +12,21 @@ author:
   github:            "yakim-shu"
   facebook:          "yakimshu"
   linkedin:          "yakimshu"
-paginate:            5
+paginate:            10
 
 
 # Build settings
 markdown:            kramdown
+kramdown:
+  syntax_highlighter_opts:
+    default_lang: plaintext
 highlighter:         rouge
 linenos:             true
 permalink:           none
-pulgins:                [jekyll-paginate]
-gems:                [jekyll-paginate]
+plugins:                [jekyll-paginate]
+
+# Gems
+gems: [jekyll-paginate]
 
 comments :
   provider : disqus

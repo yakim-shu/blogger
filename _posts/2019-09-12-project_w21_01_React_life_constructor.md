@@ -86,16 +86,18 @@ class App extends Component {
 
 而如果不想要讓整個 Component 移除又重新建立的話，就用 CSS 控制就好了！
 
-```javascript
+```jsx
 class Title extends Component {
   constructor() {
     super();
     console.log('Title created');
   }
   render() {
-    const {isShow} = this.props;
+    const { isShow } = this.props;
+    const display = isShow ? 'block' : 'none';
+
     return <h1 style={{
-      display: isShow ? 'block' : 'none' // => 用 CSS 控制
+      display
     }}>Title</h1>
   }
 }
